@@ -5,6 +5,6 @@ $light: #fbeff4;
 $theme-colors: (
   "primary": #4e0629,
   "secondary": #dc466a,
-  "success": #28a745,
 );
-@import "bootstrap/scss/bootstrap";
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
