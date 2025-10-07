@@ -1,8 +1,5 @@
-
-
-
-
-
 export default function Product(){
-    return `product`
+    return <>
+        <h2>Product List Page</h2>
+    </>
 }
