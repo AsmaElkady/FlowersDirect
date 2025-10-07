@@ -1,0 +1,39 @@
+
+
+header{
+    background-image: url("/public/img/Home/1.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    height: 80vh;
+    width: 100%;
+
+    line-height: 50px;
+}
+
+header div>h4{
+position: relative;
+margin-bottom: 40px;
+}
+.line::after{
+    content: "";
+    width: 100px;
+    height: 2px;
+    position: absolute;
+    bottom: -10px;
+    left: 38%;
+    background-color: var(--mainColor);
+    /* background-color: ; */
+}
+
+@media (max-width: 768px) {
+    .line::after{
+        content: "";
+        width: 0;
+        height: 0;
+
+        
+    }
+    
+}
