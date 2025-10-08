@@ -9,6 +9,7 @@ import HomePage from "./pages/home/home.tsx";
 import "./style/main.css";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 
+import "./index.css"
 const rout = createBrowserRouter([
   {
     path: "/",
