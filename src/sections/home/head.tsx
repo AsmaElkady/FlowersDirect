@@ -1,6 +1,6 @@
 
 import Button from 'react-bootstrap/Button';
-import "./head.css"
+import "../../style/home/head.css"
 import Carousel from 'react-bootstrap/Carousel';
 
 export default function HeadConponent() {

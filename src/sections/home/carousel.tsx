@@ -1,4 +1,3 @@
-// import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";

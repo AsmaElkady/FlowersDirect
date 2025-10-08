@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/esm/Button";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import "./special.css"
+import "../../style/home/special.css"
 import Container from "react-bootstrap/esm/Container";
 
 

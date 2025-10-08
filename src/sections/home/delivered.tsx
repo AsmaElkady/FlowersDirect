@@ -1,6 +1,6 @@
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
-import "./deliver.css"
+import "../../style/home/deliver.css"
 import Button from "react-bootstrap/esm/Button";
 
 

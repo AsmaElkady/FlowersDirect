@@ -2,7 +2,6 @@
 .sec,
 .third {
     height: 460px;
-    /* width: 100%; */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,11 +43,6 @@
     padding: 40px;
 
 }
-
-/* .first h2,
-.third p {
-    color: #000;
-} */
 
 @media (max-width: 768px) {
     .first {

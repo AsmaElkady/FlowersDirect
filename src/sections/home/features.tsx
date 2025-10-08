@@ -3,14 +3,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 
-import "./feature.css"
+import "../../style/home/feature.css"
 export default function Features() {
     return (
         <Container  >
             <Row className="transparentSec text-center justify-content-center align-items-center feature-row">
 
                 <Col md={3} sm={6} className="d-flex align-items-center justify-content-center feature-col">
-                    {/* <PriceCheckIcon style={{ color: "var(--mainColor)", fontSize: "40px", marginRight: "10px" }} /> */}
                     <img src="/public/img/nav/2.png" alt="" className='m-1' />
                     <div className="text-start">
                         <h6 className="mb-1">Wholesale Prices</h6>
@@ -19,7 +18,6 @@ export default function Features() {
                 </Col>
 
                 <Col md={3} sm={6} className="d-flex align-items-center justify-content-center feature-col">
-                    {/* <ShieldIcon style={{ color: "var(--mainColor)", fontSize: "40px", marginRight: "10px" }} /> */}
                     <img src="/public/img/nav/3.png" alt="" className='mx-2'/>
                     <div className="text-start">
                         <h6 className="mb-1">Secure Checkout</h6>
@@ -28,7 +26,6 @@ export default function Features() {
                 </Col>
 
                 <Col md={3} sm={6} className="d-flex align-items-center justify-content-center feature-col">
-                    {/* <LocalFloristIcon style={{ color: "var(--mainColor)", fontSize: "40px", marginRight: "10px" }} /> */}
                     <img src="/public/img/nav/4.png" alt="" />
                     <div className="text-start">
                         <h6 className="mb-1">Best Quality</h6>
@@ -37,7 +34,6 @@ export default function Features() {
                 </Col>
 
                 <Col md={3} sm={6} className="d-flex align-items-center justify-content-center feature-col">
-                    {/* <SupportAgentIcon style={{ color: "var(--mainColor)", fontSize: "40px", marginRight: "10px" }} /> */}
                     <img src="/public/img/nav/5.png" alt="" />
                     <div className="text-start">
                         <h6 className="mb-1">Client Service</h6>
