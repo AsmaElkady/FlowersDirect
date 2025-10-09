@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
 
-:root{
+:root {
   --mainColor: #4E0629;
 }
-body{
-    font-family: "DM Serif Display", serif !important; 
+
+body {
+  font-family: "DM Serif Display", serif !important;
   font-weight: 400;
   font-style: normal;
 
