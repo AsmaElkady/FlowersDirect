@@ -8,19 +8,19 @@
 }
 
 .first {
-    background-image: url("/public/img//Home/11.png");
+    background-image: url("/img//Home/11.png");
 
     border-radius: 30px !important;
 }
 
 .sec {
-    background-image: url("/public/img//Home/12.png");
+    background-image: url("/img//Home/12.png");
     border-radius: 30px !important;
 
 }
 
 .third {
-    background-image: url("/public/img//Home/13.png");
+    background-image: url("/img//Home/13.png");
     border-radius: 30px !important;
 }
 
@@ -46,7 +46,7 @@
 
 @media (max-width: 768px) {
     .first {
-        background-image: url("/public/img//Home/14.png");
+        background-image: url("/img//Home/14.png");
         border-radius: 0px !important; 
     }
     .sec{
@@ -54,7 +54,7 @@
 
     }
     .third {
-        background-image: url("/public/img//Home/15.png");
+        background-image: url("/img//Home/15.png");
         border-radius: 0px !important; 
     }
 

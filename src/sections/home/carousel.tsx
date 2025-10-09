@@ -34,13 +34,13 @@ const responsive = {
 export default function MultiImageSlider({ title, all, items = [] }: MultiImageSliderProps) {
 
   const defultProduct : Item[] = [
-    { id: 1, src: "/public/img/Home/category/1.png" , name : "flower" , price : 100},
-    { id: 2, src: "/public/img/Home/category/2.png" , name : "flower" , price : 200},
-    { id: 3, src: "/public/img/Home/category/3.png" , name : "flower" , price : 300},
-    { id: 4, src: "/public/img/Home/category/4.png" , name : "flower" , price : 400},
-    { id: 5, src: "/public/img/Home/category/5.png" , name : "flower" , price : 500},
-    { id: 6, src: "/public/img/Home/category/6.png" , name : "flower" , price : 600},
-    { id: 7, src: "/public/img/Home/category/1.png" , name : "flower" , price : 100},
+    { id: 1, src: "/img/Home/category/1.png" , name : "flower" , price : 100},
+    { id: 2, src: "/img/Home/category/2.png" , name : "flower" , price : 200},
+    { id: 3, src: "/img/Home/category/3.png" , name : "flower" , price : 300},
+    { id: 4, src: "/img/Home/category/4.png" , name : "flower" , price : 400},
+    { id: 5, src: "/img/Home/category/5.png" , name : "flower" , price : 500},
+    { id: 6, src: "/img/Home/category/6.png" , name : "flower" , price : 600},
+    { id: 7, src: "/img/Home/category/1.png" , name : "flower" , price : 100},
   ]
 
   const renderProduct = (data:Item[])=>
@@ -101,7 +101,7 @@ export default function MultiImageSlider({ title, all, items = [] }: MultiImageS
 
                 <div className="border border-dark rounded-3 p-2 mx-2 " style={{ width: 210 }}>
                   <img
-                    src="/public/img/Home/category/1.png"
+                    src="/img/Home/category/1.png"
                     alt="flower1"
                     className="w-100 rounded-3"
                     style={{ height: "200px", objectFit: "cover" }}
@@ -111,7 +111,7 @@ export default function MultiImageSlider({ title, all, items = [] }: MultiImageS
 
                 <div className="border border-dark rounded-3 p-2 mx-2 " style={{ width: 210 }}>
                   <img
-                    src="/public/img/Home/category/2.png"
+                    src="/img/Home/category/2.png"
                     alt="flower1"
                     className="w-100 rounded-3"
                     style={{ height: "200px", objectFit: "cover" }}
@@ -121,7 +121,7 @@ export default function MultiImageSlider({ title, all, items = [] }: MultiImageS
 
                 <div className="border border-dark rounded-3 p-2 mx-2 " style={{ width: 210 }}>
                   <img
-                    src="/public/img/Home/category/3.png"
+                    src="/img/Home/category/3.png"
                     alt="flower1"
                     className="w-100 rounded-3"
                     style={{ height: "200px", objectFit: "cover" }}
@@ -131,7 +131,7 @@ export default function MultiImageSlider({ title, all, items = [] }: MultiImageS
 
                 <div className="border border-dark rounded-3 p-2 mx-2 " style={{ width: 210 }}>
                   <img
-                    src="/public/img/Home/category/4.png"
+                    src="/img/Home/category/4.png"
                     alt="flower1"
                     className="w-100 rounded-3"
                     style={{ height: "200px", objectFit: "cover" }}
@@ -141,7 +141,7 @@ export default function MultiImageSlider({ title, all, items = [] }: MultiImageS
 
                 <div className="border border-dark rounded-3 p-2 mx-2 " style={{ width: 210 }}>
                   <img
-                    src="/public/img/Home/category/5.png"
+                    src="/img/Home/category/5.png"
                     alt="flower1"
                     className="w-100 rounded-3"
                     style={{ height: "200px", objectFit: "cover" }}
@@ -151,7 +151,7 @@ export default function MultiImageSlider({ title, all, items = [] }: MultiImageS
 
                 <div className="border border-dark rounded-3 p-2 mx-2 " style={{ width: 210 }}>
                   <img
-                    src="/public/img/Home/category/6.png"
+                    src="/img/Home/category/6.png"
                     alt="flower1"
                     className="w-100 rounded-3"
                     style={{ height: "200px", objectFit: "cover" }}
@@ -161,7 +161,7 @@ export default function MultiImageSlider({ title, all, items = [] }: MultiImageS
 
                 <div className="border border-dark rounded-3 p-2 mx-2 " style={{ width: 210 }}>
                   <img
-                    src="/public/img/Home/category/6.png"
+                    src="/img/Home/category/6.png"
                     alt="flower1"
                     className="w-100 rounded-3"
                     style={{ height: "200px", objectFit: "cover" }}

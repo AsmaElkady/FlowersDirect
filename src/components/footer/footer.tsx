@@ -61,7 +61,7 @@ export default function Footer() {
 
                         </Col>
                         <Col>
-                            <img src="/public/img/nav/1.png" alt="" />
+                            <img src="/img/nav/1.png" alt="" />
                         </Col>
                     </Row>
                 </Container>

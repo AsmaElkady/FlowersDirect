@@ -14,7 +14,7 @@ export default function Special() {
                     <Col md={3} sm={12} className=" first mx-2">
                         <div className="first"  >
                             <h2>Spacial Orders</h2>
-                            <img src="/public/img/Home/10.png" alt="" />
+                            <img src="/img/Home/10.png" alt="" />
                             <p className="mt-2">Don't see what your looking for? We have access to other flowers and greens which may not be listed on our website.</p>
 
                         </div>

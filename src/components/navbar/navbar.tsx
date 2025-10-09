@@ -25,7 +25,7 @@ export default function MyNavbar() {
                             <div className="position-relative">
                                 <FavoriteIcon className="text-primary mx-3" />
                                 <span className="position-absolute " style={{ top: "-13px", right: "2px" }}>
-                                    <img src="/public/img/nav/Vector.png" alt="" width={"25px"}/>
+                                    <img src="/img/nav/Vector.png" alt="" width={"25px"}/>
                                 </span>
                                 <span className=" position-absolute text-primary " style={{ top: "-10px", right: "8px" , fontSize:"15px"}}>10</span>
                             </div>
