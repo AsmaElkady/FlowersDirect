@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Button, Form, Row, Col } from "react-bootstrap";
+import { useEffect, useRef, useState } from "react";
+import { Button, Form, Row, Col, Offcanvas } from "react-bootstrap";
 
 export default function Filter() {
     const colors = ["Green", "Yellow", "Pink", "Purple", "Blue", "Orange", "Red", "Black", "White"];
@@ -7,13 +7,25 @@ export default function Filter() {
     const [selectedColor, setSelectedColor] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
     const [price, setPrice] = useState(50);
+    const [showFilter, setShowFilter] = useState(false);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+    const filterRef = useRef(null);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     const handleClear = () => {
         setSelectedColor("");
         setSelectedCategory("");
         setPrice(0);
     };
-    return (
-        <div>
+
+    const FilterBody = (
+        <div ref={filterRef}>
             <div className="d-flex justify-content-between align-items-center mb-3">
                 <h6 className="fw-bold mb-0 text-primary">FILTERS</h6>
                 <Button variant="secondary" className="rounded-pill text-primary" onClick={handleClear}>CLEAR</Button>
@@ -67,6 +79,31 @@ export default function Filter() {
                     </Col>
                 ))}
             </Row>
+        </div>
+    );
+    return (
+        <div>
+            {/* Offcanvas Button */}
+            {isMobile && (
+                <Button
+                    variant="primary"
+                    className="d-md-none mb-3"
+                    onClick={() => setShowFilter(true)}
+                >
+                    <i className="fa-solid fa-filter me-2" aria-hidden="true"></i> Filters
+                </Button>
+            )}
+
+            {/* Desktop */}
+            {!isMobile && <div>{FilterBody}</div>}
+
+            {/* Mobile */}
+            <Offcanvas show={showFilter} onHide={() => setShowFilter(false)} placement="start">
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Filters</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>{FilterBody}</Offcanvas.Body>
+            </Offcanvas>
         </div>
     )
 }

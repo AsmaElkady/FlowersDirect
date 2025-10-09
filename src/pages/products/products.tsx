@@ -1,37 +1,29 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Filter from "../../components/Filter/Filter";
 import "../../index.css";
-import { useEffect, useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
-
-export interface Product {
-    id: string;
-    name: string;
-    desc: string;
-    image: string;
-    colors: string[];
-    category: string;
-    price: number;
-    orderedItems: number;
-    rating: number;
-    reviews: {
-        total: number;
-        breakdown: Record<string, number>;
-    };
-    isFavorite: boolean;
-    totalQuantity: number;
-    refund: number;
-}
-
+import type { Product } from "../../Types/Product";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 export default function Products() {
-    const [products, setProducts] = useState<Product[]>([]);
-    // const [apiError, setApiError] = useState("");
-    useEffect(() => {
-        fetch("http://localhost:3000/products")
-            .then(res => res.json())
-            .then(data => setProducts(data));        
-    }, []);
+    async function getProducts() {
+        const res = await axios.get("http://localhost:3000/products");
+        return res.data;
+    }
+    let {data , isLoading , isError} = useQuery({
+        queryKey: ["Products"],
+        queryFn: getProducts,
+    });
+
+    if (isLoading)
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <Spinner animation="border" role="status" variant="primary" />
+      </div>
+    );
+    if (isError) return <h2>Errors....Failed to load products, Please try again later.</h2>
+    
     return (
         <Container className="py-5">
             <h2 className="fw-bold mb-4 text-primary">Shop All Flowers</h2>
@@ -41,15 +33,9 @@ export default function Products() {
                 </Col>
                 <Col md={9}>
                     <Row className="g-4">
-                        {products.map((product) => (
+                        {data.map((product: Product) => (
                             <Col key={product.id} md={4}>
-                                <ProductCard
-                                    id={product.id}
-                                    name={product.name}
-                                    image={product.image}
-                                    price={product.price}
-                                    category={product.category}
-                                />
+                                <ProductCard product={product}/>
                             </Col>
                         ))}
                     </Row>

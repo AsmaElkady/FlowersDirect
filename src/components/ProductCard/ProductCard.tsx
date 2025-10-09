@@ -1,14 +1,12 @@
 import { Card, Button } from "react-bootstrap";
+import type { Product } from "../../Types/Product";
 
-interface ProductProps {
-    id: string;
-    name: string;
-    image: string;
-    price: number;
-    category: string;
-}
+type Props = {
+  product: Product;
+};
 
-export default function ProductCard({ name, image, price, category }: ProductProps) {
+export default function ProductCard({ product }: Props) {
+    const { name, image, price, category } = product;
     return (
         <Card className="shadow-sm border-0 rounded-4 p-2" style={{ minHeight: "350px" }}>
             <Card.Img
