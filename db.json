@@ -1,0 +1,25 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Rose Bouquet",
+      "description": "A beautiful bouquet of red roses.",
+      "price": 29.99,
+      "image": "https://example.com/images/rose-bouquet.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Tulip Arrangement",
+      "description": "A vibrant arrangement of mixed tulips.",
+      "price": 24.99,
+      "image": "https://example.com/images/tulip-arrangement.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Sunflower Basket",
+      "description": "A cheerful basket of sunflowers.",
+      "price": 34.99,
+      "image": "https://example.com/images/sunflower-basket.jpg"
+    }
+  ]
+}
