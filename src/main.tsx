@@ -15,7 +15,6 @@ import SignUp from "./pages/signup/signup.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-import "./index.css"
 const rout = createBrowserRouter([
   {
     path: "/",
