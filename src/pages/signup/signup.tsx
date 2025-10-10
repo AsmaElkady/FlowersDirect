@@ -5,26 +5,13 @@ import MyInput from "../../components/Inputs/MyInput";
 import Form from "../../components/Form/Form";
 import Password from "../../components/Inputs/Password";
 import AuthBtn from "../../components/Buttons/AuthBtn";
-import ScaleContainer from "../../components/animations/ScaleContainer";
 import "../../style/auth.css";
 
 const SignUp = () => {
   return (
     <Container fluid>
       <Row className="align-items-center justify-content-center flex-md-row flex-column-reverse bg-linear h-100">
-        <Col
-          sm="12"
-          md="6"
-          className="d-flex flex-column justify-content-center p-5 bg-imgVertical"
-        >
-          <ScaleContainer className="p-3 rounded-4 w-75 m-auto bg-blur">
-            <h5 className="lh-lg lightTextShadow">
-              Creating bouquets is an art, and our florists are artists. We use
-              the highest quality flowers from local greenhouses and suppliers
-              from the Netherlands and France to create unique arrangements.
-            </h5>
-          </ScaleContainer>
-        </Col>
+        <Col sm="12" md="6" className="bg-imgVertical" />
         <Col
           md="6"
           sm="12"

@@ -5,7 +5,6 @@ import MyInput from "../../components/Inputs/MyInput";
 import Form from "../../components/Form/Form";
 import Password from "../../components/Inputs/Password";
 import AuthBtn from "../../components/Buttons/AuthBtn";
-import ScaleContainer from "../../components/animations/ScaleContainer";
 
 const Login = () => {
   return (
@@ -29,18 +28,7 @@ const Login = () => {
             </Form>
           </Col>
         </Col>
-        <Col
-          sm="12"
-          md="6"
-          className="d-flex flex-column justify-content-center align-items-center bg-imgVertical p-5"
-        >
-          <ScaleContainer className="p-4 rounded-4 w-75 m-auto bg-blur">
-            <h5 className="lh-lg lightTextShadow">
-              Flowers always make people better, happier, and more helpful; they
-              are sunshine, food and medicine to the mind.
-            </h5>
-          </ScaleContainer>
-        </Col>
+        <Col sm="12" md="6" className="bg-imgVertical" />
       </Row>
     </Container>
   );
