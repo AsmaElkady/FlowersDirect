@@ -1,5 +1,5 @@
 import { Card, Button } from "react-bootstrap";
-import type { Product } from "../../Types/Product";
+import type { Product } from "../../types/Product";
 
 type Props = {
   product: Product;

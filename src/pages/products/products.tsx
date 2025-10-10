@@ -2,7 +2,7 @@ import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Filter from "../../components/Filter/Filter";
 import "../../index.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import type { Product } from "../../Types/Product";
+import type { Product } from "../../types/Product";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 
