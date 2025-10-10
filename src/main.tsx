@@ -12,7 +12,8 @@ import "./index.css";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import Login from "./pages/login/login.tsx";
 import SignUp from "./pages/signup/signup.tsx";
-import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import "./index.css"
 const rout = createBrowserRouter([
@@ -22,18 +23,22 @@ const rout = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "about", element: <About /> },
-      { path: "product", element: <Products /> },
+      { path: "products", element: <Products /> },
     ],
   },
   { path: "/Login", element: <Login /> },
   { path: "/Signup", element: <SignUp /> },
-  { path: "/ForgetPassword", element: <ForgetPassword /> },
 ]);
 
+const queryClient = new QueryClient()
+
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <ThemeProvider>
-      <RouterProvider router={rout}></RouterProvider>
-    </ThemeProvider>
-  </StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <StrictMode>
+      <ThemeProvider>
+        <RouterProvider router={rout}></RouterProvider>
+      </ThemeProvider>
+    </StrictMode>
+  </QueryClientProvider>
+  
 );

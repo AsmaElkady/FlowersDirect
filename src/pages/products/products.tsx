@@ -1,8 +1,46 @@
+import { Container, Row, Col, Spinner } from "react-bootstrap";
+import Filter from "../../components/Filter/Filter";
+import "../../index.css";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import type { Product } from "../../Types/Product";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
+export default function Products() {
+    async function getProducts() {
+        const res = await axios.get("http://localhost:3000/products");
+        return res.data;
+    }
+    let {data , isLoading , isError} = useQuery({
+        queryKey: ["Products"],
+        queryFn: getProducts,
+    });
 
-
-
-
-export default function Product(){
-    return `product`
+    if (isLoading)
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <Spinner animation="border" role="status" variant="primary" />
+      </div>
+    );
+    if (isError) return <h2>Errors....Failed to load products, Please try again later.</h2>
+    
+    return (
+        <Container className="py-5">
+            <h2 className="fw-bold mb-4 text-primary">Shop All Flowers</h2>
+            <Row>
+                <Col md={3}>
+                    <Filter />
+                </Col>
+                <Col md={9}>
+                    <Row className="g-4">
+                        {data.map((product: Product) => (
+                            <Col key={product.id} md={4}>
+                                <ProductCard product={product}/>
+                            </Col>
+                        ))}
+                    </Row>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
