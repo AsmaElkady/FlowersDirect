@@ -1,233 +1,240 @@
 {
   "products": [
     {
-    "id": "01",
-    "name": "Red Tulip",
-    "desc": "A beautiful tulip with a natural wood stand.",
-    "image": "/src/assets/Image.png",
-    "colors": ["red", "pink"],
-    "category": "Tulips",
-    "price": 137,
-    "orderedItems": 12,
-    "rating": 3.5,
-       "reviews": {
-       "total": 120,
-       "breakdown": {
-        "5": 72,
-        "4": 30,
-        "3": 10,
-        "2": 5,
-        "1": 3
-      }
+      "id": "01",
+      "name": "Red Tulip",
+      "desc": "A beautiful tulip with a natural wood stand.",
+      "image": "/src/assets/Image.png",
+      "colors": ["red", "pink"],
+      "category": "Tulips",
+      "price": 137,
+      "orderedItems": 12,
+      "rating": 3.5,
+      "reviews": {
+        "total": 120,
+        "breakdown": {
+          "5": 72,
+          "4": 30,
+          "3": 10,
+          "2": 5,
+          "1": 3
+        }
+      },
+      "isFavorite": false,
+      "totalQuantity": 15,
+      "refund": 1
     },
-    "isFavorite": false,
-    "totalQuantity": 15,
-    "refund": 1
-  },
-  {
-    "id": "02",
-    "name": "Purpleish Blue",
-    "desc": "A beautiful Iris with a natural wood stand.",
-    "image": "/src/assets/Image1.png",
-    "colors": ["purple", "blue"],
-    "category": "Iris",
-    "price": 250,
-    "orderedItems": 10,
-    "rating": 3.5,
-       "reviews": {
-       "total": 150,
-       "breakdown": {
-        "5": 72,
-        "4": 30,
-        "3": 10,
-        "2": 5,
-        "1": 3
-      }
+    {
+      "id": "02",
+      "name": "Purpleish Blue",
+      "desc": "A beautiful Iris with a natural wood stand.",
+      "image": "/src/assets/Image1.png",
+      "colors": ["purple", "blue"],
+      "category": "Iris",
+      "price": 250,
+      "orderedItems": 10,
+      "rating": 3.5,
+      "reviews": {
+        "total": 150,
+        "breakdown": {
+          "5": 72,
+          "4": 30,
+          "3": 10,
+          "2": 5,
+          "1": 3
+        }
+      },
+      "isFavorite": false,
+      "totalQuantity": 10,
+      "refund": 1
     },
-    "isFavorite": false,
-    "totalQuantity": 10,
-    "refund": 1
-  },
-  {
-    "id": "03",
-    "name": "Yellow Tulip",
-    "desc": "A beautiful tulip with a natural wood stand.",
-    "image": "/src/assets/Image2.png",
-    "colors": ["yellow", "orange"],
-    "category": "Tulips",
-    "price": 139,
-    "orderedItems": 12,
-    "rating": 3.5,
-       "reviews": {
-       "total": 120,
-       "breakdown": {
-        "5": 72,
-        "4": 30,
-        "3": 10,
-        "2": 5,
-        "1": 3
-      }
+    {
+      "id": "03",
+      "name": "Yellow Tulip",
+      "desc": "A beautiful tulip with a natural wood stand.",
+      "image": "/src/assets/Image2.png",
+      "colors": ["yellow", "orange"],
+      "category": "Tulips",
+      "price": 139,
+      "orderedItems": 12,
+      "rating": 3.5,
+      "reviews": {
+        "total": 120,
+        "breakdown": {
+          "5": 72,
+          "4": 30,
+          "3": 10,
+          "2": 5,
+          "1": 3
+        }
+      },
+      "isFavorite": false,
+      "totalQuantity": 15,
+      "refund": 1
     },
-    "isFavorite": false,
-    "totalQuantity": 15,
-    "refund": 1
-  },
-  {
-    "id": "04",
-    "name": "Purple Tulip",
-    "desc": "A beautiful tulip with a natural wood stand.",
-    "image": "/src/assets/Image3.png",
-    "colors": ["purple", "green"],
-    "category": "Tulips",
-    "price": 237,
-    "orderedItems": 12,
-    "rating": 3.5,
-       "reviews": {
-       "total": 120,
-       "breakdown": {
-        "5": 72,
-        "4": 30,
-        "3": 10,
-        "2": 5,
-        "1": 3
-      }
+    {
+      "id": "04",
+      "name": "Purple Tulip",
+      "desc": "A beautiful tulip with a natural wood stand.",
+      "image": "/src/assets/Image3.png",
+      "colors": ["purple", "green"],
+      "category": "Tulips",
+      "price": 237,
+      "orderedItems": 12,
+      "rating": 3.5,
+      "reviews": {
+        "total": 120,
+        "breakdown": {
+          "5": 72,
+          "4": 30,
+          "3": 10,
+          "2": 5,
+          "1": 3
+        }
+      },
+      "isFavorite": false,
+      "totalQuantity": 15,
+      "refund": 1
     },
-    "isFavorite": false,
-    "totalQuantity": 15,
-    "refund": 1
-  },
-  {
-    "id": "05",
-    "name": "Limonium Blue",
-    "desc": "A beautiful tulip with a natural wood stand.",
-    "image": "/src/assets/Image4.png",
-    "colors": ["Blue", "purple"],
-    "category": "Fillers",
-    "price": 337,
-    "orderedItems": 12,
-    "rating": 3.5,
-       "reviews": {
-       "total": 120,
-       "breakdown": {
-        "5": 72,
-        "4": 30,
-        "3": 10,
-        "2": 5,
-        "1": 3
-      }
+    {
+      "id": "05",
+      "name": "Limonium Blue",
+      "desc": "A beautiful tulip with a natural wood stand.",
+      "image": "/src/assets/Image4.png",
+      "colors": ["Blue", "purple"],
+      "category": "Fillers",
+      "price": 337,
+      "orderedItems": 12,
+      "rating": 3.5,
+      "reviews": {
+        "total": 120,
+        "breakdown": {
+          "5": 72,
+          "4": 30,
+          "3": 10,
+          "2": 5,
+          "1": 3
+        }
+      },
+      "isFavorite": false,
+      "totalQuantity": 15,
+      "refund": 1
     },
-    "isFavorite": false,
-    "totalQuantity": 15,
-    "refund": 1
-  },
-  {
-    "id": "06",
-    "name": "Limonium White",
-    "desc": "A beautiful tulip with a natural wood stand.",
-    "image": "/src/assets/Image5.png",
-    "colors": ["green", "white"],
-    "category": "Fillers",
-    "price": 437,
-    "orderedItems": 12,
-    "rating": 3.5,
-       "reviews": {
-       "total": 120,
-       "breakdown": {
-        "5": 72,
-        "4": 30,
-        "3": 10,
-        "2": 5,
-        "1": 3
-      }
+    {
+      "id": "06",
+      "name": "Limonium White",
+      "desc": "A beautiful tulip with a natural wood stand.",
+      "image": "/src/assets/Image5.png",
+      "colors": ["green", "white"],
+      "category": "Fillers",
+      "price": 437,
+      "orderedItems": 12,
+      "rating": 3.5,
+      "reviews": {
+        "total": 120,
+        "breakdown": {
+          "5": 72,
+          "4": 30,
+          "3": 10,
+          "2": 5,
+          "1": 3
+        }
+      },
+      "isFavorite": false,
+      "totalQuantity": 15,
+      "refund": 1
     },
-    "isFavorite": false,
-    "totalQuantity": 15,
-    "refund": 1
-  },
-  {
-    "id": "07",
-    "name": "Lisianthus",
-    "desc": "A beautiful tulip with a natural wood stand.",
-    "image": "/src/assets/Image6.png",
-    "colors": ["red", "pink"],
-    "category": "Fillers",
-    "price": 1.50,
-    "orderedItems": 12,
-    "rating": 350,
-       "reviews": {
-       "total": 120,
-       "breakdown": {
-        "5": 72,
-        "4": 30,
-        "3": 10,
-        "2": 5,
-        "1": 3
-      }
+    {
+      "id": "07",
+      "name": "Lisianthus",
+      "desc": "A beautiful tulip with a natural wood stand.",
+      "image": "/src/assets/Image6.png",
+      "colors": ["red", "pink"],
+      "category": "Fillers",
+      "price": 1.5,
+      "orderedItems": 12,
+      "rating": 350,
+      "reviews": {
+        "total": 120,
+        "breakdown": {
+          "5": 72,
+          "4": 30,
+          "3": 10,
+          "2": 5,
+          "1": 3
+        }
+      },
+      "isFavorite": false,
+      "totalQuantity": 15,
+      "refund": 1
     },
-    "isFavorite": false,
-    "totalQuantity": 15,
-    "refund": 1
-  },
-  {
-    "id": "08",
-    "name": "Limonium Pink",
-    "desc": "A beautiful tulip with a natural wood stand.",
-    "image": "/src/assets/Image7.png",
-    "colors": ["green", "pink"],
-    "category": "Fillers",
-    "price": 1.40,
-    "orderedItems": 12,
-    "rating": 320,
-       "reviews": {
-       "total": 120,
-       "breakdown": {
-        "5": 72,
-        "4": 30,
-        "3": 10,
-        "2": 5,
-        "1": 3
-      }
-    },
-    "isFavorite": false,
-    "totalQuantity": 15,
-    "refund": 1
-  }
+    {
+      "id": "08",
+      "name": "Limonium Pink",
+      "desc": "A beautiful tulip with a natural wood stand.",
+      "image": "/src/assets/Image7.png",
+      "colors": ["green", "pink"],
+      "category": "Fillers",
+      "price": 1.4,
+      "orderedItems": 12,
+      "rating": 320,
+      "reviews": {
+        "total": 120,
+        "breakdown": {
+          "5": 72,
+          "4": 30,
+          "3": 10,
+          "2": 5,
+          "1": 3
+        }
+      },
+      "isFavorite": false,
+      "totalQuantity": 15,
+      "refund": 1
+    }
   ],
   "categories": [
     {
-        "id": "01",
-        "name": "Asiatic Lilies",
-        "description": "Desc"
+      "id": "01",
+      "name": "Asiatic Lilies",
+      "description": "Desc",
+      "image": "/src/assets/Category1.png"
     },
     {
-        "id": "02",
-        "name": "Fillers",
-        "description": "Desc"
+      "id": "02",
+      "name": "Fillers",
+      "description": "Desc",
+      "image": "/src/assets/Category2.png"
     },
     {
-        "id": "03",
-        "name": "Carnations",
-        "description": "Desc"
+      "id": "03",
+      "name": "Carnations",
+      "description": "Desc",
+      "image": "/src/assets/Category3.png"
     },
     {
-        "id": "04",
-        "name": "Iris",
-        "description": "Desc"
+      "id": "04",
+      "name": "Iris",
+      "description": "Desc",
+      "image": "/src/assets/Category4.png"
     },
     {
-        "id": "05",
-        "name": "Lisianthus",
-        "description": "Desc"
+      "id": "05",
+      "name": "Lisianthus",
+      "description": "Desc",
+      "image": "/src/assets/Category5.png"
     },
     {
-        "id": "06",
-        "name": "Roses",
-        "description": "Desc"
+      "id": "06",
+      "name": "Roses",
+      "description": "Desc",
+      "image": "/src/assets/Category6.png"
     },
     {
-        "id": "07",
-        "name": "Tulips",
-        "description": "Desc"
+      "id": "07",
+      "name": "Tulips",
+      "description": "Desc",
+      "image": "/src/assets/Category7.png"
     }
   ]
 }
