@@ -14,6 +14,7 @@ import Login from "./pages/login/login.tsx";
 import SignUp from "./pages/signup/signup.tsx";
 import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
 
+import "./index.css"
 const rout = createBrowserRouter([
   {
     path: "/",
