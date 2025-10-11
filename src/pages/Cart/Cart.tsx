@@ -92,9 +92,7 @@ export default function Cart() {
             <button className="btn btn-primary w-100" disabled>
               Checkout
             </button>
-            <p className="mt-2 small text-muted">
-              This is a static design preview (no checkout logic).
-            </p>
+
           </div>
         </div>
       </div>
