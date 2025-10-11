@@ -21,7 +21,7 @@ export default function Filter() {
     const handleClear = () => {
         setSelectedColor("");
         setSelectedCategory("");
-        setPrice(0);
+        setPrice(50);
     };
 
     const FilterBody = (
