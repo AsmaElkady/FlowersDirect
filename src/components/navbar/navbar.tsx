@@ -3,12 +3,13 @@ import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector } from "react-redux";
+import type { RootSatet } from "../../redux/store";
 
 import "./navbar.css";
 export default function MyNavbar() {
-  const token = useSelector((state) => state.auth.token);
-  const username = useSelector((state) => state.auth.name);
-  const id = useSelector((state) => state.auth.id);
+  const token = useSelector((state: RootSatet) => state.auth.token);
+  const username = useSelector((state: RootSatet) => state.auth.name);
+  const id = useSelector((state: RootSatet) => state.auth.id);
   console.log(token, username, id);
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">

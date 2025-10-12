@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { IAuthSlice } from "../../types/auth";
 
-const inialState = {
+const inialState: IAuthSlice = {
   token: JSON.parse(localStorage.getItem("token") || ""),
   name: "",
   id: 0,
@@ -21,5 +22,5 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice;
+export default authSlice.reducer;
 export const { setToken, setName, setID } = authSlice.actions;

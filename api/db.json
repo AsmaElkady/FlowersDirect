@@ -5,7 +5,10 @@
       "name": "Red Tulip",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image.png",
-      "colors": ["red", "pink"],
+      "colors": [
+        "red",
+        "pink"
+      ],
       "category": "Tulips",
       "price": 137,
       "orderedItems": 12,
@@ -29,7 +32,10 @@
       "name": "Purpleish Blue",
       "desc": "A beautiful Iris with a natural wood stand.",
       "image": "/src/assets/Image1.png",
-      "colors": ["purple", "blue"],
+      "colors": [
+        "purple",
+        "blue"
+      ],
       "category": "Iris",
       "price": 250,
       "orderedItems": 10,
@@ -53,7 +59,10 @@
       "name": "Yellow Tulip",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image2.png",
-      "colors": ["yellow", "orange"],
+      "colors": [
+        "yellow",
+        "orange"
+      ],
       "category": "Tulips",
       "price": 139,
       "orderedItems": 12,
@@ -77,7 +86,10 @@
       "name": "Purple Tulip",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image3.png",
-      "colors": ["purple", "green"],
+      "colors": [
+        "purple",
+        "green"
+      ],
       "category": "Tulips",
       "price": 237,
       "orderedItems": 12,
@@ -101,7 +113,10 @@
       "name": "Limonium Blue",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image4.png",
-      "colors": ["Blue", "purple"],
+      "colors": [
+        "Blue",
+        "purple"
+      ],
       "category": "Fillers",
       "price": 337,
       "orderedItems": 12,
@@ -125,7 +140,10 @@
       "name": "Limonium White",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image5.png",
-      "colors": ["green", "white"],
+      "colors": [
+        "green",
+        "white"
+      ],
       "category": "Fillers",
       "price": 437,
       "orderedItems": 12,
@@ -149,7 +167,10 @@
       "name": "Lisianthus",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image6.png",
-      "colors": ["red", "pink"],
+      "colors": [
+        "red",
+        "pink"
+      ],
       "category": "Fillers",
       "price": 1.5,
       "orderedItems": 12,
@@ -173,7 +194,10 @@
       "name": "Limonium Pink",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image7.png",
-      "colors": ["green", "pink"],
+      "colors": [
+        "green",
+        "pink"
+      ],
       "category": "Fillers",
       "price": 1.4,
       "orderedItems": 12,
@@ -237,5 +261,18 @@
       "image": "/src/assets/Category7.png"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "email": "Test@test.com",
+      "password": "$2a$10$cEfXK0KgHKOq9tmumn/NiOuQj5l6Zfx.94vweMbDLHJon9m6wYcgG",
+      "username": "Test ",
+      "cart": {
+        "cartsItems": [],
+        "totalQuantity": 0,
+        "totalPrice": 0
+      },
+      "favorites": [],
+      "id": 1
+    }
+  ]
 }

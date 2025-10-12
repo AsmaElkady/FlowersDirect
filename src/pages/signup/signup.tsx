@@ -12,7 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import type { ISignup } from "../../types/auth";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { getSchemaData, type SignUpSchemaType } from "../../utils/schema";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate } from "react-router";
 import "../../style/auth.css";
 import { baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
@@ -32,10 +32,18 @@ const SignUp = () => {
   const { handleSubmit } = form;
 
   const handleRegister = async (userValue: ISignup) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { re_password, ...values } = userValue;
-    //to void error unused
-    re_password.toUpperCase();
-    const res = await axios.post(baseUrl + "users", values);
+    const userInfo = {
+      ...values,
+      cart: {
+        cartsItems: [],
+        totalQuantity: 0,
+        totalPrice: 0,
+      },
+      favorites: [],
+    };
+    const res = await axios.post(baseUrl + "users", userInfo);
     return res;
   };
 

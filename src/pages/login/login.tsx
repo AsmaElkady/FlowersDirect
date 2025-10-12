@@ -14,7 +14,7 @@ import { getSchemaData } from "../../utils/schema";
 import axios from "axios";
 import type { LoginSchemaType } from "../../utils/schema";
 import AuthText from "../../components/animations/AuthText";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate } from "react-router";
 import { baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
 import { setToken, setName, setID } from "../../redux/slices/authSlice";

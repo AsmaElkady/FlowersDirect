@@ -9,3 +9,9 @@ export interface ISignup {
   password: string;
   re_password: string;
 }
+
+export interface IAuthSlice {
+  token: string;
+  name: string;
+  id: number;
+}
