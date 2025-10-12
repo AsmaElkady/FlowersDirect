@@ -4,7 +4,8 @@ export interface ILogin {
 }
 
 export interface ISignup {
+  username: string;
   email: string;
   password: string;
-  repassword: string;
+  re_password: string;
 }

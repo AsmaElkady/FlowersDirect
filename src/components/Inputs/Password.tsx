@@ -50,7 +50,7 @@ const Password = ({
           {(errors[id] as FieldError)?.message}
         </Form.Text>
       ) : (
-        <div className="m-4" />
+        <div className="pb-3" />
       )}
       {forgetPass && (
         <Row className="justify-content-center align-items-center d-flex">
