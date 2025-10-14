@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { IAuthSlice } from "../../types/auth";
 
 const inialState: IAuthSlice = {
-  token: JSON.parse(localStorage.getItem("token") || ""),
+  token: JSON.parse(localStorage.getItem("token")!),
   name: "",
   id: 0,
 };
