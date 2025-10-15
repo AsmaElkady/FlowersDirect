@@ -5,13 +5,14 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import type { Product } from "../../types/Product";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 export default function Products() {
     const [currentPage, setCurrentPage] = useState<number>(1);
     const [totalItems, setTotalItems] = useState<number>(0);
     const itemsPerPage = 6;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const [filters, setFilters] = useState({ color: "", category: "", price: 500 });
 
     async function getProducts() {
         const res = await axios.get(`http://localhost:3000/products?_page=${currentPage}&_limit=${itemsPerPage}`,
@@ -40,6 +41,29 @@ export default function Products() {
         staleTime: 0
     });
 
+    const filteredProducts = useMemo(() => {
+        if (!data || data.length === 0) return [];
+
+        const noFiltersApplied =
+            !filters.color && !filters.category && filters.price === 300;
+
+        if (noFiltersApplied) return data;
+
+        return data.filter((product: Product) => {
+            const matchesColor = filters.color
+                ? product.color?.toLowerCase() === filters.color.toLowerCase()
+                : true;
+
+            const matchesCategory = filters.category
+                ? product.category?.toLowerCase() === filters.category.toLowerCase()
+                : true;
+            const matchesPrice = product.price <= filters.price;
+            console.log("Filter values:", filters);
+            console.log("Product category:", data.map((p: any) => p.category));
+            return matchesColor && matchesCategory && matchesPrice;
+        });
+    }, [data, filters]);
+
     if (isLoading)
         return (
             <div className="d-flex justify-content-center align-items-center vh-100">
@@ -53,11 +77,11 @@ export default function Products() {
             <h2 className="fw-bold mb-4 text-primary">Shop All Flowers</h2>
             <Row>
                 <Col md={3}>
-                    <Filter />
+                    <Filter onFilterChange={setFilters} />
                 </Col>
                 <Col md={9}>
                     <Row className="g-4">
-                        {data.map((product: Product) => (
+                        {filteredProducts.map((product: Product) => (
                             <Col key={product.id} md={4}>
                                 <ProductCard product={product} />
                             </Col>

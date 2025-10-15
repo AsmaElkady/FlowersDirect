@@ -1,5 +1,6 @@
 import { Card, Button } from "react-bootstrap";
 import type { Product } from "../../types/Product";
+import "./ProductCard.css" ;
 
 type Props = {
   product: Product;
@@ -8,8 +9,8 @@ type Props = {
 export default function ProductCard({ product }: Props) {
     const { name, image, price, category, rating } = product;
     return (
-        <Card className="shadow-sm border-0 rounded-4 p-2" style={{ minHeight: "350px" }}>
-            <Card.Img
+        <Card className="shadow-sm border-0 rounded-4 p-2 card-wrapper" style={{ minHeight: "350px" }}>
+            <Card.Img className="card-img"
                 variant="top"
                 src={image}
                 alt={name}

@@ -1,12 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { Button, Form, Row, Col, Offcanvas } from "react-bootstrap";
 
-export default function Filter() {
-    const colors = ["Green", "Yellow", "Pink", "Purple", "Blue", "Orange", "Red", "Black", "White"];
+interface FilterProps {
+    onFilterChange: (filters: {
+        color: string;
+        category: string;
+        price: number;
+    }) => void;
+}
+
+export default function Filter({ onFilterChange }: FilterProps) {
+    const colors = ["Green", "Yellow", "Pink", "Purple", "Blue", "Orange", "Red", "White"];
     const categories = ["Asiatic Lilies", "Fillers", "Carnations", "Iris", "Lisianthus", "Roses", "Tulips"];
     const [selectedColor, setSelectedColor] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [price, setPrice] = useState(50);
+    const [price, setPrice] = useState(300);
     const [showFilter, setShowFilter] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -18,10 +26,14 @@ export default function Filter() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    useEffect(() => {
+        onFilterChange({ color: selectedColor, category: selectedCategory, price });
+    }, [selectedColor, selectedCategory, price]);
+
     const handleClear = () => {
         setSelectedColor("");
         setSelectedCategory("");
-        setPrice(50);
+        setPrice(300);
     };
 
     const FilterBody = (
@@ -32,13 +44,13 @@ export default function Filter() {
             </div>
 
             <Form.Label>PRICE</Form.Label>
-            <Form.Range min={0} max={500} value={price}
+            <Form.Range min={120} max={300} value={price}
                 onChange={(e) => setPrice(Number(e.target.value))}
                 className="mb-4" />
             <Form.Text className="d-flex justify-content-between mb-4">
-                <span className="text-muted">0 EGP</span>
+                <span className="text-muted">120 EGP</span>
                 <span className="fw-bold text-primary">{price} EGP</span>
-                <span className="text-muted">500 EGP</span>
+                <span className="text-muted">300 EGP</span>
             </Form.Text>
 
             <Form.Label>COLOR</Form.Label>
