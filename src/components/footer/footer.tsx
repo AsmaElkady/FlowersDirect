@@ -12,28 +12,8 @@ export default function Footer() {
 
                 <Container className="py-5">
 
-                    <Row>
-                        <Col>
-                            <h4>CATEGORIES</h4>
-                            <Row>
-                                <Col>
-                                    <p>Asiatic Lities</p>
-                                    <p>Calla Lities</p>
-                                </Col>
-                                <Col>
-                                    <p>Gerbera Daisy</p>
-                                    <p>Greens</p>
-                                </Col>
-                                <Col>
-                                    <p>
-                                        Seasonal Flowers
-                                    </p>
-                                    <p>
-                                        Snapdragons
-                                    </p>
-                                </Col>
-                            </Row>
-                        </Col>
+                    <Row >
+
                         <Col>
                             <h4>COMPANY</h4>
                             <p>About Us</p>

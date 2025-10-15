@@ -1,12 +1,20 @@
 import { Card, Button } from "react-bootstrap";
-import type { Product } from "../../types/Product";
+// import type { Product } from "../../types/Product";
+import { useDispatch, useSelector } from "react-redux";
+import { AddToCart } from "../../redux/slices/cartSlice";
+import type { IProduct } from "../../Types/productType";
+import type { RootState } from "../../redux/store";
+import { addToFav } from "../../redux/slices/favSlice";
 
 type Props = {
-  product: Product;
+    product: IProduct;
 };
 
 export default function ProductCard({ product }: Props) {
-    const { name, image, price, category } = product;
+    const cartItems = useSelector((state: RootState) => state.Cart.cartItems);
+    const favItem = useSelector((state: RootState) => state.FavSlice.favItem);
+    const dispatch = useDispatch()
+    const { name, image, price, category ,id} = product;
     return (
         <Card className="shadow-sm border-0 rounded-4 p-2" style={{ minHeight: "350px" }}>
             <Card.Img
@@ -21,7 +29,8 @@ export default function ProductCard({ product }: Props) {
                 <Card.Text className="fw-bold">
                     {price} EGP
                 </Card.Text>
-                <Button variant="outline-primary" size="sm">Add to Cart</Button>
+                <Button variant="outline-primary" size="sm" disabled={cartItems.some((item:IProduct)=> item.id === id)} onClick={() => dispatch(AddToCart(product))}>Add to Cart</Button>
+                <Button variant="outline-primary" size="sm" disabled={favItem.some((item: IProduct) => item.id === id)} onClick={() => dispatch(addToFav(product))}>Add to Favorite</Button>
             </Card.Body>
         </Card>
     )

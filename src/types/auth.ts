@@ -15,3 +15,17 @@ export interface IAuthSlice {
   name: string;
   id: number;
 }
+
+
+export interface IUser {
+  id:number ;
+  email: string;
+  password: string;
+  username: string;
+  cart:{
+    cartItems:[],
+    totalQuantity : number,
+    totalPrice: number
+  };
+  favorites:[]
+}
