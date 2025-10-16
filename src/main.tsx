@@ -17,6 +17,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Provider } from "react-redux";
 import store from "./redux/store.ts";
 import Cart from "./pages/Cart/Cart.tsx";
+import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
+import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -31,6 +33,8 @@ const rout = createBrowserRouter([
   },
   { path: "/Login", element: <Login /> },
   { path: "/Signup", element: <SignUp /> },
+  { path: "/ForgetPassword", element: <ForgetPassword /> },
+  { path: "/ResetPassword", element: <ResetPassword /> },
 ]);
 
 const queryClient = new QueryClient();

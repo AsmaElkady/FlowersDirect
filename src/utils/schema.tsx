@@ -37,12 +37,45 @@ export const signupDefaultValues = {
   re_password: "",
 };
 
+export const forgetPassSchema = zod.object({
+  email: zod.email("Please enter a correct email"),
+});
+export type ForgetPassSchemaType = zod.infer<typeof forgetPassSchema>;
+
+export const forgetPassDefaultValues = {
+  email: "",
+};
+
+export const resetPassSchema = zod
+  .object({
+    password: zod.string().regex(PassRegex, "Please enter a strong password"),
+    re_password: zod.string(),
+  })
+  .refine((data) => data.password === data.re_password, {
+    message: "Passwords do not match",
+    path: ["re_password"],
+  });
+
+export type ResetPassSchemaType = zod.infer<typeof resetPassSchema>;
+
+export const ResetPassDefaultValues = {
+  password: "",
+  re_password: "",
+};
+
 export const getSchemaData = (type: string) => {
   switch (type) {
     case "login":
       return { schema: loginSchema, defaultValues: loginDefaultValues };
     case "signup":
       return { schema: signUpSchema, defaultValues: signupDefaultValues };
+    case "forgetPass":
+      return {
+        schema: forgetPassSchema,
+        defaultValues: forgetPassDefaultValues,
+      };
+    case "resetPass":
+      return { schema: resetPassSchema, defaultValues: ResetPassDefaultValues };
     default:
       throw new Error("Invalid Type");
   }

@@ -11,7 +11,11 @@ import axios from "axios";
 import { useMutation } from "@tanstack/react-query";
 import type { ISignup } from "../../types/auth";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
-import { getSchemaData, type SignUpSchemaType } from "../../utils/schema";
+import {
+  getSchemaData,
+  signUpSchema,
+  type SignUpSchemaType,
+} from "../../utils/schema";
 import { useNavigate } from "react-router";
 import "../../style/auth.css";
 import { baseUrl } from "../../constants/main";
@@ -19,17 +23,16 @@ import { useDispatch } from "react-redux";
 import { setToken, setName, setID } from "../../redux/slices/authSlice";
 
 const SignUp = () => {
-  const { schema, defaultValues } = getSchemaData("signup");
+  const { defaultValues } = getSchemaData("signup");
   const navigate = useNavigate();
   //const location = useLocation();
   const dispatch = useDispatch();
 
-  const form = useForm({
+  const form = useForm<ISignup>({
     defaultValues,
-    resolver: zodResolver(schema),
+    resolver: zodResolver(signUpSchema),
     mode: "all",
   });
-  const { handleSubmit } = form;
 
   const handleRegister = async (userValue: ISignup) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -42,6 +45,7 @@ const SignUp = () => {
         totalPrice: 0,
       },
       favorites: [],
+      orders: [],
     };
     const res = await axios.post(baseUrl + "users", userInfo);
     return res;
@@ -61,30 +65,33 @@ const SignUp = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<SignUpSchemaType> = (userValue) => {
+  const onSubmit: SubmitHandler<SignUpSchemaType> = (userValue, e) => {
+    e?.preventDefault();
     mutate(userValue);
   };
 
   return (
     <Container fluid>
-      <Row className="align-items-center justify-content-center flex-md-row flex-column-reverse bg-linear h-100">
-        <Col sm="12" md="6" className="bg-imgVertical" />
+      <Row className="align-items-center justify-content-center bg-linear h-100">
+        <Col sm="12" md="6" className="bg-imgVertical">
+          <div className="bg-imgVertical"></div>
+        </Col>
         <Col
           md="6"
           sm="12"
-          className="d-flex justify-content-center align-items-center"
+          className="d-flex justify-content-center align-items-center vh-100"
         >
           <Col lg="8" md="10" sm="12">
             <AuthText title="Let's Bloom!" />
             <FormProvider {...form}>
-              <Form onSubmit={handleSubmit(onSubmit)}>
+              <Form onSubmit={form.handleSubmit(onSubmit)}>
                 <MyInput id="username" label="Username" type="text" />
                 <MyInput id="email" label="Email" type="email" />
                 <Password />
                 <Password label="Repassword" id="re_password" />
                 {isError && (
                   <p className="text-center text-secondary">
-                    {error.response ? error.response.data : error.message}
+                    {error.message && error.message}
                   </p>
                 )}
                 <AuthBtn

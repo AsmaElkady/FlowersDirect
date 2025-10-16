@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import "../../style/auth.css";
 
 const Password = ({
   id = "password",
@@ -22,11 +23,11 @@ const Password = ({
   const [show, setShow] = useState<boolean>(false);
 
   return (
-    <Form.Group className={`mb-2 ${className}`} controlId={id}>
+    <Form.Group className={`mb-2  ${className}`} controlId={id}>
       <Form.Label className="text-primary fs-6">{label}</Form.Label>
-      <InputGroup>
+      <InputGroup className="box-shadow  rounded-2 input-group">
         <Form.Control
-          className="border-end-0"
+          className="border-end-0 shadow-none form-control"
           style={{ textShadow: "2px" }}
           type={show ? "text" : "password"}
           {...register(id)}
@@ -63,7 +64,7 @@ const Password = ({
           </Col> */}
           <Col>
             <Link
-              to={""}
+              to={"/forgetPass"}
               className="text-md-end text-start d-block small text-decoration-none"
             >
               Forget password ?

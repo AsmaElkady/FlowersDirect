@@ -11,7 +11,12 @@ const MyInput = ({ id, label, type, placeholder, className }: InputProps) => {
   return (
     <Form.Group className={`mb-2 ${className}`} controlId={id}>
       <Form.Label className="text-primary fs-6">{label}</Form.Label>
-      <Form.Control type={type} placeholder={placeholder} {...register(id)} />
+      <Form.Control
+        type={type}
+        placeholder={placeholder}
+        {...register(id)}
+        autoComplete={id}
+      />
       {errors[id]?.message ? (
         <Form.Text className="text-secondary">
           {(errors[id] as FieldError)?.message}
