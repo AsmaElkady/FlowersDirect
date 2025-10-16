@@ -1,5 +1,89 @@
-/* .card-img:hover{
-    height: 100%;
-    transform: scaleY(1.2);
-    transition: transform ease-in-out;
+.main-wrapper {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-in-out;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card-wrapper:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+.card-img-container {
+  position: relative;
+  overflow: hidden;
+  height: 220px;
+  transition: height 0.4s ease-in-out;
+}
+
+.card-wrapper:hover .card-img {
+  height: 300px;
+}
+
+.card-wrapper:hover .card-img {
+  opacity: 0.85; 
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+/* .card-img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
 } */
+
+/* .card-img-container {
+  position: relative;
+  overflow: hidden;
+} */
+
+.card-wrapper:hover .card-icons {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-icons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+  z-index: 5;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.icon-btn:hover {
+  background: #4e0629;
+  color: #fff;
+  transform: scale(1.1);
+}

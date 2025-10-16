@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button, Form, Row, Col, Offcanvas } from "react-bootstrap";
 
 interface FilterProps {
@@ -7,14 +7,22 @@ interface FilterProps {
         category: string;
         price: number;
     }) => void;
+    minPrice: number;
+    maxPrice: number;
+    allProducts: any[];
 }
 
-export default function Filter({ onFilterChange }: FilterProps) {
+export default function Filter({ onFilterChange, minPrice, maxPrice, allProducts }: FilterProps) {
     const colors = ["Green", "Yellow", "Pink", "Purple", "Blue", "Orange", "Red", "White"];
-    const categories = ["Asiatic Lilies", "Fillers", "Carnations", "Iris", "Lisianthus", "Roses", "Tulips"];
+
+    const categories = useMemo(() => {
+        const matched = Array.from(new Set(allProducts.map((p) => p.category))).filter(Boolean);
+        return matched;
+    }, [allProducts]);
+
     const [selectedColor, setSelectedColor] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [price, setPrice] = useState(300);
+    const [price, setPrice] = useState(0);
     const [showFilter, setShowFilter] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -33,7 +41,7 @@ export default function Filter({ onFilterChange }: FilterProps) {
     const handleClear = () => {
         setSelectedColor("");
         setSelectedCategory("");
-        setPrice(300);
+        setPrice(maxPrice);
     };
 
     const FilterBody = (
@@ -44,13 +52,13 @@ export default function Filter({ onFilterChange }: FilterProps) {
             </div>
 
             <Form.Label>PRICE</Form.Label>
-            <Form.Range min={120} max={300} value={price}
+            <Form.Range min={minPrice} max={maxPrice} value={price}
                 onChange={(e) => setPrice(Number(e.target.value))}
                 className="mb-4" />
             <Form.Text className="d-flex justify-content-between mb-4">
-                <span className="text-muted">120 EGP</span>
+                <span className="text-muted">{minPrice} EGP</span>
                 <span className="fw-bold text-primary">{price} EGP</span>
-                <span className="text-muted">300 EGP</span>
+                <span className="text-muted">{maxPrice} EGP</span>
             </Form.Text>
 
             <Form.Label>COLOR</Form.Label>
