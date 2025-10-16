@@ -18,11 +18,11 @@ import AuthText from "../../components/animations/AuthText";
 import { useNavigate } from "react-router";
 import { baseUrl } from "../../constants/main";
 import { useSelector } from "react-redux";
-import type { RootSatet } from "../../redux/store";
+import type { RootState } from "../../redux/store";
 
 const ResetPassword = () => {
-  const id = useSelector((state: RootSatet) => state.auth.id);
-  const user = useSelector((state: RootSatet) => state.auth.user);
+  const id = useSelector((state: RootState) => state.auth.id);
+  const user = useSelector((state: RootState) => state.auth.user);
   const navigate = useNavigate();
 
   console.log("user", user);
