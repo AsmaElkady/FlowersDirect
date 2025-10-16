@@ -4,10 +4,14 @@ import MultiImagesSlider from "../../sections/home/carousel.tsx"
 import HotProduct from "../../sections/home/hotProduct.tsx";
 import Delivered from "../../sections/home/delivered.tsx";
 import Special from "../../sections/home/special.tsx";
+// import { useDispatch } from "react-redux";
+// import { fetchUser } from "../../redux/slices/cartApi.ts";
 
 
 
 export default function HomePage() {
+    // const dispatch = useDispatch()
+    // dispatch(fetchUser());
     return (
         <>
             <HeadConponent />
@@ -28,3 +32,5 @@ export default function HomePage() {
         </>
     )
 }
+
+

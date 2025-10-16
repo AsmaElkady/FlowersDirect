@@ -1,13 +1,21 @@
-import { Card} from "react-bootstrap";
-import type { Product } from "../../types/Product";
+import { Card, Button } from "react-bootstrap";
+// import type { Product } from "../../types/Product";
+import { useDispatch, useSelector } from "react-redux";
+import { AddToCart } from "../../redux/slices/cartSlice";
+import type { IProduct } from "../../Types/productType";
+import type { RootState } from "../../redux/store";
+import { addToFav } from "../../redux/slices/favSlice";
 import "./ProductCard.css";
 
 type Props = {
-    product: Product;
+    product: IProduct;
 };
 
 export default function ProductCard({ product }: Props) {
-    const { name, image, price, category, rating } = product;
+    const { name, image, price, category, rating , id } = product;
+    const cartItems = useSelector((state: RootState) => state.Cart.cartItems);
+    const favItem = useSelector((state: RootState) => state.FavSlice.favItem);
+    const dispatch = useDispatch()
     return (
         <div className="main-wrapper">
             <Card className="shadow-sm border-0 rounded-4 p-2 card-wrapper" style={{ minHeight: "350px" }}>
@@ -19,11 +27,8 @@ export default function ProductCard({ product }: Props) {
                         style={{ height: "220px", objectFit: "contain" }}
                     />
                     <div className="card-icons">
-                        <button className="icon-btn fav-btn">
+                        <button className="icon-btn fav-btn" disabled={favItem.some((item: IProduct) => item.id === id)} onClick={() => dispatch(addToFav(product))}>
                             <i className="fa-regular fa-heart"></i>
-                        </button>
-                        <button className="icon-btn cart-btn">
-                            <i className="fa-solid fa-cart-plus"></i>
                         </button>
                     </div>
                 </div>
@@ -35,11 +40,11 @@ export default function ProductCard({ product }: Props) {
                         <Card.Text className="fw-bold">Rating: {rating}</Card.Text>
                     </div>
 
-                    {/* <div className="mt-3 me-4">
-                        <Button variant="outline-primary">
+                    <div className="mt-3 me-4">
+                        <Button variant="outline-primary" disabled={cartItems.some((item:IProduct)=> item.id === id)} onClick={() => dispatch(AddToCart(product))}>
                             Add to Cart
                         </Button>
-                    </div> */}
+                    </div>
                 </Card.Body>
             </Card>
         </div>

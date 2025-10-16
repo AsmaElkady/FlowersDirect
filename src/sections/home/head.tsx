@@ -8,7 +8,7 @@ export default function HeadConponent() {
     return (
         <>
 
-            <div className="carousel-container position-relative">
+            <div className="carousel-container position-relative ">
 
                 <Carousel controls={false}>
                     <Carousel.Item interval={3000} style={{ height: "90vh" }}>

@@ -16,6 +16,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Provider } from "react-redux";
 import store from "./redux/store.ts";
+import Cart from "./pages/Cart/Cart.tsx";
 import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
 import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
 
@@ -27,6 +28,7 @@ const rout = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "about", element: <About /> },
       { path: "products", element: <Products /> },
+      { path: "cart", element: <Cart /> },
     ],
   },
   { path: "/Login", element: <Login /> },
