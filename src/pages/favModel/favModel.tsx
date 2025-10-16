@@ -27,9 +27,11 @@ export default function FavModel(props: Props) {
             </Modal.Header>
 
             <Modal.Body>
-                <Button variant="primary" onClick={() => dispatch(clearAll())} className="mb-3">
+                {favItems.length > 0 ? <Button variant="primary" onClick={() => dispatch(clearAll())} className="mb-3">
                     Clear All
-                </Button>
+                </Button> : ""
+                }
+
 
                 {favItems && favItems.length > 0 ? (
                     <div className="d-flex flex-wrap gap-3 justify-content-center">

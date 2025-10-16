@@ -1,101 +1,90 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import type { ICartItem } from "../../Types/cart.ts";
+import { createSlice } from "@reduxjs/toolkit";
+import type { ICart } from "../../Types/cart.ts";
 import type { IProduct } from "../../Types/productType.ts"
-import axios from "axios";
-import { baseUrl } from "../../constants/main.tsx";
-import type { IFav } from "../../Types/fav.ts";
+import { fetchUser } from "./cartApi.ts";
 
-const saveInLocalStorage = (state: ICartItem) => {
-    const cartStates = {
-        cartItems: state.cartItems,
-        totalQuantity: state.totalQuantity,
-        totalPrice: state.totalPrice
-    }
-    localStorage.setItem("Cart", JSON.stringify(cartStates))
-}
-const isInLocalStorage = JSON.parse(localStorage.getItem("Cart")!)
-
-
-const initialState = isInLocalStorage ? isInLocalStorage : {
+const initialState :ICart = {
     cartItems: [],
     totalQuantity: 0,
     totalPrice: 0
 }
 
-export const fetchUser = createAsyncThunk<{ cart: ICartItem, fav: IFav }>(
-    "user/fetchUser",
-    async (_, thunkAPI) => {
-        try {
-            const token = localStorage.getItem("token");
-            const res = await axios.get(baseUrl + "users", {
-                headers: { Authorization: `Bearer ${token}` }
-            });
-            const users = Array.isArray(res.data) ? res.data[0] : res.data;
-            // const users: IUser =res.data;
-            console.log("Fetched User:", users.cart);
-            return { cart: users.cart, fav: users[0].favorites };
-        } catch (error:unknown) {
-            console.error("Error fetching user:", error);
-            return thunkAPI.rejectWithValue(error.message);
-        }
-    }
-);
-
-
 const cartSlice = createSlice({
     name: "Cart",
     initialState,
-    reducers: { //actions
+    reducers: { 
         AddToCart(state, action) {
             const product = action.payload as IProduct;
             const existingItems = state.cartItems.find((item: IProduct) => item.id === product.id)
             if (!existingItems) {
-                // existingItems.quantity += 1;
-                // existingItems.totalPrice += product.price;
                 state.cartItems.push({
                     ...product,
                     quantity: 1,
                     totalPrice: product.price
                 })
+            } else {
+                if (existingItems.quantity < product.totalQuantity){
+                    existingItems.quantity += 1;
+                    existingItems.totalPrice += product.price;
+                }
             }
-            // getUser()
             state.totalPrice += product.price;
             state.totalQuantity += 1;
             console.log(product)
-            saveInLocalStorage(state);
+            // saveInLocalStorage(state);
         },
         RemoveFromCart(state, action) {
-            const id = action.payload as number;
-            const removerItemsPrice = state.cartItems.find((item: IProduct) => +item.id === id).price;
-            state.totalPrice -= removerItemsPrice
-            state.cartItems = state.cartItems.filter((item: IProduct) => +item.id !== id);
-            state.totalQuantity -= 1;
-
-            saveInLocalStorage(state);
+            const id = action.payload;
+            const itemToRemove = state.cartItems.find((item: IProduct) => item.id === id);
+            console.log(itemToRemove)
+            if (itemToRemove) {
+                console.log("halooz")
+                state.totalPrice -= itemToRemove.price;
+                state.totalQuantity -= itemToRemove.quantity || 1;
+                state.cartItems = state.cartItems.filter((item: IProduct) => item.id !== id);
+                console.log(state.cartItems)
+                // saveInLocalStorage(state);
+            }
         },
         CleareCart(state) {
             state.cartItems = [];
             state.totalPrice = 0;
             state.totalQuantity = 0;
 
-            saveInLocalStorage(state);
+            // saveInLocalStorage(state);
+        },
+        decreaseQuantity(state, action) {
+            const pro = action.payload;
+            const existingItem = state.cartItems.find((item:IProduct)=> item.id === pro.id);
+            console.log(existingItem);
+            console.log(pro);
+            
+            if (existingItem && existingItem.quantity > 1){
+                existingItem.quantity -=1;
+                existingItem.totalPrice -= existingItem.price;
+                state.totalQuantity -=1 ;
+                state.totalPrice -= existingItem.price;
+                
+                // saveInLocalStorage(state);
+            }
+
         }
 
     },
     extraReducers: (builder) => {
         builder.addCase(fetchUser.fulfilled, (state, action) => {
-            const { cart } = action.payload;
-            console.log("User fetched successfully:", cart);
+            const user = action.payload;
+            console.log("User fetched successfully:", user);
 
-            if (cart) {
-                state.cartItems = cart.cartItems || [];
-                state.totalQuantity = cart.totalQuantity || 0;
-                state.totalPrice = cart.totalPrice || 0;
-                saveInLocalStorage(state);
+            if (user?.cart) {
+                state.cartItems = user.cartItems || [];
+                state.totalQuantity = user.totalQuantity || 0;
+                state.totalPrice = user.totalPrice || 0;
+                // saveInLocalStorage(state);
             }
         });
     },
 })
 
-export const { AddToCart, RemoveFromCart, CleareCart } = cartSlice.actions
+export const { AddToCart, RemoveFromCart, CleareCart, decreaseQuantity } = cartSlice.actions
 export default cartSlice.reducer;
