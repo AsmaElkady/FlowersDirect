@@ -400,46 +400,60 @@
   ],
   "categories": [
     {
-        "id": "01",
-        "name": "Asiatic Lilies",
-        "description": "Desc"
+      "id": "01",
+      "name": "Asiatic Lilies",
+      "description": "Desc",
+      "image": "/src/assets/Category1.png"
     },
     {
-        "id": "02",
-        "name": "Fillers",
-        "description": "Desc"
+      "id": "02",
+      "name": "Fillers",
+      "description": "Desc",
+      "image": "/src/assets/Category2.png"
     },
     {
-        "id": "03",
-        "name": "Carnations",
-        "description": "Desc"
+      "id": "03",
+      "name": "Carnations",
+      "description": "Desc",
+      "image": "/src/assets/Category3.png"
     },
     {
-        "id": "04",
-        "name": "Iris",
-        "description": "Desc"
+      "id": "04",
+      "name": "Iris",
+      "description": "Desc",
+      "image": "/src/assets/Category4.png"
     },
     {
-        "id": "05",
-        "name": "Lisianthus",
-        "description": "Desc"
+      "id": "05",
+      "name": "Lisianthus",
+      "description": "Desc",
+      "image": "/src/assets/Category5.png"
     },
     {
-        "id": "06",
-        "name": "Roses",
-        "description": "Desc"
+      "id": "06",
+      "name": "Roses",
+      "description": "Desc",
+      "image": "/src/assets/Category6.png"
     },
     {
-        "id": "07",
-        "name": "Tulips",
-        "description": "Desc"
+      "id": "07",
+      "name": "Tulips",
+      "description": "Desc",
+      "image": "/src/assets/Category7.png"
     }
   ],
   "users": [
     {
-      "email": "admin@test.com",
-      "password": "123456",
-      "name": "Admin User"
+      "email": "Test@test.com",
+      "username": "Test ",
+      "cart": {
+        "cartsItems": [],
+        "totalQuantity": 0,
+        "totalPrice": 0
+      },
+      "favorites": [],
+      "id": 1,
+      "password": "$2a$10$OyB0O.8PwvuxgXLifCpSMepu5QSaE6.vbEphZoKMdNa21slJ63SaS"
     }
   ]
 }
