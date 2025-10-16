@@ -13,7 +13,11 @@ import ThemeProvider from "react-bootstrap/ThemeProvider";
 import Login from "./pages/login/login.tsx";
 import SignUp from "./pages/signup/signup.tsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+import ProductDetails from "./pages/ProductDetails/ProductDetails.tsx";
+import Cart from "./pages/Cart/Cart.tsx";
+import CheckOut from "./pages/CheckOut/CheckOut.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -23,21 +27,22 @@ const rout = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "about", element: <About /> },
       { path: "products", element: <Products /> },
+      { path: "/product/:id", element: <ProductDetails /> }
     ],
   },
   { path: "/Login", element: <Login /> },
   { path: "/Signup", element: <SignUp /> },
 ]);
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
   <QueryClientProvider client={queryClient}>
     <StrictMode>
       <ThemeProvider>
         <RouterProvider router={rout}></RouterProvider>
+        <CheckOut />
       </ThemeProvider>
     </StrictMode>
   </QueryClientProvider>
-  
 );

@@ -5,6 +5,8 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import type { Product } from "../../types/Product";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
+
 
 export default function Products() {
     async function getProducts() {
@@ -34,9 +36,11 @@ export default function Products() {
                 <Col md={9}>
                     <Row className="g-4">
                         {data.map((product: Product) => (
+                            <Link to={`/product/${product.id}`}>
                             <Col key={product.id} md={4}>
                                 <ProductCard product={product}/>
                             </Col>
+                            </Link>
                         ))}
                     </Row>
                 </Col>
