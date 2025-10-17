@@ -51,7 +51,8 @@ const Login = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<ILogin> = (userValue: ILogin) => {
+  const onSubmit: SubmitHandler<ILogin> = (userValue: ILogin, e) => {
+    e?.preventDefault();
     mutate(userValue);
   };
 
