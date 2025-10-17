@@ -36,7 +36,7 @@ export default function Products() {
                 <Col md={9}>
                     <Row className="g-4">
                         {data.map((product: Product) => (
-                            <Link to={`/product/${product.id}`}>
+                            <Link to={`/products/${product.id}`}>
                             <Col key={product.id} md={4}>
                                 <ProductCard product={product}/>
                             </Col>

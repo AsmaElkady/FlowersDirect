@@ -33,7 +33,7 @@ const ProductDetails: React.FC = () => {
       />
       <Container className="py-5">
         <Row className="align-items-center">
-          <Col md={4} xs={12} className="mb-4 mb-md-0">
+          <Col lg={4} md={6} xs={12} className="mb-4 mb-lg-0">
             <h2 className="fw-bold product-title">{product.name}</h2>
 
             <p className="fw-semibold mt-3 product-desc">{product.category}</p>
@@ -47,13 +47,17 @@ const ProductDetails: React.FC = () => {
             </div>
           </Col>
 
-          <Col md={4} xs={12} className="text-center mb-4 mb-md-0">
+          <Col lg={4} md={6} xs={12} className="text-center mb-4 mb-lg-0">
             <div className="imgWrap mx-auto">
-              <img src={product.image} alt="flower" className="flower-img" />
+              <img
+                src={product.image}
+                alt={product.name}
+                className="flower-img"
+              />
             </div>
           </Col>
 
-          <Col md={4} xs={12}>
+          <Col lg={4} md={12} xs={12} className="product-description">
             <h5 className="fw-semibold mb-3">Description</h5>
             <p className="text-muted">{product.desc}</p>
           </Col>

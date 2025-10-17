@@ -24,18 +24,18 @@ body {
 /* decorative leaves */
 .leaf-left,
 .leaf-right {
-  opacity: 0.85;
+  opacity: 0.88;
   pointer-events: none;
 }
 .leaf-left {
   left: -10px;
   bottom: -10px;
-  width: 200px;
+  width: 180px;
 }
 .leaf-right {
   right: -10px;
   top: -10px;
-  width: 260px;
+  width: 220px;
 }
 
 .imgWrap {
@@ -63,6 +63,14 @@ body {
   font-size: 0.95rem;
 }
 
+.product-description {
+  max-width: 65ch;
+}
+
+.product-description p {
+  line-height: 1.7;
+}
+
 .quantity-badge {
   min-width: 34px;
   height: 30px;
@@ -86,8 +94,9 @@ body {
 }
 
 .btn-dark {
-  background: #333;
+  background: #b56087;
   border: none;
+  color: #f7e9e6;
 }
 
 @media (max-width: 991px) {
@@ -98,21 +107,49 @@ body {
     display: none;
   }
   .product-title {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
   }
   .imgWrap {
     width: clamp(140px, 40vw, 260px);
+  }
+  .product-section {
+    padding: 2.25rem 0;
+  }
+  .product-description {
+    margin-top: 1rem;
+    max-width: 70ch;
+  }
+  .product-description p {
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 576px) {
   .product-section {
-    padding: 2rem 0;
+    padding: 1.5rem 0;
   }
   .product-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
   .imgWrap {
     width: 180px;
+  }
+  .product-description {
+    max-width: 75ch;
+  }
+  .product-description p {
+    font-size: 0.98rem;
+  }
+}
+
+/* Smooth transitions but respect reduced motion */
+@media (prefers-reduced-motion: no-preference) {
+  .flower-img,
+  .btn-dark,
+  .product-title {
+    transition: transform 200ms ease, box-shadow 200ms ease, color 200ms ease;
+  }
+  .imgWrap:hover .flower-img {
+    transform: scale(1.01);
   }
 }

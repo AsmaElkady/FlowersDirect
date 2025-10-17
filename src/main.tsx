@@ -18,6 +18,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import ProductDetails from "./pages/ProductDetails/ProductDetails.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
 import CheckOut from "./pages/CheckOut/CheckOut.tsx";
+import OrderDetails from "./pages/OrderDetails/OrderDetails.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -27,7 +28,11 @@ const rout = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "about", element: <About /> },
       { path: "products", element: <Products /> },
-      { path: "/product/:id", element: <ProductDetails /> }
+      { path: "products/:id", element: <ProductDetails /> },
+      { path: "cart", element: <Cart /> },
+      { path: "checkout", element: <CheckOut /> },
+      { path: "order-details", element: <OrderDetails /> }
+
     ],
   },
   { path: "/Login", element: <Login /> },
@@ -41,7 +46,7 @@ createRoot(document.getElementById("root")!).render(
     <StrictMode>
       <ThemeProvider>
         <RouterProvider router={rout}></RouterProvider>
-        <CheckOut />
+      
       </ThemeProvider>
     </StrictMode>
   </QueryClientProvider>
