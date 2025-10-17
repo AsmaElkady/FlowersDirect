@@ -1,8 +1,15 @@
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import { motion } from "motion/react";
 import type { IButtonProps } from "../../types/components/ButtonsProps";
 
-const MyButton = ({ varient, title, onClick }: IButtonProps) => {
+const MyButton = ({
+  varient,
+  title,
+  type,
+  isLoading,
+  onClick,
+}: IButtonProps) => {
   return (
     <motion.div
       className="rounded-2"
@@ -11,8 +18,14 @@ const MyButton = ({ varient, title, onClick }: IButtonProps) => {
         boxShadow: "0px 0px 5px #3C1D30",
       }}
     >
-      <Button variant={varient} onClick={onClick} className="w-100">
-        {title}
+      <Button
+        variant={varient}
+        disabled={isLoading}
+        type={type}
+        onClick={onClick}
+        className="w-100"
+      >
+        {isLoading ? <Spinner animation="grow" /> : title}
       </Button>
     </motion.div>
   );

@@ -1,9 +1,9 @@
-export interface Product {
+export interface IProduct {
     id: string;
     name: string;
     desc: string;
     image: string;
-    color: string;
+    colors: string[];
     category: string;
     price: number;
     orderedItems: number;

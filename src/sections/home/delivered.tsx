@@ -8,7 +8,7 @@ export default function Delivered() {
 
     return (
         <>
-            <div className="deliver d-flex justify-content-center align-items-center">
+            <div className="deliver d-flex justify-content-center align-items-center w-100 overflow-hidden">
                 <Row>
                     <Col md={6} sm={0}>
 

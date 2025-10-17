@@ -19,6 +19,10 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
 import CheckOut from "./pages/CheckOut/CheckOut.tsx";
 import OrderDetails from "./pages/OrderDetails/OrderDetails.tsx";
+import { Provider } from "react-redux";
+import store from "./redux/store.ts";
+import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
+import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -37,17 +41,20 @@ const rout = createBrowserRouter([
   },
   { path: "/Login", element: <Login /> },
   { path: "/Signup", element: <SignUp /> },
+  { path: "/ForgetPassword", element: <ForgetPassword /> },
+  { path: "/ResetPassword", element: <ResetPassword /> },
 ]);
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")!).render(
-  <QueryClientProvider client={queryClient}>
-    <StrictMode>
-      <ThemeProvider>
-        <RouterProvider router={rout}></RouterProvider>
-      
-      </ThemeProvider>
-    </StrictMode>
-  </QueryClientProvider>
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <StrictMode>
+        <ThemeProvider>
+          <RouterProvider router={rout}></RouterProvider>
+        </ThemeProvider>
+      </StrictMode>
+    </QueryClientProvider>
+  </Provider>
 );
