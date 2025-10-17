@@ -1,9 +1,9 @@
 import { Row, Col, Pagination } from "react-bootstrap";
 import ProductCard from "../ProductCard/ProductCard";
-import type { Product } from "../../types/Product";
+import type { IProduct } from "../../Types/productType";
 
 interface ProductListProps {
-    products: Product[];
+    products: IProduct[];
     currentPage: number;
     totalPages: number;
     setCurrentPage: (page: number) => void;

@@ -1,5 +1,4 @@
 import { Card, Button } from "react-bootstrap";
-// import type { Product } from "../../types/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { AddToCart } from "../../redux/slices/cartSlice";
 import type { IProduct } from "../../Types/productType";

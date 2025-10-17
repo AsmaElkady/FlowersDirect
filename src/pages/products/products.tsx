@@ -1,11 +1,12 @@
 import { Container, Row, Col, Spinner} from "react-bootstrap";
 import Filter from "../../components/Filter/Filter";
 import "../../index.css";
-import type { Product } from "../../types/Product";
+import type { IProduct } from "../../Types/productType";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import ProductList from "../../components/ProductList/ProductList";
+import { baseUrl } from "../../constants/main";
 
 export default function Products() {
     const [currentPage, setCurrentPage] = useState<number>(1);
@@ -13,7 +14,7 @@ export default function Products() {
     const [filters, setFilters] = useState({ color: "", category: "", price: 500 });
 
     async function getProducts() {
-        const res = await axios.get(`http://localhost:3000/products`,
+        const res = await axios.get(baseUrl + 'products',
             {
                 headers: {
                     "Cache-Control": "no-store",
@@ -31,11 +32,11 @@ export default function Products() {
     });
 
     const minPrice = useMemo(() => {
-        return data.length > 0 ? Math.min(...data.map((p: Product) => p.price)) : 0;
+        return data.length > 0 ? Math.min(...data.map((p: IProduct) => p.price)) : 0;
     }, [data]);
 
     const maxPrice = useMemo(() => {
-        return data.length > 0 ? Math.max(...data.map((p: Product) => p.price)) : 0;
+        return data.length > 0 ? Math.max(...data.map((p: IProduct) => p.price)) : 0;
     }, [data]);
 
     const filteredProducts = useMemo(() => {
@@ -46,7 +47,7 @@ export default function Products() {
 
         if (noFiltersApplied) return data;
 
-        return data.filter((product: Product) => {
+        return data.filter((product: IProduct) => {
             const matchesColor = filters.color
                 ? product.color?.toLowerCase() === filters.color.toLowerCase()
                 : true;
