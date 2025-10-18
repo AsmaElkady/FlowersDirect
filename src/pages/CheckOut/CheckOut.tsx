@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import "./checkout.css";
 import type { ICartProduct } from "../../Types/cart";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../redux/store";
-import { fetchCart } from "../../redux/slices/cartSlice";
 import { v4 as uuidv4 } from "uuid";
 import { addOrder } from "../../redux/slices/order.slice";
+import { clearCartApi } from "../../redux/slices/cartApi";
+import { useNavigate } from "react-router-dom";
 
 interface Order {
   id: string;
@@ -16,19 +17,20 @@ interface Order {
   address: string;
 }
 
+const navigate = useNavigate();
+
 export default function CheckOut() {
   const dispatch = useDispatch<AppDispatch>();
-  const cartItems = useSelector(
-    (state: RootState) => state.Cart.cartItems
-  ) as ICartProduct[];
+  const cart = useSelector((state: RootState) => state.Cart.cart) as ICartProduct[];
+  const cartItems = cart.cartItems || [];
+  console.log(cartItems);
+
 
   const [address, setAddress] = useState("");
 
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
 
-  const subtotal = cartItems.reduce((s, i) => s + i.price * i.quantity, 0);
+
+  const subtotal = cart.totalPrice || 0;
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -63,6 +65,7 @@ export default function CheckOut() {
     alert("Order placed (demo). Check console for data.");
 
     dispatch(addOrder(order));
+    dispatch(clearCartApi());
   };
 
   return (
@@ -92,8 +95,8 @@ export default function CheckOut() {
                   />
                 </Form.Group>
 
-                {/* This notes field seems to be a leftover, I'm removing it for now to align with the state */}
-                {/* 
+               
+                
                 <Form.Group className="mb-3" controlId="notes">
                   <Form.Label className="notes-label">
                     Notes (delivery details / instructions)
@@ -105,13 +108,14 @@ export default function CheckOut() {
                     placeholder="Add any notes for delivery (e.g. gate code, preferred time)"
                   />
                 </Form.Group>
-                */}
+               
 
                 <div className="mt-3">
                   <Button
                     variant="primary"
                     className="theme-btn w-100 py-2"
-                    onClick={handlePlaceOrder}
+                    // onClick={handlePlaceOrder}
+                    onClick={() => navigate('/order-details')}
                   >
                     Place order
                   </Button>

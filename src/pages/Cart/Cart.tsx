@@ -3,12 +3,13 @@ import "../../style/cart.css";
 import type { AppDispatch, RootState } from "../../redux/store";
 import DrowCart from "./DrowCart";
 import CartSummary from "./summary";
-import type { ICartProduct } from "../../Types/cart";
+import { clearCartApi } from "../../redux/slices/cartApi";
 
 export default function Cart() {
-  const dispatch = useDispatch();
-  const cartItems = useSelector((state: RootState) => state.Cart.cartItems) as ICartProduct[];
-
+  const dispatch = useDispatch<AppDispatch>();
+  const cartItems = useSelector(
+    (state: RootState) => state.Cart.cart.cartItems
+  );
   return (
     <div className="cart-root container py-4">
       <h2 className="cart-title text-center mb-4">Your Flower Basket</h2>

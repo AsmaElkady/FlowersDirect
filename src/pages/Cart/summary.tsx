@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
+import { useNavigate } from "react-router";
 export default function CartSummary() {
   const cartItems = useSelector(
     (state: RootState) => state.Cart.cart.cartItems
@@ -7,7 +8,7 @@ export default function CartSummary() {
   const totalPrice = useSelector(
     (state: RootState) => state.Cart.cart.totalPrice
   );
-
+const navigate = useNavigate();
     return(
         <>
             <div className="summary p-4 rounded-4 shadow-sm bg-white">
@@ -23,7 +24,7 @@ export default function CartSummary() {
                     <div>Estimated delivery</div>
                     <div>2–4 days</div>
                 </div>
-                <button className="btn btn-primary w-100" disabled={cartItems.length === 0}>
+                <button className="btn btn-primary w-100" disabled={cartItems.length === 0} onClick={() => navigate('/checkout')}>
                     Checkout
                 </button>
             </div>

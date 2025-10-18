@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import type { IProduct } from "../../Types/productType"
 import axios from "axios";
-import cartSlice from './cartSlice';
 
 
 

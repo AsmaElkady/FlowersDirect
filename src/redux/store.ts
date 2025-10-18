@@ -8,7 +8,7 @@ const store = configureStore({
   reducer: {
     auth: authSlice,
     FavSlice: FavSlice,
-    CartApi,
+    Cart: cartReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
