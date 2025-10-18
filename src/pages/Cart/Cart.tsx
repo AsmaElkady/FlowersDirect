@@ -1,16 +1,21 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import "../../style/cart.css";
-import type { RootState } from "../../redux/store";
-import { CleareCart } from "../../redux/slices/cartSlice";
+import type { RootState, AppDispatch } from "../../redux/store";
+import { CleareCart, fetchCart } from "../../redux/slices/cartSlice";
 // import type { IProduct } from "../../Types/productType";
 import DrowCart from "./DrowCart";
 import CartSummary from "./summary";
 import type { ICartProduct } from "../../Types/cart";
+import { use, useEffect } from "react";
 
 export default function Cart() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const cartItems = useSelector((state: RootState) => state.Cart.cartItems) as ICartProduct[];
+
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   return (
     <div className="cart-root container py-4">

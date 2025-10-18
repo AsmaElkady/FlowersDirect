@@ -1,11 +1,12 @@
 import { Card, Button } from "react-bootstrap";
 // import type { Product } from "../../types/Product";
 import { useDispatch, useSelector } from "react-redux";
-import { AddToCart } from "../../redux/slices/cartSlice";
+import { addToCartAsync } from "../../redux/slices/cartSlice";
 import type { IProduct } from "../../Types/productType";
 import type { RootState } from "../../redux/store";
 import { addToFav } from "../../redux/slices/favSlice";
 import "./ProductCard.css";
+import { Link } from "react-router";
 
 type Props = {
     product: IProduct;
@@ -18,14 +19,16 @@ export default function ProductCard({ product }: Props) {
     const dispatch = useDispatch()
     return (
         <div className="main-wrapper">
-            <Card className="shadow-sm border-0 rounded-4 p-2 card-wrapper" style={{ minHeight: "350px" }}>
+           
+             <Card className="shadow-sm border-0 rounded-4 p-2 card-wrapper" style={{ minHeight: "350px" }}>
                 <div className="card-img-container">
+                     <Link to={`/products/${product.id}`} style={{textDecoration:"none"}}>
                     <Card.Img className="card-img"
                         variant="top"
                         src={image}
                         alt={name}
                         style={{ height: "220px", objectFit: "contain" }}
-                    />
+                    /></Link>
                     <div className="card-icons">
                         <button className="icon-btn fav-btn" disabled={favItem.some((item: IProduct) => item.id === id)} onClick={() => dispatch(addToFav(product))}>
                             <i className="fa-regular fa-heart"></i>
@@ -41,12 +44,14 @@ export default function ProductCard({ product }: Props) {
                     </div>
 
                     <div className="mt-3 me-4">
-                        <Button variant="outline-primary" disabled={cartItems.some((item:IProduct)=> item.id === id)} onClick={() => dispatch(AddToCart(product))}>
+                        <Button variant="outline-primary" disabled={cartItems.some((item:IProduct)=> item.id === id)} onClick={() => dispatch(addToCartAsync({item: product}))}>
                             Add to Cart
                         </Button>
                     </div>
                 </Card.Body>
             </Card>
+            
+           
         </div>
     )
 }

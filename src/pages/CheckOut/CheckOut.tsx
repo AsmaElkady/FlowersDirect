@@ -1,56 +1,68 @@
-import { useMemo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import "./checkout.css";
+import type { ICartProduct } from "../../Types/cart";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/store";
+import { fetchCart } from "../../redux/slices/cartSlice";
+import { v4 as uuidv4 } from "uuid";
+import { addOrder } from "../../redux/slices/order.slice";
 
-type CartItem = {
+interface Order {
   id: string;
-  name: string;
-  image: string;
-  category?: string;
-  price: number;
-  quantity: number;
-};
-
-const STORAGE_KEY = "fd_cart_v1";
-
-function readCart(): CartItem[] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [];
-    return JSON.parse(raw) as CartItem[];
-  } catch (e) {
-    console.error(e);
-    return [];
-  }
+  userId: string;
+  items: ICartProduct[];
+  totalPrice: number;
+  address: string;
 }
 
 export default function CheckOut() {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const dispatch = useDispatch<AppDispatch>();
+  const cartItems = useSelector(
+    (state: RootState) => state.Cart.cartItems
+  ) as ICartProduct[];
+
+  const [address, setAddress] = useState("");
 
   useEffect(() => {
-    setCart(readCart());
-  }, []);
+    dispatch(fetchCart());
+  }, [dispatch]);
 
-  const subtotal = useMemo(
-    () => cart.reduce((s, i) => s + i.price * i.quantity, 0),
-    [cart]
-  );
-
-  const [address, setAddress] = useState({
-    line1: "",
-    notes: "",
-  });
+  const subtotal = cartItems.reduce((s, i) => s + i.price * i.quantity, 0);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setAddress((p) => ({ ...p, [e.target.name]: e.target.value }));
+    setAddress(e.target.value);
   };
 
   const handlePlaceOrder = () => {
+    const userItem = localStorage.getItem("user");
+    const userId = userItem ? JSON.parse(userItem).id : "";
+
+    if (!address.trim()) {
+      alert("Please enter a shipping address.");
+      return;
+    }
+
+    if (cartItems.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    const order: Order = {
+      items: cartItems,
+      totalPrice: subtotal,
+      id: uuidv4(),
+      userId: userId,
+      address: address,
+    };
+
     // placeholder: in future submit address + cart to API
-    console.log("Place order", { cart, address });
+    console.log("Place order", order);
     alert("Order placed (demo). Check console for data.");
+
+    dispatch(addOrder(order));
   };
 
   return (
@@ -70,15 +82,18 @@ export default function CheckOut() {
               <div className="theme-divider mb-3"></div>
               <Form>
                 <Form.Group className="mb-3" controlId="line1">
-                  <Form.Label>Address line</Form.Label>
+                  <Form.Label>Address</Form.Label>
                   <Form.Control
-                    name="line1"
-                    value={address.line1}
+                    name="address"
+                    value={address}
                     onChange={handleChange}
                     placeholder="Street, building, unit"
+                    required
                   />
                 </Form.Group>
 
+                {/* This notes field seems to be a leftover, I'm removing it for now to align with the state */}
+                {/* 
                 <Form.Group className="mb-3" controlId="notes">
                   <Form.Label className="notes-label">
                     Notes (delivery details / instructions)
@@ -87,11 +102,10 @@ export default function CheckOut() {
                     as="textarea"
                     rows={4}
                     name="notes"
-                    value={address.notes}
-                    onChange={handleChange}
                     placeholder="Add any notes for delivery (e.g. gate code, preferred time)"
                   />
                 </Form.Group>
+                */}
 
                 <div className="mt-3">
                   <Button
@@ -110,11 +124,11 @@ export default function CheckOut() {
             <div className="card p-4 rounded-4 shadow-sm order-summary checkout-card">
               <h5 className="mb-2">Order summary</h5>
               <div className="theme-divider mb-3"></div>
-              {cart.length === 0 ? (
+              {cartItems.length === 0 ? (
                 <p className="text-muted">Your cart is empty.</p>
               ) : (
                 <div className="items-list">
-                  {cart.map((it) => (
+                  {cartItems.map((it) => (
                     <div
                       key={it.id}
                       className="d-flex align-items-center mb-3 order-item-row"

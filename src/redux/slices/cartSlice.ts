@@ -1,13 +1,38 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { ICart } from "../../Types/cart.ts";
-import type { IProduct } from "../../Types/productType.ts"
+import type {IProduct } from "../../Types/productType.ts"
 import { fetchUser } from "./cartApi.ts";
+import axios from "axios";
+import Cart from './../../pages/Cart/Cart';
+import type { Product } from './../../Types/Product';
 
 const initialState :ICart = {
     cartItems: [],
     totalQuantity: 0,
     totalPrice: 0
 }
+
+// New cart slice by aya
+const baseUrl = 'http://localhost:3000/users/'
+const user = localStorage.getItem("user");
+const userId = user ? JSON.parse(user).id : null;
+
+export const fetchCart = createAsyncThunk('cart/fetch', async ()=>{
+    const res = await axios.get(baseUrl+`${userId}`)
+    return res.data.cart.cartsItems;
+})
+
+export const addToCartAsync = createAsyncThunk('cart/add', async ({item}: {item: IProduct})=>{
+    const res= await axios.post(baseUrl+`${userId}/cart`, item)
+    return res.data;
+})
+
+export const getUser = async ()=>{
+    const res = await axios.get("http://localhost:3000/users/"+userId)
+    return res.data;
+}
+
+
 
 const cartSlice = createSlice({
     name: "Cart",
@@ -82,6 +107,13 @@ const cartSlice = createSlice({
                 state.totalPrice = user.totalPrice || 0;
                 // saveInLocalStorage(state);
             }
+        })
+        .addCase(fetchCart.fulfilled, (state, action) => {
+            state.cartItems = action.payload;
+            state.totalQuantity = action.payload.reduce((acc: number, item: Product) => acc + (item.quantity || 1), 0);
+        })
+        .addCase(addToCartAsync.fulfilled, (state, action) => {
+            state.cartItems.push(action.payload);
         });
     },
 })
