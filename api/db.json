@@ -519,6 +519,45 @@
       "favorites": [],
       "orders": [],
       "id": 2
+    },
+    {
+      "username": "ayaa",
+      "email": "ayaaaat@gmail.com",
+      "password": "Aa@123456",
+      "cart": {
+        "cartsItems": [],
+        "totalQuantity": 0,
+        "totalPrice": 0
+      },
+      "favorites": [],
+      "orders": [],
+      "id": 3
+    },
+    {
+      "username": "ayaaa",
+      "email": "ayaaaat@gmail.com",
+      "password": "Aa@123456",
+      "cart": {
+        "cartsItems": [],
+        "totalQuantity": 0,
+        "totalPrice": 0
+      },
+      "favorites": [],
+      "orders": [],
+      "id": 4
+    },
+    {
+      "email": "ayanashat611@gmail.com",
+      "password": "$2a$10$RJ55G59QPWqJmGWxDZd.Q.SrVH/8tK5BfSFAJxhheLjCsqoV3rJkK",
+      "username": "ayaaaa",
+      "cart": {
+        "cartsItems": [],
+        "totalQuantity": 0,
+        "totalPrice": 0
+      },
+      "favorites": [],
+      "orders": [],
+      "id": 5
     }
   ],
   "orders": [

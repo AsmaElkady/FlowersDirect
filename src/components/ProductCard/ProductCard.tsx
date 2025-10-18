@@ -41,6 +41,8 @@ export default function ProductCard({ product }: Props) {
         },
       });
     }
+    console.log("cart");
+    
   };
 
   const handelAddToFav = () => {

@@ -4,8 +4,6 @@ import "../../index.css";
 import type { Product } from "../../Types/Product";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router";
-
 import { useMemo, useState } from "react";
 import ProductList from "../../components/ProductList/ProductList";
 

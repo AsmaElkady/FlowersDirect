@@ -17,7 +17,7 @@ interface Order {
   address: string;
 }
 
-const navigate = useNavigate();
+
 
 export default function CheckOut() {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,7 +27,8 @@ export default function CheckOut() {
 
 
   const [address, setAddress] = useState("");
-
+  const [notes, setNotes] = useState("");
+  const navigate = useNavigate();
 
 
   const subtotal = cart.totalPrice || 0;
@@ -66,6 +67,7 @@ export default function CheckOut() {
 
     dispatch(addOrder(order));
     dispatch(clearCartApi());
+    navigate('/order-details')
   };
 
   return (
@@ -103,6 +105,8 @@ export default function CheckOut() {
                   </Form.Label>
                   <Form.Control
                     as="textarea"
+                    value={notes}
+                    onChange={(e) => setNotes(e.target.value)}
                     rows={4}
                     name="notes"
                     placeholder="Add any notes for delivery (e.g. gate code, preferred time)"
@@ -114,8 +118,8 @@ export default function CheckOut() {
                   <Button
                     variant="primary"
                     className="theme-btn w-100 py-2"
-                    // onClick={handlePlaceOrder}
-                    onClick={() => navigate('/order-details')}
+                    onClick={handlePlaceOrder}
+                
                   >
                     Place order
                   </Button>
