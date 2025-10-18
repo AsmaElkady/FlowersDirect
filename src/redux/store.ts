@@ -4,6 +4,7 @@ import authSlice from "./slices/authSlice";
 import Cart from "./slices/cartSlice"
 import FavSlice from "./slices/favSlice";
 import CartApi from "./slices/cartApi";
+import productSlice from "./slices/productSlice";
 
 const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const store = configureStore({
     Cart: Cart,
     FavSlice: FavSlice,
     CartApi,
+    products: productSlice,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

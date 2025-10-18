@@ -2,34 +2,27 @@ import { Container, Row, Col, Spinner} from "react-bootstrap";
 import Filter from "../../components/Filter/Filter";
 import "../../index.css";
 import type { IProduct } from "../../Types/productType";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductList from "../../components/ProductList/ProductList";
-import { baseUrl } from "../../constants/main";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/store";
+// import { fetchProducts } from "../../redux/slices/productSlice";
+import { Product } from "../../classes/productClass";
 
 export default function Products() {
+    const dispatch = useDispatch<AppDispatch>();
+
+    const { items: data, loading, error } = useSelector(
+    (state: RootState) => state.products
+  );
+
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 6;
     const [filters, setFilters] = useState({ color: "", category: "", price: 500 });
 
-    async function getProducts() {
-        const res = await axios.get(baseUrl + 'products',
-            {
-                headers: {
-                    "Cache-Control": "no-store",
-                    Pragma: "no-cache",
-                },
-            });
-        return res.data;
-    }
-
-    let { data = [], isLoading, isError } = useQuery({
-        queryKey: ["Products"],
-        queryFn: getProducts,
-        refetchOnWindowFocus: false,
-        staleTime: 0
-    });
+     useEffect(() => {
+    dispatch(Product.getProducts());
+  }, [dispatch]);
 
     const minPrice = useMemo(() => {
         return data.length > 0 ? Math.min(...data.map((p: IProduct) => p.price)) : 0;
@@ -66,13 +59,13 @@ export default function Products() {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const paginatedProducts = filteredProducts.slice(startIndex, startIndex + itemsPerPage);
 
-    if (isLoading)
+    if (loading)
         return (
             <div className="d-flex justify-content-center align-items-center vh-100">
                 <Spinner animation="border" role="status" variant="primary" />
             </div>
         );
-    if (isError) return <h2>Errors....Failed to load products, Please try again later.</h2>
+    if (error) return <h2>Errors....Failed to load products, Please try again later.</h2>
 
     return (
         <Container className="py-5">

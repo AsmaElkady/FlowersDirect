@@ -19,6 +19,7 @@ import store from "./redux/store.ts";
 import Cart from "./pages/Cart/Cart.tsx";
 import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
 import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
+import AddProduct from "./pages/addProduct/AddProduct.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -35,6 +36,7 @@ const rout = createBrowserRouter([
   { path: "/Signup", element: <SignUp /> },
   { path: "/ForgetPassword", element: <ForgetPassword /> },
   { path: "/ResetPassword", element: <ResetPassword /> },
+  {path: "/AddProduct" , element: <AddProduct/>}
 ]);
 
 const queryClient = new QueryClient();
