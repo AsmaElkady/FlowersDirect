@@ -1,16 +1,14 @@
 import { useDispatch } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./slices/authSlice";
-import Cart from "./slices/cartSlice"
 import FavSlice from "./slices/favSlice";
-import CartApi from "./slices/cartApi";
+import cartReducer from "./slices/cartApi";
 
 const store = configureStore({
   reducer: {
     auth: authSlice,
-    Cart: Cart,
     FavSlice: FavSlice,
-    CartApi,
+    Cart: cartReducer,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;
