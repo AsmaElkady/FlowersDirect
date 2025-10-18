@@ -1,21 +1,13 @@
-
 import { useDispatch, useSelector } from "react-redux";
 import "../../style/cart.css";
-import type { RootState, AppDispatch } from "../../redux/store";
-import { CleareCart, fetchCart } from "../../redux/slices/cartSlice";
-// import type { IProduct } from "../../Types/productType";
+import type { AppDispatch, RootState } from "../../redux/store";
 import DrowCart from "./DrowCart";
 import CartSummary from "./summary";
 import type { ICartProduct } from "../../Types/cart";
-import { use, useEffect } from "react";
 
 export default function Cart() {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch();
   const cartItems = useSelector((state: RootState) => state.Cart.cartItems) as ICartProduct[];
-
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, [dispatch]);
 
   return (
     <div className="cart-root container py-4">
@@ -23,16 +15,24 @@ export default function Cart() {
       <div className="row g-4">
         <div className="col-lg-8">
           <div className="list">
-            {cartItems.length > 0 ? <button className="btn btn-primary ms-auto d-block" onClick={() => { dispatch(CleareCart()) }}>Clear All</button> :""}
-            
+            {cartItems.length > 0 ? (
+              <button
+                className="btn btn-primary ms-auto d-block"
+                onClick={() => {
+                  dispatch(clearCartApi());
+                }}
+              >
+                Clear All
+              </button>
+            ) : (
+              ""
+            )}
+
             {cartItems.length > 0 ? (
               cartItems.map((item) => (
-              
                 <div key={item.id}>
-                    <DrowCart  item={item} />
-                  </div>
-                  
-                
+                  <DrowCart item={item} />
+                </div>
               ))
             ) : (
               <h4 className="text-center text-muted">There are no items</h4>
@@ -41,7 +41,7 @@ export default function Cart() {
         </div>
 
         <div className="col-lg-4">
-          <CartSummary/>
+          <CartSummary />
         </div>
       </div>
     </div>

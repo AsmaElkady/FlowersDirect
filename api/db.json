@@ -403,43 +403,43 @@
       "id": "01",
       "name": "Asiatic Lilies",
       "description": "Desc",
-      "image": "/src/assets/Category1.png"
+      "image": "/src/assets/Image1.png"
     },
     {
       "id": "02",
       "name": "Fillers",
       "description": "Desc",
-      "image": "/src/assets/Category2.png"
+      "image": "/src/assets/Image11.png"
     },
     {
       "id": "03",
       "name": "Carnations",
       "description": "Desc",
-      "image": "/src/assets/Category3.png"
+      "image": "/src/assets/Image16.png"
     },
     {
       "id": "04",
       "name": "Iris",
       "description": "Desc",
-      "image": "/src/assets/Category4.png"
+      "image": "/src/assets/Image17.png"
     },
     {
       "id": "05",
       "name": "Lisianthus",
       "description": "Desc",
-      "image": "/src/assets/Category5.png"
+      "image": "/src/assets/Image14.png"
     },
     {
       "id": "06",
       "name": "Roses",
       "description": "Desc",
-      "image": "/src/assets/Category6.png"
+      "image": "/src/assets/Image22.png"
     },
     {
       "id": "07",
       "name": "Tulips",
       "description": "Desc",
-      "image": "/src/assets/Category7.png"
+      "image": "/src/assets/Image6.png"
     }
   ],
   "users": [
@@ -447,109 +447,172 @@
       "email": "Test@test.com",
       "username": "Test ",
       "cart": {
-        "cartsItems": [],
+        "cartItems": [],
         "totalQuantity": 0,
         "totalPrice": 0
       },
       "favorites": [],
       "id": 1,
-      "password": "$2a$10$K1m03Hy55BLhaSVdTINiPu33iSaV2DcTu1TkElLO2BF0MKfWQDJCa"
+      "password": "$2a$10$OyB0O.8PwvuxgXLifCpSMepu5QSaE6.vbEphZoKMdNa21slJ63SaS"
     },
     {
-      "email": "aya@gmail.com",
-      "password": "$2a$10$kg1LIOkY65xPgoZOwp15OekrJ5pi7NEnPD4NNGaw9at6WZAf.ebaW",
-      "username": "aya",
-      "cart": {
-        "cartsItems": [
-          {
-            "productId": "03",
-            "name": "Yellow Tulip",
-            "price": 139,
-            "quantity": 2,
-            "image": "/src/assets/Image2.png"
+      "email": "eman@gmail.com",
+      "password": "$2a$10$l7qmzwopAuVkaQC3n9DGRuZ/UYhBksu1Tf4JOaVXqgHKnRxZyr6i6",
+      "username": "Eman",
+      "cart": [
+        {
+          "cartItems": [
+            {
+              "id": "02",
+              "name": "Purpleish Blue",
+              "desc": "A beautiful Iris with a natural wood stand.",
+              "image": "/src/assets/Image1.png",
+              "color": "purple",
+              "category": "Iris",
+              "price": 250,
+              "orderedItems": 10,
+              "rating": "⭐⭐⭐",
+              "reviews": {
+                "total": 150,
+                "breakdown": {
+                  "1": 3,
+                  "2": 5,
+                  "3": 10,
+                  "4": 30,
+                  "5": 72
+                }
+              },
+              "isFavorite": false,
+              "totalQuantity": 10,
+              "quantity": 5,
+              "total": 1250
+            },
+            {
+              "id": "01",
+              "name": "Red Tulip",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "/src/assets/Image.png",
+              "color": "red",
+              "category": "Tulips",
+              "price": 137,
+              "rating": "⭐⭐⭐",
+              "reviews": {
+                "total": 120,
+                "breakdown": {
+                  "1": 3,
+                  "2": 5,
+                  "3": 10,
+                  "4": 30,
+                  "5": 72
+                }
+              },
+              "isFavorite": false,
+              "totalQuantity": 15,
+              "quantity": 1,
+              "total": 137
+            },
+            {
+              "id": "03",
+              "name": "Yellow Tulip",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "/src/assets/Image2.png",
+              "color": "yellow",
+              "category": "Tulips",
+              "price": 139,
+              "rating": "⭐⭐⭐",
+              "reviews": {
+                "total": 120,
+                "breakdown": {
+                  "1": 3,
+                  "2": 5,
+                  "3": 10,
+                  "4": 30,
+                  "5": 72
+                }
+              },
+              "isFavorite": false,
+              "totalQuantity": 15,
+              "quantity": 1,
+              "total": 139
+            },
+            {
+              "id": "06",
+              "name": "Limonium White",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "/src/assets/Image5.png",
+              "color": "white",
+              "category": "Fillers",
+              "price": 437,
+              "rating": "⭐⭐⭐",
+              "reviews": {
+                "total": 120,
+                "breakdown": {
+                  "1": 3,
+                  "2": 5,
+                  "3": 10,
+                  "4": 30,
+                  "5": 72
+                }
+              },
+              "isFavorite": false,
+              "totalQuantity": 15,
+              "quantity": 1,
+              "total": 437
+            }
+          ],
+          "totalQuantity": 8,
+          "totalPrice": 1963
+        }
+      ],
+      "favorites": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
           },
-          {
-            "productId": "07",
-            "name": "Cherry Blossom",
-            "price": 150,
-            "quantity": 1,
-            "image": "/src/assets/Image6.png"
-          }
-        ],
-        "totalQuantity": 20,
-        "totalPrice": 40
-      },
-      "favorites": [],
+          "isFavorite": false,
+          "totalQuantity": 15
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10
+        }
+      ],
       "orders": [],
       "id": 2
-    }
-  ],
-  "orders": [
-    {
-      "items": [
-        {
-          "productId": "03",
-          "name": "Yellow Tulip",
-          "price": 139,
-          "quantity": 2,
-          "image": "/src/assets/Image2.png"
-        },
-        {
-          "productId": "07",
-          "name": "Cherry Blossom",
-          "price": 150,
-          "quantity": 1,
-          "image": "/src/assets/Image6.png"
-        }
-      ],
-      "totalPrice": 428,
-      "id": "c3effb66-67f3-460c-aa87-ef8ae3085b34",
-      "userId": 2,
-      "address": "dsfasdfasdf"
-    },
-    {
-      "items": [
-        {
-          "productId": "03",
-          "name": "Yellow Tulip",
-          "price": 139,
-          "quantity": 2,
-          "image": "/src/assets/Image2.png"
-        },
-        {
-          "productId": "07",
-          "name": "Cherry Blossom",
-          "price": 150,
-          "quantity": 1,
-          "image": "/src/assets/Image6.png"
-        }
-      ],
-      "totalPrice": 428,
-      "id": "6fc45214-0036-40b5-bda7-f4cc24b42e61",
-      "userId": 2,
-      "address": "kafrElsheik"
-    },
-    {
-      "items": [
-        {
-          "productId": "03",
-          "name": "Yellow Tulip",
-          "price": 139,
-          "quantity": 2,
-          "image": "/src/assets/Image2.png"
-        },
-        {
-          "productId": "07",
-          "name": "Cherry Blossom",
-          "price": 150,
-          "quantity": 1,
-          "image": "/src/assets/Image6.png"
-        }
-      ],
-      "totalPrice": 428,
-      "id": "c12345f1-42fc-4b92-a1b2-ad899253f0a9",
-      "userId": 2,
-      "address": "kafrElsheik"
     }
   ]
 }
