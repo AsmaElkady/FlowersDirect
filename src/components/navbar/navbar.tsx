@@ -15,8 +15,9 @@ export default function MyNavbar() {
     (state: RootState) => state.FavSlice.favItem.length
   );
   const cartlength = useSelector(
-    (state: RootState) => state.Cart.cartItems.length
+    (state: RootState) => state.Cart.cart.cartItems.length
   );
+
   const token = useSelector((state: RootState) => state.auth.token);
   const username = useSelector((state: RootState) => state.auth.name);
   const id = useSelector((state: RootState) => state.auth.id);
@@ -37,23 +38,6 @@ export default function MyNavbar() {
               className="border-0 order-lg-2 ms-2"
             />
             <Nav className="d-flex flex-row justify-content-center align-items-center">
-              {/* <Nav.Link href="/model">
-              <div className="position-relative">
-                <FavoriteIcon className="text-primary mx-3" />
-                <span
-                  className="position-absolute "
-                  style={{ top: "-13px", right: "2px" }}
-                >
-                  <img src="/img/nav/Vector.png" alt="" width={"25px"} />
-                </span>
-                <span
-                  className=" position-absolute text-primary "
-                  style={{ top: "-10px", right: "8px", fontSize: "15px" }}
-                >
-                  10
-                </span>
-              </div>
-            </Nav.Link> */}
               <Link to="/cart">
                 <div className="position-relative">
                   <ShoppingCartIcon className="text-primary mx-3" />
@@ -98,7 +82,6 @@ export default function MyNavbar() {
               </Link>
             )}
           </div>
-
           <Navbar.Collapse
             id="responsive-navbar-nav"
             className="order-lg-1 justify-content-center"
@@ -128,18 +111,6 @@ export default function MyNavbar() {
 
       {/* Model */}
       <FavModel show={modalShow} onHide={() => setModalShow(false)} />
-      {/* 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Favorite</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
     </>
   );
 }
