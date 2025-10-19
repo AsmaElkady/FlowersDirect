@@ -8,15 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import { addOrder } from "../../redux/slices/order.slice";
 import { clearCartApi } from "../../redux/slices/cartApi";
 import { useNavigate } from "react-router-dom";
-
-interface Order {
-  id: string;
-  userId: string;
-  items: ICartProduct[];
-  totalPrice: number;
-  address: string;
-}
-
+import type { Order } from "../../redux/slices/order.slice";
 
 
 export default function CheckOut() {
@@ -59,15 +51,19 @@ export default function CheckOut() {
       id: uuidv4(),
       userId: userId,
       address: address,
+      status: "pending",
+      note: notes,
     };
 
-    // placeholder: in future submit address + cart to API
-    console.log("Place order", order);
-    alert("Order placed (demo). Check console for data.");
+
+    
 
     dispatch(addOrder(order));
     dispatch(clearCartApi());
-    navigate('/order-details')
+    navigate('/order-details/' + order.id);
+    console.log("aua");
+    
+
   };
 
   return (

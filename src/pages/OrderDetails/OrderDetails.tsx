@@ -1,79 +1,35 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Container, Row, Col, Badge } from "react-bootstrap";
 import { useParams } from "react-router";
 import "./OrderDetails.css";
-
-type OrderItem = {
-  id: string;
-  name: string;
-  image: string;
-  category?: string;
-  price: number;
-  quantity: number;
-};
-
-type Order = {
-  id: string;
-  orderNumber: string;
-  date: string;
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
-  items: OrderItem[];
-  subtotal: number;
-  shipping: number;
-  total: number;
-  shippingAddress: {
-    line1: string;
-    notes?: string;
-  };
-  estimatedDelivery?: string;
-};
-
-// Demo data - replace with API call
-const mockOrder: Order = {
-  id: "1",
-  orderNumber: "FD-2025-1047",
-  date: "2025-10-15",
-  status: "processing",
-  items: [
-    {
-      id: "1",
-      name: "Rose Bouquet",
-      image: "/img/Home/category/flower1.png",
-      category: "Roses",
-      price: 150,
-      quantity: 2,
-    },
-    {
-      id: "2",
-      name: "Tulip Arrangement",
-      image: "/img/Home/category/flower2.png",
-      category: "Tulips",
-      price: 120,
-      quantity: 1,
-    },
-  ],
-  subtotal: 420,
-  shipping: 30,
-  total: 450,
-  shippingAddress: {
-    line1: "123 Garden Street, Cairo, Egypt",
-    notes: "Please call before delivery",
-  },
-  estimatedDelivery: "2025-10-20",
-};
+import { fetchOrders } from "../../redux/slices/order.slice";
+import type { AppDispatch, RootState } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import type { Order } from "../../redux/slices/order.slice";
 
 const OrderDetails = () => {
-  const { id } = useParams();
-  const [order, setOrder] = useState<Order | null>(null);
-  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch<AppDispatch>();
+  const { orderId } = useParams<{ orderId: string }>();
+  const { orders, loading } = useSelector(
+    (state: RootState) => state.orderSlice
+  );
 
   useEffect(() => {
-    // Simulate API call
-    setTimeout(() => {
-      setOrder(mockOrder);
-      setLoading(false);
-    }, 500);
-  }, [id]);
+    dispatch(fetchOrders());
+  }, [dispatch]);
+
+  const order: Order | undefined = orders.find((o) => o.id === orderId);
+
+  const getStatusBadge = (status: Order["status"]) => {
+    const badges: Record<string, { bg: string; text: string }> = {
+      pending: { bg: "warning", text: "Pending" },
+      processing: { bg: "info", text: "Processing" },
+      shipped: { bg: "primary", text: "Shipped" },
+      delivered: { bg: "success", text: "Delivered" },
+      cancelled: { bg: "danger", text: "Cancelled" },
+    };
+    return badges[status] || { bg: "secondary", text: "Unknown" };
+  };
 
   if (loading) {
     return (
@@ -101,17 +57,6 @@ const OrderDetails = () => {
     );
   }
 
-  const getStatusBadge = (status: Order["status"]) => {
-    const badges = {
-      pending: { bg: "warning", text: "Pending" },
-      processing: { bg: "info", text: "Processing" },
-      shipped: { bg: "primary", text: "Shipped" },
-      delivered: { bg: "success", text: "Delivered" },
-      cancelled: { bg: "danger", text: "Cancelled" },
-    };
-    return badges[status];
-  };
-
   const statusBadge = getStatusBadge(order.status);
 
   return (
@@ -130,15 +75,13 @@ const OrderDetails = () => {
             <Col md={4} xs={12} className="mb-3 mb-md-0">
               <div className="order-info-item">
                 <span className="label">Order Number</span>
-                <span className="value">{order.orderNumber}</span>
+                <span className="value">{order.id}</span>
               </div>
             </Col>
             <Col md={4} xs={6} className="mb-3 mb-md-0">
               <div className="order-info-item">
                 <span className="label">Order Date</span>
-                <span className="value">
-                  {new Date(order.date).toLocaleDateString()}
-                </span>
+                <span className="value">{new Date().toLocaleDateString()}</span>
               </div>
             </Col>
             <Col md={4} xs={6}>
@@ -158,9 +101,9 @@ const OrderDetails = () => {
           <div className="progress-tracker">
             <div
               className={`progress-step ${
-                ["pending", "processing", "shipped", "delivered"].indexOf(
+                ["pending", "processing", "shipped", "delivered"].includes(
                   order.status
-                ) >= 0
+                )
                   ? "completed"
                   : ""
               }`}
@@ -171,8 +114,7 @@ const OrderDetails = () => {
             <div className="progress-line"></div>
             <div
               className={`progress-step ${
-                ["processing", "shipped", "delivered"].indexOf(order.status) >=
-                0
+                ["processing", "shipped", "delivered"].includes(order.status)
                   ? "completed"
                   : ""
               } ${order.status === "pending" ? "active" : ""}`}
@@ -183,7 +125,7 @@ const OrderDetails = () => {
             <div className="progress-line"></div>
             <div
               className={`progress-step ${
-                ["shipped", "delivered"].indexOf(order.status) >= 0
+                ["shipped", "delivered"].includes(order.status)
                   ? "completed"
                   : ""
               } ${order.status === "processing" ? "active" : ""}`}
@@ -201,14 +143,6 @@ const OrderDetails = () => {
               <div className="progress-label">Delivered</div>
             </div>
           </div>
-          {order.estimatedDelivery && order.status !== "delivered" && (
-            <p className="estimated-delivery mt-4">
-              <i className="bi bi-truck"></i> Estimated delivery:{" "}
-              <strong>
-                {new Date(order.estimatedDelivery).toLocaleDateString()}
-              </strong>
-            </p>
-          )}
         </div>
 
         <Row className="g-4">
@@ -227,7 +161,6 @@ const OrderDetails = () => {
                     />
                     <div className="item-details">
                       <div className="item-name">{item.name}</div>
-                      <div className="item-category">{item.category}</div>
                       <div className="item-quantity">
                         Quantity: {item.quantity}
                       </div>
@@ -255,13 +188,7 @@ const OrderDetails = () => {
                   <i className="bi bi-geo-alt-fill"></i>
                 </div>
                 <div>
-                  <p className="address-line">{order.shippingAddress.line1}</p>
-                  {order.shippingAddress.notes && (
-                    <p className="address-notes">
-                      <i className="bi bi-chat-left-text"></i>{" "}
-                      {order.shippingAddress.notes}
-                    </p>
-                  )}
+                  <p className="address-line">{order.address}</p>
                 </div>
               </div>
             </div>
@@ -273,16 +200,16 @@ const OrderDetails = () => {
               <div className="payment-details">
                 <div className="payment-row">
                   <span>Subtotal</span>
-                  <span>{order.subtotal} EGP</span>
+                  <span>{order.totalPrice} EGP</span>
                 </div>
                 <div className="payment-row">
                   <span>Shipping</span>
-                  <span>{order.shipping} EGP</span>
+                  <span>0 EGP</span>
                 </div>
                 <hr className="payment-divider" />
                 <div className="payment-row total-row">
                   <span>Total</span>
-                  <span className="total-amount">{order.total} EGP</span>
+                  <span className="total-amount">{order.totalPrice} EGP</span>
                 </div>
               </div>
             </div>

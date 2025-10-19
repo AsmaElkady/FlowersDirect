@@ -461,59 +461,9 @@
       "username": "aya",
       "cart": [
         {
-          "cartItems": [
-            {
-              "id": "01",
-              "name": "Red Tulip",
-              "desc": "A beautiful tulip with a natural wood stand.",
-              "image": "/src/assets/Image.png",
-              "color": "red",
-              "category": "Tulips",
-              "price": 137,
-              "rating": "⭐⭐⭐",
-              "reviews": {
-                "total": 120,
-                "breakdown": {
-                  "1": 3,
-                  "2": 5,
-                  "3": 10,
-                  "4": 30,
-                  "5": 72
-                }
-              },
-              "isFavorite": false,
-              "totalQuantity": 15,
-              "quantity": 1,
-              "total": 137
-            },
-            {
-              "id": "02",
-              "name": "Purpleish Blue",
-              "desc": "A beautiful Iris with a natural wood stand.",
-              "image": "/src/assets/Image1.png",
-              "color": "purple",
-              "category": "Iris",
-              "price": 250,
-              "orderedItems": 10,
-              "rating": "⭐⭐⭐",
-              "reviews": {
-                "total": 150,
-                "breakdown": {
-                  "1": 3,
-                  "2": 5,
-                  "3": 10,
-                  "4": 30,
-                  "5": 72
-                }
-              },
-              "isFavorite": false,
-              "totalQuantity": 10,
-              "quantity": 1,
-              "total": 250
-            }
-          ],
-          "totalQuantity": 2,
-          "totalPrice": 387
+          "cartItems": [],
+          "totalQuantity": 0,
+          "totalPrice": 0
         }
       ],
       "favorites": [],
@@ -550,11 +500,13 @@
       "email": "ayanashat611@gmail.com",
       "password": "$2a$10$RJ55G59QPWqJmGWxDZd.Q.SrVH/8tK5BfSFAJxhheLjCsqoV3rJkK",
       "username": "ayaaaa",
-      "cart": {
-        "cartsItems": [],
-        "totalQuantity": 0,
-        "totalPrice": 0
-      },
+      "cart": [
+        {
+          "cartItems": [],
+          "totalQuantity": 0,
+          "totalPrice": 0
+        }
+      ],
       "favorites": [],
       "orders": [],
       "id": 5
@@ -581,7 +533,8 @@
       "totalPrice": 428,
       "id": "c3effb66-67f3-460c-aa87-ef8ae3085b34",
       "userId": 2,
-      "address": "dsfasdfasdf"
+      "address": "dsfasdfasdf",
+      "status": "pending"
     },
     {
       "items": [
@@ -983,6 +936,520 @@
       "id": "e814f2ff-6836-491c-aebc-eeaad9cb76e4",
       "userId": 2,
       "address": "kjbjkbkjbjhb"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 387,
+      "id": "4cdaeb95-f0d9-472b-99f9-52bca7a1f3b5",
+      "userId": 5,
+      "address": "sjnjnjs"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10,
+          "quantity": 1,
+          "total": 250
+        },
+        {
+          "id": "03",
+          "name": "Yellow Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image2.png",
+          "color": "yellow",
+          "category": "Tulips",
+          "price": 139,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 139
+        }
+      ],
+      "totalPrice": 526,
+      "id": "55ec5fd8-83a3-40d7-b54c-1d805e3c0122",
+      "userId": 5,
+      "address": "aya nashat kafr"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 387,
+      "id": "7e4fce36-930f-4fec-972b-e9cd34dfc8c0",
+      "userId": 5,
+      "address": "kmkjk"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        }
+      ],
+      "totalPrice": 137,
+      "id": "a4c3b97b-b1ac-405a-894e-eb982e27da95",
+      "userId": 5,
+      "address": "nn"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 387,
+      "id": "45c471a7-1a2d-4ac2-a664-da9d1f777e8b",
+      "userId": 5,
+      "address": "kafrElsheik"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 387,
+      "id": "9725107c-7de0-41d3-91ac-967f51a9a851",
+      "userId": 5,
+      "address": "nnn"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 387,
+      "id": "3ad63b0d-775c-4b2b-8c96-374724b65722",
+      "userId": 2,
+      "address": "kafrElsheik"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 387,
+      "id": "ff71947e-935c-4d81-a095-b75ebc2c81f9",
+      "userId": 2,
+      "address": "kafrElsheik"
+    },
+    {
+      "items": [
+        {
+          "id": "01",
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "/src/assets/Image.png",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": "02",
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "/src/assets/Image1.png",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "orderedItems": 10,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 150,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 10,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 387,
+      "id": "a42cf82c-7db2-4c59-8236-c81891f3d212",
+      "userId": 2,
+      "address": "gt5rvb4tghbgre",
+      "status": "shipped",
+      "note": "erbgrtghmyuj"
     }
   ]
 }
