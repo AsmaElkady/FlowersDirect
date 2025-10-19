@@ -34,7 +34,7 @@ export default function ProductCard({ product }: Props) {
         timerProgressBar: true,
         customClass: {
           title: "swal-title",
-          content: "swal-text",
+          htmlContainer: "swal-text",
         },
         willClose: () => {
           navigate("/login");
@@ -57,7 +57,7 @@ export default function ProductCard({ product }: Props) {
         timerProgressBar: true,
         customClass: {
           title: "swal-title",
-          content: "swal-text",
+          htmlContainer: "swal-text",
         },
         willClose: () => {
           navigate("/login");

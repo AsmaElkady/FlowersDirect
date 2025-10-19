@@ -3,7 +3,7 @@ import { addProduct, deleteProduct, fetchProducts, updateProduct } from "../redu
 import type { IProduct } from "../Types/productType";
 
 export class Product implements IProduct {
-    public id: number;
+    public id?: number;
     public name: string;
     public desc: string;
     public image: string;
@@ -15,7 +15,6 @@ export class Product implements IProduct {
     public totalQuantity: number;
 
     constructor(
-        id: number,
         name: string,
         price: number,
         image: string,
@@ -24,7 +23,8 @@ export class Product implements IProduct {
         color: string,
         rating: string,
         isFavorite: boolean,
-        totalQuantity: number
+        totalQuantity: number,
+        id?: number
     ) {
         this.id = id;
         this.name = name;
