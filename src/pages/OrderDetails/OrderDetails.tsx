@@ -5,7 +5,8 @@ import "./OrderDetails.css";
 import { fetchOrders } from "../../redux/slices/order.slice";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import type { Order } from "../../redux/slices/order.slice";
+import type { Order } from "../../Types/order";
+
 
 const OrderDetails = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -28,7 +29,7 @@ const OrderDetails = () => {
       delivered: { bg: "success", text: "Delivered" },
       cancelled: { bg: "danger", text: "Cancelled" },
     };
-    return badges[status] || { bg: "secondary", text: "Unknown" };
+    return badges[status ?? "pending"] || { bg: "secondary", text: "Unknown" };
   };
 
   if (loading) {
@@ -62,14 +63,12 @@ const OrderDetails = () => {
   return (
     <div className="order-details-root">
       <Container className="order-details-container">
-        {/* Header */}
         <div className="text-center mb-5">
           <h2 className="order-details-title mb-2">Order Details</h2>
           <div className="theme-divider mx-auto"></div>
           <p className="text-muted mt-3">Track your order and view details</p>
         </div>
 
-        {/* Order Summary Header */}
         <div className="order-header-card mb-4">
           <Row className="align-items-center">
             <Col md={4} xs={12} className="mb-3 mb-md-0">
@@ -95,7 +94,6 @@ const OrderDetails = () => {
           </Row>
         </div>
 
-        {/* Order Progress Tracker */}
         <div className="order-progress-card mb-4">
           <h5 className="section-title mb-4">Order Progress</h5>
           <div className="progress-tracker">
@@ -146,7 +144,6 @@ const OrderDetails = () => {
         </div>
 
         <Row className="g-4">
-          {/* Order Items */}
           <Col lg={7}>
             <div className="order-section-card">
               <h5 className="section-title mb-3">Order Items</h5>
@@ -177,11 +174,9 @@ const OrderDetails = () => {
             </div>
           </Col>
 
-          {/* Shipping & Payment Info */}
           <Col lg={5}>
-            {/* Shipping Address */}
             <div className="order-section-card mb-4">
-              <h5 className="section-title mb-3">Shipping Address</h5>
+              <h5 className="section-title mb-3">Shipping Details</h5>
               <div className="theme-divider mb-4"></div>
               <div className="address-content">
                 <div className="address-icon">
@@ -191,9 +186,16 @@ const OrderDetails = () => {
                   <p className="address-line">{order.address}</p>
                 </div>
               </div>
+              <div className="address-content mt-2">
+                <div className="address-icon">
+                  <i className="fa-solid fa-note-sticky"></i>
+                </div>
+                <div>
+                  <p className="address-line">{order.note}</p>
+                </div>
+              </div>
             </div>
 
-            {/* Payment Summary */}
             <div className="order-section-card">
               <h5 className="section-title mb-3">Payment Summary</h5>
               <div className="theme-divider mb-4"></div>
@@ -204,19 +206,20 @@ const OrderDetails = () => {
                 </div>
                 <div className="payment-row">
                   <span>Shipping</span>
-                  <span>0 EGP</span>
+                  <span>65 EGP</span>
                 </div>
                 <hr className="payment-divider" />
                 <div className="payment-row total-row">
                   <span>Total</span>
-                  <span className="total-amount">{order.totalPrice} EGP</span>
+                  <span className="total-amount">
+                    {order.totalPrice + 65} EGP
+                  </span>
                 </div>
               </div>
             </div>
           </Col>
         </Row>
 
-        {/* Help Section */}
         <div className="help-section mt-5 text-center">
           <p className="text-muted">
             Need help with your order?{" "}

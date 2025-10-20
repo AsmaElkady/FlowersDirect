@@ -1,27 +1,24 @@
-import { useState, useEffect, use } from "react";
+import { useState } from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import "./checkout.css";
-import type { ICartProduct } from "../../Types/cart";
+import type { ICart } from "../../Types/cart";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { v4 as uuidv4 } from "uuid";
 import { addOrder } from "../../redux/slices/order.slice";
 import { clearCartApi } from "../../redux/slices/cartApi";
 import { useNavigate } from "react-router-dom";
-import type { Order } from "../../redux/slices/order.slice";
-
+import type { Order } from "../../Types/order";
 
 export default function CheckOut() {
   const dispatch = useDispatch<AppDispatch>();
-  const cart = useSelector((state: RootState) => state.Cart.cart) as ICartProduct[];
+  const cart = useSelector((state: RootState) => state.Cart.cart) as ICart;
   const cartItems = cart.cartItems || [];
   console.log(cartItems);
-
 
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
   const navigate = useNavigate();
-
 
   const subtotal = cart.totalPrice || 0;
 
@@ -55,15 +52,11 @@ export default function CheckOut() {
       note: notes,
     };
 
-
-    
-
     dispatch(addOrder(order));
-    dispatch(clearCartApi());
-    navigate('/order-details/' + order.id);
-    console.log("aua");
-    
 
+    dispatch(clearCartApi());
+    navigate("/order-details/" + order.id);
+    console.log("aua");
   };
 
   return (
@@ -93,8 +86,6 @@ export default function CheckOut() {
                   />
                 </Form.Group>
 
-               
-                
                 <Form.Group className="mb-3" controlId="notes">
                   <Form.Label className="notes-label">
                     Notes (delivery details / instructions)
@@ -108,14 +99,12 @@ export default function CheckOut() {
                     placeholder="Add any notes for delivery (e.g. gate code, preferred time)"
                   />
                 </Form.Group>
-               
 
                 <div className="mt-3">
                   <Button
                     variant="primary"
                     className="theme-btn w-100 py-2"
                     onClick={handlePlaceOrder}
-                
                   >
                     Place order
                   </Button>
