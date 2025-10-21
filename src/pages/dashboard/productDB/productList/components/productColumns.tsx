@@ -2,7 +2,7 @@ import type { TableColumn } from "react-data-table-component";
 import type { IProduct } from "../../../../../Types/productType";
 import { Button } from "react-bootstrap";
 
-export const productColumns = (handleDelete: (id: number) => void): TableColumn<IProduct>[] => [
+export const productColumns = (handleDelete: (id: number) => void , handleEdit: (product: IProduct) => void): TableColumn<IProduct>[] => [
   {
     name: "ID",
     selector: (row) => row.id ?? "-",
@@ -53,7 +53,7 @@ export const productColumns = (handleDelete: (id: number) => void): TableColumn<
             variant="outline-primary"
             size="sm"
             title="Edit"
-            onClick={() => console.log("Edit", row.id)}
+            onClick={() => handleEdit(row)}
           >
             <i className="bi bi-pencil-square"></i>
           </Button>

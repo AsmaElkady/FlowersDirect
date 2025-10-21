@@ -47,7 +47,7 @@
       "price": 237,
       "rating": "⭐⭐⭐",
       "isFavorite": false,
-      "totalQuantity": 15
+      "totalQuantity": 18
     },
     {
       "id": 5,
@@ -230,16 +230,16 @@
       "totalQuantity": 8
     },
     {
-      "name": "Orange Tulip",
+      "id": 21,
+      "name": "Orange Rose",
       "desc": "tulip",
       "image": "/src/assets/flow-back.jpg",
       "color": "orange",
-      "category": "Tulips",
-      "price": 240,
+      "category": "Roses",
+      "price": 340,
       "rating": "⭐⭐⭐⭐",
       "isFavorite": false,
-      "totalQuantity": 5,
-      "id": 21
+      "totalQuantity": 6
     }
   ],
   "categories": [

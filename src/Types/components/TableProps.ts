@@ -8,4 +8,5 @@ export interface DataTableProps<T> {
   onRowClicked?: (row: T) => void;
   pagination?: boolean;
   loading: boolean;
+  handleSearch?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }

@@ -1,7 +1,7 @@
 import zod from "zod";
 
 export const addProductSchema = zod.object({
-  name: zod.string().min(5, "Product name is required"),
+  name: zod.string().min(5, "Product name is required at least 5 characters"),
   desc: zod.string().min(5, "Description must be at least 5 characters"),
   price: zod.number().min(1, "Price must be positive"),
   totalQuantity: zod.number().min(1, "Quantity must be positive"),
