@@ -286,6 +286,50 @@
       "password": "$2a$10$IzWRdst8YjdGVXVCvxOeHO1KV.BQ6d.vpv95CA/cJuxUUnzDyKaoW",
       "username": "asmaa",
       "id": 4
+    },
+    {
+      "email": "Test@gmail.com",
+      "password": "$2a$10$tk98cXO5f824mN/4UsyaEunUPoY3giv6vdhoAgi5WWybrvO8Wm9hu",
+      "username": "Test",
+      "cart": [
+        {
+          "cartItems": [
+            {
+              "id": 4,
+              "name": "Purple Tulip",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "https://images.pexels.com/photos/11985516/pexels-photo-11985516.jpeg?_gl=1*1dc9f1z*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxOTIxJGo1OSRsMCRoMA..",
+              "color": "green",
+              "category": "Tulips",
+              "price": 237,
+              "rating": "⭐⭐⭐",
+              "isFavorite": false,
+              "totalQuantity": 18,
+              "quantity": 1,
+              "total": 237
+            },
+            {
+              "id": 5,
+              "name": "Limonium Blue",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "https://images.pexels.com/photos/12224119/pexels-photo-12224119.jpeg?_gl=1*68emve*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyMTE0JGoxNCRsMCRoMA..",
+              "color": "blue",
+              "category": "Fillers",
+              "price": 337,
+              "rating": "⭐⭐⭐",
+              "isFavorite": false,
+              "totalQuantity": 15,
+              "quantity": 1,
+              "total": 337
+            }
+          ],
+          "totalQuantity": 2,
+          "totalPrice": 574
+        }
+      ],
+      "favorites": [],
+      "orders": [],
+      "id": 5
     }
   ]
 }

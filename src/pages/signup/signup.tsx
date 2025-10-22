@@ -18,7 +18,7 @@ import {
 } from "../../utils/schema";
 import { useNavigate } from "react-router";
 import "../../style/auth.css";
-import { adminEmail, baseUrl } from "../../constants/main";
+import { baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
 import { setToken, setUser } from "../../redux/slices/authSlice";
 import { Admin, Customer } from "../../classes/users";
@@ -39,7 +39,7 @@ const SignUp = () => {
 
   const handleRegister = async (userValue: ISignup) => {
     let userInfo;
-    if (Admin.checkAdmin(adminEmail).status) {
+    if (Admin.checkAdmin(userValue.email).status) {
       userInfo = new Admin(
         userValue.email,
         userValue.username,
