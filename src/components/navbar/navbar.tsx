@@ -2,13 +2,14 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./navbar.css";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import type { RootState } from "../../redux/store";
 // import FavModel from "../../pages/favModel/test";
 import FavModel from "../../pages/favModel/favModel";
+import { logoutUser } from "../../redux/slices/authSlice";
 
 export default function MyNavbar() {
   const [modalShow, setModalShow] = useState(false);
@@ -20,8 +21,9 @@ export default function MyNavbar() {
   );
 
   const token = useSelector((state: RootState) => state.auth.token);
-  const user = useSelector((state: RootState) => state.auth.user);
-  console.log(token, user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <>
       <Navbar
@@ -65,13 +67,18 @@ export default function MyNavbar() {
               </Link>
             ) : (
               <>
-                <Link to="/" className="mx-1">
+                <Link to="/Profile" className="mx-1">
                   <PersonIcon className="text-primary" />
                 </Link>
-                <Link to="/">
-                  log
-                  <i className="fa-solid fa-left-to-bracket fs-5"></i>
-                </Link>
+                <Button
+                  className="btn bg-transparent btn-outline border-0 text-primary fs-5"
+                  onClick={() => {
+                    dispatch(logoutUser());
+                    navigate("/Login");
+                  }}
+                >
+                  <i className="fa fa-sign-out" aria-hidden="true"></i>
+                </Button>
               </>
             )}
           </div>

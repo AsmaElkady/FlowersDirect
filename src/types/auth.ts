@@ -24,7 +24,7 @@ export interface IAuthSlice {
   name: string;
   id: number;
   email: string;
-  user: ICustomer | IUser;
+  user?: ICustomer | IUser;
 }
 
 export type ICustomer = {
