@@ -264,6 +264,43 @@
   ],
   "users": [
     {
+      "email": "Test2@test.com",
+      "password": "$2a$10$WJtw9nPMkPAfNeYgxntSsOAhh1THh6g7pTMYdh.SYySXm9Kg6KYSO",
+      "username": "new user",
+      "cart": {
+        "cartsItems": [],
+        "totalQuantity": 0,
+        "totalPrice": 0
+      },
+      "favorites": [],
+      "orders": [],
+      "id": 10
+    },
+    {
+      "email": "Test@test.com",
+      "username": "Test ",
+      "cart": {
+        "cartsItems": [],
+        "totalQuantity": 0,
+        "totalPrice": 0
+      },
+      "favorites": [],
+      "id": 15,
+      "password": "$2a$10$K1m03Hy55BLhaSVdTINiPu33iSaV2DcTu1TkElLO2BF0MKfWQDJCa"
+    },
+    {
+      "email": "Test@test.com",
+      "username": "Test ",
+      "cart": {
+        "cartsItems": [],
+        "totalQuantity": 0,
+        "totalPrice": 0
+      },
+      "favorites": [],
+      "id": 19,
+      "password": "$2a$10$K1m03Hy55BLhaSVdTINiPu33iSaV2DcTu1TkElLO2BF0MKfWQDJCa"
+    },
+    {
       "email": "Test@test.com",
       "username": "Test ",
       "cart": [

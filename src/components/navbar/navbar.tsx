@@ -20,9 +20,8 @@ export default function MyNavbar() {
   );
 
   const token = useSelector((state: RootState) => state.auth.token);
-  const username = useSelector((state: RootState) => state.auth.name);
-  const id = useSelector((state: RootState) => state.auth.id);
-  console.log(token, username, id);
+  const user = useSelector((state: RootState) => state.auth.user);
+  console.log(token, user);
   return (
     <>
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary position-fixed w-100 z-3">
