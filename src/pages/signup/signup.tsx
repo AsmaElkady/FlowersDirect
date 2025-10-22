@@ -12,7 +12,7 @@ import { useMutation } from "@tanstack/react-query";
 import type { ISignup } from "../../types/auth";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import {
-  getSchemaData,
+  //getSchemaData,
   signUpSchema,
   type SignUpSchemaType,
 } from "../../utils/schema";
@@ -24,14 +24,15 @@ import { setToken, setUser } from "../../redux/slices/authSlice";
 import { Admin, Customer } from "../../classes/users";
 import { toast, ToastContainer } from "react-toastify";
 import Helmet from "react-helmet";
+import { signupDefaultValues } from "../../utils/schema/signupSchema";
 
 const SignUp = () => {
-  const { defaultValues } = getSchemaData("signup");
+  //const { defaultValues } = getSchemaData("signup");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const form = useForm<ISignup>({
-    defaultValues,
+    defaultValues: signupDefaultValues,
     resolver: zodResolver(signUpSchema),
     mode: "all",
   });
@@ -69,13 +70,17 @@ const SignUp = () => {
       dispatch(setToken(res.data.accessToken));
       dispatch(setUser(res.data.user));
       localStorage.setItem("token", JSON.stringify(res.data.accessToken));
-      navigate("/", { replace: true });
+      if (Admin.checkAdmin(res.data.user.email).status) {
+        navigate("/dashboard", { replace: true });
+      } else {
+        navigate("/", { replace: true });
+      }
       // location.key == "default" ? navigate(-1)
       //   : navigate("/", { replace: true });
     },
     onError: (err) => {
       if (axios.isAxiosError(err) && err.response) {
-        toast.error(err.response.statusText);
+        toast.error(err.response.data);
       }
     },
   });
@@ -126,10 +131,10 @@ const SignUp = () => {
               </FormProvider>
             </Col>
           </Col>
-        </Col>
-      </Row>
-      <ToastContainer />
-    </Container>
+        </Row>
+        <ToastContainer />
+      </Container>
+    </>
   );
 };
 

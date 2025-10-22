@@ -24,7 +24,11 @@ export default function MyNavbar() {
   console.log(token, user);
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary position-fixed w-100 z-3">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        className="bg-body-tertiary position-fixed w-100 z-3"
+      >
         <Container className="d-flex align-items-center justify-content-between">
           <Navbar.Brand>
             <Link to={"/"}>
@@ -39,7 +43,7 @@ export default function MyNavbar() {
             />
 
             <Nav className="d-flex flex-row justify-content-center align-items-center">
-              <Link to="/cart" className="position-relative mx-3">
+              <Link to="/cart" className="position-relative mx-1">
                 <ShoppingCartIcon className="text-primary fs-4" />
                 <span className="cart-badge text-primary cart">
                   {cartlength}
@@ -48,7 +52,7 @@ export default function MyNavbar() {
 
               <Button
                 onClick={() => setModalShow(true)}
-                className="border-0 bg-transparent position-relative mx-2"
+                className="border-0 bg-transparent position-relative mx-1"
               >
                 <FavoriteIcon className="text-primary fs-4" />
                 <span className="cart-badge text-primary fav">{favlength}</span>
@@ -60,9 +64,15 @@ export default function MyNavbar() {
                 <i className="fa-solid fa-right-to-bracket fs-5"></i>
               </Link>
             ) : (
-              <Link to="/">
-                <PersonIcon className="text-primary" />
-              </Link>
+              <>
+                <Link to="/" className="mx-1">
+                  <PersonIcon className="text-primary" />
+                </Link>
+                <Link to="/">
+                  log
+                  <i className="fa-solid fa-left-to-bracket fs-5"></i>
+                </Link>
+              </>
             )}
           </div>
           <Navbar.Collapse

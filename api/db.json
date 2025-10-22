@@ -264,105 +264,28 @@
   ],
   "users": [
     {
-      "email": "Test2@test.com",
-      "password": "$2a$10$WJtw9nPMkPAfNeYgxntSsOAhh1THh6g7pTMYdh.SYySXm9Kg6KYSO",
-      "username": "new user",
-      "cart": {
-        "cartsItems": [],
-        "totalQuantity": 0,
-        "totalPrice": 0
-      },
-      "favorites": [],
-      "orders": [],
-      "id": 10
+      "email": "admin@admin.com",
+      "password": "$2a$10$wK13Pr.fJFGEBDl2R/Ip.efpPSUBRut/izFp6ZzjPmnkU9KfxiiFS",
+      "username": "admin",
+      "id": 1
     },
     {
-      "email": "Test@test.com",
-      "username": "Test ",
-      "cart": {
-        "cartsItems": [],
-        "totalQuantity": 0,
-        "totalPrice": 0
-      },
-      "favorites": [],
-      "id": 15,
-      "password": "$2a$10$K1m03Hy55BLhaSVdTINiPu33iSaV2DcTu1TkElLO2BF0MKfWQDJCa"
+      "email": "user@user.com",
+      "password": "$2a$10$T77yyaahx4hLHvtv72M2GOp4nFsxeZOD.rL0czzl7SuYKUQSYpTVC",
+      "username": "Asmaa",
+      "id": 2
     },
     {
-      "email": "Test@test.com",
-      "username": "Test ",
-      "cart": {
-        "cartsItems": [],
-        "totalQuantity": 0,
-        "totalPrice": 0
-      },
-      "favorites": [],
-      "id": 19,
-      "password": "$2a$10$K1m03Hy55BLhaSVdTINiPu33iSaV2DcTu1TkElLO2BF0MKfWQDJCa"
+      "email": "admin@212.com",
+      "password": "$2a$10$7jOi5YjSx4TpWGD4fv9CDOKMivNTwhfMDctBSJnFnpmWEU2nqfNcu",
+      "username": "asmaa",
+      "id": 3
     },
     {
-      "email": "Test@test.com",
-      "username": "Test ",
-      "cart": [
-        {
-          "cartItems": [
-            {
-              "id": "04",
-              "name": "Purple Tulip",
-              "desc": "A beautiful tulip with a natural wood stand.",
-              "image": "https://images.pexels.com/photos/11985516/pexels-photo-11985516.jpeg?_gl=1*1dc9f1z*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxOTIxJGo1OSRsMCRoMA..",
-              "color": "green",
-              "category": "Tulips",
-              "price": 237,
-              "rating": "⭐⭐⭐",
-              "reviews": {
-                "total": 120,
-                "breakdown": {
-                  "1": 3,
-                  "2": 5,
-                  "3": 10,
-                  "4": 30,
-                  "5": 72
-                }
-              },
-              "isFavorite": false,
-              "totalQuantity": 15,
-              "quantity": 1,
-              "total": 237
-            }
-          ],
-          "totalQuantity": 1,
-          "totalPrice": 237
-        }
-      ],
-      "favorites": [
-        {
-          "id": 6,
-          "name": "Limonium White",
-          "desc": "A beautiful tulip with a natural wood stand.",
-          "image": "https://images.pexels.com/photos/14903885/pexels-photo-14903885.jpeg?_gl=1*kjzdv0*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNDIzJGoxMCRsMCRoMA..",
-          "color": "white",
-          "category": "Fillers",
-          "price": 437,
-          "rating": "⭐⭐⭐",
-          "isFavorite": false,
-          "totalQuantity": 15
-        },
-        {
-          "id": 1,
-          "name": "Red Tulip",
-          "desc": "A beautiful tulip with a natural wood stand.",
-          "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
-          "color": "red",
-          "category": "Tulips",
-          "price": 137,
-          "rating": "⭐⭐⭐",
-          "isFavorite": false,
-          "totalQuantity": 12
-        }
-      ],
-      "id": 1,
-      "password": "$2a$10$OYoZickTxI4o4v9b1Lq/f.OtzDW.DCOta6Pzt5m3P6VnAKLVlGxTq"
+      "email": "admin@2aaa.com",
+      "password": "$2a$10$IzWRdst8YjdGVXVCvxOeHO1KV.BQ6d.vpv95CA/cJuxUUnzDyKaoW",
+      "username": "asmaa",
+      "id": 4
     }
   ]
 }

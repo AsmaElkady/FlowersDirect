@@ -5,7 +5,10 @@ import FavSlice from "./slices/favSlice";
 import CartApi from "./slices/cartApi";
 import productSlice from "./slices/productSlice";
 import cartReducer from "./slices/cartApi";
-import Category from "./slices/category"
+import Category from "./slices/category";
+import adminSlice from "./slices/AdminSlice";
+import { setupListeners } from "@reduxjs/toolkit/query";
+
 const store = configureStore({
   reducer: {
     auth: authSlice,
@@ -14,11 +17,8 @@ const store = configureStore({
     products: productSlice,
     Cart: cartReducer,
     Category,
+    admin: adminSlice,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ serializableCheck: false }).concat(
-      usersAPI.middleware
-    ),
 });
 
 setupListeners(store.dispatch);

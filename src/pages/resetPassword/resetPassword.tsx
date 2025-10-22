@@ -52,7 +52,7 @@ const ResetPassword = () => {
     },
     onError: (err) => {
       if (axios.isAxiosError(err) && err.response) {
-        toast.error(err.response.statusText);
+        toast.error(err.response.data);
       }
     },
   });
@@ -63,44 +63,44 @@ const ResetPassword = () => {
   };
 
   return (
-            <>
+    <>
       <Helmet>
         <meta charSet="utf-8" />
         <title>Reset Password</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-    <Container fluid>
-      <Row className="align-items-center bg-linear">
-        <Col sm="12" md="6" className="bg-imgVertical" />
-        <Col
-          md="6"
-          sm="12"
-          className="d-flex justify-content-center align-items-center vh-100"
-        >
-          <Col lg="8" md="10" sm="12">
-            <AuthText title="Reset Password" />
-            <FormProvider {...form}>
-              <Form onSubmit={form.handleSubmit(onSubmit)}>
-                <Password id="password" />
-                <Password label="Repassword" id="re_password" />
-                {isError && (
-                  <p className="text-center text-secondary">
-                    {error.message && error.message}
-                  </p>
-                )}
-                <MyButton
-                  varient="primary"
-                  title="Reset"
-                  isLoading={isPending}
-                />
-              </Form>
-            </FormProvider>
+      <Container fluid>
+        <Row className="align-items-center bg-linear">
+          <Col sm="12" md="6" className="bg-imgVertical" />
+          <Col
+            md="6"
+            sm="12"
+            className="d-flex justify-content-center align-items-center vh-100"
+          >
+            <Col lg="8" md="10" sm="12">
+              <AuthText title="Reset Password" />
+              <FormProvider {...form}>
+                <Form onSubmit={form.handleSubmit(onSubmit)}>
+                  <Password id="password" />
+                  <Password label="Repassword" id="re_password" />
+                  {isError && (
+                    <p className="text-center text-secondary">
+                      {error.message && error.message}
+                    </p>
+                  )}
+                  <MyButton
+                    varient="primary"
+                    title="Reset"
+                    isLoading={isPending}
+                  />
+                </Form>
+              </FormProvider>
+            </Col>
           </Col>
-        </Col>
-      </Row>
-      <ToastContainer />
-    </Container>
-      </>
+        </Row>
+        <ToastContainer />
+      </Container>
+    </>
   );
 };
 

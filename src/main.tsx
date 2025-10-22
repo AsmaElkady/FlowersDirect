@@ -13,12 +13,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Provider } from "react-redux";
 import store from "./redux/store.ts";
-import Cart from "./pages/Cart/Cart.tsx";
-import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
-import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
-import ListCustomers from "./pages/dashboard111/Customers/listCustomers.tsx";
-import AdminLayout from "./pages/dashboard111/Layout/AdminLayout.tsx";
-import CustomerDetails from "./pages/dashboard111/Customers/customerDetails/customerDetails.tsx";
 import UsersDB from "./pages/dashboard/users/usersDB.tsx";
 import OverView from "./pages/dashboart/overview/overview.tsx";
 import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
@@ -91,17 +85,9 @@ const rout = createBrowserRouter([
     children: [
       { path: "overview", element: <OverView /> },
       { path: "category", element: <CategoryDB /> },
-      {path: "AddProduct" , element: <AddProduct/>},
-      {path: "productListAdmin" , element: <ProductListAdmin/>}
-    ],
-  },
-  {
-    path: "/users",
-    children: [
-      { index: true, element: <UsersDB /> },
-      { path: ":id", element: <CustomerDetails /> },
-    ],
-  }
+      { path: "AddProduct", element: <AddProduct /> },
+      { path: "productListAdmin", element: <ProductListAdmin /> },
+      { path: "users", element: <UsersDB /> },
     ],
   },
 ]);

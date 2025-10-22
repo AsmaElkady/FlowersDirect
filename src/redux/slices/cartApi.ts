@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseUrl } from "../../constants/main";
-import type { IProduct } from "../../Types/productType";
-import type { CartState, ICartProduct } from "../../Types/cart";
+import type { IProduct } from "../../types/productType";
+import type { CartState, ICartProduct } from "../../types/cart";
 
 //  Helper: Get current user ID safely
 
