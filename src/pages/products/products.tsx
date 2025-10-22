@@ -1,8 +1,6 @@
-import { Container, Row, Col, Spinner} from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Filter from "../../components/Filter/Filter";
 import "../../index.css";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 import ProductList from "../../components/ProductList/ProductList";
 import type { IProduct } from "../../Types/productType";
 import { Helmet } from "react-helmet";
@@ -15,16 +13,16 @@ export default function Products() {
     const dispatch = useDispatch<AppDispatch>();
 
     const { items: data, loading, error } = useSelector(
-    (state: RootState) => state.products
-  );
+        (state: RootState) => state.products
+    );
 
     const [currentPage, setCurrentPage] = useState<number>(1);
     const itemsPerPage = 6;
     const [filters, setFilters] = useState({ color: "", category: "", price: 500 });
 
-     useEffect(() => {
-    dispatch(Product.getProducts());
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(Product.getProducts());
+    }, [dispatch]);
 
     const minPrice = useMemo(() => {
         return data.length > 0 ? Math.min(...data.map((p: IProduct) => p.price)) : 0;
@@ -70,58 +68,33 @@ export default function Products() {
     if (error) return <h2>Errors....Failed to load products, Please try again later.</h2>
 
     return (
-        <Container className="py-5">
-            <h2 className="fw-bold mb-4 text-primary">Shop All Flowers</h2>
-            <Row>
-                <Col md={3}>
-                    <Filter onFilterChange={setFilters}
-                        minPrice={minPrice}
-                        maxPrice={maxPrice}
-                        allProducts={data}
-                    />
-                </Col>
-                <Col md={9}>
-                    <ProductList
-                        products={paginatedProducts}
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        setCurrentPage={setCurrentPage}
-                    />
-                </Col>
-            </Row>
-        </Container>
-    );
-  if (isError)
-    return <h2>Errors....Failed to load products, Please try again later.</h2>;
+        <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Products</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
+            <Container className="py-5">
+                <h2 className="fw-bold mb-4 text-primary mt-5">Shop All Flowers</h2>
+                <Row>
+                    <Col md={3}>
+                        <Filter onFilterChange={setFilters}
+                            minPrice={minPrice}
+                            maxPrice={maxPrice}
+                            allProducts={data}
+                        />
+                    </Col>
+                    <Col md={9}>
+                        <ProductList
+                            products={paginatedProducts}
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            setCurrentPage={setCurrentPage}
+                        />
+                    </Col>
+                </Row>
+            </Container>
+        </>
 
-  return (
-    <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Products</title>
-        <link rel="canonical" href="http://mysite.com/example" />
-      </Helmet>
-      <Container className="py-5 ">
-        <h2 className="fw-bold mb-4 text-primary mt-5">Shop All Flowers</h2>
-        <Row>
-          <Col md={3}>
-            <Filter
-              onFilterChange={setFilters}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              allProducts={data}
-            />
-          </Col>
-          <Col md={9}>
-            <ProductList
-              products={paginatedProducts}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              setCurrentPage={setCurrentPage}
-            />
-          </Col>
-        </Row>
-      </Container>
-    </>
-  );
+    );
 }

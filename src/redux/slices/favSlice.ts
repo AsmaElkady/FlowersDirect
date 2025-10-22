@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseUrl } from "../../constants/main";
-import type { IFav } from "../../Types/fav";
+import type { IFav } from "../../types/fav";
 import type { IProduct } from "../../Types/productType";
 
 //  Helper: Get current user ID safely
@@ -41,7 +41,7 @@ export const addFavApi = createAsyncThunk<IProduct[], { product: IProduct }>(
   }
 );
 
-export const deleteFavItemApi = createAsyncThunk<IProduct[], string>(
+export const deleteFavItemApi = createAsyncThunk<IProduct[], number>(
   "fav/deleteFavItemApi",
   async (productId) => {
     const userId = getUserId();

@@ -87,7 +87,7 @@ export default function ProductCard({ product }: Props) {
     const isFav = favItem.some((item: IProduct) => item.id === id);
 
     if (isFav) {
-      dispatch(deleteFavItemApi(id));
+      dispatch(deleteFavItemApi(id ?? 0));
       showNotification(`💔 ${name} removed from favorites`, "danger");
     } else {
       dispatch(addFavApi({ product }));
@@ -98,6 +98,7 @@ export default function ProductCard({ product }: Props) {
   const isFavorite = favItem.some((item: IProduct) => item.id === id);
 
   return (
+    <>
        <ToastContainer
         className="p-3"
         position="top-end"
@@ -162,16 +163,6 @@ export default function ProductCard({ product }: Props) {
             <Card.Text className="fw-bold mb-1">{price} EGP</Card.Text>
             <Card.Text className="fw-bold">Rating: {rating}</Card.Text>
           </div>
-
-          <Card.Body className="d-flex flex-column justify-content-between align-items-center">
-            <div className="text-start">
-              <Card.Title className="fw-semibold">{name}</Card.Title>
-              <Card.Subtitle className="text-muted small mb-2">
-                {category}
-              </Card.Subtitle>
-              <Card.Text className="fw-bold mb-1">{price} EGP</Card.Text>
-              <Card.Text className="fw-bold">Rating: {rating}</Card.Text>
-            </div>
             <div className="mt-3 me-4">
               <Button
                 variant="outline-primary"

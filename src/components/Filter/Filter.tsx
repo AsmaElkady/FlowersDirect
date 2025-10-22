@@ -48,7 +48,7 @@ export default function Filter({ onFilterChange, minPrice, maxPrice, allProducts
         <div ref={filterRef}>
             <div className="d-flex justify-content-between align-items-center mb-3">
                 <h6 className="fw-bold mb-0 text-primary">FILTERS</h6>
-                <Button variant="secondary" className="rounded-pill text-primary" onClick={handleClear}>CLEAR</Button>
+                <Button variant="secondary" className="rounded-pill text-light" onClick={handleClear}>CLEAR</Button>
             </div>
 
             <Form.Label>PRICE</Form.Label>
