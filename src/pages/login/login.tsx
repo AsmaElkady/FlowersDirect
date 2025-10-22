@@ -16,11 +16,11 @@ import { useNavigate } from "react-router";
 import { baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
 import { setToken, setName, setID } from "../../redux/slices/authSlice";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { defaultValues } = getSchemaData("login");
   const navigate = useNavigate();
-  //const location = useLocation();
   const dispatch = useDispatch();
 
   const form = useForm<ILogin>({
@@ -57,39 +57,46 @@ const Login = () => {
   };
 
   return (
-    <Container fluid>
-      <Row className="align-items-center bg-linear">
-        <Col
-          md="6"
-          sm="12"
-          className="d-flex justify-content-center align-items-center"
-          style={{ height: "100vh" }}
-        >
-          <Col lg="8" md="10" sm="12">
-            <AuthText title="Let's Bloom!" />
-            <FormProvider {...form}>
-              <Form onSubmit={form.handleSubmit(onSubmit)}>
-                <MyInput id="email" label="Email" type="email" />
-                <Password forgetPass={true} />
-                {isError && (
-                  <p className="text-center text-secondary">
-                    {error.message && error.message}
-                  </p>
-                )}
-                <AuthBtn
-                  name="Login"
-                  title="Don't have an account?"
-                  navName="Sign Up"
-                  navTo="/Signup"
-                  isLoading={isPending}
-                />
-              </Form>
-            </FormProvider>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <Container fluid>
+        <Row className="align-items-center bg-linear">
+          <Col
+            md="6"
+            sm="12"
+            className="d-flex justify-content-center align-items-center"
+            style={{ height: "100vh" }}
+          >
+            <Col lg="8" md="10" sm="12">
+              <AuthText title="Let's Bloom!" />
+              <FormProvider {...form}>
+                <Form onSubmit={form.handleSubmit(onSubmit)}>
+                  <MyInput id="email" label="Email" type="email" />
+                  <Password forgetPass={true} />
+                  {isError && (
+                    <p className="text-center text-secondary">
+                      {error.message && error.message}
+                    </p>
+                  )}
+                  <AuthBtn
+                    name="Login"
+                    title="Don't have an account?"
+                    navName="Sign Up"
+                    navTo="/Signup"
+                    isLoading={isPending}
+                  />
+                </Form>
+              </FormProvider>
+            </Col>
           </Col>
-        </Col>
-        <Col sm="12" md="6" className="bg-imgVertical" />
-      </Row>
-    </Container>
+          <Col sm="12" md="6" className="bg-imgVertical" />
+        </Row>
+      </Container>
+    </>
   );
 };
 

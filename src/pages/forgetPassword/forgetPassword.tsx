@@ -20,6 +20,7 @@ import type { IForgetPass } from "../../types/auth";
 import { setID, setUser } from "../../redux/slices/authSlice";
 import AuthBtn from "../../components/Buttons/AuthBtn";
 import { motion } from "motion/react";
+import { Helmet } from "react-helmet";
 
 const ForgetPassword = () => {
   const [userData, setUserData] = useState<IForgetPass>();
@@ -71,54 +72,63 @@ const ForgetPassword = () => {
   };
 
   return (
-    <Container fluid>
-      <Row className="align-items-center justify-content-center bg-linear h-100">
-        <Col sm="12" md="6" className="bg-imgVertical" />
-        <Col
-          md="6"
-          sm="12"
-          className="d-flex justify-content-center align-items-center vh-100"
-        >
-          <Col lg="8" md="10" sm="12">
-            <motion.img
-              src="/img/auth/passs.png"
-              width={"40%"}
-              initial={{ x: 0 }}
-              animate={{ x: 220 }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                repeatType: "reverse",
-              }}
-              className="passImg align-items-center justify-content-center align-self-center"
-            />
-            <AuthText title="Forget Password" />
-            <p className="text-center">Did you forget your password ?</p>
-            <FormProvider {...form}>
-              <Form onSubmit={form.handleSubmit(onSubmit)}>
-                <MyInput id="email" label="Email" type="email" />
-                {isError && (
-                  <p className="text-center text-secondary">{error.message}</p>
-                )}
-                {noUser && (
-                  <p className="text-center text-secondary">
-                    There is no user with this email
-                  </p>
-                )}
-                <AuthBtn
-                  name="Confirm"
-                  title="Don't have an account?"
-                  navName="Sign Up"
-                  navTo="/Signup"
-                  isLoading={isLoading}
-                />
-              </Form>
-            </FormProvider>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Forget Password</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <Container fluid>
+        <Row className="align-items-center justify-content-center bg-linear h-100">
+          <Col sm="12" md="6" className="bg-imgVertical" />
+          <Col
+            md="6"
+            sm="12"
+            className="d-flex justify-content-center align-items-center vh-100"
+          >
+            <Col lg="8" md="10" sm="12">
+              <motion.img
+                src="/img/auth/passs.png"
+                width={"40%"}
+                initial={{ x: 0 }}
+                animate={{ x: 220 }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  repeatType: "reverse",
+                }}
+                className="passImg align-items-center justify-content-center align-self-center"
+              />
+              <AuthText title="Forget Password" />
+              <p className="text-center">Did you forget your password ?</p>
+              <FormProvider {...form}>
+                <Form onSubmit={form.handleSubmit(onSubmit)}>
+                  <MyInput id="email" label="Email" type="email" />
+                  {isError && (
+                    <p className="text-center text-secondary">
+                      {error.message}
+                    </p>
+                  )}
+                  {noUser && (
+                    <p className="text-center text-secondary">
+                      There is no user with this email
+                    </p>
+                  )}
+                  <AuthBtn
+                    name="Confirm"
+                    title="Don't have an account?"
+                    navName="Sign Up"
+                    navTo="/Signup"
+                    isLoading={isLoading}
+                  />
+                </Form>
+              </FormProvider>
+            </Col>
           </Col>
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+    </>
   );
 };
 
