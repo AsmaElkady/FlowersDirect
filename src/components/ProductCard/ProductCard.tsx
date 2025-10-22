@@ -98,8 +98,7 @@ export default function ProductCard({ product }: Props) {
   const isFavorite = favItem.some((item: IProduct) => item.id === id);
 
   return (
-    <>
-      <ToastContainer
+       <ToastContainer
         className="p-3"
         position="top-end"
         style={{
@@ -130,21 +129,20 @@ export default function ProductCard({ product }: Props) {
           <Toast.Body className="text-white">{toastMessage}</Toast.Body>
         </Toast>
       </ToastContainer>
-
-      <div className="main-wrapper">
-        <Card
-          className="shadow-sm border-0 rounded-4 p-2 card-wrapper"
-          style={{ minHeight: "350px" }}
-        >
-          <div className="card-img-container">
-            <Card.Img
-              className="card-img"
-              variant="top"
-              src={image}
-              alt={name}
-              style={{ height: "220px", objectFit: "contain" }}
-            />
-            <div className="card-icons">
+    <div className="main-wrapper">
+      <Card
+        className="shadow-sm border-0 rounded-4 p-2 category-card-small mx-2"
+        style={{ width: 210 }}
+      >
+        <div className="card-img-container">
+          <Card.Img
+            className="w-100 rounded-3"
+            style={{ height: "200px", objectFit: "cover" }}
+            variant="top"
+            src={image}
+            alt={name}
+          />
+          <div className="card-icons">
               <button
                 className={`icon-btn fav-btn ${
                   isFavorite ? "text-primary bg-light" : ""
@@ -154,6 +152,15 @@ export default function ProductCard({ product }: Props) {
                 <i className={`fa-heart ${isFavorite ? "fas" : "far"}`}></i>
               </button>
             </div>
+        </div>
+        <Card.Body className="d-flex flex-column justify-content-between align-items-start">
+          <div className="text-start">
+            <Card.Title className="fw-semibold">{name}</Card.Title>
+            <Card.Subtitle className="text-muted small mb-2">
+              {category}
+            </Card.Subtitle>
+            <Card.Text className="fw-bold mb-1">{price} EGP</Card.Text>
+            <Card.Text className="fw-bold">Rating: {rating}</Card.Text>
           </div>
 
           <Card.Body className="d-flex flex-column justify-content-between align-items-center">

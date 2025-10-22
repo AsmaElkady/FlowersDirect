@@ -17,7 +17,8 @@ import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
 import Cart from "./pages/Cart/Cart.tsx";
 import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
 import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
-import AddProduct from "./pages/addProduct/AddProduct.tsx";
+import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
+import ProductListAdmin from "./pages/dashboard/productDB/productList/ProductListAdmin.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -85,6 +86,8 @@ const rout = createBrowserRouter([
     children: [
       { path: "overview", element: <OverView /> },
       { path: "category", element: <CategoryDB /> },
+      {path: "/AddProduct" , element: <AddProduct/>},
+      {path: "/productListAdmin" , element: <ProductListAdmin/>}
     ],
   },
 ]);
