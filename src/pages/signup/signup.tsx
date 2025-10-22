@@ -18,14 +18,15 @@ import {
 } from "../../utils/schema";
 import { useNavigate } from "react-router";
 import "../../style/auth.css";
-import { baseUrl } from "../../constants/main";
+import { adminEmail, baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
-import { setToken, setName, setID } from "../../redux/slices/authSlice";
+import { setToken, setUser } from "../../redux/slices/authSlice";
+import { Admin, Customer } from "../../classes/users";
+import { toast, ToastContainer } from "react-toastify";
 
 const SignUp = () => {
   const { defaultValues } = getSchemaData("signup");
   const navigate = useNavigate();
-  //const location = useLocation();
   const dispatch = useDispatch();
 
   const form = useForm<ISignup>({
@@ -35,18 +36,27 @@ const SignUp = () => {
   });
 
   const handleRegister = async (userValue: ISignup) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { re_password, ...values } = userValue;
-    const userInfo = {
-      ...values,
-      cart: {
-        cartsItems: [],
-        totalQuantity: 0,
-        totalPrice: 0,
-      },
-      favorites: [],
-      orders: [],
-    };
+    let userInfo;
+    if (Admin.checkAdmin(adminEmail).status) {
+      userInfo = new Admin(
+        userValue.email,
+        userValue.username,
+        userValue.password
+      );
+    } else {
+      userInfo = new Customer(
+        userValue.email,
+        userValue.username,
+        userValue.password,
+        {
+          cartItems: [],
+          totalQuantity: 0,
+          totalPrice: 0,
+        },
+        [],
+        []
+      );
+    }
     const res = await axios.post(baseUrl + "users", userInfo);
     return res;
   };
@@ -56,12 +66,16 @@ const SignUp = () => {
     mutationFn: handleRegister,
     onSuccess: (res) => {
       dispatch(setToken(res.data.accessToken));
-      dispatch(setName(res.data.user.username));
-      dispatch(setID(res.data.user.id));
+      dispatch(setUser(res.data.user));
       localStorage.setItem("token", JSON.stringify(res.data.accessToken));
       navigate("/", { replace: true });
       // location.key == "default" ? navigate(-1)
       //   : navigate("/", { replace: true });
+    },
+    onError: (err) => {
+      if (axios.isAxiosError(err) && err.response) {
+        toast.error(err.response.statusText);
+      }
     },
   });
 
@@ -106,6 +120,7 @@ const SignUp = () => {
           </Col>
         </Col>
       </Row>
+      <ToastContainer />
     </Container>
   );
 };

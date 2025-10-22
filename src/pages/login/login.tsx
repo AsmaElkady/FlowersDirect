@@ -15,7 +15,8 @@ import AuthText from "../../components/animations/AuthText";
 import { useNavigate } from "react-router";
 import { baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
-import { setToken, setName, setID } from "../../redux/slices/authSlice";
+import { setToken, setUser } from "../../redux/slices/authSlice";
+import { Admin } from "../../classes/users";
 
 const Login = () => {
   const { defaultValues } = getSchemaData("login");
@@ -38,15 +39,16 @@ const Login = () => {
     mutationKey: ["login"],
     mutationFn: handleLogin,
     onSuccess: (res) => {
-      console.log(res);
       if (res) {
         dispatch(setToken(res.data.accessToken));
-        dispatch(setName(res.data.user.username));
-        dispatch(setID(res.data.user.id));
-        localStorage.setItem("token", JSON.stringify(res.data.accessToken));
-        localStorage.setItem("user", JSON.stringify(res.data.user));
+        dispatch(setUser(res.data.user));
+        if (Admin.checkAdmin(res.data.user.email).status) {
+          navigate("/admin/users");
+        } else {
+          navigate("/", { replace: true });
+        }
       }
-      navigate("/", { replace: true });
+
       //location.state?.from ? navigate(-1) : navigate("/", { replace: true });
     },
   });

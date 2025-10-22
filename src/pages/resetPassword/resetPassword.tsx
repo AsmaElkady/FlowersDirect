@@ -3,7 +3,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Password from "../../components/Inputs/Password";
-import AuthBtn from "../../components/Buttons/AuthBtn";
 import { useMutation } from "@tanstack/react-query";
 import type { IResetPass } from "../../types/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -19,13 +18,13 @@ import { useNavigate } from "react-router";
 import { baseUrl } from "../../constants/main";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
+import { toast, ToastContainer } from "react-toastify";
+import MyButton from "../../components/Buttons/MyButton";
 
 const ResetPassword = () => {
-  const id = useSelector((state: RootState) => state.auth.id);
+  const id = useSelector((state: RootState) => state.auth.user.id);
   const user = useSelector((state: RootState) => state.auth.user);
   const navigate = useNavigate();
-
-  console.log("user", user);
 
   const form = useForm<IResetPass>({
     defaultValues: ResetPassDefaultValues,
@@ -35,14 +34,10 @@ const ResetPassword = () => {
 
   const handleResubmit = async (userValue: IResetPass) => {
     if (user) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { password, ...reset } = user;
       const obj = {
-        ...reset,
         password: userValue.password,
       };
-
-      const res = await axios.put(baseUrl + "users/" + id, obj);
+      const res = await axios.patch(baseUrl + "userss/" + id, obj);
       return res;
     }
   };
@@ -51,7 +46,13 @@ const ResetPassword = () => {
     mutationKey: ["resetPass"],
     mutationFn: handleResubmit,
     onSuccess: () => {
+      toast("Your password changed successfully");
       navigate("/Login", { replace: true });
+    },
+    onError: (err) => {
+      if (axios.isAxiosError(err) && err.response) {
+        toast.error(err.response.statusText);
+      }
     },
   });
 
@@ -80,11 +81,9 @@ const ResetPassword = () => {
                     {error.message && error.message}
                   </p>
                 )}
-                <AuthBtn
-                  name="Login"
-                  title="Don't have an account?"
-                  navName="Sign Up"
-                  navTo="/Signup"
+                <MyButton
+                  varient="primary"
+                  title="Reset"
                   isLoading={isPending}
                 />
               </Form>
@@ -92,6 +91,7 @@ const ResetPassword = () => {
           </Col>
         </Col>
       </Row>
+      <ToastContainer />
     </Container>
   );
 };

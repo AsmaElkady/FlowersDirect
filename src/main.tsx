@@ -9,6 +9,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import HomePage from "./pages/home/home.tsx";
 import "./style/main.css";
 import "./index.css";
+import "react-toastify/dist/ReactToastify.css";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import Login from "./pages/login/login.tsx";
 import SignUp from "./pages/signup/signup.tsx";
@@ -19,6 +20,10 @@ import store from "./redux/store.ts";
 import Cart from "./pages/Cart/Cart.tsx";
 import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
 import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
+import ListCustomers from "./pages/dashboard111/Customers/listCustomers.tsx";
+import AdminLayout from "./pages/dashboard111/Layout/AdminLayout.tsx";
+import CustomerDetails from "./pages/dashboard111/Customers/customerDetails/customerDetails.tsx";
+import UsersDB from "./pages/dashboard/users/usersDB.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -35,6 +40,26 @@ const rout = createBrowserRouter([
   { path: "/Signup", element: <SignUp /> },
   { path: "/ForgetPassword", element: <ForgetPassword /> },
   { path: "/ResetPassword", element: <ResetPassword /> },
+  {
+    path: "/users",
+    children: [
+      { index: true, element: <UsersDB /> },
+      { path: ":id", element: <CustomerDetails /> },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "users",
+        children: [
+          { index: true, element: <ListCustomers /> },
+          { path: ":id", element: <CustomerDetails /> },
+        ],
+      },
+    ],
+  },
 ]);
 
 const queryClient = new QueryClient();
