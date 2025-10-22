@@ -22,7 +22,7 @@ export default function Filter({ onFilterChange, minPrice, maxPrice, allProducts
 
     const [selectedColor, setSelectedColor] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState(maxPrice);
     const [showFilter, setShowFilter] = useState(false);
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 

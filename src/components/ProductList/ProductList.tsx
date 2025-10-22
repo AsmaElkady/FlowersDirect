@@ -3,10 +3,10 @@ import ProductCard from "../ProductCard/ProductCard";
 import type { IProduct } from "../../Types/productType";
 
 interface ProductListProps {
-  products: IProduct[];
-  currentPage: number;
-  totalPages: number;
-  setCurrentPage: (page: number) => void;
+    products: IProduct[];
+    currentPage: number;
+    totalPages: number;
+    setCurrentPage: (page: number) => void;
 }
 
 export default function ProductList({

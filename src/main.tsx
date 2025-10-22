@@ -14,6 +14,10 @@ import { Provider } from "react-redux";
 import store from "./redux/store.ts";
 import OverView from "./pages/dashboart/overview/overview.tsx";
 import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
+import Cart from "./pages/Cart/Cart.tsx";
+import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
+import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
+import AddProduct from "./pages/addProduct/AddProduct.tsx";
 
 const rout = createBrowserRouter([
   {

@@ -1,18 +1,12 @@
 export interface IProduct {
-    id: string;
+    id: number;
     name: string;
     desc: string;
     image: string;
     color: string;
     category: string;
     price: number;
-    orderedItems: number;
-    rating: number;
-    reviews: {
-        total: number;
-        breakdown: Record<string, number>;
-    };
+    rating: string;
     isFavorite: boolean;
     totalQuantity: number;
-    refund: number;
 }

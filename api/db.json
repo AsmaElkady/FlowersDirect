@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": "01",
+      "id": 1,
       "name": "Red Tulip",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
@@ -9,21 +9,11 @@
       "category": "Tulips",
       "price": 137,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "02",
+      "id": 2,
       "name": "Purpleish Blue",
       "desc": "A beautiful Iris with a natural wood stand.",
       "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
@@ -32,21 +22,11 @@
       "price": 250,
       "orderedItems": 10,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 150,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 10
     },
     {
-      "id": "03",
+      "id": 3,
       "name": "Yellow Tulip",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/21568165/pexels-photo-21568165.jpeg?_gl=1*2ewxm6*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxODU3JGo1OSRsMCRoMA..",
@@ -54,21 +34,11 @@
       "category": "Tulips",
       "price": 139,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "04",
+      "id": 4,
       "name": "Purple Tulip",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/11985516/pexels-photo-11985516.jpeg?_gl=1*1dc9f1z*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxOTIxJGo1OSRsMCRoMA..",
@@ -76,21 +46,11 @@
       "category": "Tulips",
       "price": 237,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "05",
+      "id": 5,
       "name": "Limonium Blue",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/12224119/pexels-photo-12224119.jpeg?_gl=1*68emve*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyMTE0JGoxNCRsMCRoMA..",
@@ -98,21 +58,11 @@
       "category": "Fillers",
       "price": 337,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "06",
+      "id": 6,
       "name": "Limonium White",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/14903885/pexels-photo-14903885.jpeg?_gl=1*kjzdv0*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNDIzJGoxMCRsMCRoMA..",
@@ -120,21 +70,11 @@
       "category": "Fillers",
       "price": 437,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "07",
+      "id": 7,
       "name": "Cherry Blossom",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/12198773/pexels-photo-12198773.jpeg?_gl=1*1a1ut8i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNTM4JGoxNiRsMCRoMA..",
@@ -142,21 +82,11 @@
       "category": "Fillers",
       "price": 150,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "08",
+      "id": 8,
       "name": "Limonium Pink",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/7827263/pexels-photo-7827263.jpeg?_gl=1*1igurhg*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyMTU2JGo0NyRsMCRoMA..",
@@ -164,21 +94,11 @@
       "category": "Fillers",
       "price": 140,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "09",
+      "id": 9,
       "name": "White Filler",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/924374/pexels-photo-924374.jpeg?_gl=1*neuz7m*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNjE1JGoyOCRsMCRoMA..",
@@ -186,21 +106,11 @@
       "category": "Asiatic Lilies",
       "price": 240,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "White Rose",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/30536274/pexels-photo-30536274.jpeg?_gl=1*6adpf1*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNjcwJGozMyRsMCRoMA..",
@@ -208,21 +118,11 @@
       "category": "Roses",
       "price": 260,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Spring Dream",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/30536274/pexels-photo-30536274.jpeg?_gl=1*6adpf1*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNjcwJGozMyRsMCRoMA..",
@@ -230,21 +130,11 @@
       "category": "Carnations",
       "price": 140,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "12",
+      "id": 12,
       "name": "Golden Orchid",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image11.png",
@@ -252,21 +142,11 @@
       "category": "Roses",
       "price": 130,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "13",
+      "id": 13,
       "name": "Limonium White",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/31225436/pexels-photo-31225436.jpeg?_gl=1*9tf49d*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyMzkwJGo0MyRsMCRoMA..",
@@ -274,21 +154,11 @@
       "category": "Asiatic Lilies",
       "price": 190,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "14",
+      "id": 14,
       "name": "Wild Iris",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
@@ -296,21 +166,11 @@
       "category": "Iris",
       "price": 110,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "15",
+      "id": 15,
       "name": "Limonium Pink",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image14.png",
@@ -318,21 +178,11 @@
       "category": "Asiatic Lilies",
       "price": 160,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "16",
+      "id": 16,
       "name": "Limonium Pink",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image15.png",
@@ -340,21 +190,11 @@
       "category": "Carnations",
       "price": 120,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "17",
+      "id": 17,
       "name": "Pink Rose",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image16.png",
@@ -362,21 +202,11 @@
       "category": "Roses",
       "price": 150,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
     },
     {
-      "id": "18",
+      "id": 18,
       "name": "Meadow Lavender",
       "desc": "A beautiful tulip with a natural wood stand.",
       "image": "/src/assets/Image17.png",
@@ -384,18 +214,20 @@
       "category": "Roses",
       "price": 140,
       "rating": "⭐⭐⭐",
-      "reviews": {
-        "total": 120,
-        "breakdown": {
-          "1": 3,
-          "2": 5,
-          "3": 10,
-          "4": 30,
-          "5": 72
-        }
-      },
       "isFavorite": false,
       "totalQuantity": 15
+    },
+    {
+      "id": 19,
+      "name": " Lavender",
+      "desc": "purple flower",
+      "image": "blob:http://localhost:5173/a302120b-13ce-4260-93e6-7270f1aa85b3",
+      "color": "purple",
+      "category": "Iris",
+      "price": 160,
+      "rating": "0",
+      "isFavorite": false,
+      "totalQuantity": 5
     }
   ],
   "categories": [
