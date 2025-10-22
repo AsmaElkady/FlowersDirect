@@ -20,7 +20,13 @@ import { useNavigate } from "react-router";
 import "../../style/auth.css";
 import { baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
-import { setToken, setName, setID } from "../../redux/slices/authSlice";
+import {
+  setToken,
+  setName,
+  setID,
+  setUser,
+} from "../../redux/slices/authSlice";
+import Helmet from "react-helmet";
 
 const SignUp = () => {
   const { defaultValues } = getSchemaData("signup");
@@ -58,6 +64,7 @@ const SignUp = () => {
       dispatch(setToken(res.data.accessToken));
       dispatch(setName(res.data.user.username));
       dispatch(setID(res.data.user.id));
+      dispatch(setUser(res.data.user));
       localStorage.setItem("token", JSON.stringify(res.data.accessToken));
       navigate("/", { replace: true });
       // location.key == "default" ? navigate(-1)
@@ -71,42 +78,49 @@ const SignUp = () => {
   };
 
   return (
-    <Container fluid>
-      <Row className="align-items-center justify-content-center bg-linear h-100">
-        <Col sm="12" md="6" className="bg-imgVertical">
-          <div className="bg-imgVertical"></div>
-        </Col>
-        <Col
-          md="6"
-          sm="12"
-          className="d-flex justify-content-center align-items-center vh-100"
-        >
-          <Col lg="8" md="10" sm="12">
-            <AuthText title="Let's Bloom!" />
-            <FormProvider {...form}>
-              <Form onSubmit={form.handleSubmit(onSubmit)}>
-                <MyInput id="username" label="Username" type="text" />
-                <MyInput id="email" label="Email" type="email" />
-                <Password />
-                <Password label="Repassword" id="re_password" />
-                {isError && (
-                  <p className="text-center text-secondary">
-                    {error.message && error.message}
-                  </p>
-                )}
-                <AuthBtn
-                  name="Sign up"
-                  title="already have an account?"
-                  navName="Login"
-                  navTo="/Login"
-                  isLoading={isPending}
-                />
-              </Form>
-            </FormProvider>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Sing UP</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <Container fluid>
+        <Row className="align-items-center justify-content-center bg-linear h-100">
+          <Col sm="12" md="6" className="bg-imgVertical">
+            <div className="bg-imgVertical"></div>
           </Col>
-        </Col>
-      </Row>
-    </Container>
+          <Col
+            md="6"
+            sm="12"
+            className="d-flex justify-content-center align-items-center vh-100"
+          >
+            <Col lg="8" md="10" sm="12">
+              <AuthText title="Let's Bloom!" />
+              <FormProvider {...form}>
+                <Form onSubmit={form.handleSubmit(onSubmit)}>
+                  <MyInput id="username" label="Username" type="text" />
+                  <MyInput id="email" label="Email" type="email" />
+                  <Password />
+                  <Password label="Repassword" id="re_password" />
+                  {isError && (
+                    <p className="text-center text-secondary">
+                      {error.message && error.message}
+                    </p>
+                  )}
+                  <AuthBtn
+                    name="Sign up"
+                    title="already have an account?"
+                    navName="Login"
+                    navTo="/Login"
+                    isLoading={isPending}
+                  />
+                </Form>
+              </FormProvider>
+            </Col>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

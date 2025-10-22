@@ -7,6 +7,7 @@ import "./navbar.css";
 import { useState } from "react";
 import { Link } from "react-router";
 import type { RootState } from "../../redux/store";
+// import FavModel from "../../pages/favModel/test";
 import FavModel from "../../pages/favModel/favModel";
 
 export default function MyNavbar() {
@@ -24,7 +25,7 @@ export default function MyNavbar() {
   console.log(token, username, id);
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary position-fixed w-100 z-3">
         <Container className="d-flex align-items-center justify-content-between">
           <Navbar.Brand>
             <Link to={"/"}>
@@ -37,41 +38,24 @@ export default function MyNavbar() {
               aria-controls="responsive-navbar-nav"
               className="border-0 order-lg-2 ms-2"
             />
+
             <Nav className="d-flex flex-row justify-content-center align-items-center">
-              <Link to="/cart">
-                <div className="position-relative">
-                  <ShoppingCartIcon className="text-primary mx-3" />
-                  <span
-                    className="bg-secondary position-absolute text-light"
-                    style={{
-                      top: "-15px",
-                      right: "7px",
-                      padding: "2px",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    {cartlength}
-                  </span>
-                </div>
+              <Link to="/cart" className="position-relative mx-3">
+                <ShoppingCartIcon className="text-primary fs-4" />
+                <span className="cart-badge text-primary cart">
+                  {cartlength}
+                </span>
               </Link>
+
               <Button
                 onClick={() => setModalShow(true)}
-                className="border-0 bg-transparent position-relative"
+                className="border-0 bg-transparent position-relative mx-2"
               >
-                <FavoriteIcon className="text-primary" />
-                <span
-                  className="bg-secondary position-absolute text-light"
-                  style={{
-                    top: "-10px",
-                    right: "6px",
-                    padding: "2px",
-                    borderRadius: "50%",
-                  }}
-                >
-                  {favlength}
-                </span>
+                <FavoriteIcon className="text-primary fs-4" />
+                <span className="cart-badge text-primary fav">{favlength}</span>
               </Button>
             </Nav>
+
             {token == null ? (
               <Link to="/Login">
                 <i className="fa-solid fa-right-to-bracket fs-5"></i>
