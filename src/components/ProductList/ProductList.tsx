@@ -25,7 +25,7 @@ export default function ProductList({
         <>
           <Row className="g-4">
             {products.map((product) => (
-              <Col key={product.id} md={4}>
+              <Col key={product.id} md={4} className=" d-flex align-items-center justify-content-center">
                 <ProductCard product={product} />
               </Col>
             ))}

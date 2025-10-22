@@ -69,38 +69,36 @@ export default function ProductCard({ product }: Props) {
   return (
     <div className="main-wrapper">
       <Card
-        className="shadow-sm border-0 rounded-4 p-2 card-wrapper"
-        style={{ minHeight: "350px" }}
+        className="shadow-sm border-0 rounded-4 p-2 category-card-small mx-2"
+        style={{ width: 210 }}
       >
         <div className="card-img-container">
           <Card.Img
-            className="card-img"
+            className="w-100 rounded-3"
+            style={{ height: "200px", objectFit: "cover" }}
             variant="top"
             src={image}
             alt={name}
-            style={{ height: "220px", objectFit: "contain" }}
           />
           <div className="card-icons">
             <button
-              className={`icon-btn fav-btn ${
-                favItem.some((item: IProduct) => item.id === product.id)
+              className={`icon-btn fav-btn ${favItem.some((item: IProduct) => item.id === product.id)
                   ? "text-primary"
                   : ""
-              }`}
+                }`}
               disabled={favItem.some((item: IProduct) => item.id === id)}
               onClick={handelAddToFav}
             >
               <i
-                className={`fa-heart ${
-                  favItem.some((item: IProduct) => item.id === product.id)
+                className={`fa-heart ${favItem.some((item: IProduct) => item.id === product.id)
                     ? "fas"
                     : "far"
-                }`}
+                  }`}
               ></i>
             </button>
           </div>
         </div>
-        <Card.Body className="d-flex flex-column justify-content-between align-items-center">
+        <Card.Body className="d-flex flex-column justify-content-between align-items-start">
           <div className="text-start">
             <Card.Title className="fw-semibold">{name}</Card.Title>
             <Card.Subtitle className="text-muted small mb-2">
