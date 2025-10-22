@@ -232,46 +232,46 @@
   ],
   "categories": [
     {
-      "id": "01",
       "name": "Asiatic Lilies",
-      "description": "Desc",
-      "image": "/src/assets/Category1.png"
+      "description": "Asiatic lilies are perennial bulbs that bloom with showy, upright flowers in numerous colors, such as orange, yellow, red, pink, and white.",
+      "image": "https://e-c.storage.googleapis.com/res/67abf2d2-cf4b-4c6f-9824-0018daa574e0/480",
+      "id": 1
     },
     {
-      "id": "02",
       "name": "Fillers",
-      "description": "Desc",
-      "image": "/src/assets/Category2.png"
+      "description": "Filler flowers add depth, texture, and movement. They soften gaps between large blooms and create harmony across an arrangement.",
+      "image": "https://e-c.storage.googleapis.com/res/ca8da386-2fea-400b-a943-b158fc00d116/480",
+      "id": 2
     },
     {
-      "id": "03",
+      "id": 3,
       "name": "Carnations",
-      "description": "Desc",
-      "image": "/src/assets/Category3.png"
+      "description": "They have cultural significance and are associated with love, distinction, and motherly affection. ",
+      "image": "https://e-c.storage.googleapis.com/res/1d02ea8b-e378-4e92-81f1-1673fba08638/480"
     },
     {
-      "id": "04",
+      "id": 4,
       "name": "Iris",
-      "description": "Desc",
-      "image": "/src/assets/Category4.png"
+      "description": "Carnation flowers are symbolic of love, fascination, and distinction and are scientifically known as Dianthus. ",
+      "image": "https://e-c.storage.googleapis.com/res/5c9986de-4597-484f-b376-883af493af44/480"
     },
     {
-      "id": "05",
+      "id": 5,
       "name": "Lisianthus",
-      "description": "Desc",
-      "image": "/src/assets/Category5.png"
+      "description": "Lisianthus is in great demand for bridal bouquets and other special occasion arrangements",
+      "image": "https://e-c.storage.googleapis.com/res/4b6f0291-3e78-482b-b5ed-1cea8f75a76c/480"
     },
     {
-      "id": "06",
+      "id": 6,
       "name": "Roses",
-      "description": "Desc",
-      "image": "/src/assets/Category6.png"
+      "description": "Most rose species are native to Asia, with smaller numbers being native to North America and a few to Europe and northwest Africa.",
+      "image": "https://e-c.storage.googleapis.com/res/10e7e5d0-1e48-406a-b9f8-18f185372d78/480"
     },
     {
-      "id": "07",
+      "id": 7,
       "name": "Tulips",
-      "description": "Desc",
-      "image": "/src/assets/Category7.png"
+      "description": "Tulips are spring-blooming perennial herbaceous bulbiferous geophytes in the Tulipa genus. Their flowers are usually large, showy, and brightly coloured, generally red, orange, pink, yellow, or white. ",
+      "image": "https://images.pexels.com/photos/6913060/pexels-photo-6913060.jpeg?_gl=1*11oh4kg*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgwODI2JGoxNiRsMCRoMA.."
     }
   ],
   "users": [
@@ -279,11 +279,34 @@
       "email": "Test@test.com",
       "username": "Test ",
       "cart": {
-        "cartsItems": [],
+        "cartItems": [],
         "totalQuantity": 0,
         "totalPrice": 0
       },
-      "favorites": [],
+      "favorites": [
+        {
+          "id": "04",
+          "name": "Purple Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/11985516/pexels-photo-11985516.jpeg?_gl=1*1dc9f1z*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxOTIxJGo1OSRsMCRoMA..",
+          "color": "green",
+          "category": "Tulips",
+          "price": 237,
+          "rating": "⭐⭐⭐",
+          "reviews": {
+            "total": 120,
+            "breakdown": {
+              "1": 3,
+              "2": 5,
+              "3": 10,
+              "4": 30,
+              "5": 72
+            }
+          },
+          "isFavorite": false,
+          "totalQuantity": 15
+        }
+      ],
       "id": 1,
       "password": "$2a$10$K1m03Hy55BLhaSVdTINiPu33iSaV2DcTu1TkElLO2BF0MKfWQDJCa"
     }

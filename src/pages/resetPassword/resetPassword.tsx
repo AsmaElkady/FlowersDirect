@@ -19,6 +19,7 @@ import { useNavigate } from "react-router";
 import { baseUrl } from "../../constants/main";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
+import { Helmet } from "react-helmet";
 
 const ResetPassword = () => {
   const id = useSelector((state: RootState) => state.auth.id);
@@ -61,38 +62,45 @@ const ResetPassword = () => {
   };
 
   return (
-    <Container fluid>
-      <Row className="align-items-center bg-linear">
-        <Col sm="12" md="6" className="bg-imgVertical" />
-        <Col
-          md="6"
-          sm="12"
-          className="d-flex justify-content-center align-items-center vh-100"
-        >
-          <Col lg="8" md="10" sm="12">
-            <AuthText title="Reset Password" />
-            <FormProvider {...form}>
-              <Form onSubmit={form.handleSubmit(onSubmit)}>
-                <Password id="password" />
-                <Password label="Repassword" id="re_password" />
-                {isError && (
-                  <p className="text-center text-secondary">
-                    {error.message && error.message}
-                  </p>
-                )}
-                <AuthBtn
-                  name="Login"
-                  title="Don't have an account?"
-                  navName="Sign Up"
-                  navTo="/Signup"
-                  isLoading={isPending}
-                />
-              </Form>
-            </FormProvider>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Reset Password</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <Container fluid>
+        <Row className="align-items-center bg-linear">
+          <Col sm="12" md="6" className="bg-imgVertical" />
+          <Col
+            md="6"
+            sm="12"
+            className="d-flex justify-content-center align-items-center vh-100"
+          >
+            <Col lg="8" md="10" sm="12">
+              <AuthText title="Reset Password" />
+              <FormProvider {...form}>
+                <Form onSubmit={form.handleSubmit(onSubmit)}>
+                  <Password id="password" />
+                  <Password label="Repassword" id="re_password" />
+                  {isError && (
+                    <p className="text-center text-secondary">
+                      {error.message && error.message}
+                    </p>
+                  )}
+                  <AuthBtn
+                    name="Login"
+                    title="Don't have an account?"
+                    navName="Sign Up"
+                    navTo="/Signup"
+                    isLoading={isPending}
+                  />
+                </Form>
+              </FormProvider>
+            </Col>
           </Col>
-        </Col>
-      </Row>
-    </Container>
+        </Row>
+      </Container>
+    </>
   );
 };
 

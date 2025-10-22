@@ -1,12 +1,15 @@
-import { Card, Button } from "react-bootstrap";
+
+import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import type { IProduct } from "../../Types/productType";
 import type { AppDispatch, RootState } from "../../redux/store";
-import { addFavApi } from "../../redux/slices/favSlice";
+import { addFavApi, deleteFavItemApi } from "../../redux/slices/favSlice";
 import "./ProductCard.css";
 import { addOrUpdateCartApi } from "../../redux/slices/cartApi";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import { useState } from "react";
+
 type Props = {
   product: IProduct;
 };
@@ -20,10 +23,27 @@ export default function ProductCard({ product }: Props) {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastBg, setToastBg] = useState<"success" | "danger" | "info">(
+    "success"
+  );
+
+  const showNotification = (
+    message: string,
+    bg: "success" | "danger" | "info"
+  ) => {
+    setToastMessage(message);
+    setToastBg(bg);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 2000);
+  };
+
   const handelAddToCart = () => {
     const token = localStorage.getItem("token");
     if (token) {
       dispatch(addOrUpdateCartApi({ product }));
+      showNotification(`🛒 ${name} added to cart!`, "success");
     } else {
       Swal.fire({
         title: "You Should Login first",
@@ -45,9 +65,7 @@ export default function ProductCard({ product }: Props) {
 
   const handelAddToFav = () => {
     const token = localStorage.getItem("token");
-    if (token) {
-      dispatch(addFavApi({ product }));
-    } else {
+    if (!token) {
       Swal.fire({
         title: "You Should Login first",
         html: "Please login to continue",
@@ -63,10 +81,54 @@ export default function ProductCard({ product }: Props) {
           navigate("/login");
         },
       });
+      return;
+    }
+
+    const isFav = favItem.some((item: IProduct) => item.id === id);
+
+    if (isFav) {
+      dispatch(deleteFavItemApi(id));
+      showNotification(`💔 ${name} removed from favorites`, "danger");
+    } else {
+      dispatch(addFavApi({ product }));
+      showNotification(`❤️ ${name} added to favorites`, "success");
     }
   };
 
+  const isFavorite = favItem.some((item: IProduct) => item.id === id);
+
   return (
+       <ToastContainer
+        className="p-3"
+        position="top-end"
+        style={{
+          position: "fixed",
+          top: 20,
+          right: 20,
+          zIndex: 9999,
+        }}
+      >
+        <Toast
+          bg={toastBg}
+          onClose={() => setShowToast(false)}
+          show={showToast}
+          delay={2000}
+          autohide
+        >
+          <Toast.Header closeButton={false}>
+            <img
+              src={image}
+              alt={name}
+              width={30}
+              height={30}
+              className="rounded me-2"
+              style={{ objectFit: "cover" }}
+            />
+            <strong className="me-auto">Store Notification</strong>
+          </Toast.Header>
+          <Toast.Body className="text-white">{toastMessage}</Toast.Body>
+        </Toast>
+      </ToastContainer>
     <div className="main-wrapper">
       <Card
         className="shadow-sm border-0 rounded-4 p-2 category-card-small mx-2"
@@ -81,22 +143,15 @@ export default function ProductCard({ product }: Props) {
             alt={name}
           />
           <div className="card-icons">
-            <button
-              className={`icon-btn fav-btn ${favItem.some((item: IProduct) => item.id === product.id)
-                  ? "text-primary"
-                  : ""
+              <button
+                className={`icon-btn fav-btn ${
+                  isFavorite ? "text-primary bg-light" : ""
                 }`}
-              disabled={favItem.some((item: IProduct) => item.id === id)}
-              onClick={handelAddToFav}
-            >
-              <i
-                className={`fa-heart ${favItem.some((item: IProduct) => item.id === product.id)
-                    ? "fas"
-                    : "far"
-                  }`}
-              ></i>
-            </button>
-          </div>
+                onClick={handelAddToFav}
+              >
+                <i className={`fa-heart ${isFavorite ? "fas" : "far"}`}></i>
+              </button>
+            </div>
         </div>
         <Card.Body className="d-flex flex-column justify-content-between align-items-start">
           <div className="text-start">
@@ -107,17 +162,28 @@ export default function ProductCard({ product }: Props) {
             <Card.Text className="fw-bold mb-1">{price} EGP</Card.Text>
             <Card.Text className="fw-bold">Rating: {rating}</Card.Text>
           </div>
-          <div className="mt-3 me-4">
-            <Button
-              variant="outline-primary"
-              disabled={cartItems.some((item: IProduct) => item.id === id)}
-              onClick={handelAddToCart}
-            >
-              Add to Cart
-            </Button>
-          </div>
-        </Card.Body>
-      </Card>
-    </div>
+
+          <Card.Body className="d-flex flex-column justify-content-between align-items-center">
+            <div className="text-start">
+              <Card.Title className="fw-semibold">{name}</Card.Title>
+              <Card.Subtitle className="text-muted small mb-2">
+                {category}
+              </Card.Subtitle>
+              <Card.Text className="fw-bold mb-1">{price} EGP</Card.Text>
+              <Card.Text className="fw-bold">Rating: {rating}</Card.Text>
+            </div>
+            <div className="mt-3 me-4">
+              <Button
+                variant="outline-primary"
+                disabled={cartItems.some((item: IProduct) => item.id === id)}
+                onClick={handelAddToCart}
+              >
+                Add to Cart
+              </Button>
+            </div>
+          </Card.Body>
+        </Card>
+      </div>
+    </>
   );
 }
