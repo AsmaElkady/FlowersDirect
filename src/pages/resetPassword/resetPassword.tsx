@@ -20,6 +20,7 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
 import { toast, ToastContainer } from "react-toastify";
 import MyButton from "../../components/Buttons/MyButton";
+import { Helmet } from "react-helmet";
 
 const ResetPassword = () => {
   const id = useSelector((state: RootState) => state.auth.user.id);
@@ -62,6 +63,12 @@ const ResetPassword = () => {
   };
 
   return (
+            <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Reset Password</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
     <Container fluid>
       <Row className="align-items-center bg-linear">
         <Col sm="12" md="6" className="bg-imgVertical" />
@@ -93,6 +100,7 @@ const ResetPassword = () => {
       </Row>
       <ToastContainer />
     </Container>
+      </>
   );
 };
 

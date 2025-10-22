@@ -7,6 +7,7 @@ import "./navbar.css";
 import { useState } from "react";
 import { Link } from "react-router";
 import type { RootState } from "../../redux/store";
+// import FavModel from "../../pages/favModel/test";
 import FavModel from "../../pages/favModel/favModel";
 
 export default function MyNavbar() {
@@ -15,14 +16,15 @@ export default function MyNavbar() {
     (state: RootState) => state.FavSlice.favItem.length
   );
   const cartlength = useSelector(
-    (state: RootState) => state.Cart.cartItems.length
+    (state: RootState) => state.Cart.cart.cartItems.length
   );
+
   const token = useSelector((state: RootState) => state.auth.token);
   const user = useSelector((state: RootState) => state.auth.user);
   console.log(token, user);
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary position-fixed w-100 z-3">
         <Container className="d-flex align-items-center justify-content-between">
           <Navbar.Brand>
             <Link to={"/"}>
@@ -35,58 +37,24 @@ export default function MyNavbar() {
               aria-controls="responsive-navbar-nav"
               className="border-0 order-lg-2 ms-2"
             />
+
             <Nav className="d-flex flex-row justify-content-center align-items-center">
-              {/* <Nav.Link href="/model">
-              <div className="position-relative">
-                <FavoriteIcon className="text-primary mx-3" />
-                <span
-                  className="position-absolute "
-                  style={{ top: "-13px", right: "2px" }}
-                >
-                  <img src="/img/nav/Vector.png" alt="" width={"25px"} />
+              <Link to="/cart" className="position-relative mx-3">
+                <ShoppingCartIcon className="text-primary fs-4" />
+                <span className="cart-badge text-primary cart">
+                  {cartlength}
                 </span>
-                <span
-                  className=" position-absolute text-primary "
-                  style={{ top: "-10px", right: "8px", fontSize: "15px" }}
-                >
-                  10
-                </span>
-              </div>
-            </Nav.Link> */}
-              <Link to="/cart">
-                <div className="position-relative">
-                  <ShoppingCartIcon className="text-primary mx-3" />
-                  <span
-                    className="bg-secondary position-absolute text-light"
-                    style={{
-                      top: "-15px",
-                      right: "7px",
-                      padding: "2px",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    {cartlength}
-                  </span>
-                </div>
               </Link>
+
               <Button
                 onClick={() => setModalShow(true)}
-                className="border-0 bg-transparent position-relative"
+                className="border-0 bg-transparent position-relative mx-2"
               >
-                <FavoriteIcon className="text-primary" />
-                <span
-                  className="bg-secondary position-absolute text-light"
-                  style={{
-                    top: "-10px",
-                    right: "6px",
-                    padding: "2px",
-                    borderRadius: "50%",
-                  }}
-                >
-                  {favlength}
-                </span>
+                <FavoriteIcon className="text-primary fs-4" />
+                <span className="cart-badge text-primary fav">{favlength}</span>
               </Button>
             </Nav>
+
             {token == null ? (
               <Link to="/Login">
                 <i className="fa-solid fa-right-to-bracket fs-5"></i>
@@ -97,7 +65,6 @@ export default function MyNavbar() {
               </Link>
             )}
           </div>
-
           <Navbar.Collapse
             id="responsive-navbar-nav"
             className="order-lg-1 justify-content-center"
@@ -127,18 +94,6 @@ export default function MyNavbar() {
 
       {/* Model */}
       <FavModel show={modalShow} onHide={() => setModalShow(false)} />
-      {/* 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Favorite</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
     </>
   );
 }

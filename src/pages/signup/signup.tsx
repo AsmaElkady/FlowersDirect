@@ -23,6 +23,7 @@ import { useDispatch } from "react-redux";
 import { setToken, setUser } from "../../redux/slices/authSlice";
 import { Admin, Customer } from "../../classes/users";
 import { toast, ToastContainer } from "react-toastify";
+import Helmet from "react-helmet";
 
 const SignUp = () => {
   const { defaultValues } = getSchemaData("signup");
@@ -85,38 +86,45 @@ const SignUp = () => {
   };
 
   return (
-    <Container fluid>
-      <Row className="align-items-center justify-content-center bg-linear h-100">
-        <Col sm="12" md="6" className="bg-imgVertical">
-          <div className="bg-imgVertical"></div>
-        </Col>
-        <Col
-          md="6"
-          sm="12"
-          className="d-flex justify-content-center align-items-center vh-100"
-        >
-          <Col lg="8" md="10" sm="12">
-            <AuthText title="Let's Bloom!" />
-            <FormProvider {...form}>
-              <Form onSubmit={form.handleSubmit(onSubmit)}>
-                <MyInput id="username" label="Username" type="text" />
-                <MyInput id="email" label="Email" type="email" />
-                <Password />
-                <Password label="Repassword" id="re_password" />
-                {isError && (
-                  <p className="text-center text-secondary">
-                    {error.message && error.message}
-                  </p>
-                )}
-                <AuthBtn
-                  name="Sign up"
-                  title="already have an account?"
-                  navName="Login"
-                  navTo="/Login"
-                  isLoading={isPending}
-                />
-              </Form>
-            </FormProvider>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Sing UP</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <Container fluid>
+        <Row className="align-items-center justify-content-center bg-linear h-100">
+          <Col sm="12" md="6" className="bg-imgVertical">
+            <div className="bg-imgVertical"></div>
+          </Col>
+          <Col
+            md="6"
+            sm="12"
+            className="d-flex justify-content-center align-items-center vh-100"
+          >
+            <Col lg="8" md="10" sm="12">
+              <AuthText title="Let's Bloom!" />
+              <FormProvider {...form}>
+                <Form onSubmit={form.handleSubmit(onSubmit)}>
+                  <MyInput id="username" label="Username" type="text" />
+                  <MyInput id="email" label="Email" type="email" />
+                  <Password />
+                  <Password label="Repassword" id="re_password" />
+                  {isError && (
+                    <p className="text-center text-secondary">
+                      {error.message && error.message}
+                    </p>
+                  )}
+                  <AuthBtn
+                    name="Sign up"
+                    title="already have an account?"
+                    navName="Login"
+                    navTo="/Login"
+                    isLoading={isPending}
+                  />
+                </Form>
+              </FormProvider>
+            </Col>
           </Col>
         </Col>
       </Row>

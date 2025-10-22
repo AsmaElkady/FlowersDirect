@@ -21,6 +21,7 @@ import { setUser } from "../../redux/slices/authSlice";
 import AuthBtn from "../../components/Buttons/AuthBtn";
 import { motion } from "motion/react";
 import { toast, ToastContainer } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const ForgetPassword = () => {
   const [userData, setUserData] = useState<IForgetPass>({ email: "" });
@@ -76,7 +77,13 @@ const ForgetPassword = () => {
   };
 
   return (
-    <Container fluid>
+<>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Forget Password</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>    
+<Container fluid>
       <Row className="align-items-center justify-content-center bg-linear h-100">
         <Col sm="12" md="6" className="bg-imgVertical" />
         <Col
@@ -120,6 +127,7 @@ const ForgetPassword = () => {
       </Row>
       <ToastContainer />
     </Container>
+        </>
   );
 };
 
