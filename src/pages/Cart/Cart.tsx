@@ -18,14 +18,14 @@ export default function Cart() {
         <title>Cart</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <div className="cart-root container py-4">
+      <div className="cart-root container py-4" >
         <h2 className="cart-title text-center m-5">Your Flower Basket</h2>
         <div className="row g-4">
           <div className="col-lg-8">
             <div className="list">
               {cartItems.length > 0 ? (
                 <button
-                  className="btn btn-primary ms-auto d-block"
+                  className="btn btn-primary ms-auto d-block mb-3"
                   onClick={() => {
                     dispatch(clearCartApi());
                   }}

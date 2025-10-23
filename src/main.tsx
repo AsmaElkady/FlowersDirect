@@ -33,6 +33,13 @@ const rout = createBrowserRouter([
         },
       },
       {
+        path: "*",
+        lazy: async () => {
+          const x = await import("./pages/notFound/notFound.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
         path: "products",
         lazy: async () => {
           const x = await import("./pages/products/products.tsx");

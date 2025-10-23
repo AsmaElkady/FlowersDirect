@@ -5,7 +5,7 @@ import { baseUrl } from "../../constants/main";
 export interface ICategory {
   id: number;
   name: string;
-  description: string;
+  desc: string;
   image?: string | undefined;
 }
 

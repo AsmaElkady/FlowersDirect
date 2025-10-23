@@ -6,7 +6,7 @@ import type { CartState, ICartProduct } from "../../types/cart";
 
 //  Helper: Get current user ID safely
 
-const getUserId = (): string | null => {
+const getUserId = (): number | null => {
   try {
     const user = JSON.parse(localStorage.getItem("user") || "null");
     return user?.id || null;
@@ -79,7 +79,7 @@ export const addOrUpdateCartApi = createAsyncThunk(
 // Increase Quantity
 export const increaseQuantityApi = createAsyncThunk(
   "cart/increaseQuantityApi",
-  async ({ productId }: { productId: string }) => {
+  async ({ productId }: { productId: number }) => {
     const userId = getUserId();
     if (!userId) throw new Error("User not found!");
 
@@ -102,7 +102,7 @@ export const increaseQuantityApi = createAsyncThunk(
 
 export const decreaseQuantityApi = createAsyncThunk(
   "cart/decreaseQuantityApi",
-  async ({ productId }: { productId: string }) => {
+  async ({ productId }: { productId: number }) => {
     const userId = getUserId();
     if (!userId) throw new Error("User not found!");
 
@@ -126,7 +126,7 @@ export const decreaseQuantityApi = createAsyncThunk(
 //  Delete single product
 export const deleteCartItemApi = createAsyncThunk(
   "cart/deleteCartItemApi",
-  async (productId: string) => {
+  async (productId: number) => {
     const userId = getUserId();
     if (!userId) throw new Error("User not found!");
 

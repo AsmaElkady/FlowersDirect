@@ -89,6 +89,7 @@
 //     </Container>
 //   );
 // }
+
 import "./carousel.css";
 
 import Container from "react-bootstrap/Container";
@@ -96,14 +97,19 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
+import type { IProduct } from "../../types/productType";
+import { addOrUpdateCartApi } from "../../redux/slices/cartApi";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/store";
+import Rating from "@mui/material/Rating";
 
 type Category = {
-  id: string;
+  id?: number;
   name: string;
-  description?: string;
-  desc?: string;
+  desc: string;
   image: string;
-  rating?:string;
+  price?: number;
+  rating?: number;
 };
 
 interface MultiImageSliderProps {
@@ -119,35 +125,17 @@ const responsive = {
   mobile: { breakpoint: { max: 464, min: 0 }, items: 1.2 },
 };
 
-const defaultCategories: Category[] = [
-  {
-    id: "1",
-    name: "Flower",
-    image: "/img/Home/category/1.png",
-    description: "Elegant blooms",
-  },
-  {
-    id: "2",
-    name: "Tulip",
-    image: "/img/Home/category/2.png",
-    description: "Bright colors",
-  },
-  {
-    id: "3",
-    name: "Rose",
-    image: "/img/Home/category/3.png",
-    description: "Classic beauty",
-  },
-];
-
 export default function MultiImageSlider({
   title,
   all,
   data,
 }: MultiImageSliderProps) {
-  const displayData = data?.length ? data : defaultCategories;
+  const displayData = data?.length ? data : [];
   const navigate = useNavigate();
-
+  const dispatch = useDispatch<AppDispatch>();
+  const cartItems = useSelector(
+    (state: RootState) => state.Cart.cart.cartItems
+  );
   return (
     <Container className="my-5">
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -177,7 +165,6 @@ export default function MultiImageSlider({
         {displayData.map((item) => (
           <div
             key={item.id}
-            // className="border border-dark rounded-3 p-2 mx-2"
             className="category-card-small mx-2"
             style={{ width: 210 }}
           >
@@ -191,16 +178,37 @@ export default function MultiImageSlider({
             <div className="category-text">
               <h6 className="m-2">{item.name}</h6>
               <p>
-                {item.description
-                  ? item.description.split(" ").slice(0, 6).join(" ") + "..."
-                  : ""}
-              </p>
-              <p>
                 {item.desc
                   ? item.desc.split(" ").slice(0, 6).join(" ") + "..."
                   : ""}
               </p>
-              <p className="fw-bold">{item.rating? item.rating : ""}</p>
+              <Rating
+                name="half-rating-read"
+                defaultValue={item.rating ?? 2.5}
+                precision={0.5}
+                readOnly
+              />
+              <p className="fw-bold">
+                {item.price ? (
+                  <>
+                    <Button
+                      variant="outline-primary"
+                      disabled={cartItems.some(
+                        (p: IProduct) => p.id === item.id
+                      )}
+                      onClick={() =>
+                        dispatch(
+                          addOrUpdateCartApi({ product: item as IProduct })
+                        )
+                      }
+                    >
+                      Add to Cart
+                    </Button>
+                  </>
+                ) : (
+                  ""
+                )}
+              </p>
             </div>
           </div>
         ))}

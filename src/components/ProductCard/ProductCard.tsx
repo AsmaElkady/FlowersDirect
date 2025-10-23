@@ -1,7 +1,7 @@
 
 import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import type { IProduct } from "../../Types/productType";
+import type { IProduct } from "../../types/productType";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { addFavApi, deleteFavItemApi } from "../../redux/slices/favSlice";
 import "./ProductCard.css";
@@ -9,6 +9,7 @@ import { addOrUpdateCartApi } from "../../redux/slices/cartApi";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import Rating from "@mui/material/Rating";
 
 type Props = {
   product: IProduct;
@@ -25,14 +26,9 @@ export default function ProductCard({ product }: Props) {
 
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
-  const [toastBg, setToastBg] = useState<"success" | "danger" | "info">(
-    "success"
-  );
+  const [toastBg, setToastBg] = useState<"danger" | "primary">("primary");
 
-  const showNotification = (
-    message: string,
-    bg: "success" | "danger" | "info"
-  ) => {
+  const showNotification = (message: string, bg: "danger" | "primary") => {
     setToastMessage(message);
     setToastBg(bg);
     setShowToast(true);
@@ -43,7 +39,7 @@ export default function ProductCard({ product }: Props) {
     const token = localStorage.getItem("token");
     if (token) {
       dispatch(addOrUpdateCartApi({ product }));
-      showNotification(`🛒 ${name} added to cart!`, "success");
+      showNotification(`🛒 ${name} added to cart!`, "primary");
     } else {
       Swal.fire({
         title: "You Should Login first",
@@ -91,7 +87,7 @@ export default function ProductCard({ product }: Props) {
       showNotification(`💔 ${name} removed from favorites`, "danger");
     } else {
       dispatch(addFavApi({ product }));
-      showNotification(`❤️ ${name} added to favorites`, "success");
+      showNotification(`❤️ ${name} added to favorites`, "primary");
     }
   };
 
@@ -99,7 +95,7 @@ export default function ProductCard({ product }: Props) {
 
   return (
     <>
-       <ToastContainer
+      <ToastContainer
         className="p-3"
         position="top-end"
         style={{
@@ -130,20 +126,20 @@ export default function ProductCard({ product }: Props) {
           <Toast.Body className="text-white">{toastMessage}</Toast.Body>
         </Toast>
       </ToastContainer>
-    <div className="main-wrapper">
-      <Card
-        className="shadow-sm border-0 rounded-4 p-2 category-card-small mx-2"
-        style={{ width: 210 }}
-      >
-        <div className="card-img-container">
-          <Card.Img
-            className="w-100 rounded-3"
-            style={{ height: "200px", objectFit: "cover" }}
-            variant="top"
-            src={image}
-            alt={name}
-          />
-          <div className="card-icons">
+      <div className="main-wrapper">
+        <Card
+          className="shadow-sm border-0 rounded-4 p-2 category-card-small mx-2"
+          style={{ width: 210 }}
+        >
+          <div className="card-img-container">
+            <Card.Img
+              className="w-100 rounded-3"
+              style={{ height: "200px", objectFit: "cover" }}
+              variant="top"
+              src={image}
+              alt={name}
+            />
+            <div className="card-icons">
               <button
                 className={`icon-btn fav-btn ${
                   isFavorite ? "text-primary bg-light" : ""
@@ -153,16 +149,23 @@ export default function ProductCard({ product }: Props) {
                 <i className={`fa-heart ${isFavorite ? "fas" : "far"}`}></i>
               </button>
             </div>
-        </div>
-        <Card.Body className="d-flex flex-column justify-content-between align-items-start">
-          <div className="text-start">
-            <Card.Title className="fw-semibold">{name}</Card.Title>
-            <Card.Subtitle className="text-muted small mb-2">
-              {category}
-            </Card.Subtitle>
-            <Card.Text className="fw-bold mb-1">{price} EGP</Card.Text>
-            <Card.Text className="fw-bold">Rating: {rating}</Card.Text>
           </div>
+          <Card.Body className="d-flex flex-column justify-content-between align-items-start">
+            <div className="text-start">
+              <Card.Title className="fw-semibold">{name}</Card.Title>
+              <Card.Subtitle className="text-muted small mb-2">
+                {category}
+              </Card.Subtitle>
+              <Card.Text className="fw-bold mb-1">{price} EGP</Card.Text>
+              <Card.Text className="fw-bold">
+                <Rating
+                  name="half-rating-read"
+                  defaultValue={rating}
+                  precision={0.5}
+                  readOnly
+                />
+              </Card.Text>
+            </div>
             <div className="mt-3 me-4">
               <Button
                 variant="outline-primary"

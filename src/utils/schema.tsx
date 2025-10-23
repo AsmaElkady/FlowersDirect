@@ -73,7 +73,7 @@ export const addCategorySchema = z.object({
       /^[A-Z][a-zA-Z]{2,5}/,
       "Please enter a valid name (e.g., Rose)"
     ),
-  description: z
+  desc: z
     .string()
     .min(3, "Description must be at least 3 characters long")
     .max(150, "Description can't exceed 150 characters"),
@@ -87,7 +87,7 @@ export type AddCategorySchemaType = z.infer<typeof addCategorySchema>;
 
 export const addCategoryDefaultValues: AddCategorySchemaType = {
   name: "",
-  description: "",
+  desc: "",
   image: "",
 };
 // end category schema==============
