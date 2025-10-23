@@ -13,15 +13,19 @@ export default function SidebarDashboard() {
   const handleOverview = () => {
     console.log("Overview clicked");
     navigation("overview");
-};
+  };
 
-const handleProducts = () => {
+  const handleProducts = () => {
     console.log("Products clicked");
-};
+  };
 
-const handleCategories = () => {
-      navigation("category");
+  const handleCategories = () => {
+    navigation("category");
     console.log("Categories clicked");
+  };
+
+  const handleUsers = () => {
+    navigation("users");
   };
 
   return (
@@ -79,7 +83,11 @@ const handleCategories = () => {
                 <i className="fa-solid fa-receipt text-light" />
                 <span className="sidebar-text text-light mx-2">Orders</span>
               </button>
-              <button className="btn text-start py-3" id="users">
+              <button
+                className="btn text-start py-3"
+                id="users"
+                onClick={handleUsers}
+              >
                 <i className="fa-solid fa-user-group text-light" />
                 <span className="sidebar-text text-light mx-2">Users</span>
               </button>

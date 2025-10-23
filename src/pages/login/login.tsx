@@ -9,7 +9,7 @@ import { useMutation } from "@tanstack/react-query";
 import type { ILogin } from "../../types/auth";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
-import { getSchemaData, loginSchema } from "../../utils/schema";
+import { loginSchema } from "../../utils/schema";
 import axios from "axios";
 import AuthText from "../../components/animations/AuthText";
 import { useNavigate } from "react-router";
@@ -18,14 +18,15 @@ import { useDispatch } from "react-redux";
 import { setToken, setUser } from "../../redux/slices/authSlice";
 import { Admin } from "../../classes/users";
 import { Helmet } from "react-helmet";
+import { loginDefaultValues } from "../../utils/schema/loginSchema";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
-  const { defaultValues } = getSchemaData("login");
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const form = useForm<ILogin>({
-    defaultValues,
+    defaultValues: loginDefaultValues,
     resolver: zodResolver(loginSchema),
     mode: "all",
   });
@@ -43,13 +44,17 @@ const Login = () => {
         dispatch(setToken(res.data.accessToken));
         dispatch(setUser(res.data.user));
         if (Admin.checkAdmin(res.data.user.email).status) {
-          navigate("/admin/users");
+          navigate("/dashboard", { replace: true });
         } else {
           navigate("/", { replace: true });
         }
       }
-
       //location.state?.from ? navigate(-1) : navigate("/", { replace: true });
+    },
+    onError: (err) => {
+      if (axios.isAxiosError(err) && err.response) {
+        toast.error(err.response.data);
+      }
     },
   });
 
@@ -97,6 +102,7 @@ const Login = () => {
           </Col>
           <Col sm="12" md="6" className="bg-imgVertical" />
         </Row>
+        <ToastContainer />
       </Container>
     </>
   );
