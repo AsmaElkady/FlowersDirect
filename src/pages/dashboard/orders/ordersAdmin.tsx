@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Admin } from "../../../classes/users";
 import SearchIcon from "@mui/icons-material/Search";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import DataTableComponent from "../../../components/Table/SortTable";
 import Search from "../../../components/Inputs/Search";
 import {
@@ -56,76 +56,114 @@ const OrdersAdmin = () => {
     }
   }, [orders, search, allOrders]);
 
+  // Helpers for nicer display
+  const currencyFormatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  });
+
+  const statusClassMap: Record<string, string> = {
+    delivered: "bg-success",
+    shipped: "bg-info",
+    processing: "bg-warning text-dark",
+    cancelled: "bg-danger",
+    pending: "bg-secondary",
+  };
+
+  const toTitle = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
   const columns = [
     {
-      name: "Order ID",
-      selector: (row: Order) => row.id ?? "",
+      name: "Order",
+      selector: (row: Order) => row.id ?? 0,
       sortable: true,
+      cell: (row: Order) => (
+        <Link
+          to={`/order-details/${row.id ?? ""}`}
+          className="text-decoration-none fw-semibold"
+          title="View Order"
+        >
+          #{row.id}
+        </Link>
+      ),
     },
     {
       name: "User ID",
       selector: (row: Order) => row.userId,
       sortable: true,
+      cell: (row: Order) => (
+        <span className="text-muted">#{row.userId}</span>
+      ),
     },
     {
       name: "Items",
       selector: (row: Order) => row.items?.length ?? 0,
       sortable: true,
+      cell: (row: Order) => (
+        <span className="badge bg-light text-dark">
+          {row.items?.length ?? 0}
+        </span>
+      ),
+      right: true,
     },
     {
-      name: "Total Price",
-      selector: (row: Order) => `$${row.totalPrice.toFixed(2)}`,
+      name: "Total",
+      selector: (row: Order) => row.totalPrice ?? 0,
       sortable: true,
+      cell: (row: Order) => (
+        <span className="fw-semibold">
+          {currencyFormatter.format(row.totalPrice ?? 0)}
+        </span>
+      ),
+      right: true,
     },
     {
       name: "Status",
+      selector: (row: Order) => row.status,
+      sortable: true,
       cell: (row: Order) => (
         <span
-          className={`badge ${
-            row.status === "delivered"
-              ? "bg-success"
-              : row.status === "shipped"
-              ? "bg-info"
-              : row.status === "processing"
-              ? "bg-warning"
-              : row.status === "cancelled"
-              ? "bg-danger"
-              : "bg-secondary"
-          }`}
+          className={`badge rounded-pill ${statusClassMap[row.status] ?? "bg-secondary"}`}
         >
-          {row.status}
+          {toTitle(row.status)}
         </span>
       ),
-      sortable: true,
     },
     {
       name: "Action",
       cell: (row: Order) => (
-        <div className="d-flex gap-1">
+        <div className="d-flex align-items-center gap-3">
           <Button
-            className="text-primary bg-transparent border-0 m-0 p-0"
+            variant="link"
+            className="text-primary p-0"
             onClick={() => handleStatusChange(row)}
             title="Change Status"
+            aria-label="Change Status"
           >
-            <i className="bi bi-arrow-repeat"></i>
+            <i className="bi bi-arrow-repeat fs-4"></i>
           </Button>
           <Button
-            className="text-info bg-transparent border-0 m-0 p-0"
+            variant="link"
+            className="text-info p-0"
             onClick={() => handleView(row)}
             title="View Details"
+            aria-label="View Details"
           >
-            <i className="bi bi-eye"></i>
+            <i className="bi bi-eye fs-4"></i>
           </Button>
           <Button
-            className="text-danger bg-transparent border-0"
+            variant="link"
+            className="text-danger p-0"
             onClick={() => handleDelete(row)}
             title="Delete Order"
+            aria-label="Delete Order"
           >
-            <i className="bi bi-trash3"></i>
+            <i className="bi bi-trash3 fs-4"></i>
           </Button>
         </div>
       ),
-      width: "150px",
+      width: "160px",
     },
   ];
 
@@ -231,7 +269,7 @@ const OrdersAdmin = () => {
         </div>
       </div>
 
-      <DataTableComponent columns={columns} data={rows} loading={loading} />
+      <DataTableComponent columns={columns} data={rows} loading={loading}  />
       <ToastContainer />
     </div>
   );

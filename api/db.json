@@ -554,26 +554,11 @@
       "id": "f61d68dc-dd28-406a-979b-910b9c395b8f",
       "userId": 7,
       "address": "ff",
-      "status": "delivered",
+      "status": "shipped",
       "note": "gfgfg"
     },
     {
       "items": [
-        {
-          "id": 2,
-          "name": "Purpleish Blue",
-          "desc": "A beautiful Iris with a natural wood stand.",
-          "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
-          "color": "purple",
-          "category": "Iris",
-          "price": 250,
-          "orderedItems": 10,
-          "rating": 4.5,
-          "isFavorite": false,
-          "totalQuantity": 10,
-          "quantity": 5,
-          "total": 1250
-        },
         {
           "id": 1,
           "name": "Red Tulip",
@@ -584,17 +569,17 @@
           "price": 137,
           "rating": 5,
           "isFavorite": false,
-          "totalQuantity": 5,
-          "quantity": 5,
-          "total": 685
+          "totalQuantity": 0,
+          "quantity": 1,
+          "total": 137
         }
       ],
-      "totalPrice": 1935,
-      "id": "8c451b40-4971-4c46-b71b-8ecd83194831",
-      "userId": 7,
-      "address": "d",
-      "status": "pending",
-      "note": "ccv"
+      "totalPrice": 137,
+      "id": "9c8b7a6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "userId": 6,
+      "address": "456 Market Ave, Metropolis",
+      "status": "delivered",
+      "note": "N/A"
     }
   ]
 }
