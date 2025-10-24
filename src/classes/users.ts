@@ -4,6 +4,7 @@ import {
   getUserByEmail,
   updateUserPassword,
   removeUser,
+  updateUser,
 } from "../redux/api/userAPI";
 import type { ICart } from "../types/cart";
 import type { ICustomer } from "../types/auth";
@@ -82,6 +83,10 @@ export class Customer extends User implements userType {
     if (email != "admin@admin.com") {
       return getUserByEmail(email);
     }
+  }
+
+  static editProfile(user: Partial<ICustomer>) {
+    return updateUser(user);
   }
 
   addOrder() {}

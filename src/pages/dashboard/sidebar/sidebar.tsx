@@ -1,10 +1,13 @@
 import { useState } from "react";
 import "./sidebar.css";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { logoutUser } from "../../../redux/slices/authSlice";
 
 export default function SidebarDashboard() {
   const [collapsed, setCollapsed] = useState(true);
   const navigation = useNavigate();
+  const dispatch = useDispatch();
 
   const handleCollapse = () => {
     setCollapsed((prev) => !prev);
@@ -26,6 +29,11 @@ export default function SidebarDashboard() {
 
   const handleUsers = () => {
     navigation("users");
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigation("/Login");
   };
 
   return (
@@ -92,9 +100,12 @@ export default function SidebarDashboard() {
                 <span className="sidebar-text text-light mx-2">Users</span>
               </button>
 
-              <button className="btn btn-danger text-start mt-auto py-3">
-                <i className="fa-solid fa-arrow-right-from-bracket text-light" />
-                <span className="mx-2 sidebar-text text-light">Logout</span>
+              <button
+                className="btn text-start text-white py-3"
+                onClick={handleLogout}
+              >
+                <i className="fa fa-sign-out" aria-hidden="true"></i>
+                <span className="sidebar-text text-light mx-2">Logout</span>
               </button>
             </div>
           </aside>

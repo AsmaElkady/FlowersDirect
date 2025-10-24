@@ -1,11 +1,11 @@
 import type { ICart } from "./cart";
 
-export interface IUser {
+export type IUser = {
   id?: number;
   email: string;
   username: string;
   password: string;
-}
+};
 export type ILogin = Pick<IUser, "email" | "password">;
 
 export interface ISignup extends ILogin {
@@ -21,10 +21,11 @@ export interface IResetPass {
 
 export interface IAuthSlice {
   token: string;
-  name: string;
-  id: number;
-  email: string;
-  user?: ICustomer | IUser;
+  user?: ICustomer;
+  admin?: IUser;
+  status: string;
+  isLoading: boolean;
+  isError: boolean;
 }
 
 export type ICustomer = {
@@ -45,4 +46,14 @@ export interface IChangePasswordProps {
 export interface CallBack {
   status: boolean;
   msg: string;
+}
+
+export interface IEditProfileProps {
+  user: ICustomer;
+  checkEditStatus: (result: CallBack) => void;
+}
+
+export interface IProfile {
+  username: string;
+  email: string;
 }

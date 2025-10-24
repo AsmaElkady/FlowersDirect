@@ -23,7 +23,6 @@ import MyButton from "../../components/Buttons/MyButton";
 import { Helmet } from "react-helmet";
 
 const ResetPassword = () => {
-  const id = useSelector((state: RootState) => state.auth.user.id);
   const user = useSelector((state: RootState) => state.auth.user);
   const navigate = useNavigate();
 
@@ -38,7 +37,7 @@ const ResetPassword = () => {
       const obj = {
         password: userValue.password,
       };
-      const res = await axios.patch(baseUrl + "userss/" + id, obj);
+      const res = await axios.patch(baseUrl + "users/" + user.id, obj);
       return res;
     }
   };

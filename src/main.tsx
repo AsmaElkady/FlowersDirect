@@ -14,10 +14,12 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Provider } from "react-redux";
 import store from "./redux/store.ts";
 import UsersDB from "./pages/dashboard/users/usersDB.tsx";
+import OrdersAdmin from "./pages/dashboard/orders/ordersAdmin.tsx";
 import OverView from "./pages/dashboart/overview/overview.tsx";
 import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
 import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
 import ProductListAdmin from "./pages/dashboard/productDB/productList/ProductListAdmin.tsx";
+import Login from "./pages/login/login.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -47,9 +49,37 @@ const rout = createBrowserRouter([
         },
       },
       {
+        path: "products/:id",
+        lazy: async () => {
+          const x = await import("./pages/ProductDetails/ProductDetails.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
         path: "cart",
         lazy: async () => {
           const x = await import("./pages/Cart/Cart.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
+        path: "checkout",
+        lazy: async () => {
+          const x = await import("./pages/CheckOut/CheckOut.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
+        path: "order-details/:orderId",
+        lazy: async () => {
+          const x = await import("./pages/OrderDetails/OrderDetails.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
+        path: "profile",
+        lazy: async () => {
+          const x = await import("./pages/userProfile/userProfile.tsx");
           return { Component: x.default };
         },
       },
@@ -57,10 +87,11 @@ const rout = createBrowserRouter([
   },
   {
     path: "/Login",
-    lazy: async () => {
-      const x = await import("./pages/login/login.tsx");
-      return { Component: x.default };
-    },
+    element: <Login />,
+    // lazy: async () => {
+    //   const x = await import("./pages/login/login.tsx");
+    //   return { Component: x.default };
+    // },
   },
   {
     path: "/Signup",
@@ -84,9 +115,16 @@ const rout = createBrowserRouter([
     },
   },
   {
+    path: "/Profile",
+    lazy: async () => {
+      const x = await import("./pages/userProfile/userProfile.tsx");
+      return { Component: x.default };
+    },
+  },
+  {
     path: "/dashboard",
     lazy: async () => {
-      const x = await import("./pages/dashboart/layout/layout.tsx");
+      const x = await import("./pages/dashboard/layout/layout.tsx");
       return { Component: x.default };
     },
     children: [
@@ -94,6 +132,7 @@ const rout = createBrowserRouter([
       { path: "category", element: <CategoryDB /> },
       { path: "AddProduct", element: <AddProduct /> },
       { path: "productListAdmin", element: <ProductListAdmin /> },
+      { path: "orders", element: <OrdersAdmin /> },
       { path: "users", element: <UsersDB /> },
     ],
   },

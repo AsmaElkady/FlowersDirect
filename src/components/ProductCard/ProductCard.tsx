@@ -1,4 +1,3 @@
-
 import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import type { IProduct } from "../../types/productType";
@@ -7,7 +6,7 @@ import { addFavApi, deleteFavItemApi } from "../../redux/slices/favSlice";
 import "./ProductCard.css";
 import { addOrUpdateCartApi } from "../../redux/slices/cartApi";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import Rating from "@mui/material/Rating";
 
@@ -53,10 +52,11 @@ export default function ProductCard({ product }: Props) {
           htmlContainer: "swal-text",
         },
         willClose: () => {
-          navigate("/login");
+          navigate("/Login");
         },
       });
     }
+    console.log("cart");
   };
 
   const handelAddToFav = () => {
@@ -74,7 +74,7 @@ export default function ProductCard({ product }: Props) {
           htmlContainer: "swal-text",
         },
         willClose: () => {
-          navigate("/login");
+          navigate("/Login");
         },
       });
       return;
@@ -132,13 +132,15 @@ export default function ProductCard({ product }: Props) {
           style={{ width: 210 }}
         >
           <div className="card-img-container">
-            <Card.Img
-              className="w-100 rounded-3"
-              style={{ height: "200px", objectFit: "cover" }}
-              variant="top"
-              src={image}
-              alt={name}
-            />
+            <Link to={`/products/${id}`}>
+              <Card.Img
+                className="w-100 rounded-3"
+                style={{ height: "200px", objectFit: "cover" }}
+                variant="top"
+                src={image}
+                alt={name}
+              />
+            </Link>
             <div className="card-icons">
               <button
                 className={`icon-btn fav-btn ${

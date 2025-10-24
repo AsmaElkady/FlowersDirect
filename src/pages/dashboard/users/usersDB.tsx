@@ -29,11 +29,15 @@ const UsersDB = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkType = Admin.checkAdmin(user?.email);
-    if (checkType.status) {
-      dispatch(Admin.viewUsers());
+    if (user) {
+      const checkType = Admin.checkAdmin(user?.email);
+      if (checkType.status) {
+        dispatch(Admin.viewUsers());
+      } else {
+        navigate("/Login");
+      }
     } else {
-      navigate("/login");
+      navigate("/Login");
     }
   }, [dispatch, navigate, user, user?.email]);
 
@@ -160,7 +164,7 @@ const UsersDB = () => {
     <div className="p-3">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h3 className="fw-bold text-primary">Users</h3>
-        <div className="d-flex">
+        <div className="d-flex align-items-center">
           <div>
             <Search
               handleSearch={(e) => {
@@ -169,25 +173,8 @@ const UsersDB = () => {
               show={showInput}
             />
           </div>
-
-          {/* <input
-            type="text"
-            className="form-control-sm border ps-1 my-3 input-group w-auto p-1 position-absolute "
-            placeholder="Search by name..."
-            value={search}
-            onChange={(e) => {
-              setSearch(e.target.value);
-              handleSearch(e.target.value);
-            }}
-            style={{
-              display: showInput ? "block" : "none",
-              right: 190,
-              bottom: 10,
-              zIndex: 3,
-            }}
-          /> */}
           <Button
-            className="bg-light text-primary m-2"
+            className="bg-light text-primary mx-2"
             onClick={() => setShowInput(!showInput)}
           >
             <SearchIcon />
