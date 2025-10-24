@@ -11,15 +11,8 @@ import "react-toastify/dist/ReactToastify.css";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
-import ProductDetails from "./pages/ProductDetails/ProductDetails.tsx";
-import Cart from "./pages/Cart/Cart.tsx";
-import CheckOut from "./pages/CheckOut/CheckOut.tsx";
-import OrderDetails from "./pages/OrderDetails/OrderDetails.tsx";
 import { Provider } from "react-redux";
 import store from "./redux/store.ts";
-import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
-import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
 import UsersDB from "./pages/dashboard/users/usersDB.tsx";
 import OrdersAdmin from "./pages/dashboard/orders/ordersAdmin.tsx";
 import OverView from "./pages/dashboart/overview/overview.tsx";
