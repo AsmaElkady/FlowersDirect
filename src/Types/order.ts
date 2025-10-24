@@ -5,19 +5,19 @@ interface OrderItem extends IProduct {
 }
 
 export interface Order {
-    id:string,
-    userId:string,
-    items:OrderItem[],
-    totalPrice:number,
-    address:string,
-    note? : string,
-    phone?: string,
-    status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
+  id: string;
+  userId: string;
+  items: OrderItem[];
+  totalPrice: number;
+  address: string;
+  note?: string;
+  phone?: string;
+  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
 }
 
-interface orderState{
-    orders:Order[],
-    loading:boolean,
+interface orderState {
+  orders: Order[];
+  loading: boolean;
 }
 
 export type { orderState, OrderItem };

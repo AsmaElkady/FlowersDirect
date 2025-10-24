@@ -1,4 +1,3 @@
-
 import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import type { IProduct } from "../../types/productType";
@@ -53,12 +52,11 @@ export default function ProductCard({ product }: Props) {
           htmlContainer: "swal-text",
         },
         willClose: () => {
-          navigate("/login");
+          navigate("/Login");
         },
       });
     }
     console.log("cart");
-    
   };
 
   const handelAddToFav = () => {
@@ -76,7 +74,7 @@ export default function ProductCard({ product }: Props) {
           htmlContainer: "swal-text",
         },
         willClose: () => {
-          navigate("/login");
+          navigate("/Login");
         },
       });
       return;
@@ -140,6 +138,7 @@ export default function ProductCard({ product }: Props) {
                 style={{ height: "200px", objectFit: "cover" }}
                 variant="top"
                 src={image}
+                alt={name}
               />
             </Link>
             <div className="card-icons">

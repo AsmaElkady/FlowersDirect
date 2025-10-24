@@ -53,16 +53,19 @@ const adminSlice = createSlice({
       })
       .addCase(updateUser.pending, (state) => {
         state.status = "loading";
+        state.isLoading = true;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         console.log("done", action);
         state.status = "success";
+        state.isLoading = false;
         state.users = action.payload;
       })
       .addCase(updateUser.rejected, (state, action) => {
         console.log("errr", action);
         state.status = "feild";
         state.isError = true;
+        state.isLoading = false;
         //state.error = action.error
       })
       .addCase(updateUserPassword.pending, (state) => {
@@ -72,25 +75,29 @@ const adminSlice = createSlice({
         console.log("done", action);
         state.status = "success";
         state.users = action.payload;
+        state.isLoading = false;
       })
       .addCase(updateUserPassword.rejected, (state, action) => {
         console.log("errr", action);
         state.status = "feild";
         state.isError = true;
+        state.isLoading = false;
         //state.error = action.error
       })
       .addCase(removeUser.pending, (state) => {
         state.status = "loading";
+        state.isLoading = true;
       })
       .addCase(removeUser.fulfilled, (state, action) => {
         console.log("done", action);
         state.status = "success";
-        state.users = action.payload;
+        state.isLoading = false;
       })
       .addCase(removeUser.rejected, (state, action) => {
         console.log("errr", action);
         state.status = "feild";
         state.isError = true;
+        state.isLoading = false;
         //state.error = action.error
       });
   },

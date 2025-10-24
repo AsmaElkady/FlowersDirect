@@ -33,20 +33,16 @@ export const getUserByEmail = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   "users/update",
-  async (user: ICustomer) => {
-    try {
-      const res = await axios.put(baseUrl + UserAPI + "/?id=" + user.id, user);
-      return res.data;
-    } catch (err) {
-      return err;
-    }
+  async (user: Partial<ICustomer>) => {
+    const res = await axios.patch(baseUrl + UserAPI + "/" + user.id, user);
+    return res.data;
   }
 );
 
 export const updateUserPassword = createAsyncThunk(
   "users/updatePassword",
   async ({ id, password }: Pick<ICustomer, "id" | "password">) => {
-    const res = await axios.patch(baseUrl + UserAPI + "/?id=" + id, password);
+    const res = await axios.patch(baseUrl + UserAPI + "/" + id, password);
     return res.data;
   }
 );
