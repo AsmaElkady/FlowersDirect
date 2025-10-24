@@ -5,6 +5,13 @@
   height: 100vh;
 }
 
+.bg-imgHorizontal {
+  background-image: url("img/auth/_2.jpeg");
+  background-repeat: no-repeat;
+
+  width: 100vw;
+}
+
 .bg-img-Vertical {
   background-image: url("img/auth/img16.jpg");
   background-repeat: "no-repeat";

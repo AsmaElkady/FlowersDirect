@@ -18,6 +18,7 @@ import OverView from "./pages/dashboart/overview/overview.tsx";
 import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
 import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
 import ProductListAdmin from "./pages/dashboard/productDB/productList/ProductListAdmin.tsx";
+import Login from "./pages/login/login.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -50,10 +51,11 @@ const rout = createBrowserRouter([
   },
   {
     path: "/Login",
-    lazy: async () => {
-      const x = await import("./pages/login/login.tsx");
-      return { Component: x.default };
-    },
+    element: <Login />,
+    // lazy: async () => {
+    //   const x = await import("./pages/login/login.tsx");
+    //   return { Component: x.default };
+    // },
   },
   {
     path: "/Signup",
@@ -77,9 +79,16 @@ const rout = createBrowserRouter([
     },
   },
   {
+    path: "/Profile",
+    lazy: async () => {
+      const x = await import("./pages/userProfile/userProfile.tsx");
+      return { Component: x.default };
+    },
+  },
+  {
     path: "/dashboard",
     lazy: async () => {
-      const x = await import("./pages/dashboart/layout/layout.tsx");
+      const x = await import("./pages/dashboard/layout/layout.tsx");
       return { Component: x.default };
     },
     children: [

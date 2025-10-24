@@ -8,7 +8,13 @@ export const signUpSchema = zod
       .min(3, "Please Enter your fullname")
       .max(15, "max length is 15"),
     email: zod.email("Please Enter a correct email"),
-    password: zod.string().regex(PassRegex, "Please enter a strong password"),
+    password: zod
+      .string()
+      .min(8, "Your password should be 8 characters")
+      .regex(
+        PassRegex,
+        "Password must contain lower, upper chartecter and symbol"
+      ),
     re_password: zod.string(),
   })
   .refine((data) => data.password === data.re_password, {

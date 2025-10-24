@@ -18,11 +18,6 @@ export default function CategoryDBk() {
   const [showInput, setShowInput] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const dispatch = useDispatch<AppDispatch>();
-  useEffect(() => {
-    dispatch(fetchCategory());
-  }, [dispatch]);
-
   const filteredCategories = category.filter((cat: ICategory) =>
     cat.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
