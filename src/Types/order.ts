@@ -1,24 +1,23 @@
-export type OrderItem = {
-  id: string;
-  name: string;
-  image: string;
-  category?: string;
-  price: number;
-  quantity: number;
-};
+import type { IProduct } from "./productType";
 
-export type Order = {
+interface OrderItem extends IProduct {
+  quantity: number;
+}
+
+export interface Order {
   id: string;
-  orderNumber: string;
-  date: string;
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
+  userId: string;
   items: OrderItem[];
-  subtotal: number;
-  shipping: number;
-  total: number;
-  shippingAddress: {
-    line1: string;
-    notes?: string;
-  };
-  estimatedDelivery?: string;
-};
+  totalPrice: number;
+  address: string;
+  note?: string;
+  phone?: string;
+  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
+}
+
+interface orderState {
+  orders: Order[];
+  loading: boolean;
+}
+
+export type { orderState, OrderItem };

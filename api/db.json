@@ -8,9 +8,9 @@
       "color": "red",
       "category": "Tulips",
       "price": 137,
-      "rating": "⭐⭐⭐",
+      "rating": 5,
       "isFavorite": false,
-      "totalQuantity": 12
+      "totalQuantity": 0
     },
     {
       "id": 2,
@@ -20,10 +20,9 @@
       "color": "purple",
       "category": "Iris",
       "price": 250,
-      "orderedItems": 10,
-      "rating": "⭐⭐⭐",
+      "rating": 4.5,
       "isFavorite": false,
-      "totalQuantity": 10
+      "totalQuantity": 5
     },
     {
       "id": 3,
@@ -33,7 +32,7 @@
       "color": "yellow",
       "category": "Tulips",
       "price": 139,
-      "rating": "⭐⭐⭐",
+      "rating": 3.5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -45,7 +44,7 @@
       "color": "green",
       "category": "Tulips",
       "price": 237,
-      "rating": "⭐⭐⭐",
+      "rating": 4,
       "isFavorite": false,
       "totalQuantity": 18
     },
@@ -57,7 +56,7 @@
       "color": "blue",
       "category": "Fillers",
       "price": 337,
-      "rating": "⭐⭐⭐",
+      "rating": 5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -69,7 +68,7 @@
       "color": "white",
       "category": "Fillers",
       "price": 437,
-      "rating": "⭐⭐⭐",
+      "rating": 3.5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -81,7 +80,7 @@
       "color": "pink",
       "category": "Fillers",
       "price": 150,
-      "rating": "⭐⭐⭐",
+      "rating": 4.5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -93,7 +92,7 @@
       "color": "green",
       "category": "Fillers",
       "price": 140,
-      "rating": "⭐⭐⭐",
+      "rating": 4.5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -105,7 +104,7 @@
       "color": "white",
       "category": "Asiatic Lilies",
       "price": 240,
-      "rating": "⭐⭐⭐",
+      "rating": 4.5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -117,7 +116,7 @@
       "color": "white",
       "category": "Roses",
       "price": 260,
-      "rating": "⭐⭐⭐",
+      "rating": 5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -129,7 +128,7 @@
       "color": "orange",
       "category": "Carnations",
       "price": 140,
-      "rating": "⭐⭐⭐",
+      "rating": 5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -141,7 +140,7 @@
       "color": "red",
       "category": "Roses",
       "price": 130,
-      "rating": "⭐⭐⭐",
+      "rating": 5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -153,7 +152,7 @@
       "color": "white",
       "category": "Asiatic Lilies",
       "price": 190,
-      "rating": "⭐⭐⭐",
+      "rating": 4.5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -165,7 +164,7 @@
       "color": "blue",
       "category": "Iris",
       "price": 110,
-      "rating": "⭐⭐⭐",
+      "rating": 4,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -177,7 +176,7 @@
       "color": "pink",
       "category": "Asiatic Lilies",
       "price": 160,
-      "rating": "⭐⭐⭐",
+      "rating": 5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -189,7 +188,7 @@
       "color": "yellow",
       "category": "Carnations",
       "price": 120,
-      "rating": "⭐⭐⭐",
+      "rating": 3.5,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -201,7 +200,7 @@
       "color": "pink",
       "category": "Roses",
       "price": 150,
-      "rating": "⭐⭐⭐",
+      "rating": 4,
       "isFavorite": false,
       "totalQuantity": 15
     },
@@ -213,7 +212,7 @@
       "color": "purple",
       "category": "Roses",
       "price": 140,
-      "rating": "⭐⭐⭐",
+      "rating": 3.5,
       "isFavorite": false,
       "totalQuantity": 15
     }
@@ -221,51 +220,58 @@
   "categories": [
     {
       "name": "Asiatic Lilies",
-      "description": "Asiatic lilies are perennial bulbs that bloom with showy, upright flowers in numerous colors, such as orange, yellow, red, pink, and white.",
+      "desc": "Asiatic lilies are perennial bulbs that bloom with showy, upright flowers in numerous colors, such as orange, yellow, red, pink, and white.",
       "image": "https://e-c.storage.googleapis.com/res/67abf2d2-cf4b-4c6f-9824-0018daa574e0/480",
-      "id": 1
+      "id": 1,
+      "rating": 4
     },
     {
       "name": "Fillers",
-      "description": "Filler flowers add depth, texture, and movement. They soften gaps between large blooms and create harmony across an arrangement.",
+      "desc": "Filler flowers add depth, texture, and movement. They soften gaps between large blooms and create harmony across an arrangement.",
       "image": "https://e-c.storage.googleapis.com/res/ca8da386-2fea-400b-a943-b158fc00d116/480",
-      "id": 2
+      "id": 2,
+      "rating": 5
     },
     {
       "id": 3,
       "name": "Carnations",
-      "description": "They have cultural significance and are associated with love, distinction, and motherly affection. ",
-      "image": "https://e-c.storage.googleapis.com/res/1d02ea8b-e378-4e92-81f1-1673fba08638/480"
+      "desc": "They have cultural significance and are associated with love, distinction, and motherly affection. ",
+      "image": "https://e-c.storage.googleapis.com/res/1d02ea8b-e378-4e92-81f1-1673fba08638/480",
+      "rating": 3.4
     },
     {
       "id": 4,
       "name": "Iris",
-      "description": "Carnation flowers are symbolic of love, fascination, and distinction and are scientifically known as Dianthus. ",
-      "image": "https://e-c.storage.googleapis.com/res/5c9986de-4597-484f-b376-883af493af44/480"
+      "desc": "Carnation flowers are symbolic of love, fascination, and distinction and are scientifically known as Dianthus. ",
+      "image": "https://e-c.storage.googleapis.com/res/5c9986de-4597-484f-b376-883af493af44/480",
+      "rating": 3.5
     },
     {
       "id": 5,
       "name": "Lisianthus",
-      "description": "Lisianthus is in great demand for bridal bouquets and other special occasion arrangements",
-      "image": "https://e-c.storage.googleapis.com/res/4b6f0291-3e78-482b-b5ed-1cea8f75a76c/480"
+      "desc": "Lisianthus is in great demand for bridal bouquets and other special occasion arrangements",
+      "image": "https://e-c.storage.googleapis.com/res/4b6f0291-3e78-482b-b5ed-1cea8f75a76c/480",
+      "rating": 4
     },
     {
       "id": 6,
       "name": "Roses",
-      "description": "Most rose species are native to Asia, with smaller numbers being native to North America and a few to Europe and northwest Africa.",
-      "image": "https://e-c.storage.googleapis.com/res/10e7e5d0-1e48-406a-b9f8-18f185372d78/480"
+      "desc": "Most rose species are native to Asia, with smaller numbers being native to North America and a few to Europe and northwest Africa.",
+      "image": "https://e-c.storage.googleapis.com/res/10e7e5d0-1e48-406a-b9f8-18f185372d78/480",
+      "rating": 4.5
     },
     {
       "id": 7,
       "name": "Tulips",
-      "description": "Tulips are spring-blooming perennial herbaceous bulbiferous geophytes in the Tulipa genus. Their flowers are usually large, showy, and brightly coloured, generally red, orange, pink, yellow, or white. ",
-      "image": "https://images.pexels.com/photos/6913060/pexels-photo-6913060.jpeg?_gl=1*11oh4kg*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgwODI2JGoxNiRsMCRoMA.."
+      "desc": "Tulips are spring-blooming perennial herbaceous bulbiferous geophytes in the Tulipa genus. Their flowers are usually large, showy, and brightly coloured, generally red, orange, pink, yellow, or white. ",
+      "image": "https://images.pexels.com/photos/6913060/pexels-photo-6913060.jpeg?_gl=1*11oh4kg*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgwODI2JGoxNiRsMCRoMA..",
+      "rating": 5
     }
   ],
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$wK13Pr.fJFGEBDl2R/Ip.efpPSUBRut/izFp6ZzjPmnkU9KfxiiFS",
+      "password": "$2a$10$Aa8odvtPNFghkH/el6ccvu7tcGxw6y4WUvKfPr0hWNH.n2e1sq4hi",
       "username": "admin",
       "id": 1
     },

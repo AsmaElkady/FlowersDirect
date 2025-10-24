@@ -6,7 +6,7 @@ export interface IProduct {
     color: string;
     category: string;
     price: number;
-    rating?: string;
+    rating?: number;
     isFavorite?: boolean;
     totalQuantity: number;
 }

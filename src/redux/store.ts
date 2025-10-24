@@ -8,6 +8,7 @@ import cartReducer from "./slices/cartApi";
 import Category from "./slices/category";
 import adminSlice from "./slices/AdminSlice";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import orderSlice from "./slices/order.slice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     Cart: cartReducer,
     Category,
     admin: adminSlice,
+    orderSlice: orderSlice,
   },
 });
 

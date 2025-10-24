@@ -11,9 +11,17 @@ import "react-toastify/dist/ReactToastify.css";
 import ThemeProvider from "react-bootstrap/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+
+import ProductDetails from "./pages/ProductDetails/ProductDetails.tsx";
+import Cart from "./pages/Cart/Cart.tsx";
+import CheckOut from "./pages/CheckOut/CheckOut.tsx";
+import OrderDetails from "./pages/OrderDetails/OrderDetails.tsx";
 import { Provider } from "react-redux";
 import store from "./redux/store.ts";
+import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
+import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
 import UsersDB from "./pages/dashboard/users/usersDB.tsx";
+import OrdersAdmin from "./pages/dashboard/orders/ordersAdmin.tsx";
 import OverView from "./pages/dashboart/overview/overview.tsx";
 import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
 import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
@@ -34,6 +42,13 @@ const rout = createBrowserRouter([
         },
       },
       {
+        path: "*",
+        lazy: async () => {
+          const x = await import("./pages/notFound/notFound.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
         path: "products",
         lazy: async () => {
           const x = await import("./pages/products/products.tsx");
@@ -41,9 +56,30 @@ const rout = createBrowserRouter([
         },
       },
       {
+        path: "products/:id",
+        lazy: async () => {
+          const x = await import("./pages/ProductDetails/ProductDetails.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
         path: "cart",
         lazy: async () => {
           const x = await import("./pages/Cart/Cart.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
+        path: "checkout",
+        lazy: async () => {
+          const x = await import("./pages/CheckOut/CheckOut.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
+        path: "order-details/:orderId",
+        lazy: async () => {
+          const x = await import("./pages/OrderDetails/OrderDetails.tsx");
           return { Component: x.default };
         },
       },
@@ -96,6 +132,7 @@ const rout = createBrowserRouter([
       { path: "category", element: <CategoryDB /> },
       { path: "AddProduct", element: <AddProduct /> },
       { path: "productListAdmin", element: <ProductListAdmin /> },
+      { path: "orders", element: <OrdersAdmin /> },
       { path: "users", element: <UsersDB /> },
     ],
   },
