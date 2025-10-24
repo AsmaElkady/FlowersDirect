@@ -137,7 +137,7 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="bg-light">
+    <div className="pt-5">
       <Container fluid style={{ height: "100%" }}>
         <Row className="align-items-center " style={{ height: "35vh" }}>
           <div className="position-absolute d-flex flex-column align-items-center ">

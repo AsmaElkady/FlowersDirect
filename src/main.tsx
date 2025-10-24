@@ -76,6 +76,13 @@ const rout = createBrowserRouter([
           return { Component: x.default };
         },
       },
+      {
+        path: "profile",
+        lazy: async () => {
+          const x = await import("./pages/userProfile/userProfile.tsx");
+          return { Component: x.default };
+        },
+      },
     ],
   },
   {
