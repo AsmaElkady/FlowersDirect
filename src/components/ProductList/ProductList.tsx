@@ -1,12 +1,12 @@
 import { Row, Col, Pagination } from "react-bootstrap";
 import ProductCard from "../ProductCard/ProductCard";
-import type { IProduct } from "../../Types/productType";
+import type { IProduct } from "../../types/productType";
 
 interface ProductListProps {
-  products: IProduct[];
-  currentPage: number;
-  totalPages: number;
-  setCurrentPage: (page: number) => void;
+    products: IProduct[];
+    currentPage: number;
+    totalPages: number;
+    setCurrentPage: (page: number) => void;
 }
 
 export default function ProductList({
@@ -25,7 +25,7 @@ export default function ProductList({
         <>
           <Row className="g-4">
             {products.map((product) => (
-              <Col key={product.id} md={4}>
+              <Col key={product.id} md={4} className=" d-flex align-items-center justify-content-center">
                 <ProductCard product={product} />
               </Col>
             ))}

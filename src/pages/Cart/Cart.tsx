@@ -4,6 +4,7 @@ import type { AppDispatch, RootState } from "../../redux/store";
 import DrowCart from "./DrowCart";
 import CartSummary from "./summary";
 import { clearCartApi } from "../../redux/slices/cartApi";
+import { Helmet } from "react-helmet";
 
 export default function Cart() {
   const dispatch = useDispatch<AppDispatch>();
@@ -11,40 +12,47 @@ export default function Cart() {
     (state: RootState) => state.Cart.cart.cartItems
   );
   return (
-    <div className="cart-root container py-4">
-      <h2 className="cart-title text-center mb-4">Your Flower Basket</h2>
-      <div className="row g-4">
-        <div className="col-lg-8">
-          <div className="list">
-            {cartItems.length > 0 ? (
-              <button
-                className="btn btn-primary ms-auto d-block"
-                onClick={() => {
-                  dispatch(clearCartApi());
-                }}
-              >
-                Clear All
-              </button>
-            ) : (
-              ""
-            )}
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Cart</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <div className="cart-root container py-4" >
+        <h2 className="cart-title text-center m-5">Your Flower Basket</h2>
+        <div className="row g-4">
+          <div className="col-lg-8">
+            <div className="list">
+              {cartItems.length > 0 ? (
+                <button
+                  className="btn btn-primary ms-auto d-block mb-3"
+                  onClick={() => {
+                    dispatch(clearCartApi());
+                  }}
+                >
+                  Clear All
+                </button>
+              ) : (
+                ""
+              )}
 
-            {cartItems.length > 0 ? (
-              cartItems.map((item) => (
-                <div key={item.id}>
-                  <DrowCart item={item} />
-                </div>
-              ))
-            ) : (
-              <h4 className="text-center text-muted">There are no items</h4>
-            )}
+              {cartItems.length > 0 ? (
+                cartItems.map((item) => (
+                  <div key={item.id}>
+                    <DrowCart item={item} />
+                  </div>
+                ))
+              ) : (
+                <h4 className="text-center text-muted">There are no items</h4>
+              )}
+            </div>
+          </div>
+
+          <div className="col-lg-4">
+            <CartSummary />
           </div>
         </div>
-
-        <div className="col-lg-4">
-          <CartSummary />
-        </div>
       </div>
-    </div>
+    </>
   );
 }

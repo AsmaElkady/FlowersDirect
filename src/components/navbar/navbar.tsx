@@ -2,12 +2,14 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import PersonIcon from "@mui/icons-material/Person";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./navbar.css";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import type { RootState } from "../../redux/store";
+// import FavModel from "../../pages/favModel/test";
 import FavModel from "../../pages/favModel/favModel";
+import { logoutUser } from "../../redux/slices/authSlice";
 
 export default function MyNavbar() {
   const [modalShow, setModalShow] = useState(false);
@@ -19,12 +21,16 @@ export default function MyNavbar() {
   );
 
   const token = useSelector((state: RootState) => state.auth.token);
-  const username = useSelector((state: RootState) => state.auth.name);
-  const id = useSelector((state: RootState) => state.auth.id);
-  console.log(token, username, id);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <>
-      <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+      <Navbar
+        collapseOnSelect
+        expand="lg"
+        className="bg-body-tertiary position-fixed w-100 z-3"
+      >
         <Container className="d-flex align-items-center justify-content-between">
           <Navbar.Brand>
             <Link to={"/"}>
@@ -37,49 +43,43 @@ export default function MyNavbar() {
               aria-controls="responsive-navbar-nav"
               className="border-0 order-lg-2 ms-2"
             />
+
             <Nav className="d-flex flex-row justify-content-center align-items-center">
-              <Link to="/cart">
-                <div className="position-relative">
-                  <ShoppingCartIcon className="text-primary mx-3" />
-                  <span
-                    className="bg-secondary position-absolute text-light"
-                    style={{
-                      top: "-15px",
-                      right: "7px",
-                      padding: "2px",
-                      borderRadius: "50%",
-                    }}
-                  >
-                    {cartlength}
-                  </span>
-                </div>
+              <Link to="/cart" className="position-relative mx-1">
+                <ShoppingCartIcon className="text-primary fs-4" />
+                <span className="cart-badge text-primary cart">
+                  {cartlength}
+                </span>
               </Link>
+
               <Button
                 onClick={() => setModalShow(true)}
-                className="border-0 bg-transparent position-relative"
+                className="border-0 bg-transparent position-relative mx-1"
               >
-                <FavoriteIcon className="text-primary" />
-                <span
-                  className="bg-secondary position-absolute text-light"
-                  style={{
-                    top: "-10px",
-                    right: "6px",
-                    padding: "2px",
-                    borderRadius: "50%",
-                  }}
-                >
-                  {favlength}
-                </span>
+                <FavoriteIcon className="text-primary fs-4" />
+                <span className="cart-badge text-primary fav">{favlength}</span>
               </Button>
             </Nav>
+
             {token == null ? (
               <Link to="/Login">
                 <i className="fa-solid fa-right-to-bracket fs-5"></i>
               </Link>
             ) : (
-              <Link to="/">
-                <PersonIcon className="text-primary" />
-              </Link>
+              <>
+                <Link to="/Profile" className="mx-1">
+                  <PersonIcon className="text-primary" />
+                </Link>
+                <Button
+                  className="btn bg-transparent btn-outline border-0 text-primary fs-5"
+                  onClick={() => {
+                    dispatch(logoutUser());
+                    navigate("/Login");
+                  }}
+                >
+                  <i className="fa fa-sign-out" aria-hidden="true"></i>
+                </Button>
+              </>
             )}
           </div>
           <Navbar.Collapse

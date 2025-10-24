@@ -13,18 +13,19 @@ import {
   forgetPassDefaultValues,
 } from "../../utils/schema/forgetPassSchema";
 import { useNavigate } from "react-router";
-import { baseUrl } from "../../constants/main";
+import { adminEmail, baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import type { IForgetPass } from "../../types/auth";
-import { setID, setUser } from "../../redux/slices/authSlice";
+import { setUser } from "../../redux/slices/authSlice";
 import AuthBtn from "../../components/Buttons/AuthBtn";
 import { motion } from "motion/react";
+import { toast, ToastContainer } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const ForgetPassword = () => {
-  const [userData, setUserData] = useState<IForgetPass>();
+  const [userData, setUserData] = useState<IForgetPass>({ email: "" });
   const [fetch, setFetch] = useState<boolean>(false);
-  const [noUser, setNoUser] = useState<boolean>(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const queryClient = useQueryClient();
@@ -39,19 +40,19 @@ const ForgetPassword = () => {
     queryKey: ["users"],
     queryFn: async () => {
       const users = await axios
-        .get(baseUrl + "users?email=" + userData?.email)
+        .get(baseUrl + "users?email=" + userData.email)
         .then((res) => {
           if (res) {
-            console.log(res);
             if (res.data.length > 0) {
-              dispatch(setID(res.data[0].id));
               dispatch(setUser(res.data[0]));
               navigate("/ResetPassword", { replace: true });
               return res;
             } else {
-              setNoUser(true);
+              toast.error("There is no user with this email");
               return [];
             }
+          } else {
+            toast.error("Please make sure from your data and conection");
           }
           return res;
         });
@@ -61,17 +62,28 @@ const ForgetPassword = () => {
     retry: false,
     refetchOnReconnect: false,
     refetchOnWindowFocus: false,
+    refetchOnMount: false,
   });
 
   const onSubmit: SubmitHandler<IForgetPass> = (userValue: IForgetPass, e) => {
-    e?.preventDefault();
-    setUserData(userValue);
-    queryClient.invalidateQueries({ queryKey: ["users"] });
-    setFetch(true);
+    if (userValue.email == adminEmail) {
+      toast.error("Can't change password for this user");
+    } else {
+      e?.preventDefault();
+      setUserData(userValue);
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+      setFetch(true);
+    }
   };
 
   return (
-    <Container fluid>
+<>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Forget Password</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>    
+<Container fluid>
       <Row className="align-items-center justify-content-center bg-linear h-100">
         <Col sm="12" md="6" className="bg-imgVertical" />
         <Col
@@ -101,11 +113,6 @@ const ForgetPassword = () => {
                 {isError && (
                   <p className="text-center text-secondary">{error.message}</p>
                 )}
-                {noUser && (
-                  <p className="text-center text-secondary">
-                    There is no user with this email
-                  </p>
-                )}
                 <AuthBtn
                   name="Confirm"
                   title="Don't have an account?"
@@ -118,7 +125,9 @@ const ForgetPassword = () => {
           </Col>
         </Col>
       </Row>
+      <ToastContainer />
     </Container>
+        </>
   );
 };
 

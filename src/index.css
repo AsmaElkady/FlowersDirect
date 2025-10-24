@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
 
 :root {
-  --mainColor: #4E0629;
+  --mainColor: #4e0629;
 }
 
 body {
@@ -10,4 +10,8 @@ body {
   font-style: normal;
 
   color: var(--mainColor) !important;
+}
+
+.border-card {
+  background: linear-gradient(to bottom right, var(--mainColor), #fbeff4);
 }

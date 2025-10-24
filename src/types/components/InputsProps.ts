@@ -12,3 +12,8 @@ export interface PasswordProps {
   forgetPass?: boolean;
   className?: string;
 }
+
+export interface ISearchProps {
+  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  show?: boolean;
+}

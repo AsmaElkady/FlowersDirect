@@ -5,12 +5,13 @@ import Spinner from "react-bootstrap/Spinner";
 import MultiImageSlider from "./carousel";
 
 type Category = {
-  id: string;
+  id?: number;
   name: string;
-  description?: string;
+  desc: string;
   image: string;
+  price?: number;
+  rating?: number;
 };
-
 const fetchCategories = async (): Promise<Category[]> => {
   const res = await axios.get(baseUrl + "categories");
   console.log(res.data);

@@ -3,7 +3,7 @@ import React from "react";
 export interface IButtonProps {
   varient: "primary" | "secondary";
   title: string;
-  type?: "submit" | "reset" | "button" | undefined;
+  type?: "submit" | "reset" | "button";
   isLoading: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
