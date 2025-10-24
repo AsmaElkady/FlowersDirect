@@ -13,10 +13,8 @@ const initialState: orderState = {
 export const addOrder = createAsyncThunk(
   "order/addOrder",
   async (order: Order, { dispatch }) => {
-    // أولا أضف الطلب في الـ API
     const res = await axios.post("http://localhost:3000/orders", order);
 
-    // بعد ما الطلب يتسجل، حدّث كميات المنتجات
     for (const item of order.items) {
       const updatedProduct:Product = new Product(
         item.name,
