@@ -1,13 +1,23 @@
 import { Container, Row, Col, Spinner } from "react-bootstrap";
 import Filter from "../../components/Filter/Filter";
 import "../../index.css";
-import type { Product } from "../../types/Product";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
-import { useMemo, useState } from "react";
 import ProductList from "../../components/ProductList/ProductList";
+import type { IProduct } from "../../types/productType";
+import { Helmet } from "react-helmet";
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/store";
+import { Product } from "../../classes/productClass";
 
 export default function Products() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const {
+    items: data,
+    loading,
+    error,
+  } = useSelector((state: RootState) => state.products);
+
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 6;
   const [filters, setFilters] = useState({
@@ -16,33 +26,20 @@ export default function Products() {
     price: 500,
   });
 
-  async function getProducts() {
-    const res = await axios.get(`http://localhost:3000/products`, {
-      headers: {
-        "Cache-Control": "no-store",
-        Pragma: "no-cache",
-      },
-    });
-    return res.data;
-  }
-
-  const {
-    data = [],
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["Products"],
-    queryFn: getProducts,
-    refetchOnWindowFocus: false,
-    staleTime: 0,
-  });
+  useEffect(() => {
+    dispatch(Product.getProducts());
+  }, [dispatch]);
 
   const minPrice = useMemo(() => {
-    return data.length > 0 ? Math.min(...data.map((p: Product) => p.price)) : 0;
+    return data.length > 0
+      ? Math.min(...data.map((p: IProduct) => p.price))
+      : 0;
   }, [data]);
 
   const maxPrice = useMemo(() => {
-    return data.length > 0 ? Math.max(...data.map((p: Product) => p.price)) : 0;
+    return data.length > 0
+      ? Math.max(...data.map((p: IProduct) => p.price))
+      : 0;
   }, [data]);
 
   const filteredProducts = useMemo(() => {
@@ -53,7 +50,7 @@ export default function Products() {
 
     if (noFiltersApplied) return data;
 
-    return data.filter((product: Product) => {
+    return data.filter((product: IProduct) => {
       const matchesColor = filters.color
         ? product.color?.toLowerCase() === filters.color.toLowerCase()
         : true;
@@ -75,36 +72,43 @@ export default function Products() {
     startIndex + itemsPerPage
   );
 
-  if (isLoading)
+  if (loading)
     return (
       <div className="d-flex justify-content-center align-items-center vh-100">
         <Spinner animation="border" role="status" variant="primary" />
       </div>
     );
-  if (isError)
+  if (error)
     return <h2>Errors....Failed to load products, Please try again later.</h2>;
 
   return (
-    <Container className="py-5">
-      <h2 className="fw-bold mb-4 text-primary">Shop All Flowers</h2>
-      <Row>
-        <Col md={3}>
-          <Filter
-            onFilterChange={setFilters}
-            minPrice={minPrice}
-            maxPrice={maxPrice}
-            allProducts={data}
-          />
-        </Col>
-        <Col md={9}>
-          <ProductList
-            products={paginatedProducts}
-            currentPage={currentPage}
-            totalPages={totalPages}
-            setCurrentPage={setCurrentPage}
-          />
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Products</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <Container className="py-5">
+        <h2 className="fw-bold mb-4 text-primary mt-5">Shop All Flowers</h2>
+        <Row>
+          <Col md={3}>
+            <Filter
+              onFilterChange={setFilters}
+              minPrice={minPrice}
+              maxPrice={maxPrice}
+              allProducts={data}
+            />
+          </Col>
+          <Col md={9}>
+            <ProductList
+              products={paginatedProducts}
+              currentPage={currentPage}
+              totalPages={totalPages}
+              setCurrentPage={setCurrentPage}
+            />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }

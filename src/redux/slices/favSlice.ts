@@ -1,51 +1,108 @@
-import {  createSlice } from "@reduxjs/toolkit";
-import type { IFav } from "../../Types/fav";
-import type { IProduct } from "../../Types/productType.ts";
-import { fetchUser } from "./cartApi.ts";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import { baseUrl } from "../../constants/main";
+import type { IFav } from "../../types/fav";
+import type { IProduct } from "../../Types/productType";
 
+//  Helper: Get current user ID safely
+const getUserId = (): string | null => {
+  try {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+    return user?.id || null;
+  } catch {
+    return null;
+  }
+};
+//  Slice Interface & Initial State
+const initialState: IFav = {
+  favItem: [],
+  loading: false,
+  error: null,
+};
+export const fetchFavApi = createAsyncThunk<IProduct[]>(
+  "fav/fetchFavApi",
+  async () => {
+    const userId = getUserId();
+    if (!userId) throw new Error("User not found!");
+    const res = await axios.get(baseUrl + "users/" + userId);
+    return res.data.favorites || [];
+  }
+);
+export const addFavApi = createAsyncThunk<IProduct[], { product: IProduct }>(
+  "fav/addFavApi",
+  async ({ product }) => {
+    const userId = getUserId();
+    if (!userId) throw new Error("User not found!");
+    const res = await axios.get(baseUrl + "users/" + userId);
+    const currentFav = res.data.favorites || [];
+    const updatedFav = [...currentFav, product];
+    await axios.patch(baseUrl + "users/" + userId, { favorites: updatedFav });
+    return updatedFav;
+  }
+);
 
-const initialState :IFav = {
-    favItem: []
-}
+export const deleteFavItemApi = createAsyncThunk<IProduct[], number>(
+  "fav/deleteFavItemApi",
+  async (productId) => {
+    const userId = getUserId();
+    if (!userId) throw new Error("User not found!");
+    const res = await axios.get(baseUrl + "users/" + userId);
+    const currentFav = res.data.favorites || [];
+    const updatedFav = currentFav.filter(
+      (item: IProduct) => item.id !== productId
+    );
+    await axios.patch(baseUrl + "users/" + userId, { favorites: updatedFav });
+    return updatedFav;
+  }
+);
+//  Clear Cart
+export const clearFavApi = createAsyncThunk<IProduct[]>(
+  "fav/clearFavApi",
+  async () => {
+    const userId = getUserId();
+    if (!userId) throw new Error("User not found!");
+    await axios.patch(baseUrl + "users/" + userId, { favorites: [] });
+    return [];
+  }
+);
 
-const favSlice = createSlice({
-    name: "FavSlice",
-    initialState,
-    reducers: {
-        addToFav (state, action)  {
-            const pro = action.payload as IProduct;
-            const existingItems = state.favItem.some((item: IProduct) => item.id === pro.id);
-            if (!existingItems) {
-                state.favItem.push(pro)
-            }
+//  Slice
+const cartSlice = createSlice({
+  name: "FavSlice",
+  initialState,
+  reducers: {},
 
-            // SaveInLocalStorage(state)
-        },
-        removeFav (state, action){
-            const pro = action.payload as IProduct;
-            state.favItem = state.favItem.filter((item: IProduct) => item.id != pro.id)
-            // SaveInLocalStorage(state)
-        },
-        clearAll: (state) => {
-            state.favItem = []
-            // SaveInLocalStorage(state)
-        }
-    },
-    extraReducers: (builder) => {
-        builder.addCase(fetchUser.fulfilled, (state, action) => {
-            const user = action.payload;
-            console.log("User fetched successfully:", user);
+  extraReducers: (builder) => {
+    builder
+      // Fetch
+      .addCase(fetchFavApi.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchFavApi.fulfilled, (state, action) => {
+        state.loading = false;
+        state.favItem = action.payload;
+      })
+      .addCase(fetchFavApi.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string;
+      })
 
-            if (user?.fav) {
-                state.favItem = user.favItem || [];
+      // Add
+      .addCase(addFavApi.fulfilled, (state, action) => {
+        state.loading = false;
+        state.favItem = action.payload;
+      })
 
-                // SaveInLocalStorage(state);
-            }
-        });
-    },
+      // Delete
+      .addCase(deleteFavItemApi.fulfilled, (state, action) => {
+        state.favItem = action.payload;
+      })
 
-})
+      // Clear
+      .addCase(clearFavApi.fulfilled, (state, action) => {
+        state.favItem = action.payload;
+      });
+  },
+});
 
-export const { addToFav, removeFav, clearAll } = favSlice.actions
-
-export default favSlice.reducer
+export default cartSlice.reducer;

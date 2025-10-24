@@ -14,7 +14,7 @@ const MyInput = ({ id, label, type, placeholder, className }: InputProps) => {
       <Form.Control
         type={type}
         placeholder={placeholder}
-        {...register(id)}
+        {...register(id,type === "number" ? { valueAsNumber: true } : {})}
         autoComplete={id}
       />
       {errors[id]?.message ? (

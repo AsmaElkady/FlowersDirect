@@ -1,122 +1,121 @@
-// import Container from "react-bootstrap/esm/Container";
+// import Container from "react-bootstrap/Container";
 // import Carousel from "react-multi-carousel";
 // import "react-multi-carousel/lib/styles.css";
-// import Button from "react-bootstrap/esm/Button";
-// // import axios from "axios";
-// // import { baseUrl } from "../../constants/main";
-// // import { useEffect } from "react";
+// import Button from "react-bootstrap/Button";
+// import { useNavigate } from "react-router";
+// // import type { IProduct } from "../../Types/productType";
 
-// type Item = { id?: number; src: string; name: string; price?: number }
+// type Category = {
+//   id: string;
+//   name: string;
+//   description?: string;
+//   image: string;
+// };
 
 // interface MultiImageSliderProps {
 //   title: string;
 //   all: string;
-//   items?: Item[];
+//   data: Category[] | undefined;
 // }
+
 // const responsive = {
-//   superLargeDesktop: {
-//     breakpoint: { max: 4000, min: 1024 },
-//     items: 4,
-//   },
-//   desktop: {
-//     breakpoint: { max: 1024, min: 768 },
-//     items: 3,
-//   },
-//   tablet: {
-//     breakpoint: { max: 768, min: 464 },
-//     items: 2,
-//   },
-//   mobile: {
-//     breakpoint: { max: 464, min: 0 },
-//     items: 1.2,
-//   },
+//   superLargeDesktop: { breakpoint: { max: 4000, min: 1024 }, items: 4 },
+//   desktop: { breakpoint: { max: 1024, min: 768 }, items: 3 },
+//   tablet: { breakpoint: { max: 768, min: 464 }, items: 2 },
+//   mobile: { breakpoint: { max: 464, min: 0 }, items: 1.2 },
 // };
 
+// const defaultCategories: Category[] = [
+//   { id: "1", name: "Flower", image: "/img/Home/category/1.png" },
+//   { id: "2", name: "Tulip", image: "/img/Home/category/2.png" },
+//   { id: "3", name: "Rose", image: "/img/Home/category/3.png" },
+// ];
 
-
-// export default function MultiImageSlider({ title, all, items = [] }: MultiImageSliderProps) {
-
-
-//   const defultProduct: Item[] = [
-//     { id: 1, src: "/img/Home/category/1.png", name: "flower", price: 100 },
-//     { id: 2, src: "/img/Home/category/2.png", name: "flower", price: 200 },
-//     { id: 3, src: "/img/Home/category/3.png", name: "flower", price: 300 },
-//     { id: 4, src: "/img/Home/category/4.png", name: "flower", price: 400 },
-//     { id: 5, src: "/img/Home/category/5.png", name: "flower", price: 500 },
-//     { id: 6, src: "/img/Home/category/6.png", name: "flower", price: 600 },
-//     { id: 7, src: "/img/Home/category/1.png", name: "flower", price: 100 },
-//   ]
-
-//   const renderProduct = (data: Item[]) =>
+// export default function MultiImageSlider({
+//   title,
+//   all,
+//   data,
+// }: MultiImageSliderProps) {
+//   const displayData = data?.length ? data : defaultCategories;
+//   const navigation = useNavigate();
+//   const renderCategory = (data: Category[]) =>
 //     data.map((item, i) => (
-//       <div key={item.id ?? i} className="border border-dark rounded-3 p-2 mx-2 " style={{ width: 210 }}>
+//       <div
+//         key={item.id ?? i}
+//         className="border border-dark rounded-3 p-2 mx-2"
+//         style={{ width: 210 }}
+//       >
 //         <img
-//           src={item.src}
+//           src={item.image}
 //           alt={item.name}
 //           className="w-100 rounded-3"
-//           style={{ height: "200px", objectFit: "cover" }} />
+//           style={{ height: "200px", objectFit: "cover" }}
+//         />
 //         <p className="text-center mt-2 fw-bold">{item.name}</p>
 //       </div>
-//     ))
+//     ));
 
 //   return (
-//     <>
+//     <Container>
+//       <div className="d-flex justify-content-between align-items-center">
+//         <h3 className="text-secondary">{title}</h3>
+//         <Button
+//           variant="secondary"
+//           className="rounded-4 text-white"
+//           onClick={() => navigation("/products")}
+//         >
+//           {all}
+//         </Button>
+//       </div>
 
-//       <Container >
-
-//         <div className="d-flex justify-content-between">
-//           <h3 className="text-secondary">{title}</h3>
-//           <Button variant="secondary" className="  rounded-4 text-white" >{all} </Button>
-
-//         </div>
-//         <div style={{ padding: "40px" }}>
-//           <Carousel
-
-//             autoPlay={true}
-//             arrows={true}
-//             swipeable={true}
-//             draggable={true}
-//             showDots={false}
-//             responsive={responsive}
-//             infinite={true}
-//             autoPlaySpeed={2500}
-//             keyBoardControl={true}
-//             transitionDuration={500}
-//             containerClass="carousel-container"
-//             removeArrowOnDeviceType={["tablet", "mobile"]}
-//             dotListClass="custom-dot-list-style"
-//             itemClass="carousel-item-padding-40-px"
-//           >
-
-
-//             {renderProduct(items.length ? items : defultProduct)}
-
-//           </Carousel>
-//         </div>
-//       </Container>
-//     </>
+//       <div style={{ padding: "40px" }}>
+//         <Carousel
+//           autoPlay
+//           arrows
+//           swipeable
+//           draggable
+//           responsive={responsive}
+//           infinite
+//           autoPlaySpeed={2500}
+//           keyBoardControl
+//           transitionDuration={500}
+//           containerClass="carousel-container"
+//           // removeArrowOnDeviceType={["tablet", "mobile"]}
+//           itemClass="carousel-item-padding-40-px"
+//         >
+//           {renderCategory(displayData)}
+//         </Carousel>
+//       </div>
+//     </Container>
 //   );
 // }
 
-import { useQuery } from "@tanstack/react-query";
+import "./carousel.css";
+
 import Container from "react-bootstrap/Container";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
-import { baseUrl } from "../../constants/main";
-import Spinner from "react-bootstrap/Spinner";
+import { useNavigate } from "react-router-dom";
+import type { IProduct } from "../../types/productType";
+import { addOrUpdateCartApi } from "../../redux/slices/cartApi";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/store";
+import Rating from "@mui/material/Rating";
 
 type Category = {
-  id: string;
+  id?: number;
   name: string;
-  description?: string;
+  desc: string;
   image: string;
+  price?: number;
+  rating?: number;
 };
 
 interface MultiImageSliderProps {
   title: string;
   all: string;
+  data: Category[] | undefined;
 }
 
 const responsive = {
@@ -126,78 +125,94 @@ const responsive = {
   mobile: { breakpoint: { max: 464, min: 0 }, items: 1.2 },
 };
 
-const fetchCategories = async (): Promise<Category[]> => {
-  const res = await axios.get(baseUrl + "categories");
-  console.log(res.data)
-  return res.data.categories;
-};
-
-export default function MultiImageSlider({ title, all }: MultiImageSliderProps) {
-  const { data, isLoading, isError } = useQuery<Category[]>({
-    queryKey: ["categories"],
-    queryFn: fetchCategories,
-  });
-
-  const defaultCategories: Category[] = [
-    { id: "1", name: "Flower", image: "/img/Home/category/1.png" },
-    { id: "2", name: "Tulip", image: "/img/Home/category/2.png" },
-    { id: "3", name: "Rose", image: "/img/Home/category/3.png" },
-  ];
-
-  const displayData = data?.length ? data : defaultCategories;
-
-  const renderCategory = (data: Category[]) =>
-    data.map((item, i) => (
-      <div
-        key={item.id ?? i}
-        className="border border-dark rounded-3 p-2 mx-2"
-        style={{ width: 210 }}
-      >
-        <img
-          src={item.image}
-          alt={item.name}
-          className="w-100 rounded-3"
-          style={{ height: "200px", objectFit: "cover" }}
-        />
-        <p className="text-center mt-2 fw-bold">{item.name}</p>
-      </div>
-    ));
-
+export default function MultiImageSlider({
+  title,
+  all,
+  data,
+}: MultiImageSliderProps) {
+  const displayData = data?.length ? data : [];
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  const cartItems = useSelector(
+    (state: RootState) => state.Cart.cart.cartItems
+  );
   return (
-    <Container>
-      <div className="d-flex justify-content-between align-items-center">
-        <h3 className="text-secondary">{title}</h3>
-        <Button variant="secondary" className="rounded-4 text-white">
+    <Container className="my-5">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h3 className="text-secondary fw-bold">{title}</h3>
+        <Button
+          variant="secondary"
+          className="rounded-4 text-white px-4"
+          onClick={() => navigate("/products")}
+        >
           {all}
         </Button>
       </div>
 
-      <div style={{ padding: "40px" }}>
-        {isLoading ? (
-          <div className="d-flex justify-content-center align-items-center">
-            <Spinner animation="border" variant="secondary" />
-          </div>
-        ) : isError ? (
-          <p className="text-center text-danger">Failed to load categories.</p>
-        ) : (
-          <Carousel
-            autoPlay
-            arrows
-            swipeable
-            draggable
-            responsive={responsive}
-            infinite
-            autoPlaySpeed={2500}
-            keyBoardControl
-            transitionDuration={500}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            itemClass="carousel-item-padding-40-px"
+      <Carousel
+        autoPlay
+        arrows
+        swipeable
+        draggable
+        responsive={responsive}
+        infinite
+        autoPlaySpeed={2500}
+        keyBoardControl
+        transitionDuration={600}
+        containerClass="carousel-container"
+        itemClass="carousel-item-padding-40-px"
+      >
+        {displayData.map((item) => (
+          <div
+            key={item.id}
+            className="category-card-small mx-2"
+            style={{ width: 210 }}
           >
-            {renderCategory(displayData)}
-          </Carousel>
-        )}
-      </div>
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-100 rounded-3"
+              style={{ height: "200px", objectFit: "cover" }}
+            />
+            {/* <p className="text-center mt-2 fw-bold">{item.name}</p> */}
+            <div className="category-text">
+              <h6 className="m-2">{item.name}</h6>
+              <p>
+                {item.desc
+                  ? item.desc.split(" ").slice(0, 6).join(" ") + "..."
+                  : ""}
+              </p>
+              <Rating
+                name="half-rating-read"
+                defaultValue={item.rating ?? 2.5}
+                precision={0.5}
+                readOnly
+              />
+              <p className="fw-bold">
+                {item.price ? (
+                  <>
+                    <Button
+                      variant="outline-primary"
+                      disabled={cartItems.some(
+                        (p: IProduct) => p.id === item.id
+                      )}
+                      onClick={() =>
+                        dispatch(
+                          addOrUpdateCartApi({ product: item as IProduct })
+                        )
+                      }
+                    >
+                      Add to Cart
+                    </Button>
+                  </>
+                ) : (
+                  ""
+                )}
+              </p>
+            </div>
+          </div>
+        ))}
+      </Carousel>
     </Container>
   );
 }

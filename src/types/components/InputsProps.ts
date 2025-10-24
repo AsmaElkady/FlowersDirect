@@ -4,6 +4,8 @@ export interface InputProps {
   type: string;
   placeholder?: string;
   className?: string;
+  error?: string;
+  value?: string;
 }
 
 export interface PasswordProps {
@@ -11,4 +13,9 @@ export interface PasswordProps {
   label?: "Password" | "Repassword";
   forgetPass?: boolean;
   className?: string;
+}
+
+export interface ISearchProps {
+  handleSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  show?: boolean;
 }

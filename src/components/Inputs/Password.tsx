@@ -64,7 +64,7 @@ const Password = ({
           </Col> */}
           <Col>
             <Link
-              to={"/forgetPass"}
+              to={"/ForgetPassword"}
               className="text-md-end text-start d-block small text-decoration-none"
             >
               Forget password ?

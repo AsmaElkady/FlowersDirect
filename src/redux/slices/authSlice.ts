@@ -1,25 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { IAuthSlice } from "../../types/auth";
+import { updateUser } from "../api/userAPI";
 
 const inialState: IAuthSlice = {
   token: JSON.parse(localStorage.getItem("token")!),
-  name: "",
-  id: 0,
-  email: "",
   user: JSON.parse(localStorage.getItem("user")!),
-  // {
-  //   id: 0,
-  //   email: "",
-  //   password: "",
-  //   username: "",
-  //   cart: {
-  //     cartsItems: [],
-  //     totalQuantity: 0,
-  //     totalPrice: 0,
-  //   },
-  //   favorites: [],
-  //   orders: [],
-  // },
+  admin: JSON.parse(localStorage.getItem("admin")!),
+  status: "idle",
+  isLoading: false,
+  isError: false,
 };
 
 const authSlice = createSlice({
@@ -28,21 +17,44 @@ const authSlice = createSlice({
   reducers: {
     setToken: (state, action) => {
       state.token = action.payload;
-    },
-    setName: (state, action) => {
-      state.name = action.payload;
-    },
-    setID: (state, action) => {
-      state.id = action.payload;
-    },
-    setEmail: (state, action) => {
-      state.email = action.payload;
+      localStorage.setItem("token", JSON.stringify(action.payload));
     },
     setUser: (state, action) => {
       state.user = action.payload;
+      localStorage.setItem("user", JSON.stringify(action.payload));
     },
+    setAdmin: (state, action) => {
+      state.admin = action.payload;
+      localStorage.setItem("user", JSON.stringify(action.payload));
+    },
+    logoutUser: (state) => {
+      state.user = undefined;
+      state.token = "";
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(updateUser.pending, (state) => {
+        console.log("checkuseeer");
+        state.status = "loading";
+        state.isLoading = true;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        console.log("done", action);
+        state.status = "success";
+        state.isLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        console.log("errr", action);
+        state.status = "feild";
+        state.isError = true;
+        state.isLoading = false;
+      });
   },
 });
 
 export default authSlice.reducer;
-export const { setToken, setName, setID, setUser } = authSlice.actions;
+export const { setToken, setUser, setAdmin, logoutUser } = authSlice.actions;

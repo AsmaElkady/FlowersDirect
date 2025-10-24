@@ -1,0 +1,240 @@
+import { useEffect, useMemo, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../../redux/store";
+import { Button } from "react-bootstrap";
+import type { Order } from "../../../Types/order";
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Admin } from "../../../classes/users";
+import SearchIcon from "@mui/icons-material/Search";
+import { useNavigate } from "react-router";
+import DataTableComponent from "../../../components/Table/SortTable";
+import Search from "../../../components/Inputs/Search";
+import {
+  fetchOrders,
+  deleteOrder,
+  updateOrderStatus,
+} from "../../../redux/slices/order.slice";
+
+const OrdersAdmin = () => {
+  const [rows, setRows] = useState<Order[]>([]);
+  const [search, setSearch] = useState("");
+  const [showInput, setShowInput] = useState(false);
+  const user = useSelector((state: RootState) => state.auth.user);
+  const { orders, loading } = useSelector(
+    (state: RootState) => state.orderSlice
+  );
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkType = Admin.checkAdmin(user?.email ?? "");
+    if (checkType.status) {
+      dispatch(fetchOrders());
+    } else {
+      navigate("/login");
+    }
+  }, [dispatch, navigate, user, user?.email]);
+
+  const allOrders = useMemo(() => {
+    return orders;
+  }, [orders]);
+
+  useEffect(() => {
+    if (search === "") {
+      setRows(allOrders);
+    } else {
+      setRows(
+        allOrders.filter(
+          (order: Order) =>
+            String(order.id).toLowerCase().includes(search.toLowerCase()) ||
+            String(order.userId).toLowerCase().includes(search.toLowerCase()) ||
+            String(order.status).toLowerCase().includes(search.toLowerCase())
+        )
+      );
+    }
+  }, [orders, search, allOrders]);
+
+  const columns = [
+    {
+      name: "Order ID",
+      selector: (row: Order) => row.id ?? "",
+      sortable: true,
+    },
+    {
+      name: "User ID",
+      selector: (row: Order) => row.userId,
+      sortable: true,
+    },
+    {
+      name: "Items",
+      selector: (row: Order) => row.items?.length ?? 0,
+      sortable: true,
+    },
+    {
+      name: "Total Price",
+      selector: (row: Order) => `$${row.totalPrice.toFixed(2)}`,
+      sortable: true,
+    },
+    {
+      name: "Status",
+      cell: (row: Order) => (
+        <span
+          className={`badge ${
+            row.status === "delivered"
+              ? "bg-success"
+              : row.status === "shipped"
+              ? "bg-info"
+              : row.status === "processing"
+              ? "bg-warning"
+              : row.status === "cancelled"
+              ? "bg-danger"
+              : "bg-secondary"
+          }`}
+        >
+          {row.status}
+        </span>
+      ),
+      sortable: true,
+    },
+    {
+      name: "Action",
+      cell: (row: Order) => (
+        <div className="d-flex gap-1">
+          <Button
+            className="text-primary bg-transparent border-0 m-0 p-0"
+            onClick={() => handleStatusChange(row)}
+            title="Change Status"
+          >
+            <i className="bi bi-arrow-repeat"></i>
+          </Button>
+          <Button
+            className="text-info bg-transparent border-0 m-0 p-0"
+            onClick={() => handleView(row)}
+            title="View Details"
+          >
+            <i className="bi bi-eye"></i>
+          </Button>
+          <Button
+            className="text-danger bg-transparent border-0"
+            onClick={() => handleDelete(row)}
+            title="Delete Order"
+          >
+            <i className="bi bi-trash3"></i>
+          </Button>
+        </div>
+      ),
+      width: "150px",
+    },
+  ];
+
+  const handleDelete = (row: Order) => {
+    Swal.fire({
+      html: `Are you sure you want to remove order <br /> Order ID: ${
+        row.id
+      } <br/> Total: $${row.totalPrice.toFixed(2)}`,
+      icon: "error",
+      showConfirmButton: false,
+      showDenyButton: true,
+      denyButtonText: "Remove",
+      showCancelButton: true,
+      customClass: {
+        title: "swal-title",
+        htmlContainer: "swal-text",
+      },
+    }).then((result) => {
+      if (result.isDenied && row.id) {
+        dispatch(deleteOrder(row.id)).then((res) => {
+          if (res.type === "order/deleteOrder/fulfilled") {
+            toast.success("Order deleted successfully");
+          } else {
+            toast.error("Can't delete this order");
+          }
+        });
+      }
+    });
+  };
+
+  const handleView = (row: Order) => {
+    navigate(`/order-details/${row.id}`);
+  };
+
+  const handleStatusChange = (row: Order) => {
+    const statusOptions = [
+      "pending",
+      "processing",
+      "shipped",
+      "delivered",
+      "cancelled",
+    ];
+
+    Swal.fire({
+      title: "Change Order Status",
+      html: `
+        <p>Current Status: <strong>${row.status}</strong></p>
+        <select id="status-select" class="form-select">
+          ${statusOptions
+            .map(
+              (status) =>
+                `<option value="${status}" ${
+                  status === row.status ? "selected" : ""
+                }>${status.charAt(0).toUpperCase() + status.slice(1)}</option>`
+            )
+            .join("")}
+        </select>
+      `,
+      showCancelButton: true,
+      confirmButtonText: "Update",
+      preConfirm: () => {
+        const select = document.getElementById(
+          "status-select"
+        ) as HTMLSelectElement;
+        return select.value;
+      },
+    }).then((result) => {
+      if (result.isConfirmed && result.value && row.id) {
+        dispatch(
+          updateOrderStatus({ orderId: row.id, status: result.value })
+        ).then((res) => {
+          if (res.type === "order/updateOrderStatus/fulfilled") {
+            toast.success("Order status updated successfully");
+          } else {
+            toast.error("Failed to update order status");
+          }
+        });
+      }
+    });
+  };
+
+  if (loading) return <p>Loading...</p>;
+
+  return (
+    <div className="p-3">
+      <div className="d-flex justify-content-between align-items-center mb-3">
+        <h3 className="fw-bold text-primary">Orders</h3>
+        <div className="d-flex">
+          <div>
+            <Search
+              handleSearch={(e) => {
+                setSearch(e.target.value);
+              }}
+              show={showInput}
+            />
+          </div>
+          <Button
+            className="bg-light text-primary m-2"
+            onClick={() => setShowInput(!showInput)}
+          >
+            <SearchIcon />
+          </Button>
+        </div>
+      </div>
+
+      <DataTableComponent columns={columns} data={rows} loading={loading} />
+      <ToastContainer />
+    </div>
+  );
+};
+
+export default OrdersAdmin;

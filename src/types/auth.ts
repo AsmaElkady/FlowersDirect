@@ -1,19 +1,19 @@
-export interface ILogin {
-  email: string;
-  password: string;
-}
+import type { ICart } from "./cart";
 
-export interface ISignup {
-  username: string;
+export type IUser = {
+  id?: number;
   email: string;
+  username: string;
   password: string;
+};
+export type ILogin = Pick<IUser, "email" | "password">;
+
+export interface ISignup extends ILogin {
+  username: string;
   re_password: string;
 }
 
-export interface IForgetPass {
-  email: string;
-}
-
+export type IForgetPass = Pick<IUser, "email">;
 export interface IResetPass {
   password: string;
   re_password: string;
@@ -21,22 +21,39 @@ export interface IResetPass {
 
 export interface IAuthSlice {
   token: string;
-  name: string;
-  id: number;
-  email: string;
-  user: IUser | null;
+  user?: ICustomer;
+  admin?: IUser;
+  status: string;
+  isLoading: boolean;
+  isError: boolean;
 }
 
-export interface IUser {
-  id: number;
+export type ICustomer = {
+  id?: number;
   email: string;
-  password: string;
+  password?: string;
   username: string;
-  cart: {
-    cartsItems: [];
-    totalQuantity: number;
-    totalPrice: number;
-  };
-  favorites: [];
+  cart?: ICart;
+  favorites?: [];
   orders: [];
+};
+
+export interface IChangePasswordProps {
+  id?: number;
+  checkResetStatus: (result: CallBack) => void;
+}
+
+export interface CallBack {
+  status: boolean;
+  msg: string;
+}
+
+export interface IEditProfileProps {
+  user: ICustomer;
+  checkEditStatus: (result: CallBack) => void;
+}
+
+export interface IProfile {
+  username: string;
+  email: string;
 }
