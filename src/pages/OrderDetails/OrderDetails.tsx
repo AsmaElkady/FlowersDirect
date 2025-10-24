@@ -1,25 +1,38 @@
 import { useEffect } from "react";
 import { Container, Row, Col, Badge } from "react-bootstrap";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import "./OrderDetails.css";
 import { fetchOrders } from "../../redux/slices/order.slice";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import type { Order } from "../../Types/order";
+import { Admin } from "../../classes/users";
+
 
 
 const OrderDetails = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+    const user = useSelector((state: RootState) => state.auth.user);
+
   const { orderId } = useParams<{ orderId: string }>();
   const { orders, loading } = useSelector(
     (state: RootState) => state.orderSlice
   );
 
-  useEffect(() => {
-    dispatch(fetchOrders());
-  }, [dispatch]);
+    useEffect(() => {
+        dispatch(fetchOrders());
+
+      }
+    , [dispatch]);
+
 
   const order: Order | undefined = orders.find((o) => o.id === orderId);
+
+  if (user?.id !== order?.userId && !Admin.checkAdmin(user?.email ?? "").status) {
+    return navigate("/");
+  }
+
 
   const getStatusBadge = (status: Order["status"]) => {
     const badges: Record<string, { bg: string; text: string }> = {

@@ -21,6 +21,7 @@ import store from "./redux/store.ts";
 import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
 import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
 import UsersDB from "./pages/dashboard/users/usersDB.tsx";
+import OrdersAdmin from "./pages/dashboard/orders/ordersAdmin.tsx";
 import OverView from "./pages/dashboart/overview/overview.tsx";
 import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
 import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
@@ -54,7 +55,7 @@ const rout = createBrowserRouter([
         },
       },
       {
-        path: "product/:id",
+        path: "products/:id",
         lazy: async () => {
           const x = await import("./pages/ProductDetails/ProductDetails.tsx");
           return { Component: x.default };
@@ -122,6 +123,7 @@ const rout = createBrowserRouter([
       { path: "category", element: <CategoryDB /> },
       { path: "AddProduct", element: <AddProduct /> },
       { path: "productListAdmin", element: <ProductListAdmin /> },
+      { path: "orders", element: <OrdersAdmin /> },
       { path: "users", element: <UsersDB /> },
     ],
   },

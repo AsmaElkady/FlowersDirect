@@ -1,155 +1,134 @@
-:root {
-  --bg-cream: #fbf7f3;
-  --soft-rose: #f7e9e6;
-  --accent: #b84a5a;
-  --muted: #6b6b6b;
-  --shadow: 0 12px 34px rgba(23, 23, 23, 0.08);
-}
-
-* {
+body {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
-body {
-  background: var(--bg-cream);
+
+.productDetails {
+  background-color: #f5efe6;
+  width: 100%;
+  height: 100vh;
 }
 
-.product-section {
-  min-height: 100vh;
+.flowImg {
+  width: 20%;
+  opacity: 0.8;
   position: relative;
-  padding: 3rem 0;
-  overflow: hidden;
-  background: transparent;
+  bottom: 0;
+  right: 0;
 }
 
-/* decorative leaves */
-.leaf-left,
-.leaf-right {
-  opacity: 0.88;
-  pointer-events: none;
-}
-.leaf-left {
-  left: -10px;
-  bottom: -10px;
-  width: 180px;
-}
-.leaf-right {
-  right: -10px;
-  top: -10px;
-  width: 220px;
+.imageDetails img {
+  width: 25%;
+  /* height: auto; */
+  border-radius: 10px;
 }
 
+.productDetailsWrap {
+  justify-content: space-between;
+  align-items: center;
+}
+.productDetailsWrap > div {
+  flex: 1;
+  padding: 20px;
+}
 .imgWrap {
-  width: clamp(160px, 24vw, 320px);
-  aspect-ratio: 3/4;
+  width: clamp(180px, 28vw, 320px);
+
+  aspect-ratio: 3 / 4;
+  border-radius: 120px 120px 0 0;
   overflow: hidden;
-  border-radius: 12px;
+  display: block;
+  
+
+  max-width: 100%;
 }
+
 .flower-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  max-width: 100%;
 }
 
-.product-title {
-  font-size: 1.4rem;
-  margin: 0;
-  color: #2d2a2a;
-  font-weight: 700;
+/* leaf decoration positions */
+.leaf-left {
+  left: 0;
+  bottom: 0;
+  width: 150px;
+  opacity: 0.85;
 }
-.product-desc {
-  color: var(--muted);
-  margin-top: 0.6rem;
-  font-size: 0.95rem;
-}
-
-.product-description {
-  max-width: 65ch;
+.leaf-right {
+  right: 0;
+  top: 0;
+  width: 200px;
+  opacity: 0.85;
 }
 
-.product-description p {
-  line-height: 1.7;
-}
-
-.quantity-badge {
-  min-width: 34px;
-  height: 30px;
-  border-radius: 8px;
-  background: linear-gradient(180deg, var(--soft-rose), #fff);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  color: var(--accent);
-  font-size: 0.95rem;
-}
-.qty-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  background: #fff;
-  color: var(--accent);
-  font-size: 16px;
-}
-
-.btn-dark {
-  background: #b56087;
-  border: none;
-  color: #f7e9e6;
-}
-
+/* responsive tweaks */
 @media (max-width: 991px) {
+  .imgWrap {
+    width: clamp(200px, 36vw, 260px);
+    aspect-ratio: 3 / 4;
+  }
+  .leaf-left {
+    width: 110px;
+  }
+  .leaf-right {
+    width: 140px;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-section {
+    padding-bottom: 3rem;
+  }
+  .imgWrap {
+    width: clamp(160px, 48vw, 220px);
+    aspect-ratio: 3 / 4;
+    border-radius: 80px 80px 0 0;
+  }
+
+  .product-section .row {
+    text-align: center;
+  }
+  .product-section .row > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-title {
+    font-size: 1.5rem;
+  }
+  .product-desc {
+    font-size: 0.95rem;
+  }
   .leaf-left {
     display: none;
   }
   .leaf-right {
     display: none;
   }
-  .product-title {
-    font-size: 1.3rem;
-  }
-  .imgWrap {
-    width: clamp(140px, 40vw, 260px);
-  }
-  .product-section {
-    padding: 2.25rem 0;
-  }
-  .product-description {
-    margin-top: 1rem;
-    max-width: 70ch;
-  }
-  .product-description p {
-    font-size: 1rem;
-  }
 }
 
-@media (max-width: 576px) {
-  .product-section {
-    padding: 1.5rem 0;
-  }
-  .product-title {
-    font-size: 1.15rem;
-  }
+@media (max-width: 420px) {
   .imgWrap {
     width: 180px;
+    height: 230px;
   }
-  .product-description {
-    max-width: 75ch;
+  .product-title {
+    font-size: 1.25rem;
   }
-  .product-description p {
-    font-size: 0.98rem;
+  .product-price {
+    font-size: 0.95rem;
   }
 }
 
-/* Smooth transitions but respect reduced motion */
-@media (prefers-reduced-motion: no-preference) {
-  .flower-img,
-  .btn-dark,
-  .product-title {
-    transition: transform 200ms ease, box-shadow 200ms ease, color 200ms ease;
-  }
-  .imgWrap:hover .flower-img {
-    transform: scale(1.01);
-  }
+/* css for test------------------------------- */
+.product-section {
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }

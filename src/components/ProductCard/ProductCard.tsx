@@ -134,13 +134,14 @@ export default function ProductCard({ product }: Props) {
           style={{ width: 210 }}
         >
           <div className="card-img-container">
-            <Card.Img
-              className="w-100 rounded-3"
-              style={{ height: "200px", objectFit: "cover" }}
-              variant="top"
-              src={image}
-              alt={name}
-            />
+            <Link to={`/products/${id}`}>
+              <Card.Img
+                className="w-100 rounded-3"
+                style={{ height: "200px", objectFit: "cover" }}
+                variant="top"
+                src={image}
+              />
+            </Link>
             <div className="card-icons">
               <button
                 className={`icon-btn fav-btn ${
