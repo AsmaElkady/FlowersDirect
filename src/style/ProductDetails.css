@@ -2,10 +2,16 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+   background-color: white !important;
 }
-
+.wrapper{
+  background-color: white !important;
+}
+.product-section{
+   background-color: white !important;
+}
 .productDetails {
-  background-color: #f5efe6;
+  
   width: 100%;
   height: 100vh;
 }

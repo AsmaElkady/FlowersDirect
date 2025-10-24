@@ -86,7 +86,7 @@ const ProductDetails: React.FC = () => {
         alt="leaf right"
         className="leaf-right position-absolute"
       />
-      <Container className="py-5">
+      <Container className="py-5 mt-5 wrapper">
         <Row className="align-items-center">
           <Col lg={4} md={6} xs={12} className="mb-4 mb-lg-0">
             <h2 className="fw-bold product-title">{product.name}</h2>
