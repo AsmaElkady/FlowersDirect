@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import type { Order, orderState } from "../../Types/order";
+import { Product } from "../../classes/productClass";
+import { updateProduct } from "./productSlice";
+// import { update } from './../../../node_modules/sweetalert2/src/instanceMethods/update';
 
 const initialState: orderState = {
   orders: [],
@@ -9,16 +12,55 @@ const initialState: orderState = {
 
 export const addOrder = createAsyncThunk(
   "order/addOrder",
-  async (order: Order) => {
+  async (order: Order, { dispatch }) => {
+    // أولا أضف الطلب في الـ API
     const res = await axios.post("http://localhost:3000/orders", order);
+
+    // بعد ما الطلب يتسجل، حدّث كميات المنتجات
+    for (const item of order.items) {
+      const updatedProduct:Product = new Product(
+        item.name,
+        item.price,
+        item.image,
+        item.desc,
+        item.category,
+        item.color,
+        item.rating,
+        item.isFavorite,
+        item.totalQuantity - item.quantity, 
+        item.id
+      );
+
+      dispatch(updateProduct(updatedProduct));
+    }
+
     return res.data;
   }
 );
+
 
 export const fetchOrders = createAsyncThunk("order/fetchOrders", async () => {
   const res = await axios.get(`http://localhost:3000/orders`);
   return res.data;
 });
+
+export const updateOrderStatus = createAsyncThunk(
+  "order/updateOrderStatus",
+  async ({ orderId, status }: { orderId: number; status: string }) => {
+    const res = await axios.patch(`http://localhost:3000/orders/${orderId}`, {
+      status,
+    });
+    return res.data;
+  }
+   );
+  
+export const deleteOrder = createAsyncThunk(
+  "order/deleteOrder",
+  async (orderId: string) => {
+    await axios.delete(`http://localhost:3000/orders/${orderId}`);
+    return orderId;
+  }
+);
 
 const orderSlice = createSlice({
   name: "order",
@@ -38,6 +80,20 @@ const orderSlice = createSlice({
     builder.addCase(fetchOrders.rejected, (state) => {
       state.loading = false;
     });
+    builder.addCase(updateOrderStatus.fulfilled, (state, action) => {
+      const index = state.orders.findIndex(
+        (order) => order.id === action.payload.id
+      );
+      if (index !== -1) {
+        state.orders[index] = action.payload;
+      }
+    });
+    builder.addCase(deleteOrder.fulfilled, (state, action) => {
+      state.orders = state.orders.filter(
+        (order) => order.id !== action.payload
+      );
+    });
+
   },
 });
 

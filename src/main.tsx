@@ -18,16 +18,13 @@ import CheckOut from "./pages/CheckOut/CheckOut.tsx";
 import OrderDetails from "./pages/OrderDetails/OrderDetails.tsx";
 import { Provider } from "react-redux";
 import store from "./redux/store.ts";
-<<<<<<< HEAD
 import ForgetPassword from "./pages/forgetPassword/forgetPassword.tsx";
 import ResetPassword from "./pages/resetPassword/resetPassword.tsx";
-=======
 import UsersDB from "./pages/dashboard/users/usersDB.tsx";
 import OverView from "./pages/dashboart/overview/overview.tsx";
 import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
 import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
 import ProductListAdmin from "./pages/dashboard/productDB/productList/ProductListAdmin.tsx";
->>>>>>> checkMErge
 
 const rout = createBrowserRouter([
   {
@@ -35,14 +32,6 @@ const rout = createBrowserRouter([
     element: <LayOut />,
     children: [
       { index: true, element: <HomePage /> },
-<<<<<<< HEAD
-      { path: "about", element: <About /> },
-      { path: "products", element: <Products /> },
-      { path: "products/:id", element: <ProductDetails /> },
-      { path: "cart", element: <Cart /> },
-      { path: "checkout", element: <CheckOut /> },
-      { path: "/order-details/:orderId", element: <OrderDetails /> },
-=======
       {
         path: "about",
         lazy: async () => {
@@ -65,9 +54,30 @@ const rout = createBrowserRouter([
         },
       },
       {
+        path: "product/:id",
+        lazy: async () => {
+          const x = await import("./pages/ProductDetails/ProductDetails.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
         path: "cart",
         lazy: async () => {
           const x = await import("./pages/Cart/Cart.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
+        path: "checkout",
+        lazy: async () => {
+          const x = await import("./pages/CheckOut/CheckOut.tsx");
+          return { Component: x.default };
+        },
+      },
+      {
+        path: "order-details/:orderId",
+        lazy: async () => {
+          const x = await import("./pages/OrderDetails/OrderDetails.tsx");
           return { Component: x.default };
         },
       },
@@ -113,7 +123,6 @@ const rout = createBrowserRouter([
       { path: "AddProduct", element: <AddProduct /> },
       { path: "productListAdmin", element: <ProductListAdmin /> },
       { path: "users", element: <UsersDB /> },
->>>>>>> checkMErge
     ],
   },
 ]);

@@ -10,7 +10,7 @@ export class Product implements IProduct {
     public color: string;
     public category: string;
     public price: number;
-    public rating: string;
+    public rating: number;
     public isFavorite: boolean;
     public totalQuantity: number;
 
@@ -21,7 +21,7 @@ export class Product implements IProduct {
         desc: string,
         category: string,
         color: string,
-        rating: string,
+        rating: number,
         isFavorite: boolean,
         totalQuantity: number,
         id?: number
