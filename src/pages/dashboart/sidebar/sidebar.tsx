@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./sidebar.css";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 export default function SidebarDashboard() {
   const [collapsed, setCollapsed] = useState(true);
@@ -74,12 +74,11 @@ const handleCategories = () => {
                 <i className="fa-solid fa-layer-group text-light" />
                 <span className="sidebar-text text-light mx-2">Categories</span>
               </button>
-              <Link to="/dashboard/orders" className="text-decoration-none">
-                <button className="btn text-start py-3" id="orders">
-                  <i className="fa-solid fa-receipt text-light" />
-                  <span className="sidebar-text text-light mx-2">Orders</span>
-                </button>
-              </Link>
+
+              <button className="btn text-start py-3" id="orders">
+                <i className="fa-solid fa-receipt text-light" />
+                <span className="sidebar-text text-light mx-2">Orders</span>
+              </button>
               <button className="btn text-start py-3" id="users">
                 <i className="fa-solid fa-user-group text-light" />
                 <span className="sidebar-text text-light mx-2">Users</span>
