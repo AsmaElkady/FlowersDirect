@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import "./checkout.css";
-import type { ICart } from "../../Types/cart";
+import type { ICart } from "../../types/cart";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { v4 as uuidv4 } from "uuid";
@@ -9,6 +9,7 @@ import { addOrder } from "../../redux/slices/order.slice";
 import { clearCartApi } from "../../redux/slices/cartApi";
 import { useNavigate } from "react-router-dom";
 import type { Order } from "../../Types/order";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function CheckOut() {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,12 +34,12 @@ export default function CheckOut() {
     const userId = userItem ? JSON.parse(userItem).id : "";
 
     if (!address.trim()) {
-      alert("Please enter a shipping address.");
+      toast.error("Please enter a shipping address.");
       return;
     }
 
     if (cartItems.length === 0) {
-      alert("Your cart is empty.");
+      toast.error("Your cart is empty.");
       return;
     }
 
@@ -61,7 +62,7 @@ export default function CheckOut() {
 
   return (
     <div className="checkout-root py-5">
-      <Container className="checkout-container">
+      <Container className="checkout-container pt-5">
         <div className="text-center mb-5">
           <h2 className="checkout-title mb-2">Complete Your Order</h2>
           <div className="theme-divider mx-auto"></div>
@@ -160,6 +161,7 @@ export default function CheckOut() {
             </div>
           </Col>
         </Row>
+        <ToastContainer />
       </Container>
     </div>
   );
