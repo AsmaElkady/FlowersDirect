@@ -5,19 +5,20 @@ import { deleteCategory, fetchCategory } from "../../../redux/slices/category";
 import { Button } from "react-bootstrap";
 
 interface Iprops {
-    id:number
+    id:number,
+    name:string
 }
-export default function DeleteCategory({ id }: Iprops) {
+export default function DeleteCategory({ id , name}: Iprops) {
   const dispatch = useDispatch<AppDispatch>();
   const handleDelete = (id: number) => {
     Swal.fire({
-      title: "Are you sure?",
+      title: `Are you sure delete ${name}?`,
       text: "You won’t be able to revert this action!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "delete it!",
       cancelButtonText: "Cancel",
     }).then((result) => {
       if (result.isConfirmed) {

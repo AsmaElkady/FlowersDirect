@@ -11,11 +11,19 @@ export default function HeadConponent() {
         <Carousel controls={false} className="pt-5">
           <Carousel.Item interval={3000} style={{ height: "90vh" }}>
             <img
+              src="/img/Home/Hero Banner.png"
+              alt="slide 3"
+              className="d-block w-100"
+              style={{ height: "100%" }}
+            />
+          </Carousel.Item>
+          <Carousel.Item interval={3000} style={{ height: "90vh" }}>
+            <img
               src="/img/Home/5.jpg"
               alt="slide 3"
               className="d-block w-100"
               style={{ objectFit: "cover", height: "100%" }}
-            />{" "}
+            />
           </Carousel.Item>
           <Carousel.Item interval={3000} style={{ height: "90vh" }}>
             <img
@@ -23,7 +31,7 @@ export default function HeadConponent() {
               alt="slide 1"
               className="d-block w-100"
               style={{ objectFit: "cover", height: "100%" }}
-            />{" "}
+            />
           </Carousel.Item>
           <Carousel.Item interval={3000} style={{ height: "90vh" }}>
             <img
@@ -31,7 +39,7 @@ export default function HeadConponent() {
               alt="slide 2"
               className="d-block w-100"
               style={{ objectFit: "cover", height: "100%" }}
-            />{" "}
+            />
           </Carousel.Item>
           <Carousel.Item interval={3000} style={{ height: "90vh" }}>
             <img
@@ -39,7 +47,7 @@ export default function HeadConponent() {
               alt="slide 3"
               className="d-block w-100"
               style={{ objectFit: "cover", height: "100%" }}
-            />{" "}
+            />
           </Carousel.Item>
         </Carousel>
 

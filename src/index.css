@@ -10,6 +10,8 @@ body {
   font-style: normal;
 
   color: var(--mainColor) !important;
+    cursor: url("/flower.png"),auto;
+
 }
 
 .border-card {

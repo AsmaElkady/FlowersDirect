@@ -355,32 +355,17 @@
       ],
       "favorites": [],
       "orders": [],
-      "id": 5
+      "id": 2
     },
     {
       "email": "eman@gmail.com",
-      "password": "$2a$10$Aa8odvtPNFghkH/el6ccvu7tcGxw6y4WUvKfPr0hWNH.n2e1sq4hi",
+      "password": "$2a$10$BgS0Wyn4C3Wf9FncIqtbM.ppgoDjFJCnPerCxhGt4ZxuThuVS4.mi",
       "username": "Eman",
       "cart": [
         {
-          "cartItems": [
-            {
-              "id": 1,
-              "name": "Red Tulip",
-              "desc": "A beautiful tulip with a natural wood stand.",
-              "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
-              "color": "red",
-              "category": "Tulips",
-              "price": 137,
-              "rating": 5,
-              "isFavorite": false,
-              "totalQuantity": 12,
-              "quantity": 1,
-              "total": 137
-            }
-          ],
-          "totalQuantity": 1,
-          "totalPrice": 137
+          "cartItems": [],
+          "totalQuantity": 0,
+          "totalPrice": 0
         }
       ],
       "favorites": [],
