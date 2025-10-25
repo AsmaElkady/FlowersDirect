@@ -3,7 +3,6 @@ import Filter from "../../components/Filter/Filter";
 import "../../index.css";
 import ProductList from "../../components/ProductList/ProductList";
 import type { IProduct } from "../../types/productType";
-import type { IProduct } from "../../types/productType";
 import { Helmet } from "react-helmet";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
