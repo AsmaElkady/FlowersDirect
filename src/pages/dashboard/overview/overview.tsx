@@ -59,6 +59,16 @@ const OverView = () => {
             verticalAlign="middle"
             wrapperStyle={style}
           />
+          <Text
+            x={180}
+            y={20}
+            fill="#333"
+            textAnchor="middle"
+            dominantBaseline="central"
+            fontSize={20}
+          >
+            Categories
+          </Text>
         </RadialBarChart>
         <BarChart
           style={{
