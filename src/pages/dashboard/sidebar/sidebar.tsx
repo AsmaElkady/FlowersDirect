@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./sidebar.css";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { logoutUser } from "../../../redux/slices/authSlice";
 
@@ -86,11 +86,12 @@ export default function SidebarDashboard() {
                 <i className="fa-solid fa-layer-group text-light" />
                 <span className="sidebar-text text-light mx-2">Categories</span>
               </button>
-
-              <button className="btn text-start py-3" id="orders">
-                <i className="fa-solid fa-receipt text-light" />
-                <span className="sidebar-text text-light mx-2">Orders</span>
-              </button>
+              <Link to="orders" style={{ textDecoration: "none" }}>
+                <button className="btn text-start py-3" id="orders">
+                  <i className="fa-solid fa-receipt text-light" />
+                  <span className="sidebar-text text-light mx-2">Orders</span>
+                </button>
+              </Link>
               <button
                 className="btn text-start py-3"
                 id="users"
