@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./sidebar.css";
 import { Link, useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
-import { logoutUser } from "../../../redux/slices/authSlice";
+import { logoutAdmin } from "../../../redux/slices/authSlice";
 
 export default function SidebarDashboard() {
   const [collapsed, setCollapsed] = useState(true);
@@ -18,9 +18,9 @@ export default function SidebarDashboard() {
     navigation("/dashboard");
   };
 
-const handleProducts = () => {
+  const handleProducts = () => {
     navigation("productListAdmin");
-};
+  };
 
   const handleCategories = () => {
     navigation("category");
@@ -32,7 +32,7 @@ const handleProducts = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    dispatch(logoutAdmin());
     navigation("/Login");
   };
 

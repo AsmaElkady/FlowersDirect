@@ -15,7 +15,7 @@ import AuthText from "../../components/animations/AuthText";
 import { useNavigate } from "react-router";
 import { baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
-import { setAdmin, setToken, setUser } from "../../redux/slices/authSlice";
+import { setToken, setUser } from "../../redux/slices/authSlice";
 import { Admin } from "../../classes/users";
 import { Helmet } from "react-helmet";
 import { loginDefaultValues } from "../../utils/schema/loginSchema";
@@ -42,12 +42,11 @@ const Login = () => {
     onSuccess: (res) => {
       if (res) {
         dispatch(setToken(res.data.accessToken));
+        dispatch(setUser(res.data.user));
         if (Admin.checkAdmin(res.data.user.email).status) {
           navigate("/dashboard", { replace: true });
-          dispatch(setAdmin(res.data.user));
         } else {
           navigate("/", { replace: true });
-          dispatch(setUser(res.data.user));
         }
       }
       //location.state?.from ? navigate(-1) : navigate("/", { replace: true });

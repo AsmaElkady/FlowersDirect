@@ -6,13 +6,11 @@ import type { Order } from "../../../Types/order";
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Admin } from "../../../classes/users";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link, useNavigate } from "react-router";
 import DataTableComponent from "../../../components/Table/SortTable";
 import Search from "../../../components/Inputs/Search";
 import {
-  fetchOrders,
   deleteOrder,
   updateOrderStatus,
 } from "../../../redux/slices/order.slice";
@@ -21,21 +19,11 @@ const OrdersAdmin = () => {
   const [rows, setRows] = useState<Order[]>([]);
   const [search, setSearch] = useState("");
   const [showInput, setShowInput] = useState(false);
-  const user = useSelector((state: RootState) => state.auth.user);
   const { orders, loading } = useSelector(
     (state: RootState) => state.orderSlice
   );
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkType = Admin.checkAdmin(user?.email ?? "");
-    if (checkType.status) {
-      dispatch(fetchOrders());
-    } else {
-      navigate("/login");
-    }
-  }, [dispatch, navigate, user, user?.email]);
 
   const allOrders = useMemo(() => {
     return orders;
@@ -56,7 +44,6 @@ const OrdersAdmin = () => {
     }
   }, [orders, search, allOrders]);
 
-  
   const currencyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -80,7 +67,7 @@ const OrdersAdmin = () => {
       sortable: true,
       cell: (row: Order) => (
         <Link
-          to={`/order-details/${row.id ?? ""}`}
+          to={`/dashboard/orders/${row.id ?? ""}`}
           className="text-decoration-none fw-semibold"
           title="View Order"
         >
@@ -92,9 +79,7 @@ const OrdersAdmin = () => {
       name: "User ID",
       selector: (row: Order) => row.userId,
       sortable: true,
-      cell: (row: Order) => (
-        <span className="text-muted">#{row.userId}</span>
-      ),
+      cell: (row: Order) => <span className="text-muted">#{row.userId}</span>,
     },
     {
       name: "Items",
@@ -124,7 +109,9 @@ const OrdersAdmin = () => {
       sortable: true,
       cell: (row: Order) => (
         <span
-          className={`badge rounded-pill ${statusClassMap[row.status] ?? "bg-secondary"}`}
+          className={`badge rounded-pill ${
+            statusClassMap[row.status] ?? "bg-secondary"
+          }`}
         >
           {toTitle(row.status)}
         </span>
@@ -159,7 +146,7 @@ const OrdersAdmin = () => {
             title="Delete Order"
             aria-label="Delete Order"
           >
-             <i className="bi bi-trash3"></i>
+            <i className="bi bi-trash3"></i>
           </Button>
         </div>
       ),
@@ -195,7 +182,7 @@ const OrdersAdmin = () => {
   };
 
   const handleView = (row: Order) => {
-    navigate(`/order-details/${row.id}`);
+    navigate(`/dashboard/orders/${row.id}`);
   };
 
   const handleStatusChange = (row: Order) => {
@@ -269,7 +256,7 @@ const OrdersAdmin = () => {
         </div>
       </div>
 
-      <DataTableComponent columns={columns} data={rows} loading={loading}  />
+      <DataTableComponent columns={columns} data={rows} loading={loading} />
       <ToastContainer />
     </div>
   );

@@ -41,12 +41,12 @@ export default function Revenue() {
         <div className="col-md-6">
           <Smooth className="card bg-card p-3 text-dark rounded-4 text-primary bg-light h-100 w-100">
             <h4>
-              <i className="fa-solid fa-award mb-2"></i> Top Products
+              <i className="fa-solid fa-award mb-1"></i> Top Products
             </h4>
             <div className="w-100">
               {topProducts.map((prod) => {
                 return (
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between mt-1">
                     <div className="d-flex align-items-center justify-content-center">
                       <img
                         src={prod.image}

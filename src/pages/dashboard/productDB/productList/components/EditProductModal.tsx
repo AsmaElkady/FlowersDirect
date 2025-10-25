@@ -2,7 +2,10 @@ import { useForm , FormProvider } from "react-hook-form";
 import { useAppDispatch, type AppDispatch, type RootState } from "../../../../../redux/store";
 import type { IProduct } from "../../../../../Types/productType";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
-import { addProductSchema, type AddProductSchemaType } from "../../../../../utils/schema/addProductSchema";
+import {
+  addProductSchema,
+  type AddProductSchemaType,
+} from "../../../../../utils/schema/addProductSchema";
 import { useEffect } from "react";
 import { Product } from "../../../../../classes/productClass";
 import Swal from "sweetalert2";
@@ -11,10 +14,10 @@ import MyInput from "../../../../../components/Inputs/MyInput";
 import { useSelector } from "react-redux";
 import { fetchCategory } from "../../../../../redux/slices/category";
 
-interface EditProductModalProps{
-    show : boolean;
-    handleClose: ()=> void;
-    product: IProduct;
+interface EditProductModalProps {
+  show: boolean;
+  handleClose: () => void;
+  product: IProduct;
 }
 
 function EditProductModal({ show, handleClose, product }: EditProductModalProps) {
@@ -36,7 +39,7 @@ function EditProductModal({ show, handleClose, product }: EditProductModalProps)
     }
   }, [product, methods]);
 
-    const onSubmit = async (data: AddProductSchemaType) => {
+  const onSubmit = async (data: AddProductSchemaType) => {
     try {
       if (!product?.id) return;
 
@@ -71,7 +74,7 @@ function EditProductModal({ show, handleClose, product }: EditProductModalProps)
   };
 
   return (
-      <Modal show={show} onHide={handleClose} centered>
+    <Modal show={show} onHide={handleClose} centered>
       <FormProvider {...methods}>
         <Form onSubmit={methods.handleSubmit(onSubmit)}>
           <Modal.Header closeButton>
@@ -110,7 +113,7 @@ function EditProductModal({ show, handleClose, product }: EditProductModalProps)
         </Form>
       </FormProvider>
     </Modal>
-  )
+  );
 }
 
-export default EditProductModal
+export default EditProductModal;

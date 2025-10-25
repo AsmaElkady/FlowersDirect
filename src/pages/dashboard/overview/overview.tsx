@@ -13,6 +13,7 @@ import {
 } from "recharts";
 import useDashboard from "../../../hooks/useDashboard";
 import { colorsArr } from "../../../constants/main";
+import Revenue from "../revenue/revenue";
 
 const style = {
   top: "50%",
@@ -28,12 +29,14 @@ const OverView = () => {
   });
 
   const stock = productsStock.map((prod) => {
-    const color = data.filter((category) => category.name == prod.category)[0]?.fill;
+    const color = data.filter((category) => category.name == prod.category)[0]
+      ?.fill;
     return { ...prod, fill: color };
   });
 
   return (
     <div>
+      <Revenue />
       <h1 className="m-3">Dashboard</h1>
       <div className="d-flex justify-content-between mb-5">
         <RadialBarChart
@@ -50,9 +53,10 @@ const OverView = () => {
         >
           <RadialBar
             label={{ position: "insideStart", fill: "#fff" }}
-            background
             dataKey="uv"
           />
+          <Tooltip cursor={{ fill: "transparent" }} />
+
           <Legend
             iconSize={10}
             layout="vertical"
@@ -97,16 +101,6 @@ const OverView = () => {
             fill={colorsArr[3]}
             activeBar={<Rectangle fill="gold" stroke="purple" />}
           />
-          <Text
-            x={250}
-            y={20}
-            fill="#333"
-            textAnchor="middle"
-            dominantBaseline="central"
-            fontSize={20}
-          >
-            Product Stock
-          </Text>
         </BarChart>
       </div>
     </div>

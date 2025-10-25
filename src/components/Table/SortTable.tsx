@@ -38,6 +38,7 @@ const customStyles = {
       fontWeight: "bold",
       fontSize: "15px",
       color: "#4e0629",
+      backgroundColor: "#fbeff4",
     },
   },
 };

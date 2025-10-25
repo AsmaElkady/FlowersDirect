@@ -31,8 +31,8 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Helmet } from "react-helmet";
 import { Outlet, useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../../redux/store";
 import { fetchCategory } from "../../../redux/slices/category";
 import HomeIcon from "@mui/icons-material/Home";
 import { Product } from "../../../classes/productClass";
@@ -124,17 +124,23 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer() {
   const dispatch = useDispatch<AppDispatch>();
-  React.useEffect(() => {
-    dispatch(fetchCategory());
-    dispatch(fetchOrders());
-    dispatch(Product.getProducts());
-    dispatch(Admin.viewUsers());
-  }, [dispatch]);
+  const user = useSelector((state: RootState) => state.auth.user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   const handleDrawerOpen = () => setOpen(true);
   const handleDrawerClose = () => setOpen(false);
+
+  React.useEffect(() => {
+    const checkStatus = Admin.checkAdmin(user?.email ?? "");
+    if (!checkStatus.status) {
+      navigate("/Login");
+    }
+    dispatch(fetchCategory());
+    dispatch(fetchOrders());
+    dispatch(Product.getProducts());
+    dispatch(Admin.viewUsers());
+  }, [dispatch, navigate, user?.email]);
 
   const handleClick = (name: string) => {
     console.log(`${name} clicked`);

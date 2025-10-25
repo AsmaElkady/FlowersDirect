@@ -11,7 +11,6 @@ import { Admin } from "../../../classes/users";
 import SearchIcon from "@mui/icons-material/Search";
 import ModalComponent from "../../../components/Modal/Modal";
 import ChangePassword from "./changePassword";
-import { useNavigate } from "react-router";
 import DataTableComponent from "../../../components/Table/SortTable";
 import Search from "../../../components/Inputs/Search";
 import Loading from "../../../components/Loading/Loading";
@@ -22,18 +21,10 @@ const UsersDB = () => {
   const [showModal, setShowModal] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [id, setID] = useState<number | undefined>();
-  const user = useSelector((state: RootState) => state.auth.admin);
   const { users, status, isLoading, isError, error } = useSelector(
     (state: RootState) => state.admin
   );
   const dispatch = useDispatch<AppDispatch>();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) {
-      navigate("/Login");
-    }
-  }, [dispatch, navigate, user]);
 
   const customersUsers = useMemo(() => {
     return (
