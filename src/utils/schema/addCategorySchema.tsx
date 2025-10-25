@@ -10,7 +10,6 @@ export const addCategorySchema = z.object({
     .max(300, "Description can't exceed 150 characters"),
   image: z
     .string()
-    // .url("Please enter a valid image URL (e.g., https://...)")
     .optional(),
 });
 
