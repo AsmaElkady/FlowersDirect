@@ -21,6 +21,7 @@ import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
 import ProductListAdmin from "./pages/dashboard/productDB/productList/ProductListAdmin.tsx";
 import Login from "./pages/login/login.tsx";
 import ContactUs from "./pages/contact/contact.tsx";
+import OrderDetails from "./pages/OrderDetails/OrderDetails.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -135,6 +136,8 @@ const rout = createBrowserRouter([
       { path: "AddProduct", element: <AddProduct /> },
       { path: "products", element: <ProductListAdmin /> },
       { path: "orders", element: <OrdersAdmin /> },
+      { path: "orders/:orderId", element: <OrderDetails /> },
+
       { path: "users", element: <UsersDB /> },
     ],
   },
