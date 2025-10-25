@@ -12,7 +12,7 @@ import { Helmet } from "react-helmet";
 export default function OrderDetails() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const user = useSelector((state: RootState) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.admin);
 
   const { orderId } = useParams<{ orderId: string }>();
   const { orders, loading } = useSelector(
@@ -27,10 +27,11 @@ export default function OrderDetails() {
 
   useEffect(() => {
     if (loading || !order) return;
+    console.log(user?.email);
 
     const isOwner = user?.id === order.userId;
     const isAdmin = Admin.checkAdmin(user?.email ?? "").status;
-
+    console.log(isOwner, isAdmin);
     if (!isOwner && !isAdmin) {
       navigate("/");
     }

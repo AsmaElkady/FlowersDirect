@@ -21,7 +21,7 @@ const OrdersAdmin = () => {
   const [rows, setRows] = useState<Order[]>([]);
   const [search, setSearch] = useState("");
   const [showInput, setShowInput] = useState(false);
-  const user = useSelector((state: RootState) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.admin);
   const { orders, loading } = useSelector(
     (state: RootState) => state.orderSlice
   );
