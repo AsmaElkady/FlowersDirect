@@ -16,7 +16,7 @@ export default function SidebarDashboard() {
 };
 
 const handleProducts = () => {
-    console.log("Products clicked");
+    navigation("productListAdmin");
 };
 
 const handleCategories = () => {

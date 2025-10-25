@@ -16,6 +16,7 @@ import OverView from "./pages/dashboart/overview/overview.tsx";
 import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
 import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
 import ProductListAdmin from "./pages/dashboard/productDB/productList/ProductListAdmin.tsx";
+import ContactUs from "./pages/contact/contact.tsx";
 
 const rout = createBrowserRouter([
   {
@@ -30,6 +31,7 @@ const rout = createBrowserRouter([
           return { Component: x.default };
         },
       },
+      {path:"contact",element:<ContactUs/>},
       {
         path: "products",
         lazy: async () => {

@@ -1,5 +1,5 @@
 import type { TableColumn } from "react-data-table-component";
-import type { IProduct } from "../../../../../Types/productType";
+import type { IProduct } from "../../../../../types/productType";
 import { Button } from "react-bootstrap";
 
 export const productColumns = (handleDelete: (id: number) => void , handleEdit: (product: IProduct) => void): TableColumn<IProduct>[] => [
@@ -53,6 +53,7 @@ export const productColumns = (handleDelete: (id: number) => void , handleEdit: 
             variant="outline-primary"
             size="sm"
             title="Edit"
+            className="border-0"
             onClick={() => handleEdit(row)}
           >
             <i className="bi bi-pencil-square"></i>

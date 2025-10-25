@@ -3,10 +3,10 @@ import Modal from "react-bootstrap/Modal";
 import { Card, Button, Pagination } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../redux/store";
-import type { IProduct } from "../../Types/productType";
 import CloseIcon from "@mui/icons-material/Close";
 import { clearFavApi, deleteFavItemApi } from "../../redux/slices/favSlice";
 import { addOrUpdateCartApi } from "../../redux/slices/cartApi";
+import type { IProduct } from "../../types/productType";
 
 type Props = {
   show: boolean;

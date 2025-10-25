@@ -7,18 +7,18 @@ function DataTableComponent<T>({
   data,
   selectableRows = false,
   onRowClicked,
-  handleSearch,
+  // handleSearch,
   pagination = true,
   loading,
 }: DataTableProps<T>) {
   return (
     <>
-        <input
+        {/* <input
           type="search"
           className="form-control-sm ps-1 my-3"
           placeholder="Search"
           onChange={handleSearch}
-        />
+        /> */}
       <DataTable
         title={title}
         columns={columns}

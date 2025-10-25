@@ -10,11 +10,13 @@ import CategoryColor from "./components/CategoryColor";
 import Swal from "sweetalert2";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
 import { FormProvider, useForm } from "react-hook-form";
-import type { IProduct } from "../../../../Types/productType";
+import type { IProduct } from "../../../../types/productType";
 import { addProductDefaultValues, addProductSchema, type AddProductSchemaType } from "../../../../utils/schema/addProductSchema";
+import { useNavigate } from "react-router";
 
 function AddProduct() {
     const dispatch = useAppDispatch<AppDispatch>();
+    const navigation = useNavigate();
 
     const { items: products } = useSelector(
         (state: RootState) => state.products
@@ -74,6 +76,7 @@ function AddProduct() {
         background: "#fbeff4",
       });
     }
+    navigation("/dashboard/productListAdmin")
   };
 
     return (
@@ -95,15 +98,14 @@ function AddProduct() {
                                 categories={categories}
                                 colors={colors} />
                         </div>
-                        <Button
-                            type="submit"
-                            variant="outline-primary"
-                            className="mt-3"
-                        >
-                            Publish Product
-                        </Button>
                     </Col>
                 </Row>
+                <Button
+                    type="submit"
+                    variant="primary"
+                    className="d-block mt-3 ms-auto">
+                    Publish Product
+                </Button>
             </Form>
             </FormProvider>
         </div>
