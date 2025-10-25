@@ -72,7 +72,7 @@ export default function Products() {
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>Products</title>
-                <link rel="canonical" href="http://mysite.com/example" />
+                <link rel="canonical" href="http://mysite.com/products" />
             </Helmet>
             <Container className="py-5">
                 <h2 className="fw-bold mb-4 text-primary mt-5">Shop All Flowers</h2>

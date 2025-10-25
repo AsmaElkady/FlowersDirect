@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Swal from "sweetalert2";
 import { contactDefaultValues, contactSchema, type ContactFormValues,} from "../../utils/schema/contactUsSchema";
 import MyInput from "../../components/Inputs/MyInput";
+import { Helmet } from "react-helmet";
 
 function ContactUs() {
   const methods = useForm<ContactFormValues>({
@@ -52,6 +53,12 @@ function ContactUs() {
   };
 
   return (
+    <>
+    <Helmet>
+        <meta charSet="utf-8" />
+        <title>Contact Us</title>
+        <link rel="canonical" href="http://mysite.com/contact" />
+      </Helmet>
     <Container style={{ paddingTop: "100px" }}>
       <Row className="gap-5">
         <Col md={4}>
@@ -109,6 +116,7 @@ function ContactUs() {
         </Col>
       </Row>
     </Container>
+    </>
   );
 }
 

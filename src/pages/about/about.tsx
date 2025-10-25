@@ -26,7 +26,7 @@ export default function About() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>About Us</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <link rel="canonical" href="http://mysite.com/about" />
       </Helmet>
       <div style={{ position: "relative", borderRadius: "50px" }}>
         <video autoPlay muted loop className="bg-video" style={{
