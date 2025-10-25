@@ -1,5 +1,5 @@
 import type { TableColumn } from "react-data-table-component";
-import type { IProduct } from "../../../../../types/productType";
+import type { IProduct } from "../../../../../Types/productType";
 import { Button } from "react-bootstrap";
 
 export const productColumns = (handleDelete: (id: number) => void , handleEdit: (product: IProduct) => void): TableColumn<IProduct>[] => [

@@ -5,7 +5,7 @@ import { Product } from "../../../../classes/productClass";
 import { productColumns } from "./components/productColumns";
 import DataTableComponent from "../../../../components/Table/SortTable/DataTableComponent";
 import Swal from "sweetalert2";
-import type { IProduct } from "../../../../types/productType";
+import type { IProduct } from "../../../../Types/productType";
 import EditProductModal from "./components/EditProductModal";
 import { Button } from "react-bootstrap";
 import SearchIcon from "@mui/icons-material/Search";
@@ -92,11 +92,11 @@ function ProductListAdmin() {
   return (
     <>
       <div className="p-3">
-        <h3 className="mb-3">All Products</h3>
-
+      
         {loading && <p>Loading products...</p>}
         {error && <p className="text-danger">Error: {error}</p>}
-
+        <div className="d-flex justify-content-between align-items-center">
+            <h3 className="mb-3">All Products</h3>
         <div className="d-flex align-items-end justify-content-end mb-3">
           <input
             type="text"
@@ -116,6 +116,7 @@ function ProductListAdmin() {
           <Button variant="primary" onClick={()=>navigation("/dashboard/AddProduct")}>
             Add Product
           </Button>
+        </div>
         </div>
 
         <DataTableComponent
