@@ -15,7 +15,7 @@ export default function SidebarDashboard() {
 
   const handleOverview = () => {
     console.log("Overview clicked");
-    navigation("overview");
+    navigation("/dashboard");
   };
 
 const handleProducts = () => {

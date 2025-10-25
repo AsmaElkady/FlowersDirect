@@ -130,8 +130,8 @@ const rout = createBrowserRouter([
       return { Component: x.default };
     },
     children: [
-      { path: "", element: <OverView /> },
-      { path: "categories", element: <CategoryDB /> },
+      { index: true, element: <OverView /> },
+      { path: "category", element: <CategoryDB /> },
       { path: "AddProduct", element: <AddProduct /> },
       { path: "products", element: <ProductListAdmin /> },
       { path: "orders", element: <OrdersAdmin /> },

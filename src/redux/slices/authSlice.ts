@@ -25,7 +25,7 @@ const authSlice = createSlice({
     },
     setAdmin: (state, action) => {
       state.admin = action.payload;
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      localStorage.setItem("admin", JSON.stringify(action.payload));
     },
     logoutUser: (state) => {
       state.user = undefined;

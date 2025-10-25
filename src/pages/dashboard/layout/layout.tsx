@@ -35,6 +35,9 @@ import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../../redux/store";
 import { fetchCategory } from "../../../redux/slices/category";
 import HomeIcon from "@mui/icons-material/Home";
+import { Product } from "../../../classes/productClass";
+import { Admin } from "../../../classes/users";
+import { fetchOrders } from "../../../redux/slices/order.slice";
 
 const drawerWidth = 240;
 
@@ -123,6 +126,9 @@ export default function MiniDrawer() {
   const dispatch = useDispatch<AppDispatch>();
   React.useEffect(() => {
     dispatch(fetchCategory());
+    dispatch(fetchOrders());
+    dispatch(Product.getProducts());
+    dispatch(Admin.viewUsers());
   }, [dispatch]);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
