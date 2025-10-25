@@ -3,6 +3,7 @@ import axios from "axios";
 import type { Order, orderState } from "../../Types/order";
 import { Product } from "../../classes/productClass";
 import { updateProduct } from "./productSlice";
+
 // import { update } from './../../../node_modules/sweetalert2/src/instanceMethods/update';
 
 const initialState: orderState = {
@@ -10,13 +11,15 @@ const initialState: orderState = {
   loading: false,
 };
 
+const user = JSON.parse(localStorage.getItem("user") || "null");
+
 export const addOrder = createAsyncThunk(
   "order/addOrder",
   async (order: Order, { dispatch }) => {
     const res = await axios.post("http://localhost:3000/orders", order);
 
     for (const item of order.items) {
-      const updatedProduct:Product = new Product(
+      const updatedProduct: Product = new Product(
         item.name,
         item.price,
         item.image,
@@ -25,7 +28,7 @@ export const addOrder = createAsyncThunk(
         item.color,
         item.rating,
         item.isFavorite,
-        item.totalQuantity - item.quantity, 
+        item.totalQuantity - item.quantity,
         item.id
       );
 
@@ -36,11 +39,21 @@ export const addOrder = createAsyncThunk(
   }
 );
 
-
 export const fetchOrders = createAsyncThunk("order/fetchOrders", async () => {
   const res = await axios.get(`http://localhost:3000/orders`);
   return res.data;
 });
+
+export const fetchOrdersByUserId = createAsyncThunk(
+  "order/fetchOrdersByUserId",
+  async () => {
+    const userId = user?.id;
+    const res = await axios.get(
+      `http://localhost:3000/orders?userId=${userId}`
+    );
+    return res.data;
+  }
+);
 
 export const updateOrderStatus = createAsyncThunk(
   "order/updateOrderStatus",
@@ -48,10 +61,11 @@ export const updateOrderStatus = createAsyncThunk(
     const res = await axios.patch(`http://localhost:3000/orders/${orderId}`, {
       status,
     });
+
     return res.data;
   }
-   );
-  
+);
+
 export const deleteOrder = createAsyncThunk(
   "order/deleteOrder",
   async (orderId: string) => {
@@ -91,7 +105,16 @@ const orderSlice = createSlice({
         (order) => order.id !== action.payload
       );
     });
-
+    builder.addCase(fetchOrdersByUserId.fulfilled, (state, action) => {
+      state.loading = false;
+      state.orders = action.payload;
+    });
+    builder.addCase(fetchOrdersByUserId.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchOrdersByUserId.rejected, (state) => {
+      state.loading = false;
+    });
   },
 });
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Accordion, Button, Col, Container, Row } from "react-bootstrap";
 import "./../../style/auth.css";
-import type { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
 import ModalComponent from "../../components/Modal/Modal";
 import EditModal from "./EditModal";
 import { useNavigate } from "react-router";
@@ -12,82 +12,29 @@ import Flower from "../../../public/lottie/Profile.json";
 import "./stepper.css";
 import Search from "../../components/Inputs/Search";
 import SearchIcon from "@mui/icons-material/Search";
+import { fetchOrdersByUserId } from "../../redux/slices/order.slice";
+import type { OrderItem } from "../../Types/order";
 
-type OrderItem = {
-  id: string;
-  name: string;
-  image: string;
-  category?: string;
-  price: number;
-  quantity: number;
-};
-
-type Order = {
-  id: string;
-  orderNumber: string;
-  date: string;
-  status: "pending" | "processing" | "shipped" | "delivered" | "cancelled";
-  items: OrderItem[];
-  subtotal: number;
-  shipping: number;
-  total: number;
-  shippingAddress: {
-    line1: string;
-    notes?: string;
-  };
-  estimatedDelivery?: string;
-};
-
-// Demo data - replace with API call
-const mockOrder: Order = {
-  id: "1",
-  orderNumber: "FD-2025-1047",
-  date: "2025-10-15",
-  status: "processing",
-  items: [
-    {
-      id: "1",
-      name: "Rose Bouquet",
-      image: "/img/Home/category/flower1.png",
-      category: "Roses",
-      price: 150,
-      quantity: 2,
-    },
-    {
-      id: "2",
-      name: "Tulip Arrangement",
-      image: "/img/Home/category/flower2.png",
-      category: "Tulips",
-      price: 120,
-      quantity: 1,
-    },
-  ],
-  subtotal: 420,
-  shipping: 30,
-  total: 450,
-  shippingAddress: {
-    line1: "123 Garden Street, Cairo, Egypt",
-    notes: "Please call before delivery",
-  },
-  estimatedDelivery: "2025-10-20",
-};
 
 const UserProfile = () => {
   const user = useSelector((state: RootState) => state.auth.user!);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
-  const [id, setId] = useState(1);
   const [showInput, setShowInput] = useState(false);
-  const [order, setOrder] = useState<Order | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [active, setActive] = useState("pending");
+  const { orders, loading } = useSelector(
+    (state: RootState) => state.orderSlice
+  );
+  const [active, setActive] = useState("all");
   const [search, setSearch] = useState("");
 
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     if (!user) {
       navigate("/Login");
+    } else {
+      dispatch(fetchOrdersByUserId());
     }
-  }, [user, navigate]);
+  }, [user, navigate, dispatch]);
 
   const handleEdit = ({ status, msg }: { status: boolean; msg: string }) => {
     if (status) {
@@ -99,16 +46,18 @@ const UserProfile = () => {
     }
   };
 
-  useEffect(() => {
-    // Simulate API call
-    setTimeout(() => {
-      setOrder(mockOrder);
-      setId(1);
-      setLoading(false);
-    }, 500);
-  }, [id]);
-
-  useEffect(() => {}, [search]);
+  const filteredOrders = orders
+    .filter((order) => {
+      if (active === "all") return true;
+      return order.status.toLowerCase() === active.toLowerCase();
+    })
+    .filter(
+      (order) =>
+        order.id.toString().includes(search) ||
+        order.items.some((item) =>
+          item.name.toLowerCase().includes(search.toLowerCase())
+        )
+    );
 
   if (loading) {
     return (
@@ -118,19 +67,6 @@ const UserProfile = () => {
             <span className="visually-hidden">Loading...</span>
           </div>
           <p className="mt-3 text-muted">Loading order details...</p>
-        </Container>
-      </div>
-    );
-  }
-
-  if (!order) {
-    return (
-      <div className="order-details-root">
-        <Container className="text-center py-5">
-          <h3>Order not found</h3>
-          <p className="text-muted">
-            We couldn't find this order. Please check the order number.
-          </p>
         </Container>
       </div>
     );
@@ -154,11 +90,10 @@ const UserProfile = () => {
               ></i>
             </div>
             <h5 className="text-center">{user?.email}</h5>
-            {/* <MyButton title="edit" varient="primary" isLoading={false} /> */}
           </div>
         </Row>
         <div className="order-progress-card mb-4">
-          <div className="d-flex align-items-end justify-content-between">
+          <div className="d-flex align-items-end justify-content-between mb-4">
             <h5 className="section-title">Order History</h5>
             <div className="d-flex align-items-center">
               <div>
@@ -177,81 +112,76 @@ const UserProfile = () => {
               </Button>
             </div>
           </div>
-          <div className="progress-tracker">
-            <Button
-              onClick={() => setActive("pending")}
-              className={`progress-step bg-transparent border-0 completed ${
-                active === "pending" ? "active" : ""
-              }`}
-            >
-              <div className="progress-dot"></div>
-              <div className="progress-label">Order Placed</div>
-            </Button>
-            <div className="progress-line"></div>
-            <Button
-              onClick={() => setActive("processing")}
-              className={`progress-step bg-transparent border-0 completed ${
-                active === "processing" ? "active" : ""
-              }`}
-            >
-              <div className="progress-dot"></div>
-              <div className="progress-label">Processing</div>
-            </Button>
-            <div className="progress-line"></div>
-            <Button
-              onClick={() => setActive("shipped")}
-              className={`progress-step bg-transparent border-0 completed ${
-                active === "shipped" ? "active" : ""
-              }`}
-            >
-              <div className="progress-dot"></div>
-              <div className="progress-label">Shipped</div>
-            </Button>
-            <div className="progress-line"></div>
-            <Button
-              onClick={() => setActive("Delivered")}
-              className={`progress-step bg-transparent border-0 completed ${
-                active === "Delivered" ? "active" : ""
-              }`}
-            >
-              <div className="progress-dot"></div>
-              <div className="progress-label">Delivered</div>
-            </Button>
-          </div>
+        
         </div>
         <Row className="g-4 pb-4">
-          {/* Order Items */}
-          <Col lg={4}>
-            <div className="order-section-card">
-              <h5 className="section-title mb-3">Order Summery</h5>
-              <div className="theme-divider mb-4"></div>
-              <div className="order-items-list">
-                <div className="d-flex">
-                  <div className="item-details">
-                    <div className="item-name">ID</div>
-                  </div>
-                  <div className="unit-price">{order.id}</div>
-                </div>
+          <Col>
+            {filteredOrders.length > 0 ? (
+              <Accordion defaultActiveKey="0">
+                {filteredOrders.map((order, index) => (
+                  <Accordion.Item
+                    eventKey={String(index)}
+                    key={order.id}
+                    className="mb-3"
+                  >
+                    <Accordion.Header>
+                      <div className="d-flex justify-content-between w-100 pe-3">
+                        <span>Order ID: #{order.id}</span>
 
-                {order.items.map((item) => (
-                  <div key={item.id} className="d-flex">
-                    <div className="item-details">
-                      <div className="item-name">{item.name}</div>
-                    </div>
-                    <div className="unit-price">
-                      {item.quantity} x {item.price} EGP
-                    </div>
-                  </div>
+                        <span className="text-capitalize">
+                          Status: {order.status}
+                        </span>
+                        <span>Total: {order.totalPrice} EGP</span>
+                      </div>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <h5 className="section-title mb-3">Order Summary</h5>
+                      <div className="order-items-list">
+                        {order.items.map((item: OrderItem) => (
+                          <div
+                            key={item.id}
+                            className="d-flex justify-content-between py-2 border-bottom"
+                          >
+                            <div className="item-details">
+                              <div className="item-name fw-bold">
+                                {item.name}
+                              </div>
+                              <div className="item-quantity text-muted">
+                                Quantity: {item.quantity}
+                              </div>
+                            </div>
+                            <div className="unit-price align-self-center">
+                              {item.price} EGP
+                            </div>
+                          </div>
+                        ))}
+<div className="d-flex justify-content-between align-items-center mt-4 p-3 bg-light rounded-3 shadow-sm">
+  <div className="fw-bold fs-5 text-dark">
+    Total: <span className="text-success">{order.totalPrice} EGP</span>
+  </div>
+
+  <Button
+    variant="primary"
+    className="px-4 py-2 rounded-pill shadow-sm fw-semibold"
+    onClick={() => navigate(`/order-details/${order.id}`)}
+  >
+    Order Details
+  </Button>
+</div>
+
+                      </div>
+                    </Accordion.Body>
+                  </Accordion.Item>
                 ))}
-
-                <div className="d-flex">
-                  <div className="item-details">
-                    <div className="item-name">Total</div>
-                  </div>
-                  <div className="unit-price">{order.total}</div>
-                </div>
+              </Accordion>
+            ) : (
+              <div className="text-center py-5">
+                <h3>No orders found</h3>
+                <p className="text-muted">
+                  There are no orders matching your current filters.
+                </p>
               </div>
-            </div>
+            )}
           </Col>
         </Row>
         <ModalComponent

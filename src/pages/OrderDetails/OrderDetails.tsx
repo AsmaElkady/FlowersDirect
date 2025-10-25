@@ -7,32 +7,30 @@ import type { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import type { Order } from "../../Types/order";
 import { Admin } from "../../classes/users";
-
-
+import { Helmet } from "react-helmet";
 
 const OrderDetails = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-    const user = useSelector((state: RootState) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.user);
 
   const { orderId } = useParams<{ orderId: string }>();
   const { orders, loading } = useSelector(
     (state: RootState) => state.orderSlice
   );
 
-    useEffect(() => {
-        dispatch(fetchOrders());
-
-      }
-    , [dispatch]);
-
+  useEffect(() => {
+    dispatch(fetchOrders());
+  }, [dispatch]);
 
   const order: Order | undefined = orders.find((o) => o.id === orderId);
 
-  if (user?.id !== order?.userId && !Admin.checkAdmin(user?.email ?? "").status) {
+  if (
+    user?.id !== order?.userId &&
+    !Admin.checkAdmin(user?.email ?? "").status
+  ) {
     return navigate("/");
   }
-
 
   const getStatusBadge = (status: Order["status"]) => {
     const badges: Record<string, { bg: string; text: string }> = {
@@ -75,7 +73,13 @@ const OrderDetails = () => {
 
   return (
     <div className="order-details-root">
-      <Container className="order-details-container">
+
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Order Details</title>
+      </Helmet>
+
+      <Container className="order-details-container mt-5">
         <div className="text-center mb-5">
           <h2 className="order-details-title mb-2">Order Details</h2>
           <div className="theme-divider mx-auto"></div>

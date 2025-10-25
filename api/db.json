@@ -1,18 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "Red Tulip",
-      "desc": "A beautiful tulip with a natural wood stand.",
-      "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
-      "color": "red",
-      "category": "Tulips",
-      "price": 137,
-      "rating": 5,
-      "isFavorite": false,
-      "totalQuantity": 0
-    },
-    {
       "id": 2,
       "name": "Purpleish Blue",
       "desc": "A beautiful Iris with a natural wood stand.",
@@ -22,7 +10,7 @@
       "price": 250,
       "rating": 4.5,
       "isFavorite": false,
-      "totalQuantity": 5
+      "totalQuantity": 1
     },
     {
       "id": 3,
@@ -34,7 +22,7 @@
       "price": 139,
       "rating": 3.5,
       "isFavorite": false,
-      "totalQuantity": 15
+      "totalQuantity": 12
     },
     {
       "id": 4,
@@ -58,7 +46,7 @@
       "price": 337,
       "rating": 5,
       "isFavorite": false,
-      "totalQuantity": 15
+      "totalQuantity": 13
     },
     {
       "id": 6,
@@ -106,7 +94,7 @@
       "price": 240,
       "rating": 4.5,
       "isFavorite": false,
-      "totalQuantity": 15
+      "totalQuantity": 14
     },
     {
       "id": 10,
@@ -118,7 +106,7 @@
       "price": 260,
       "rating": 5,
       "isFavorite": false,
-      "totalQuantity": 15
+      "totalQuantity": 14
     },
     {
       "id": 11,
@@ -218,13 +206,6 @@
     }
   ],
   "categories": [
-    {
-      "name": "Asiatic Lilies",
-      "desc": "Asiatic lilies are perennial bulbs that bloom with showy, upright flowers in numerous colors, such as orange, yellow, red, pink, and white.",
-      "image": "https://e-c.storage.googleapis.com/res/67abf2d2-cf4b-4c6f-9824-0018daa574e0/480",
-      "id": 1,
-      "rating": 4
-    },
     {
       "name": "Fillers",
       "desc": "Filler flowers add depth, texture, and movement. They soften gaps between large blooms and create harmony across an arrangement.",
@@ -407,156 +388,22 @@
       "id": 6
     },
     {
-      "email": "a@a.com",
-      "password": "$2a$10$Aa8odvtPNFghkH/el6ccvu7tcGxw6y4WUvKfPr0hWNH.n2e1sq4hi",
-      "username": "anas",
+      "email": "aya@gmail.com",
+      "password": "$2a$10$.OPrmL5Szq/2RQLpt/QxteIG0CMIRU4nxzK6ruVItzNN8uKRAt76i",
+      "username": "aya",
       "cart": [
         {
-          "cartItems": [
-            {
-              "id": 4,
-              "name": "Purple Tulip",
-              "desc": "A beautiful tulip with a natural wood stand.",
-              "image": "https://images.pexels.com/photos/11985516/pexels-photo-11985516.jpeg?_gl=1*1dc9f1z*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxOTIxJGo1OSRsMCRoMA..",
-              "color": "green",
-              "category": "Tulips",
-              "price": 237,
-              "rating": 4,
-              "isFavorite": false,
-              "totalQuantity": 18,
-              "quantity": 1,
-              "total": 237
-            },
-            {
-              "id": 3,
-              "name": "Yellow Tulip",
-              "desc": "A beautiful tulip with a natural wood stand.",
-              "image": "https://images.pexels.com/photos/21568165/pexels-photo-21568165.jpeg?_gl=1*2ewxm6*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxODU3JGo1OSRsMCRoMA..",
-              "color": "yellow",
-              "category": "Tulips",
-              "price": 139,
-              "rating": 3.5,
-              "isFavorite": false,
-              "totalQuantity": 15,
-              "quantity": 1,
-              "total": 139
-            },
-            {
-              "id": 1,
-              "name": "Red Tulip",
-              "desc": "A beautiful tulip with a natural wood stand.",
-              "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
-              "color": "red",
-              "category": "Tulips",
-              "price": 137,
-              "rating": 5,
-              "isFavorite": false,
-              "totalQuantity": 0,
-              "quantity": 1,
-              "total": 137
-            },
-            {
-              "id": 2,
-              "name": "Purpleish Blue",
-              "desc": "A beautiful Iris with a natural wood stand.",
-              "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
-              "color": "purple",
-              "category": "Iris",
-              "price": 250,
-              "rating": 4.5,
-              "isFavorite": false,
-              "totalQuantity": 5,
-              "quantity": 1,
-              "total": 250
-            },
-            {
-              "id": 2,
-              "name": "Purpleish Blue",
-              "desc": "A beautiful Iris with a natural wood stand.",
-              "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
-              "color": "purple",
-              "category": "Iris",
-              "price": 250,
-              "rating": 4.5,
-              "isFavorite": false,
-              "totalQuantity": 5,
-              "quantity": 1,
-              "total": 250
-            },
-            {
-              "id": 2,
-              "name": "Purpleish Blue",
-              "desc": "A beautiful Iris with a natural wood stand.",
-              "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
-              "color": "purple",
-              "category": "Iris",
-              "price": 250,
-              "rating": 4.5,
-              "isFavorite": false,
-              "totalQuantity": 5,
-              "quantity": 1,
-              "total": 250
-            }
-          ],
-          "totalQuantity": 6,
-          "totalPrice": 1263
+          "cartItems": [],
+          "totalQuantity": 0,
+          "totalPrice": 0
         }
       ],
-      "favorites": [
-        {
-          "id": 3,
-          "name": "Yellow Tulip",
-          "desc": "A beautiful tulip with a natural wood stand.",
-          "image": "https://images.pexels.com/photos/21568165/pexels-photo-21568165.jpeg?_gl=1*2ewxm6*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxODU3JGo1OSRsMCRoMA..",
-          "color": "yellow",
-          "category": "Tulips",
-          "price": 139,
-          "rating": 3.5,
-          "isFavorite": false,
-          "totalQuantity": 15
-        },
-        {
-          "id": 2,
-          "name": "Purpleish Blue",
-          "desc": "A beautiful Iris with a natural wood stand.",
-          "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
-          "color": "purple",
-          "category": "Iris",
-          "price": 250,
-          "rating": 4.5,
-          "isFavorite": false,
-          "totalQuantity": 5
-        }
-      ],
+      "favorites": [],
       "orders": [],
-      "id": 7
+      "id": 8
     }
   ],
   "orders": [
-    {
-      "items": [
-        {
-          "id": 1,
-          "name": "Red Tulip",
-          "desc": "A beautiful tulip with a natural wood stand.",
-          "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
-          "color": "red",
-          "category": "Tulips",
-          "price": 137,
-          "rating": 5,
-          "isFavorite": false,
-          "totalQuantity": 12,
-          "quantity": 7,
-          "total": 959
-        }
-      ],
-      "totalPrice": 959,
-      "id": "f61d68dc-dd28-406a-979b-910b9c395b8f",
-      "userId": 7,
-      "address": "ff",
-      "status": "processing",
-      "note": "gfgfg"
-    },
     {
       "items": [
         {
@@ -580,6 +427,186 @@
       "address": "456 Market Ave, Metropolis",
       "status": "delivered",
       "note": "N/A"
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": 5,
+          "isFavorite": false,
+          "totalQuantity": 0,
+          "quantity": 1,
+          "total": 137
+        },
+        {
+          "id": 2,
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "rating": 4.5,
+          "isFavorite": false,
+          "totalQuantity": 5,
+          "quantity": 1,
+          "total": 250
+        },
+        {
+          "id": 3,
+          "name": "Yellow Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/21568165/pexels-photo-21568165.jpeg?_gl=1*2ewxm6*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxODU3JGo1OSRsMCRoMA..",
+          "color": "yellow",
+          "category": "Tulips",
+          "price": 139,
+          "rating": 3.5,
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 2,
+          "total": 278
+        },
+        {
+          "id": 5,
+          "name": "Limonium Blue",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/12224119/pexels-photo-12224119.jpeg?_gl=1*68emve*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyMTE0JGoxNCRsMCRoMA..",
+          "color": "blue",
+          "category": "Fillers",
+          "price": 337,
+          "rating": 5,
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 2,
+          "total": 674
+        }
+      ],
+      "totalPrice": 1339,
+      "id": "75cb9772-ac53-4ae2-accb-6d3f7c72f14c",
+      "userId": 8,
+      "address": "kafrElsheik",
+      "status": "pending",
+      "note": "thanks"
+    },
+    {
+      "items": [
+        {
+          "id": 2,
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "rating": 4.5,
+          "isFavorite": false,
+          "totalQuantity": 4,
+          "quantity": 1,
+          "total": 250
+        },
+        {
+          "id": 3,
+          "name": "Yellow Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/21568165/pexels-photo-21568165.jpeg?_gl=1*2ewxm6*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxODU3JGo1OSRsMCRoMA..",
+          "color": "yellow",
+          "category": "Tulips",
+          "price": 139,
+          "rating": 3.5,
+          "isFavorite": false,
+          "totalQuantity": 13,
+          "quantity": 1,
+          "total": 139
+        }
+      ],
+      "totalPrice": 389,
+      "id": "7c7f53c7-3fd0-468b-8ddf-2a189c5629d2",
+      "userId": 8,
+      "address": "kafrElsheik",
+      "status": "pending",
+      "note": "thanks"
+    },
+    {
+      "items": [
+        {
+          "id": 10,
+          "name": "White Rose",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/30536274/pexels-photo-30536274.jpeg?_gl=1*6adpf1*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNjcwJGozMyRsMCRoMA..",
+          "color": "white",
+          "category": "Roses",
+          "price": 260,
+          "rating": 5,
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 260
+        },
+        {
+          "id": 9,
+          "name": "White Filler",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/924374/pexels-photo-924374.jpeg?_gl=1*neuz7m*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNjE1JGoyOCRsMCRoMA..",
+          "color": "white",
+          "category": "Asiatic Lilies",
+          "price": 240,
+          "rating": 4.5,
+          "isFavorite": false,
+          "totalQuantity": 15,
+          "quantity": 1,
+          "total": 240
+        },
+        {
+          "id": 2,
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "rating": 4.5,
+          "isFavorite": false,
+          "totalQuantity": 3,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 750,
+      "id": "b7ad0ee1-1db5-4233-9383-40d5339e4e05",
+      "userId": 8,
+      "address": "xdc",
+      "status": "pending",
+      "note": "cc"
+    },
+    {
+      "items": [
+        {
+          "id": 2,
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "rating": 4.5,
+          "isFavorite": false,
+          "totalQuantity": 2,
+          "quantity": 1,
+          "total": 250
+        }
+      ],
+      "totalPrice": 250,
+      "id": "3da3c7f4-c11a-4977-88ea-1ab8fb31a704",
+      "userId": 8,
+      "address": "dd",
+      "status": "pending",
+      "note": "dd"
     }
   ]
 }
