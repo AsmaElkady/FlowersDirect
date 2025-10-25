@@ -67,7 +67,8 @@ const productsSlice = createSlice({
                 state.items.push(action.payload);
             })
             .addCase(deleteProduct.fulfilled, (state, action: PayloadAction<number>) => {
-                state.items = state.items.filter((p) => p.id !== action.payload);
+               const idx = state.items.findIndex((p) => p.id === action.payload);
+               state.items.splice(idx,1);
             })
             .addCase(updateProduct.fulfilled, (state, action: PayloadAction<Product>) => {
                 const index = state.items.findIndex((p) => p.id === action.payload.id);

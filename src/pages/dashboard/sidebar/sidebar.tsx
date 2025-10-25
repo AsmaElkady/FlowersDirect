@@ -18,9 +18,9 @@ export default function SidebarDashboard() {
     navigation("overview");
   };
 
-  const handleProducts = () => {
-    console.log("Products clicked");
-  };
+const handleProducts = () => {
+    navigation("productListAdmin");
+};
 
   const handleCategories = () => {
     navigation("category");

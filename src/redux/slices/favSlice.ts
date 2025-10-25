@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseUrl } from "../../constants/main";
 import type { IFav } from "../../types/fav";
-import type { IProduct } from "../../Types/productType";
+import type { IProduct } from "../../types/productType";
 
 //  Helper: Get current user ID safely
 const getUserId = (): string | null => {

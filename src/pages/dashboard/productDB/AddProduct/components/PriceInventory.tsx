@@ -17,7 +17,6 @@ function PriceInventory() {
           label="Price (EGP)"
           type="number"
           placeholder="150 EGP"
-          className="w-50"
           {...register("price", { valueAsNumber: true })}
         />
       </div>
@@ -30,7 +29,7 @@ function PriceInventory() {
               label="Stock Quantity"
               type="number"
               placeholder="quantity"
-              className="w-50 mb-3"
+              className="mb-3"
               {...register("totalQuantity", { valueAsNumber: true })}
             />
           </Col>

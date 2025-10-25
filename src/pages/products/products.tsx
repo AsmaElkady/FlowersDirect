@@ -3,6 +3,7 @@ import Filter from "../../components/Filter/Filter";
 import "../../index.css";
 import ProductList from "../../components/ProductList/ProductList";
 import type { IProduct } from "../../types/productType";
+import type { IProduct } from "../../types/productType";
 import { Helmet } from "react-helmet";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -81,34 +82,34 @@ export default function Products() {
   if (error)
     return <h2>Errors....Failed to load products, Please try again later.</h2>;
 
-  return (
-    <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Products</title>
-        <link rel="canonical" href="http://mysite.com/example" />
-      </Helmet>
-      <Container className="py-5">
-        <h2 className="fw-bold mb-4 text-primary mt-5">Shop All Flowers</h2>
-        <Row>
-          <Col md={3}>
-            <Filter
-              onFilterChange={setFilters}
-              minPrice={minPrice}
-              maxPrice={maxPrice}
-              allProducts={data}
-            />
-          </Col>
-          <Col md={9}>
-            <ProductList
-              products={paginatedProducts}
-              currentPage={currentPage}
-              totalPages={totalPages}
-              setCurrentPage={setCurrentPage}
-            />
-          </Col>
-        </Row>
-      </Container>
-    </>
-  );
+    return (
+        <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Products</title>
+                <link rel="canonical" href="http://mysite.com/products" />
+            </Helmet>
+            <Container className="py-5">
+                <h2 className="fw-bold mb-4 text-primary mt-5">Shop All Flowers</h2>
+                <Row>
+                    <Col md={3}>
+                        <Filter onFilterChange={setFilters}
+                            minPrice={minPrice}
+                            maxPrice={maxPrice}
+                            allProducts={data}
+                        />
+                    </Col>
+                    <Col md={9}>
+                        <ProductList
+                            products={paginatedProducts}
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            setCurrentPage={setCurrentPage}
+                        />
+                    </Col>
+                </Row>
+            </Container>
+        </>
+
+    );
 }

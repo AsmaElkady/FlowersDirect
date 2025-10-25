@@ -1,6 +1,6 @@
 import { useForm , FormProvider } from "react-hook-form";
 import { useAppDispatch, type AppDispatch } from "../../../../../redux/store";
-import type { IProduct } from "../../../../../Types/productType";
+import type { IProduct } from "../../../../../types/productType";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
 import { addProductSchema, type AddProductSchemaType } from "../../../../../utils/schema/addProductSchema";
 import { useEffect } from "react";
