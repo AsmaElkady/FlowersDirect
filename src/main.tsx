@@ -131,7 +131,7 @@ const rout = createBrowserRouter([
     },
     children: [
       { index: true, element: <OverView /> },
-      { path: "category", element: <CategoryDB /> },
+      { path: "categories", element: <CategoryDB /> },
       { path: "AddProduct", element: <AddProduct /> },
       { path: "products", element: <ProductListAdmin /> },
       { path: "orders", element: <OrdersAdmin /> },
