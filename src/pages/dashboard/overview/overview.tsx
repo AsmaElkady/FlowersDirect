@@ -36,7 +36,7 @@ const OverView = () => {
   return (
     <div>
       <h1 className="m-3">Dashboard</h1>
-      <div className="d-flex justify-content-between">
+      <div className="d-flex justify-content-between mb-5">
         <RadialBarChart
           style={{
             width: "50%",

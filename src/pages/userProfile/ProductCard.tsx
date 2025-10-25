@@ -1,6 +1,13 @@
+import { useSelector } from "react-redux";
 import type { Order } from "../../types/order";
+import type { AppDispatch, RootState } from "../../../redux/store";
 
 const ProductCard = (order: Order) => {
+  const { category, loading } = useSelector(
+    (state: RootState) => state.Category
+  );
+  const { users } = useSelector((state: RootState) => state.admin);
+
   return (
     <div>
       <div className="order-section-card">

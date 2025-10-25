@@ -14,6 +14,7 @@ import ChangePassword from "./changePassword";
 import { useNavigate } from "react-router";
 import DataTableComponent from "../../../components/Table/SortTable";
 import Search from "../../../components/Inputs/Search";
+import Loading from "../../../components/Loading/Loading";
 
 const UsersDB = () => {
   const [rows, setRows] = useState<ICustomer[]>([]);
@@ -29,17 +30,10 @@ const UsersDB = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
-      const checkType = Admin.checkAdmin(user?.email);
-      if (checkType.status) {
-        dispatch(Admin.viewUsers());
-      } else {
-        navigate("/Login");
-      }
-    } else {
+    if (!user) {
       navigate("/Login");
     }
-  }, [dispatch, navigate, user, user?.email]);
+  }, [dispatch, navigate, user]);
 
   const customersUsers = useMemo(() => {
     return (
@@ -141,7 +135,7 @@ const UsersDB = () => {
     setID(row.id);
   };
 
-  if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") return <Loading />;
   if (isError) return <p>Error: {error}</p>;
 
   const handleConfirmReset = ({

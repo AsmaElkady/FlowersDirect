@@ -3,49 +3,100 @@ import "./revenue.css";
 import CountUp from "react-countup";
 
 export default function Revenue() {
-  const { totalProducts, orders } = useDashboard();
+  const {
+    totalProducts,
+    orders,
+    revenue,
+    totalCustomer,
+    topProducts,
+    topCustomers,
+  } = useDashboard();
 
   return (
     <>
       <div className="carddatabg row g-3">
-        <div className="col-md-3 ">
-          <div
-            className="card bg-card p-3 text-dark rounded-4 text-primary"
-            style={{ background: "#faecefff" }}
-          >
-            <div className="d-flex align-items-center mb-2 ">
-              <i className="fa-solid fa-sack-dollar fs-4 mx-2" /> Total Revenue
+        <div className="col-md-6">
+          <div className="card bg-card p-3 text-dark rounded-4 text-primary bg-light">
+            <div className="d-flex align-items-center justify-content-between  mb-2 ">
+              <div>
+                <i className="fa-solid fa-sack-dollar fs-4" /> Total Revenue
+              </div>
+              <CountUp end={revenue} style={{ fontSize: 30 }} />
             </div>
-            <div className="fw-bold fs-5 mx-2" id="totalRevenues">
-              {/* <CountUp end={revenue} /> */}
+          </div>
+          <div className="card bg-card p-3 text-dark rounded-4 text-primary mt-2 bg-light">
+            <div className="d-flex align-items-center justify-content-between mb-2">
+              <div>
+                <i className="fa-solid fa-seedling fs-4"></i> Products
+              </div>
+              <CountUp end={totalProducts} style={{ fontSize: 30 }} />
             </div>
           </div>
         </div>
-        <div className="col-md-3">
-          <div
-            className="card bg-card p-3 text-dark rounded-4 text-primary"
-            style={{ background: "#faecefff" }}
-          >
-            <div className="d-flex align-items-center mb-2">
-              <i className="fa-brands fa-first-order-alt fs-4"></i> Orders
-              {/* <i className="fa-solid fa-cart-shopping fs-4 mx-2" /> Orders */}
-            </div>
-            <div className="fw-bold fs-5 mx-2" id="ordersCount">
-              <CountUp end={orders} />
+        <div className="col-md-6">
+          <div className="card bg-card p-3 text-dark rounded-4 text-primary bg-light h-100 w-100">
+            <div>
+              <h4>
+                <i className="fa-solid fa-award mb-2"></i> Top Products
+              </h4>
+              <div className="w-100">
+                {topProducts.map((prod) => {
+                  return (
+                    <div className="d-flex justify-content-between">
+                      <div className="d-flex align-items-center justify-content-center">
+                        <img
+                          src={prod.image}
+                          width={30}
+                          height={30}
+                          alt={prod.name}
+                          className="rounded-circle"
+                        />
+                        <p className="ms-2 p-0 m-0">{prod.name}</p>
+                      </div>
+                      <CountUp end={prod.sales} style={{ fontSize: 20 }} />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
-        <div className="col-md-3">
-          <div
-            className="card bg-card p-3 text-dark rounded-4 text-primary"
-            style={{ background: "#faecefff" }}
-          >
-            <div className="d-flex align-items-center mb-2">
-              <i className="fa-solid fa-seedling fs-4"></i> Products
-              {/* <i className="fa-solid fa-couch fs-4 mx-2" />  Products */}
+        <div className="col-md-6">
+          <div className="card bg-card p-3 text-dark rounded-4 text-primary bg-light h-100 w-100">
+            <div>
+              <h4>
+                <i className="fa-solid fa-trophy"></i> Top Customers
+              </h4>
+              <div className="w-100">
+                {topCustomers.map((user) => {
+                  return (
+                    <div className="d-flex justify-content-between">
+                      <div className="d-flex align-items-center justify-content-center">
+                        <p className="ms-2 p-0 m-0">{user.username}</p>
+                      </div>
+                      <CountUp end={user.orders} style={{ fontSize: 20 }} />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-            <div className="fw-bold fs-5 mx-2" id="productCount">
-              <CountUp end={totalProducts} />
+          </div>
+        </div>
+        <div className="col-md-6">
+          <div className="card bg-card p-3 text-dark rounded-4 text-primary bg-light">
+            <div className="d-flex align-items-center justify-content-between mb-2">
+              <div>
+                <i className="fa-brands fa-first-order-alt fs-4"></i> Orders
+              </div>
+              <CountUp end={orders} style={{ fontSize: 30 }} />
+            </div>
+          </div>
+          <div className="card bg-card p-3 text-dark rounded-4 text-primary bg-light mt-2">
+            <div className="d-flex align-items-center justify-content-between mb-2">
+              <div>
+                <i className="fa-solid fa-user"></i> Customers
+              </div>
+              <CountUp end={totalCustomer} style={{ fontSize: 30 }} />
             </div>
           </div>
         </div>

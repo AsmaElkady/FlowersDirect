@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import type { Order, orderState } from "../../Types/order";
+import type { Order, orderState } from "../../types/order";
 import { Product } from "../../classes/productClass";
 import { updateProduct } from "./productSlice";
 // import { update } from './../../../node_modules/sweetalert2/src/instanceMethods/update';
@@ -16,7 +16,7 @@ export const addOrder = createAsyncThunk(
     const res = await axios.post("http://localhost:3000/orders", order);
 
     for (const item of order.items) {
-      const updatedProduct:Product = new Product(
+      const updatedProduct: Product = new Product(
         item.name,
         item.price,
         item.image,
@@ -25,7 +25,7 @@ export const addOrder = createAsyncThunk(
         item.color,
         item.rating,
         item.isFavorite,
-        item.totalQuantity - item.quantity, 
+        item.totalQuantity - item.quantity,
         item.id
       );
 
@@ -35,7 +35,6 @@ export const addOrder = createAsyncThunk(
     return res.data;
   }
 );
-
 
 export const fetchOrders = createAsyncThunk("order/fetchOrders", async () => {
   const res = await axios.get(`http://localhost:3000/orders`);
@@ -50,8 +49,8 @@ export const updateOrderStatus = createAsyncThunk(
     });
     return res.data;
   }
-   );
-  
+);
+
 export const deleteOrder = createAsyncThunk(
   "order/deleteOrder",
   async (orderId: string) => {
@@ -91,7 +90,6 @@ const orderSlice = createSlice({
         (order) => order.id !== action.payload
       );
     });
-
   },
 });
 

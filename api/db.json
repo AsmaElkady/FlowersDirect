@@ -277,7 +277,7 @@
     },
     {
       "email": "Asmaa@gmail.com",
-      "password": "$2a$10$X.dwySFEXi3fry4ci2b6ae2IoanfqG5L3S53iHZ4Iv2Q.FUxeXVDq",
+      "password": "$2a$10$Ftl3pVMLe4E4roqoQ0Ak9ezA0PJU4zQinaanxyKsmjIwhAPPTs6dK",
       "username": "Asmaa",
       "cart": [
         {
@@ -319,6 +319,56 @@
       "favorites": [],
       "orders": [],
       "id": 2
+    }
+  ],
+  "orders": [
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": 5,
+          "isFavorite": false,
+          "totalQuantity": 12,
+          "quantity": 7,
+          "total": 959
+        }
+      ],
+      "totalPrice": 959,
+      "id": "f61d68dc-dd28-406a-979b-910b9c395b8f",
+      "userId": 2,
+      "address": "ff",
+      "status": "processing",
+      "note": "gfgfg"
+    },
+    {
+      "items": [
+        {
+          "id": 1,
+          "name": "Red Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
+          "color": "red",
+          "category": "Tulips",
+          "price": 137,
+          "rating": 5,
+          "isFavorite": false,
+          "totalQuantity": 0,
+          "quantity": 1,
+          "total": 137
+        }
+      ],
+      "totalPrice": 137,
+      "id": "9c8b7a6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+      "userId": 2,
+      "address": "456 Market Ave, Metropolis",
+      "status": "delivered",
+      "note": "N/A"
     }
   ]
 }
