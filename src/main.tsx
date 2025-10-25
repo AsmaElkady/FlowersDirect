@@ -15,8 +15,8 @@ import { Provider } from "react-redux";
 import store from "./redux/store.ts";
 import UsersDB from "./pages/dashboard/users/usersDB.tsx";
 import OrdersAdmin from "./pages/dashboard/orders/ordersAdmin.tsx";
-import OverView from "./pages/dashboart/overview/overview.tsx";
-import CategoryDB from "./pages/dashboart/category/categoryDB.tsx";
+import OverView from "./pages/dashboard/overview/overview.tsx";
+import CategoryDB from "./pages/dashboard/category/categoryDB.tsx";
 import AddProduct from "./pages/dashboard/productDB/AddProduct/AddProduct.tsx";
 import ProductListAdmin from "./pages/dashboard/productDB/productList/ProductListAdmin.tsx";
 import Login from "./pages/login/login.tsx";
@@ -128,7 +128,7 @@ const rout = createBrowserRouter([
       return { Component: x.default };
     },
     children: [
-      { path: "overview", element: <OverView /> },
+      { index: true, element: <OverView /> },
       { path: "category", element: <CategoryDB /> },
       { path: "AddProduct", element: <AddProduct /> },
       { path: "productListAdmin", element: <ProductListAdmin /> },

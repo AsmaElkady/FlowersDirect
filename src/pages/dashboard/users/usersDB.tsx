@@ -21,7 +21,7 @@ const UsersDB = () => {
   const [showModal, setShowModal] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const [id, setID] = useState<number | undefined>();
-  const user = useSelector((state: RootState) => state.auth.user);
+  const user = useSelector((state: RootState) => state.auth.admin);
   const { users, status, isLoading, isError, error } = useSelector(
     (state: RootState) => state.admin
   );

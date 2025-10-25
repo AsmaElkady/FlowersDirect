@@ -7,11 +7,15 @@ import { fetchCategory } from "../../../redux/slices/category";
 import { useDispatch } from "react-redux";
 import type { AppDispatch } from "../../../redux/store";
 import { Helmet } from "react-helmet";
+import { Product } from "../../../classes/productClass";
+import { Admin } from "../../../classes/users";
 
 export default function DashbortLayOut() {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(fetchCategory());
+    dispatch(Product.getProducts());
+    dispatch(Admin.viewUsers());
   }, [dispatch]);
   return (
     <>
