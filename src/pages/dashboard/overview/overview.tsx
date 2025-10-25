@@ -93,7 +93,9 @@ const OverView = () => {
           <CartesianGrid strokeDasharray="3 10" />
           <XAxis dataKey="name" />
           <YAxis width="auto" />
-          <Tooltip />
+          <Tooltip
+            contentStyle={{ backgroundColor: "transparent", border: "none" }}
+          />
           <Legend />
 
           <Bar

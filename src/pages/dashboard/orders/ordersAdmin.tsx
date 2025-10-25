@@ -128,16 +128,16 @@ const OrdersAdmin = () => {
             title="Change Status"
             aria-label="Change Status"
           >
-            <i className="bi bi-arrow-repeat fs-4"></i>
+            <i className="bi bi-arrow-repeat"></i>
           </Button>
           <Button
             variant="link"
-            className="text-info p-0"
+            className="p-0"
             onClick={() => handleView(row)}
             title="View Details"
             aria-label="View Details"
           >
-            <i className="bi bi-eye fs-4"></i>
+            <i className="bi bi-eye"></i>
           </Button>
           <Button
             variant="link"

@@ -24,6 +24,7 @@ const UsersDB = () => {
   const { users, status, isLoading, isError, error } = useSelector(
     (state: RootState) => state.admin
   );
+  const { orders } = useSelector((state: RootState) => state.orderSlice);
   const dispatch = useDispatch<AppDispatch>();
 
   const customersUsers = useMemo(() => {
@@ -68,7 +69,10 @@ const UsersDB = () => {
     },
     {
       name: "No. Orders",
-      selector: (row: ICustomer) => row.orders?.length ?? 0,
+      selector: (row: ICustomer) =>
+        orders.filter((order) => order.userId == row.id).length,
+      //useMemo(() => {return orders.filter((order) => order.userId == row.id).length}, [row]),
+      //row.orders?.length ?? 0,
       sortable: true,
     },
     {

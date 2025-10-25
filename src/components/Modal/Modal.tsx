@@ -11,7 +11,7 @@ const ModalComponent = ({
   showActions,
 }: IModalProps) => {
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} className="mt-5">
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
