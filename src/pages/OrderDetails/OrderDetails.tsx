@@ -9,7 +9,7 @@ import type { Order } from "../../Types/order";
 import { Admin } from "../../classes/users";
 import { Helmet } from "react-helmet";
 
-const OrderDetails = () => {
+export default function OrderDetails() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.auth.user);
@@ -25,12 +25,16 @@ const OrderDetails = () => {
 
   const order: Order | undefined = orders.find((o) => o.id === orderId);
 
-  if (
-    user?.id !== order?.userId &&
-    !Admin.checkAdmin(user?.email ?? "").status
-  ) {
-    return navigate("/");
-  }
+  useEffect(() => {
+    if (loading || !order) return;
+
+    const isOwner = user?.id === order.userId;
+    const isAdmin = Admin.checkAdmin(user?.email ?? "").status;
+
+    if (!isOwner && !isAdmin) {
+      navigate("/");
+    }
+  }, [order, user, navigate, loading]);
 
   const getStatusBadge = (status: Order["status"]) => {
     const badges: Record<string, { bg: string; text: string }> = {
@@ -73,7 +77,6 @@ const OrderDetails = () => {
 
   return (
     <div className="order-details-root">
-
       <Helmet>
         <meta charSet="utf-8" />
         <title>Order Details</title>
@@ -248,6 +251,4 @@ const OrderDetails = () => {
       </Container>
     </div>
   );
-};
-
-export default OrderDetails;
+}

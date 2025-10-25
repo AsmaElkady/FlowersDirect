@@ -26,8 +26,8 @@ export const addOrder = createAsyncThunk(
         item.desc,
         item.category,
         item.color,
-        item.rating,
-        item.isFavorite,
+        item.rating ?? 0,
+        item.isFavorite ?? false,
         item.totalQuantity - item.quantity,
         item.id
       );
@@ -57,7 +57,7 @@ export const fetchOrdersByUserId = createAsyncThunk(
 
 export const updateOrderStatus = createAsyncThunk(
   "order/updateOrderStatus",
-  async ({ orderId, status }: { orderId: number; status: string }) => {
+  async ({ orderId, status }: { orderId: string; status: string }) => {
     const res = await axios.patch(`http://localhost:3000/orders/${orderId}`, {
       status,
     });

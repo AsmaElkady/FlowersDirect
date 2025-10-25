@@ -6,7 +6,7 @@ interface OrderItem extends IProduct {
 
 export interface Order {
   id: string;
-  userId: string;
+  userId: number;
   items: OrderItem[];
   totalPrice: number;
   address: string;

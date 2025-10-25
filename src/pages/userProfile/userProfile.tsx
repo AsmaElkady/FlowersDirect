@@ -17,7 +17,7 @@ import type { OrderItem } from "../../Types/order";
 
 
 const UserProfile = () => {
-  const user = useSelector((state: RootState) => state.auth.user!);
+  const user = useSelector((state: RootState) => (state.auth as RootState["auth"]).user!);
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const [showInput, setShowInput] = useState(false);

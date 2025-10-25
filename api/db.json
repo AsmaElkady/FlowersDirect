@@ -10,7 +10,7 @@
       "price": 250,
       "rating": 4.5,
       "isFavorite": false,
-      "totalQuantity": 1
+      "totalQuantity": 0
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "price": 139,
       "rating": 3.5,
       "isFavorite": false,
-      "totalQuantity": 12
+      "totalQuantity": 11
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "price": 237,
       "rating": 4,
       "isFavorite": false,
-      "totalQuantity": 18
+      "totalQuantity": 0
     },
     {
       "id": 5,
@@ -355,17 +355,32 @@
       ],
       "favorites": [],
       "orders": [],
-      "id": 2
+      "id": 5
     },
     {
       "email": "eman@gmail.com",
-      "password": "$2a$10$BgS0Wyn4C3Wf9FncIqtbM.ppgoDjFJCnPerCxhGt4ZxuThuVS4.mi",
+      "password": "$2a$10$Aa8odvtPNFghkH/el6ccvu7tcGxw6y4WUvKfPr0hWNH.n2e1sq4hi",
       "username": "Eman",
       "cart": [
         {
-          "cartItems": [],
-          "totalQuantity": 0,
-          "totalPrice": 0
+          "cartItems": [
+            {
+              "id": 1,
+              "name": "Red Tulip",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
+              "color": "red",
+              "category": "Tulips",
+              "price": 137,
+              "rating": 5,
+              "isFavorite": false,
+              "totalQuantity": 12,
+              "quantity": 1,
+              "total": 137
+            }
+          ],
+          "totalQuantity": 1,
+          "totalPrice": 137
         }
       ],
       "favorites": [],
@@ -410,7 +425,7 @@
       "id": "9c8b7a6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
       "userId": 6,
       "address": "456 Market Ave, Metropolis",
-      "status": "delivered",
+      "status": "cancelled",
       "note": "N/A"
     },
     {
@@ -476,7 +491,7 @@
       "id": "75cb9772-ac53-4ae2-accb-6d3f7c72f14c",
       "userId": 8,
       "address": "kafrElsheik",
-      "status": "pending",
+      "status": "processing",
       "note": "thanks"
     },
     {
@@ -592,6 +607,58 @@
       "address": "dd",
       "status": "pending",
       "note": "dd"
+    },
+    {
+      "items": [
+        {
+          "id": 2,
+          "name": "Purpleish Blue",
+          "desc": "A beautiful Iris with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/11673729/pexels-photo-11673729.jpeg?_gl=1*z3sj5i*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNzEyJGo1OSRsMCRoMA..",
+          "color": "purple",
+          "category": "Iris",
+          "price": 250,
+          "rating": 4.5,
+          "isFavorite": false,
+          "totalQuantity": 1,
+          "quantity": 1,
+          "total": 250
+        },
+        {
+          "id": 3,
+          "name": "Yellow Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/21568165/pexels-photo-21568165.jpeg?_gl=1*2ewxm6*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxODU3JGo1OSRsMCRoMA..",
+          "color": "yellow",
+          "category": "Tulips",
+          "price": 139,
+          "rating": 3.5,
+          "isFavorite": false,
+          "totalQuantity": 12,
+          "quantity": 1,
+          "total": 139
+        },
+        {
+          "id": 4,
+          "name": "Purple Tulip",
+          "desc": "A beautiful tulip with a natural wood stand.",
+          "image": "https://images.pexels.com/photos/11985516/pexels-photo-11985516.jpeg?_gl=1*1dc9f1z*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxOTIxJGo1OSRsMCRoMA..",
+          "color": "green",
+          "category": "Tulips",
+          "price": 237,
+          "rating": 4,
+          "isFavorite": false,
+          "totalQuantity": 18,
+          "quantity": 18,
+          "total": 4266
+        }
+      ],
+      "totalPrice": 4655,
+      "id": "7605284e-e2f1-424a-bc4c-b96d1dce361c",
+      "userId": 8,
+      "address": "d",
+      "status": "pending",
+      "note": "ff"
     }
   ]
 }
