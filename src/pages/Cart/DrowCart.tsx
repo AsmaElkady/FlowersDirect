@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import type { ICartProduct } from "../../Types/cart";
+import type { ICartProduct } from "../../types/cart";
 import {
   decreaseQuantityApi,
   deleteCartItemApi,
@@ -12,6 +12,7 @@ type props = {
 };
 export default function DrowCart({ item }: props) {
   const dispatch = useDispatch<AppDispatch>();
+
   return (
     <>
       <div
@@ -40,7 +41,7 @@ export default function DrowCart({ item }: props) {
                 disabled={item.quantity <= 1}
                 aria-label="decrease"
                 onClick={() =>
-                  dispatch(decreaseQuantityApi({ productId: item.id }))
+                  dispatch(decreaseQuantityApi({ productId: item.id ??0 }))
                 }
               >
                 −
@@ -52,7 +53,7 @@ export default function DrowCart({ item }: props) {
                 aria-label="increase"
                 disabled={item.quantity >= item.totalQuantity}
                 onClick={() =>
-                  dispatch(increaseQuantityApi({ productId: item.id }))
+                  dispatch(increaseQuantityApi({ productId: item.id ?? 0 }))
                 }
               >
                 +
@@ -61,7 +62,7 @@ export default function DrowCart({ item }: props) {
             <div className="fw-bold">{item.total} EGP</div>
             <button
               className="btn btn-outline-primary btn-sm ms-auto"
-              onClick={() => dispatch(deleteCartItemApi(item.id))}
+              onClick={() => dispatch(deleteCartItemApi(item.id ??0))}
             >
               Remove
             </button>

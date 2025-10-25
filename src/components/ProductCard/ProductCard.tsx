@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import Rating from "@mui/material/Rating";
+import { Admin } from "../../classes/users";
 
 type Props = {
   product: IProduct;
@@ -26,6 +27,11 @@ export default function ProductCard({ product }: Props) {
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastBg, setToastBg] = useState<"danger" | "primary">("primary");
+
+  //check admin
+  const user = useSelector((state: RootState) => state.auth.user);
+  // const { users, status } = useSelector((state: RootState) => state.admin);
+  const checkType = Admin.checkAdmin(user?.email ?? "");
 
   const showNotification = (message: string, bg: "danger" | "primary") => {
     setToastMessage(message);
@@ -171,7 +177,10 @@ export default function ProductCard({ product }: Props) {
             <div className="mt-3 me-4">
               <Button
                 variant="outline-primary"
-                disabled={cartItems.some((item: IProduct) => item.id === id)}
+                disabled={
+                  cartItems.some((item: IProduct) => item.id === id) ||
+                  checkType.status
+                }
                 onClick={handelAddToCart}
               >
                 Add to Cart
