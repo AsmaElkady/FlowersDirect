@@ -8,19 +8,28 @@ import "../../style/ProductDetails.css";
 import MultiImageSlider from "../../sections/home/carousel";
 import Swal from "sweetalert2";
 import { addOrUpdateCartApi } from "../../redux/slices/cartApi";
-import  { useState } from "react";
-import { useDispatch } from "react-redux";
-import type { AppDispatch } from "../../redux/store";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/store";
+import { Admin } from "../../classes/users";
+import type { IProduct } from "../../types/productType";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+    const cartItems = useSelector(
+      (state: RootState) => state.Cart.cart.cartItems
+    );
+    //check admin
+    const user = useSelector((state: RootState) => state.auth.user);
+    // const { users, status } = useSelector((state: RootState) => state.admin);
+    const checkType = Admin.checkAdmin(user?.email ?? "");
 
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastBg, setToastBg] = useState<"danger" | "primary">("primary");
-    
+
   const showNotification = (message: string, bg: "danger" | "primary") => {
     setToastMessage(message);
     setToastBg(bg);
@@ -68,7 +77,6 @@ const ProductDetails: React.FC = () => {
       });
     }
     console.log("cart");
-    
   };
 
   if (isLoading) return <p className="text-center mt-5">Loading...</p>;
@@ -99,6 +107,10 @@ const ProductDetails: React.FC = () => {
               <Button
                 variant="outline-primary"
                 onClick={handelAddToCart}
+                disabled={
+                  cartItems.some((item: IProduct) => item.id === id) ||
+                  checkType.status
+                }
               >
                 Add to Cart
               </Button>

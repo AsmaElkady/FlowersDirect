@@ -147,7 +147,7 @@ export default function ProductCard({ product }: Props) {
                 alt={name}
               />
             </Link>
-            <div className="card-icons">
+            <div className={`card-icons ${checkType.status? "d-none" : ""}`}>
               <button
                 className={`icon-btn fav-btn ${
                   isFavorite ? "text-primary bg-light" : ""
