@@ -89,6 +89,7 @@ export default function EditCategoryDB({ id, name, desc, img }: prop) {
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        className="mt-5"
       >
         <Modal.Header closeButton>
           <Modal.Title>Edit Category</Modal.Title>

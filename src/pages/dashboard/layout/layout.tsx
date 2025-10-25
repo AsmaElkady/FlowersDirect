@@ -183,13 +183,29 @@ export default function MiniDrawer() {
               <MenuIcon sx={{ color: "white" }} />
             </IconButton>
             <Typography variant="h6" noWrap component="div">
-              <img
+              {/* <img
                 src="/public/img/nav/6.png"
                 width="200"
                 alt="Logo"
                 className="d-inline-block align-top"
-              />
+              /> */}
             </Typography>
+
+            <div className="position-relative">
+              <Typography sx={{ fontSize: 50 }}>FLOWERS</Typography>
+              <Typography
+                sx={{
+                  fontSize: 10,
+                  letterSpacing: 20,
+                  lineHeight: 0,
+                  bottom: 10,
+                  left: 70,
+                  position: "absolute",
+                }}
+              >
+                DIRECT
+              </Typography>
+            </div>
           </Toolbar>
         </AppBar>
 
