@@ -1,6 +1,6 @@
-import { useForm, FormProvider } from "react-hook-form";
-import { useAppDispatch, type AppDispatch } from "../../../../../redux/store";
-import type { IProduct } from "../../../../../types/productType";
+import { useForm , FormProvider } from "react-hook-form";
+import { useAppDispatch, type AppDispatch, type RootState } from "../../../../../redux/store";
+import type { IProduct } from "../../../../../Types/productType";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
 import {
   addProductSchema,
@@ -11,6 +11,8 @@ import { Product } from "../../../../../classes/productClass";
 import Swal from "sweetalert2";
 import { Modal, Button, Form } from "react-bootstrap";
 import MyInput from "../../../../../components/Inputs/MyInput";
+import { useSelector } from "react-redux";
+import { fetchCategory } from "../../../../../redux/slices/category";
 
 interface EditProductModalProps {
   show: boolean;
@@ -18,16 +20,18 @@ interface EditProductModalProps {
   product: IProduct;
 }
 
-function EditProductModal({
-  show,
-  handleClose,
-  product,
-}: EditProductModalProps) {
-  const dispatch = useAppDispatch<AppDispatch>();
-  const methods = useForm<IProduct>({
+function EditProductModal({ show, handleClose, product }: EditProductModalProps) {
+    const dispatch = useAppDispatch<AppDispatch>();
+    const { category, loading } = useSelector((state: RootState) => state.Category);
+    
+    const methods = useForm<IProduct>({
     resolver: zodResolver(addProductSchema),
     defaultValues: product ?? {},
   });
+
+   useEffect(() => {
+    dispatch(fetchCategory());
+  }, [dispatch]);
 
   useEffect(() => {
     if (product) {
@@ -46,8 +50,8 @@ function EditProductModal({
         product.desc,
         data.category,
         product.color,
-        product.rating!,
-        product.isFavorite!,
+        product.rating ?? 3.5,
+        product.isFavorite ?? false,
         data.totalQuantity,
         product.id
       );
@@ -77,10 +81,25 @@ function EditProductModal({
             <Modal.Title>Edit Product</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <MyInput id="name" label="Product Name" type="text" />
-            <MyInput id="category" label="Category" type="text" />
-            <MyInput id="price" label="Price" type="number" />
-            <MyInput id="totalQuantity" label="Quantity" type="number" />
+            <MyInput id="name" label="Product Name" type="text"/>
+            {/* <MyInput id="category" label="Category" type="text"/> */}
+            <Form.Group className="mb-3">
+              <Form.Label>Category</Form.Label>
+              <Form.Select {...methods.register("category")}>
+                <option value="">Select Category</option>
+                {loading ? (
+                  <option>Loading...</option>
+                ) : (
+                  category.map((cat) => (
+                    <option key={cat.id} value={cat.name}>
+                      {cat.name}
+                    </option>
+                  ))
+                )}
+              </Form.Select>
+            </Form.Group>
+            <MyInput id="price" label="Price" type="number"/>
+            <MyInput id="totalQuantity" label="Quantity" type="number"/>
             {/* <MyInput id="image" label="Image URL" type="text" placeholder="Enter image URL" /> */}
           </Modal.Body>
           <Modal.Footer>

@@ -1,6 +1,6 @@
 import { Row, Col, Pagination } from "react-bootstrap";
 import ProductCard from "../ProductCard/ProductCard";
-import type { IProduct } from "../../types/productType";
+import type { IProduct } from "../../Types/productType";
 
 interface ProductListProps {
     products: IProduct[];

@@ -1,6 +1,6 @@
 import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import type { IProduct } from "../../types/productType";
+import type { IProduct } from "../../Types/productType";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { addFavApi, deleteFavItemApi } from "../../redux/slices/favSlice";
 import "./ProductCard.css";
@@ -178,12 +178,13 @@ export default function ProductCard({ product }: Props) {
               <Button
                 variant="outline-primary"
                 disabled={
+                  product.totalQuantity === 0 ||
                   cartItems.some((item: IProduct) => item.id === id) ||
                   checkType.status
                 }
                 onClick={handelAddToCart}
               >
-                Add to Cart
+                {product.totalQuantity === 0 ? "Out of Stock" : "Add to Cart"}
               </Button>
             </div>
           </Card.Body>

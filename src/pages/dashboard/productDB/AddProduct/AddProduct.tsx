@@ -10,7 +10,7 @@ import CategoryColor from "./components/CategoryColor";
 import Swal from "sweetalert2";
 import { zodResolver } from "@hookform/resolvers/zod/src/zod.js";
 import { FormProvider, useForm } from "react-hook-form";
-import type { IProduct } from "../../../../types/productType";
+import type { IProduct } from "../../../../Types/productType";
 import { addProductDefaultValues, addProductSchema, type AddProductSchemaType } from "../../../../utils/schema/addProductSchema";
 import { useNavigate } from "react-router";
 
@@ -51,7 +51,7 @@ function AddProduct() {
       data.desc,
       data.category,
       data.color,
-      data.rating ?? "",
+      data.rating ?? 3.5,
       data.isFavorite ?? false,
       Number(data.totalQuantity)
     );
@@ -76,7 +76,7 @@ function AddProduct() {
         background: "#fbeff4",
       });
     }
-    navigation("/dashboard/productListAdmin")
+    navigation("/dashboard/products")
   };
 
     return (

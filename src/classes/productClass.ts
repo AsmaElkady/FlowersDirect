@@ -1,6 +1,6 @@
 // import { useGetProductsQuery } from "../api/productApi";
 import { addProduct, deleteProduct, fetchProducts, updateProduct } from "../redux/slices/productSlice";
-import type { IProduct } from "../types/productType";
+import type { IProduct } from "../Types/productType";
 
 export class Product implements IProduct {
     public id?: number;
