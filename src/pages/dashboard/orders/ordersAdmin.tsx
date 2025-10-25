@@ -67,7 +67,7 @@ const OrdersAdmin = () => {
       sortable: true,
       cell: (row: Order) => (
         <Link
-          to={`/order-details/${row.id ?? ""}`}
+          to={`/dashboard/orders/${row.id ?? ""}`}
           className="text-decoration-none fw-semibold"
           title="View Order"
         >
@@ -182,7 +182,7 @@ const OrdersAdmin = () => {
   };
 
   const handleView = (row: Order) => {
-    navigate(`/order-details/${row.id}`);
+    navigate(`/dashboard/orders/${row.id}`);
   };
 
   const handleStatusChange = (row: Order) => {
