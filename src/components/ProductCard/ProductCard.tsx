@@ -8,7 +8,6 @@ import { addOrUpdateCartApi } from "../../redux/slices/cartApi";
 import Swal from "sweetalert2";
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
-import type { IProduct } from "../../types/productType";
 import Rating from "@mui/material/Rating";
 import { Admin } from "../../classes/users";
 
