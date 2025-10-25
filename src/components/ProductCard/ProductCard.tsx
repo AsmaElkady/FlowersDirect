@@ -1,6 +1,6 @@
 import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import type { IProduct } from "../../Types/productType";
+import type { IProduct } from "../../types/productType";
 import type { AppDispatch, RootState } from "../../redux/store";
 import { addFavApi, deleteFavItemApi } from "../../redux/slices/favSlice";
 import "./ProductCard.css";

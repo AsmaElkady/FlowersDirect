@@ -38,6 +38,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import { Product } from "../../../classes/productClass";
 import { Admin } from "../../../classes/users";
 import { fetchOrders } from "../../../redux/slices/order.slice";
+import { logoutUser } from "../../../redux/slices/authSlice";
 
 const drawerWidth = 240;
 
@@ -150,14 +151,17 @@ export default function MiniDrawer() {
   const handleHome = () => {
     navigate("/");
   };
-
+const handleLogout = () => {
+  dispatch(logoutUser());
+  navigate("/Login");
+};
   const menuItems = [
     { text: "Overview", icon: <DashboardIcon /> },
     { text: "Products", icon: <ShoppingBagIcon /> },
     { text: "Categories", icon: <CategoryIcon /> },
     { text: "Users", icon: <PeopleIcon /> },
     { text: "Orders", icon: <ListAltIcon /> },
-    { text: "Logout", icon: <LogoutIcon /> },
+    // { text: "Logout", icon: <LogoutIcon /> },
   ];
 
   return (
@@ -316,6 +320,39 @@ export default function MiniDrawer() {
                 </ListItemButton>
               </ListItem>
             ))}
+            <ListItem key={"logout"} disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                onClick={() => handleLogout()}
+                sx={[
+                  {
+                    minHeight: 48,
+                    px: 2.5,
+                    color: "white",
+                    "&:hover": { backgroundColor: "#6a0737" },
+                  },
+                  open
+                    ? { justifyContent: "initial" }
+                    : { justifyContent: "center" },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: "center",
+                      color: "white",
+                    },
+                    open ? { mr: 3 } : { mr: "auto" },
+                  ]}
+                >
+                  <LogoutIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Logout"
+                  sx={[open ? { opacity: 1 } : { opacity: 0 }]}
+                />
+              </ListItemButton>
+            </ListItem>
           </List>
         </Drawer>
 
