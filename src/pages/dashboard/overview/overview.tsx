@@ -28,8 +28,7 @@ const OverView = () => {
   });
 
   const stock = productsStock.map((prod) => {
-    const color = data.filter((category) => category.name == prod.category)[0]
-      .fill;
+    const color = data.filter((category) => category.name == prod.category)[0]?.fill;
     return { ...prod, fill: color };
   });
 
