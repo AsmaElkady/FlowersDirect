@@ -56,7 +56,7 @@ const OrdersAdmin = () => {
     }
   }, [orders, search, allOrders]);
 
-  // Helpers for nicer display
+  
   const currencyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -159,7 +159,7 @@ const OrdersAdmin = () => {
             title="Delete Order"
             aria-label="Delete Order"
           >
-            <i className="bi bi-trash3 fs-4"></i>
+             <i className="bi bi-trash3"></i>
           </Button>
         </div>
       ),

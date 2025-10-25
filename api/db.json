@@ -276,9 +276,9 @@
       "id": 1
     },
     {
-      "email": "Asmaa@gmail.com",
-      "password": "$2a$10$X.dwySFEXi3fry4ci2b6ae2IoanfqG5L3S53iHZ4Iv2Q.FUxeXVDq",
-      "username": "Asmaa",
+      "email": "Test@gmail.com",
+      "password": "$2a$10$tk98cXO5f824mN/4UsyaEunUPoY3giv6vdhoAgi5WWybrvO8Wm9hu",
+      "username": "Test",
       "cart": [
         {
           "cartItems": [
@@ -297,6 +297,48 @@
               "total": 237
             },
             {
+              "id": 5,
+              "name": "Limonium Blue",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "https://images.pexels.com/photos/12224119/pexels-photo-12224119.jpeg?_gl=1*68emve*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyMTE0JGoxNCRsMCRoMA..",
+              "color": "blue",
+              "category": "Fillers",
+              "price": 337,
+              "rating": "⭐⭐⭐",
+              "isFavorite": false,
+              "totalQuantity": 15,
+              "quantity": 1,
+              "total": 337
+            },
+            {
+              "id": 6,
+              "name": "Limonium White",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "https://images.pexels.com/photos/14903885/pexels-photo-14903885.jpeg?_gl=1*kjzdv0*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgyNDIzJGoxMCRsMCRoMA..",
+              "color": "white",
+              "category": "Fillers",
+              "price": 437,
+              "rating": "⭐⭐⭐",
+              "isFavorite": false,
+              "totalQuantity": 15,
+              "quantity": 1,
+              "total": 437
+            },
+            {
+              "id": 3,
+              "name": "Yellow Tulip",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "https://images.pexels.com/photos/21568165/pexels-photo-21568165.jpeg?_gl=1*2ewxm6*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxODU3JGo1OSRsMCRoMA..",
+              "color": "yellow",
+              "category": "Tulips",
+              "price": 139,
+              "rating": "⭐⭐⭐",
+              "isFavorite": false,
+              "totalQuantity": 15,
+              "quantity": 1,
+              "total": 139
+            },
+            {
               "id": 2,
               "name": "Purpleish Blue",
               "desc": "A beautiful Iris with a natural wood stand.",
@@ -310,10 +352,24 @@
               "totalQuantity": 10,
               "quantity": 1,
               "total": 250
+            },
+            {
+              "id": 1,
+              "name": "Red Tulip",
+              "desc": "A beautiful tulip with a natural wood stand.",
+              "image": "https://images.pexels.com/photos/26966084/pexels-photo-26966084.jpeg?_gl=1*n7n83a*_ga*Nzk1MDQ3OTMzLjE3NTY5MzI1NTE.*_ga_8JE65Q40S6*czE3NjEwODA3ODIkbzE2JGcxJHQxNzYxMDgxMzczJGozOSRsMCRoMA..",
+              "color": "red",
+              "category": "Tulips",
+              "price": 137,
+              "rating": "⭐⭐⭐",
+              "isFavorite": false,
+              "totalQuantity": 12,
+              "quantity": 1,
+              "total": 137
             }
           ],
-          "totalQuantity": 2,
-          "totalPrice": 487
+          "totalQuantity": 6,
+          "totalPrice": 1537
         }
       ],
       "favorites": [],
@@ -498,7 +554,7 @@
       "id": "f61d68dc-dd28-406a-979b-910b9c395b8f",
       "userId": 7,
       "address": "ff",
-      "status": "shipped",
+      "status": "processing",
       "note": "gfgfg"
     },
     {
