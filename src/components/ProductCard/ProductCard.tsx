@@ -147,7 +147,7 @@ export default function ProductCard({ product }: Props) {
                 alt={name}
               />
             </Link>
-            <div className="card-icons">
+            <div className={`card-icons ${checkType.status? "d-none" : ""}`}>
               <button
                 className={`icon-btn fav-btn ${
                   isFavorite ? "text-primary bg-light" : ""
@@ -178,12 +178,13 @@ export default function ProductCard({ product }: Props) {
               <Button
                 variant="outline-primary"
                 disabled={
+                  product.totalQuantity === 0 ||
                   cartItems.some((item: IProduct) => item.id === id) ||
                   checkType.status
                 }
                 onClick={handelAddToCart}
               >
-                Add to Cart
+                {product.totalQuantity === 0 ? "Out of Stock" : "Add to Cart"}
               </Button>
             </div>
           </Card.Body>
