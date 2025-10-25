@@ -1,6 +1,10 @@
 import { useSelector } from "react-redux";
-import { useAppDispatch, type AppDispatch, type RootState } from "../../../../redux/store";
-import { useEffect, useState} from "react";
+import {
+  useAppDispatch,
+  type AppDispatch,
+  type RootState,
+} from "../../../../redux/store";
+import { useEffect, useState } from "react";
 import { Product } from "../../../../classes/productClass";
 import { productColumns } from "./components/productColumns";
 import DataTableComponent from "../../../../components/Table/SortTable/DataTableComponent";
@@ -13,9 +17,11 @@ import { useNavigate } from "react-router";
 
 function ProductListAdmin() {
   const dispatch = useAppDispatch<AppDispatch>();
-  const { items: products, loading, error } = useSelector(
-    (state: RootState) => state.products
-  );
+  const {
+    items: products,
+    loading,
+    error,
+  } = useSelector((state: RootState) => state.products);
   const navigation = useNavigate();
 
   const [data, setData] = useState<IProduct[]>([]);
@@ -23,9 +29,9 @@ function ProductListAdmin() {
   const [showInput, setShowInput] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<IProduct>();
 
-  useEffect(() => {
-    dispatch(Product.getProducts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(Product.getProducts());
+  // }, [dispatch]);
 
   useEffect(() => {
     setData(products);
@@ -68,14 +74,26 @@ function ProductListAdmin() {
     let quantityValue: boolean;
 
     const newRows = products.filter((row) => {
-      idValue = row.id?.toString().toLowerCase().includes(e.target.value.toLowerCase()) ?? false;
-      nameValue = row.name?.toLowerCase().includes(e.target.value.toLowerCase()) ?? false;
-      categoryValue = row.category?.toLowerCase().includes(e.target.value.toLowerCase()) ?? false;
-      priceValue = row.price?.toString().toLowerCase().includes(e.target.value.toLowerCase()) ?? false;
-      quantityValue = row.totalQuantity
-        ?.toString()
-        .toLowerCase()
-        .includes(e.target.value.toLowerCase()) ?? false;
+      idValue =
+        row.id
+          ?.toString()
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase()) ?? false;
+      nameValue =
+        row.name?.toLowerCase().includes(e.target.value.toLowerCase()) ?? false;
+      categoryValue =
+        row.category?.toLowerCase().includes(e.target.value.toLowerCase()) ??
+        false;
+      priceValue =
+        row.price
+          ?.toString()
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase()) ?? false;
+      quantityValue =
+        row.totalQuantity
+          ?.toString()
+          .toLowerCase()
+          .includes(e.target.value.toLowerCase()) ?? false;
 
       if (idValue) searchValue = idValue;
       else if (nameValue) searchValue = nameValue;
@@ -113,27 +131,30 @@ function ProductListAdmin() {
           >
             <SearchIcon />
           </Button>
-          <Button variant="primary" onClick={()=>navigation("/dashboard/AddProduct")}>
+          <Button
+            variant="primary"
+            onClick={() => navigation("/dashboard/AddProduct")}
+          >
             Add Product
           </Button>
         </div>
 
         <DataTableComponent
-              columns={productColumns(handleDelete , handleEdit)}
-              data={data}
-              loading={false}
-            />
-
-       {selectedProduct && (
-        <EditProductModal
-          show={showEdit}
-          handleClose={() => setShowEdit(false)}
-          product={selectedProduct}
+          columns={productColumns(handleDelete, handleEdit)}
+          data={data}
+          loading={false}
         />
-      )}    
+
+        {selectedProduct && (
+          <EditProductModal
+            show={showEdit}
+            handleClose={() => setShowEdit(false)}
+            product={selectedProduct}
+          />
+        )}
       </div>
     </>
-  )
+  );
 }
 
-export default ProductListAdmin
+export default ProductListAdmin;

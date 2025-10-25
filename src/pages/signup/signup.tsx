@@ -20,7 +20,7 @@ import { useNavigate } from "react-router";
 import "../../style/auth.css";
 import { baseUrl } from "../../constants/main";
 import { useDispatch } from "react-redux";
-import { setAdmin, setToken, setUser } from "../../redux/slices/authSlice";
+import { setToken, setUser } from "../../redux/slices/authSlice";
 import { Admin, Customer } from "../../classes/users";
 import { toast, ToastContainer } from "react-toastify";
 import Helmet from "react-helmet";
@@ -68,13 +68,11 @@ const SignUp = () => {
     mutationFn: handleRegister,
     onSuccess: (res) => {
       dispatch(setToken(res.data.accessToken));
-      localStorage.setItem("token", JSON.stringify(res.data.accessToken));
+      dispatch(setUser(res.data.user));
       if (Admin.checkAdmin(res.data.user.email).status) {
         navigate("/dashboard", { replace: true });
-        dispatch(setAdmin(res.data.user));
       } else {
         navigate("/", { replace: true });
-        dispatch(setUser(res.data.user));
       }
       // location.key == "default" ? navigate(-1)
       //   : navigate("/", { replace: true });
